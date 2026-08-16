@@ -222,59 +222,6 @@ export default function Clients() {
 
         {/* BENTO GRID - ROLLING AUTO-SLIDE FEATURED CLIENTS */}
         <div style={{ marginBottom: "2.5rem" }}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              marginBottom: "1rem",
-              flexWrap: "wrap",
-              gap: "0.5rem",
-            }}
-          >
-            <div
-              style={{
-                fontSize: "0.8rem",
-                fontWeight: 700,
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-                color: "var(--color-primary)",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.5rem",
-              }}
-            >
-              <Crown size={16} /> Featured Corporate Showcase
-            </div>
-
-            <div
-              style={{
-                fontSize: "0.725rem",
-                fontWeight: 600,
-                color: "var(--color-text-subtle)",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.4rem",
-                padding: "0.25rem 0.65rem",
-                background: "var(--color-surface-2)",
-                border: "1px solid var(--color-border)",
-                borderRadius: "20px",
-              }}
-            >
-              <span
-                style={{
-                  width: "7px",
-                  height: "7px",
-                  borderRadius: "50%",
-                  background: isScrollingActive ? "#10B981" : "#F59E0B",
-                  boxShadow: isScrollingActive ? "0 0 8px #10B981" : "none",
-                }}
-              />
-              {isScrollingActive
-                ? "Auto-Rolling Active"
-                : "Initial Focus: PLN • Dilmil • ALVA"}
-            </div>
-          </div>
 
           {/* Marquee Wrapper */}
           <div className="bento-marquee-wrapper">
