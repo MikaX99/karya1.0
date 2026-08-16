@@ -400,7 +400,22 @@ html[data-theme="dark"] .glass-card:hover {
 }
 
 /* ============================================================
-   NAVBAR CENTER FLOATING MENU CAPSULE (FROSTED GLASS)
+   NAVBAR TOP FADE-OUT AMBIENT VIGNETTE
+   ============================================================ */
+.navbar-top-fade {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 90px;
+  background: linear-gradient(to bottom, var(--color-bg) 0%, rgba(0, 0, 0, 0) 100%);
+  pointer-events: none;
+  z-index: 45;
+  transition: opacity 0.3s ease;
+}
+
+/* ============================================================
+   NAVBAR CENTER FLOATING MENU CAPSULE (ULTRA FROSTED GLASS)
    ============================================================ */
 .nav-menu-capsule {
   display: none;
@@ -408,18 +423,18 @@ html[data-theme="dark"] .glass-card:hover {
   gap: 0.25rem;
   padding: 4px 6px;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(36px) saturate(200%);
+  -webkit-backdrop-filter: blur(36px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
   transition: all 0.25s ease;
 }
 
 html[data-theme="dark"] .nav-menu-capsule {
-  background: rgba(18, 18, 22, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  background: rgba(16, 16, 20, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .nav-menu-item {
@@ -460,18 +475,18 @@ html[data-theme="dark"] .nav-menu-item:hover {
   gap: 2px;
   padding: 3px 5px;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(36px) saturate(200%);
+  -webkit-backdrop-filter: blur(36px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
   transition: all 0.25s ease;
 }
 
 html[data-theme="dark"] .nav-capsule-utility {
-  background: rgba(18, 18, 22, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  background: rgba(16, 16, 20, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .nav-capsule-item {

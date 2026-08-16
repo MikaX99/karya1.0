@@ -56,6 +56,9 @@ export default function Navbar() {
 
   return (
     <>
+      {/* Top Ambient Vignette (Fades out scrolling content under navbar) */}
+      <div className="navbar-top-fade" style={{ opacity: visible ? 1 : 0 }} />
+
       <header
         id="navbar"
         style={{
