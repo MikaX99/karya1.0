@@ -48,12 +48,46 @@ export default function ProductCatalog() {
     }
   };
 
-  const filtered = productsData.filter((p) => {
-    const catMatch = activeCategoryVal === "Semua" || p.category === activeCategoryVal;
-    const brandMatch =
+  // Products belonging to the selected category
+  const categoryProducts =
+    activeCategoryVal === "Semua"
+      ? productsData
+      : productsData.filter((p) => p.category === activeCategoryVal);
+
+  // Dynamically derive brands available in the selected category
+  const availableBrands = brandConfig.filter((b) => {
+    if (b.value === "Semua") return true;
+    return categoryProducts.some((p) =>
+      p.brand.toLowerCase().includes(b.value.toLowerCase())
+    );
+  });
+
+  const handleCategoryChange = (catValue: string) => {
+    setActiveCategoryVal(catValue);
+
+    // Reset activeBrandVal to "Semua" if selected brand is not present in the new category
+    if (activeBrandVal !== "Semua") {
+      const newCategoryProducts =
+        catValue === "Semua"
+          ? productsData
+          : productsData.filter((p) => p.category === catValue);
+
+      const isValidInNewCat = newCategoryProducts.some((p) =>
+        p.brand.toLowerCase().includes(activeBrandVal.toLowerCase())
+      );
+
+      if (!isValidInNewCat) {
+        setActiveBrandVal("Semua");
+      }
+    }
+  };
+
+  // Final filtered product list matching both category and brand
+  const filtered = categoryProducts.filter((p) => {
+    return (
       activeBrandVal === "Semua" ||
-      p.brand.toLowerCase().includes(activeBrandVal.toLowerCase());
-    return catMatch && brandMatch;
+      p.brand.toLowerCase().includes(activeBrandVal.toLowerCase())
+    );
   });
 
   return (
@@ -94,7 +128,7 @@ export default function ProductCatalog() {
                 key={cat.key}
                 id={`filter-${cat.value.toLowerCase().replace(/\s+/g, "-").replace(/&/g, "and")}`}
                 className={`futuristic-tab-item ${activeCategoryVal === cat.value ? "active" : ""}`}
-                onClick={() => setActiveCategoryVal(cat.value)}
+                onClick={() => handleCategoryChange(cat.value)}
                 aria-pressed={activeCategoryVal === cat.value}
               >
                 {t(cat.key)}
@@ -111,7 +145,7 @@ export default function ProductCatalog() {
           </button>
         </div>
 
-        {/* Brand Filter Pills Bar */}
+        {/* Brand Filter Pills Bar (Dynamically adapts to available brands in category) */}
         <div
           style={{
             display: "flex",
@@ -122,7 +156,7 @@ export default function ProductCatalog() {
             marginTop: "1.15rem",
           }}
         >
-          {brandConfig.map((b) => (
+          {availableBrands.map((b) => (
             <button
               key={b.value}
               id={`brand-filter-${b.value.toLowerCase()}`}
