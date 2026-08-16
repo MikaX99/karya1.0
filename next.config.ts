@@ -20,37 +20,9 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  // Security headers — aktif saat hosting dengan Node.js server (Vercel/Netlify)
-  // GitHub Pages pakai meta-tag fallback di layout.tsx
-  async headers() {
-    return [
-      {
-        source: "/(.*)",
-        headers: [
-          { key: "X-Content-Type-Options",       value: "nosniff" },
-          { key: "X-Frame-Options",               value: "DENY" },
-          { key: "X-XSS-Protection",              value: "1; mode=block" },
-          { key: "Referrer-Policy",               value: "strict-origin-when-cross-origin" },
-          { key: "Permissions-Policy",            value: "geolocation=(), microphone=(), camera=(), payment=()" },
-          {
-            key: "Content-Security-Policy",
-            value: [
-              "default-src 'self'",
-              "script-src 'self' 'unsafe-inline'",
-              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-              "font-src 'self' https://fonts.gstatic.com",
-              "img-src 'self' data: https:",
-              "connect-src 'self'",
-              "frame-src https://www.google.com https://maps.google.com",
-              "object-src 'none'",
-              "base-uri 'self'",
-              "form-action 'self'",
-            ].join("; "),
-          },
-        ],
-      },
-    ];
-  },
+  // NOTE: headers() tidak bekerja dengan output:"export" (GitHub Pages).
+  // Security headers sudah diterapkan via <meta> tags di src/app/layout.tsx.
+  // Jika pindah ke Vercel/Netlify, tambahkan kembali headers() di sini.
 };
 
 export default nextConfig;
