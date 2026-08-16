@@ -83,22 +83,22 @@ export default function Navbar() {
               <img
                 src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/kst-dark.png`}
                 alt="KaryaSistem Logo"
-                width="145"
-                height="66"
+                width="114"
+                height="48"
                 decoding="async"
                 fetchPriority="high"
                 className="logo-img logo-dark-mode"
-                style={{ width: "auto", height: "48px", objectFit: "contain" }}
+                style={{ width: "114px", height: "48px", objectFit: "contain", aspectRatio: "114 / 48" }}
               />
               <img
                 src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/kst-light.png`}
                 alt="KaryaSistem Logo"
-                width="145"
-                height="66"
+                width="114"
+                height="48"
                 decoding="async"
                 fetchPriority="high"
                 className="logo-img logo-light-mode"
-                style={{ width: "auto", height: "48px", objectFit: "contain" }}
+                style={{ width: "114px", height: "48px", objectFit: "contain", aspectRatio: "114 / 48" }}
               />
             </a>
 
