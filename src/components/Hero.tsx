@@ -125,13 +125,14 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Column: 18 Escalating Density Concentric Spiral Typography Rings */}
+          {/* Right Column: Guaranteed 1:1 Aspect Ratio Perfect Circle 18 Spiral Rings Container */}
           <div
             className="hero-art-container"
             style={{
               width: "100%",
-              height: "100%",
-              minHeight: "540px",
+              maxWidth: "580px",
+              aspectRatio: "1 / 1",
+              margin: "0 auto",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -145,8 +146,23 @@ export default function Hero() {
               WebkitMaskImage: "radial-gradient(circle at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 96%)",
             }}
           >
-            <div className="hero-spiral-wrapper" style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <svg viewBox="0 0 500 500" className="hero-spiral-svg" style={{ width: "100%", maxHeight: "620px" }}>
+            <div
+              className="hero-spiral-wrapper"
+              style={{
+                width: "100%",
+                height: "100%",
+                aspectRatio: "1 / 1",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <svg
+                viewBox="0 0 500 500"
+                preserveAspectRatio="xMidYMid meet"
+                className="hero-spiral-svg"
+                style={{ width: "100%", height: "100%", aspectRatio: "1 / 1" }}
+              >
                 <path id="c-1" d="M 250, 250 m -16, 0 a 16,16 0 1,1 32,0 a 16,16 0 1,1 -32,0" fill="none" />
                 <path id="c-2" d="M 250, 250 m -28, 0 a 28,28 0 1,1 56,0 a 28,28 0 1,1 -56,0" fill="none" />
                 <path id="c-3" d="M 250, 250 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" fill="none" />
@@ -166,7 +182,7 @@ export default function Hero() {
                 <path id="c-17" d="M 250, 250 m -236, 0 a 236,236 0 1,1 472,0 a 236,236 0 1,1 -472,0" fill="none" />
                 <path id="c-18" d="M 250, 250 m -248, 0 a 248,248 0 1,1 496,0 a 248,248 0 1,1 -496,0" fill="none" />
 
-                {/* Escalating Text Density - Each Ring gets progressively denser with packed IT & Partner content */}
+                {/* Escalating Text Density - Perfect Circle Paths */}
                 <text className="spiral-track track-1"><textPath href="#c-1" startOffset="0%">KARYASISTEM IT • </textPath></text>
                 <text className="spiral-track track-2"><textPath href="#c-2" startOffset="0%">DELL TECHNOLOGIES • HPE PROLIANT • </textPath></text>
                 <text className="spiral-track track-3"><textPath href="#c-3" startOffset="0%">CISCO SYSTEMS • LENOVO ENTERPRISE • ASUS BIZ • </textPath></text>
@@ -198,7 +214,7 @@ export default function Hero() {
             gap: 2.5rem !important;
           }
           .hero-art-container {
-            min-height: 380px !important;
+            max-width: 100% !important;
           }
         }
       `}</style>
