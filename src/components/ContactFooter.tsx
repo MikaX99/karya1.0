@@ -269,21 +269,21 @@ export default function ContactFooter() {
                 src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/kst-dark.png`}
                 alt="KaryaSistem Logo"
                 width="144"
-                height="62"
+                height="93"
                 loading="lazy"
                 decoding="async"
                 className="logo-img logo-dark-mode"
-                style={{ height: "62px", width: "auto" }}
+                style={{ height: "93px", width: "auto" }}
               />
               <img
                 src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/kst-light.png`}
                 alt="KaryaSistem Logo"
                 width="144"
-                height="62"
+                height="93"
                 loading="lazy"
                 decoding="async"
                 className="logo-img logo-light-mode"
-                style={{ height: "62px", width: "auto" }}
+                style={{ height: "93px", width: "auto" }}
               />
             </div>
 
