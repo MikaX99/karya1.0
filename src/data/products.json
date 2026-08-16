@@ -77,6 +77,17 @@
     "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk unit Firewall Next-Gen Enterprise Security (ID: net-04)."
   },
   {
+    "id": "net-05",
+    "category": "Networking",
+    "title": "Sophos XGS 2100 Next-Gen Firewall",
+    "brand": "Sophos",
+    "specs": "Xstream Architecture • 28Gbps Throughput • Dual Power Supply • SD-WAN & Zero-Day Threat Protection",
+    "priceDisplay": "Hubungi Sales",
+    "image": "/images/products/firewall-sophos.webp",
+    "badge": "Reseller Resmi",
+    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk unit Sophos XGS 2100 Next-Gen Firewall (ID: net-05)."
+  },
+  {
     "id": "lpt-01",
     "category": "Laptop & PC",
     "title": "Laptop Business ThinkPad X1 Carbon Gen 12",
@@ -141,5 +152,16 @@
     "image": "/images/products/antivirus.webp",
     "badge": "Lisensi Resmi",
     "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk lisensi Antivirus Endpoint Protection Enterprise (ID: sw-03)."
+  },
+  {
+    "id": "sw-04",
+    "category": "Lisensi Software",
+    "title": "Sophos Intercept X Advanced with XDR",
+    "brand": "Sophos",
+    "specs": "Per User/Tahun • Anti-Exploit • AI Malware Threat Protection • Root Cause Analysis",
+    "priceDisplay": "Hubungi Sales",
+    "image": "/images/products/sophos-interceptx.webp",
+    "badge": "Lisensi Resmi",
+    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk lisensi Sophos Intercept X Advanced with XDR (ID: sw-04)."
   }
 ]

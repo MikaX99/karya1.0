@@ -23,6 +23,15 @@ interface Product {
 function getBrandIcon(brand: string) {
   const b = brand.toLowerCase();
 
+  // Sophos (S Shield Security)
+  if (b.includes("sophos")) {
+    return (
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="#005A9C">
+        <path d="M12 2L3 6v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V6l-9-4zm-1 14.5l-3.5-3.5 1.4-1.4 2.1 2.1 5.1-5.1 1.4 1.4-6.5 6.5z" />
+      </svg>
+    );
+  }
+
   // Kaspersky (Shield 'K')
   if (b.includes("kaspersky")) {
     return (
@@ -143,6 +152,7 @@ const brandDetails: Record<string, { color: string; label: string }> = {
   "Lenovo": { color: "#E2231A", label: "Lenovo Business" },
   "Microsoft": { color: "#00A4EF", label: "Microsoft Enterprise" },
   "Kaspersky": { color: "#006D5B", label: "Kaspersky Security" },
+  "Sophos": { color: "#005A9C", label: "Sophos Security" },
 };
 
 export default function ProductCard({ product }: { product: Product }) {
