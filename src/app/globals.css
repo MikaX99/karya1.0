@@ -522,6 +522,27 @@ html[data-theme="light"] .logo-light-mode { display: block; }
 }
 
 /* ============================================================
+   5-COLUMN CLIENTS DIRECTORY GRID
+   ============================================================ */
+.clients-directory-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 1100px) {
+  .clients-directory-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .clients-directory-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================================
    GOOGLE MAPS DARK MODE STYLING
    ============================================================ */
 #google-maps-embed {

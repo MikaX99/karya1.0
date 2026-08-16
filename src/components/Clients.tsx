@@ -61,13 +61,13 @@ const featuredMeta: Record<
 
 const testimonials = clientsData.filter((c) => c.testimonial);
 
-// Order top 3 explicitly: PLN (client-07), Dilmil (client-04), ALVA GROUP (client-01), followed by all other clients
+// Rolling Bento marquee order (starts with PLN, Dilmil, ALVA GROUP)
 const bentoOrderIds = [
   "client-07", // PLN
   "client-04", // Dilmil
   "client-01", // ALVA GROUP
   "client-02", // IRA
-  "client-03", // NEXMAN COFFEE
+  "client-03", // NKG
   "client-05", // DIG
   "client-06", // GAS
   "client-08", // KAI
@@ -84,6 +84,27 @@ const orderedAllClients = bentoOrderIds
 
 // Duplicated array for seamless infinite marquee loop
 const rollingClients = [...orderedAllClients, ...orderedAllClients];
+
+// Directory Grid order (5-column layout with PLN, Militer/Dilmil, ALVA placed in center slots 2, 3, 4)
+const directoryOrderIds = [
+  "client-02", // 1. IRA (Col 1)
+  "client-07", // 2. PLN (Col 2 - Center Left)
+  "client-04", // 3. Dilmil / Militer (Col 3 - EXACT CENTER)
+  "client-01", // 4. ALVA GROUP (Col 4 - Center Right)
+  "client-05", // 5. DIG (Col 5)
+  "client-06", // 6. GAS
+  "client-08", // 7. KAI
+  "client-09", // 8. LKI
+  "client-10", // 9. MWR
+  "client-11", // 10. NXG
+  "client-03", // 11. NKG
+  "client-12", // 12. PSG
+  "client-13", // 13. SGI
+];
+
+const directoryClients = directoryOrderIds
+  .map((id) => clientsData.find((c) => c.id === id))
+  .filter(Boolean) as typeof clientsData;
 
 export default function Clients() {
   const { t } = useLocale();
@@ -222,7 +243,6 @@ export default function Clients() {
 
         {/* BENTO GRID - ROLLING AUTO-SLIDE FEATURED CLIENTS */}
         <div style={{ marginBottom: "2.5rem" }}>
-
           {/* Marquee Wrapper */}
           <div className="bento-marquee-wrapper">
             <div
@@ -434,7 +454,7 @@ export default function Clients() {
           </div>
         </div>
 
-        {/* STANDARD CLIENT LOGO GRID (Static Overview for all 13 Clients) */}
+        {/* 5-COLUMN DIRECTORY GRID WITH PLN, DILMIL, ALVA IN CENTER SLOTS 2, 3, 4 */}
         <div style={{ marginBottom: "2.5rem" }}>
           <div
             style={{
@@ -452,17 +472,22 @@ export default function Clients() {
             <Building2 size={16} /> All Corporate Clients Directory
           </div>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(190px, 1fr))",
-              gap: "1rem",
-            }}
-          >
-            {orderedAllClients.map((client) => {
+          <div className="clients-directory-grid">
+            {directoryClients.map((client) => {
               const color = industryColors[client.industry] || "#1E87DA";
+              const isCenterTop = [
+                "client-07",
+                "client-04",
+                "client-01",
+              ].includes(client.id);
+
               return (
-                <div key={client.id} className="client-logo-card">
+                <div
+                  key={client.id}
+                  className={`client-logo-card ${
+                    isCenterTop ? "client-card-highlight" : ""
+                  }`}
+                >
                   {/* Logo Image or Abbreviation Badge */}
                   <div
                     style={{
@@ -470,14 +495,18 @@ export default function Clients() {
                       height: "72px",
                       borderRadius: "8px",
                       background: "#ffffff",
-                      border: "1px solid var(--color-border)",
+                      border: isCenterTop
+                        ? "2px solid var(--color-primary)"
+                        : "1px solid var(--color-border)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
                       flexShrink: 0,
                       overflow: "hidden",
                       padding: "6px",
-                      boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+                      boxShadow: isCenterTop
+                        ? "0 4px 12px rgba(30, 135, 218, 0.18)"
+                        : "0 2px 8px rgba(0,0,0,0.04)",
                     }}
                   >
                     {(client as any).logo ? (
