@@ -2,74 +2,80 @@
 @import "tailwindcss";
 
 /* ============================================================
-   DARK THEME (DEFAULT CORPORATE SLATE)
+   DARK THEME (APPLE PRO SIGNATURE DARK PALETTE)
    ============================================================ */
 :root,
 html[data-theme="dark"] {
-  /* Backgrounds */
-  --color-bg: #0F172A;
-  --color-bg-alt: #1E293B;
-  --color-surface: #1E293B;
-  --color-surface-2: #263548;
-  --color-surface-3: #1E293B;
+  /* Brand Accent Overrides (Apple Pro Electric Blue) */
+  --color-primary: #2997FF;
+  --color-primary-dark: #0071E3;
+  --gradient-primary: linear-gradient(135deg, #2997FF 0%, #00F2FE 100%);
 
-  /* Text (Optimized High-Contrast Dark Mode Typography) */
-  --color-text: #F8FAFC;
-  --color-text-muted: #CBD5E1;
-  --color-text-subtle: #94A3B8;
-  --color-text-faint: #64748B;
+  /* Backgrounds (Apple Pitch Black & Dark Obsidian Slate) */
+  --color-bg: #000000;
+  --color-bg-alt: #161618;
+  --color-surface: #1C1C1E;
+  --color-surface-2: #2C2C2E;
+  --color-surface-3: #3A3A3C;
 
-  /* Borders */
-  --color-border: #334155;
-  --color-border-subtle: #1E293B;
-  --color-border-hover: #475569;
+  /* Text (Apple Signature Pro Typography) */
+  --color-text: #F5F5F7;        /* Apple Silver White */
+  --color-text-muted: #A1A1A6;  /* Apple Dark Slate Gray */
+  --color-text-subtle: #86868B; /* Apple Medium Dim Gray */
+  --color-text-faint: #6E6E73;  /* Apple Subtext Gray */
 
-  /* Header & Navigation */
-  --navbar-bg: rgba(15, 23, 42, 0.94);
-  --glass-border: #334155;
+  /* Borders (Apple Minimal Hairline Glass Lines) */
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-border-subtle: rgba(255, 255, 255, 0.06);
+  --color-border-hover: rgba(255, 255, 255, 0.25);
 
-  /* Shadows */
-  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.2);
-  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.3);
+  /* Header & Navigation (Apple Frosted Glass) */
+  --navbar-bg: rgba(22, 22, 24, 0.84);
+  --glass-border: rgba(255, 255, 255, 0.1);
+
+  /* Shadows (Apple Smooth Ambient Glow) */
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-card-hover: 0 12px 36px rgba(0, 0, 0, 0.6), 0 0 24px rgba(41, 151, 255, 0.18);
 
   /* Scrollbar */
-  --scrollbar-track: #0F172A;
+  --scrollbar-track: #000000;
 
   /* Hero & Section Backgrounds */
-  --hero-bg: #0F172A;
-  --section-bg-1: #0F172A;
-  --section-bg-2: #1E293B;
-  --section-bg-3: #0F172A;
+  --hero-bg: #000000;
+  --section-bg-1: #000000;
+  --section-bg-2: #161618;
+  --section-bg-3: #000000;
 
   /* Cards & Surface Gradients */
-  --card-gradient: #1E293B;
-  --card-alt-bg: #1E293B;
-  --partner-card-bg: #1E293B;
-  --footer-bg: #0B132B;
-  --footer-border: #1E293B;
-  --contact-card-bg: #1E293B;
+  --card-gradient: linear-gradient(180deg, #1C1C1E 0%, #161618 100%);
+  --card-alt-bg: #1C1C1E;
+  --partner-card-bg: #1C1C1E;
+  --footer-bg: #000000;
+  --footer-border: rgba(255, 255, 255, 0.1);
+  --contact-card-bg: #1C1C1E;
 
-  /* Partner Category Badges */
-  --cat-blue: #38BDF8;
-  --cat-blue-bg: rgba(56, 189, 248, 0.12);
-  --cat-blue-border: rgba(56, 189, 248, 0.3);
+  /* Partner Category Badges (Apple Pro Neon Accents) */
+  --cat-blue: #64D2FF;
+  --cat-blue-bg: rgba(100, 210, 255, 0.12);
+  --cat-blue-border: rgba(100, 210, 255, 0.3);
 
-  --cat-green: #34D399;
-  --cat-green-bg: rgba(52, 211, 153, 0.12);
-  --cat-green-border: rgba(52, 211, 153, 0.3);
+  --cat-green: #30D158;
+  --cat-green-bg: rgba(48, 209, 88, 0.12);
+  --cat-green-border: rgba(48, 209, 88, 0.3);
 
-  --cat-amber: #FBBF24;
-  --cat-amber-bg: rgba(251, 191, 36, 0.12);
-  --cat-amber-border: rgba(251, 191, 36, 0.3);
+  --cat-amber: #FF9F0A;
+  --cat-amber-bg: rgba(255, 159, 10, 0.12);
+  --cat-amber-border: rgba(255, 159, 10, 0.3);
 }
 
 /* ============================================================
-   LIGHT THEME (APPLE.COM SIGNATURE PALETTE)
+   LIGHT THEME (APPLE.COM SIGNATURE LIGHT PALETTE)
    ============================================================ */
 html[data-theme="light"] {
   /* Brand Accent Overrides (Apple Signature Blue) */
   --color-primary: #0071E3;
   --color-primary-dark: #005BB5;
+  --gradient-primary: linear-gradient(135deg, #0071E3 0%, #2997FF 100%);
 
   /* Backgrounds (Apple #F5F5F7 Light Gray & Crisp White) */
   --color-bg: #F5F5F7;
@@ -129,14 +135,11 @@ html[data-theme="light"] {
 }
 
 /* ============================================================
-   SHARED BRAND COLORS
+   SHARED BRAND FONTS & CONSTANTS
    ============================================================ */
 :root {
-  --color-primary: #1E87DA;
-  --color-primary-dark: #1565C0;
   --color-secondary: #0EA5E9;
   --color-accent: #059669;
-  --gradient-primary: linear-gradient(135deg, #1E87DA, #1565C0);
   --font-base: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --transition-base: 0.2s ease-in-out;
 }
