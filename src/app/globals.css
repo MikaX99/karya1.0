@@ -484,6 +484,12 @@ html[data-theme="dark"] .nav-capsule-item:hover {
   box-shadow: 0 6px 18px rgba(16, 185, 129, 0.32);
 }
 
+.contact-item-row:hover {
+  border-color: var(--color-primary) !important;
+  transform: translateX(4px);
+  background: var(--card-gradient) !important;
+}
+
 @media (max-width: 768px) {
   .nav-capsule-wa-desktop {
     display: none !important;
