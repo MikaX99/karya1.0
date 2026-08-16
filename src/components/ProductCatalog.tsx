@@ -14,9 +14,26 @@ const categoriesConfig = [
   { key: "cat_license", value: "Lisensi Software" },
 ];
 
+const brandConfig = [
+  { label: "Semua Brand", value: "Semua" },
+  { label: "Dell", value: "Dell" },
+  { label: "HPE", value: "HP" },
+  { label: "Cisco", value: "Cisco" },
+  { label: "Ubiquiti", value: "Ubiquiti" },
+  { label: "MikroTik", value: "Mikrotik" },
+  { label: "Fortinet", value: "Fortinet" },
+  { label: "Sophos", value: "Sophos" },
+  { label: "Sangfor", value: "Sangfor" },
+  { label: "Lenovo", value: "Lenovo" },
+  { label: "Microsoft", value: "Microsoft" },
+  { label: "Kaspersky", value: "Kaspersky" },
+  { label: "Synology", value: "Synology" },
+];
+
 export default function ProductCatalog() {
   const { t } = useLocale();
   const [activeCategoryVal, setActiveCategoryVal] = useState("Semua");
+  const [activeBrandVal, setActiveBrandVal] = useState("Semua");
   const tabTrackRef = useRef<HTMLDivElement>(null);
 
   const scrollTabsLeft = () => {
@@ -31,10 +48,13 @@ export default function ProductCatalog() {
     }
   };
 
-  const filtered =
-    activeCategoryVal === "Semua"
-      ? productsData
-      : productsData.filter((p) => p.category === activeCategoryVal);
+  const filtered = productsData.filter((p) => {
+    const catMatch = activeCategoryVal === "Semua" || p.category === activeCategoryVal;
+    const brandMatch =
+      activeBrandVal === "Semua" ||
+      p.brand.toLowerCase().includes(activeBrandVal.toLowerCase());
+    return catMatch && brandMatch;
+  });
 
   return (
     <section id="produk" className="section" style={{ background: "var(--section-bg-2)" }}>
@@ -91,16 +111,62 @@ export default function ProductCatalog() {
           </button>
         </div>
 
+        {/* Brand Filter Pills Bar */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexWrap: "wrap",
+            gap: "0.4rem",
+            marginTop: "1.15rem",
+          }}
+        >
+          {brandConfig.map((b) => (
+            <button
+              key={b.value}
+              id={`brand-filter-${b.value.toLowerCase()}`}
+              onClick={() => setActiveBrandVal(b.value)}
+              style={{
+                background:
+                  activeBrandVal === b.value
+                    ? "var(--color-primary)"
+                    : "var(--color-surface)",
+                color:
+                  activeBrandVal === b.value
+                    ? "#ffffff"
+                    : "var(--color-text-subtle)",
+                border:
+                  activeBrandVal === b.value
+                    ? "1px solid var(--color-primary)"
+                    : "1px solid var(--color-border)",
+                borderRadius: "9999px",
+                padding: "0.3rem 0.75rem",
+                fontSize: "0.75rem",
+                fontWeight: 600,
+                cursor: "pointer",
+                transition: "all 0.2s cubic-bezier(0.16, 1, 0.3, 1)",
+                boxShadow:
+                  activeBrandVal === b.value
+                    ? "0 4px 14px rgba(0, 113, 227, 0.25)"
+                    : "none",
+              }}
+            >
+              {b.label}
+            </button>
+          ))}
+        </div>
+
         {/* Product Container (Flex Centered with Switch Animation) */}
         <div
-          key={activeCategoryVal}
+          key={`${activeCategoryVal}-${activeBrandVal}`}
           className="catalog-grid-animated"
           style={{
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "center",
             gap: "1.25rem",
-            marginTop: "2rem",
+            marginTop: "1.75rem",
           }}
         >
           {filtered.map((product) => (
