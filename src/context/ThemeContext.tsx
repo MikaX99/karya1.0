@@ -10,7 +10,7 @@ interface ThemeContextValue {
 }
 
 const ThemeContext = createContext<ThemeContextValue>({
-  theme: "dark",
+  theme: "light",
   toggleTheme: () => {},
 });
 
@@ -19,12 +19,12 @@ export function useTheme() {
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>("light");
 
   // On mount: read localStorage or system preference
   useEffect(() => {
     const stored = localStorage.getItem("karyasistem-theme") as Theme | null;
-    let initial: Theme = "dark";
+    let initial: Theme = "light";
     if (stored === "light" || stored === "dark") {
       initial = stored;
     } else {

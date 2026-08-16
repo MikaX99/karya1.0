@@ -1,9 +1,75 @@
 @import "tailwindcss";
 
 /* ============================================================
-   DARK THEME (TASTE MINIMALIST / SANITY DARK PALETTE)
+   LIGHT THEME DEFAULT (APPLE.COM SIGNATURE LIGHT PALETTE)
    ============================================================ */
 :root,
+html[data-theme="light"] {
+  /* Brand Accent (Apple Signature Blue) */
+  --color-primary: #0071E3;
+  --color-primary-dark: #005BB5;
+  --gradient-primary: linear-gradient(135deg, #0071E3 0%, #2997FF 100%);
+
+  /* Backgrounds (Apple #F5F5F7 Light Gray & Crisp White) */
+  --color-bg: #F5F5F7;
+  --color-bg-alt: #E8E8ED;
+  --color-surface: #FFFFFF;
+  --color-surface-2: #F5F5F7;
+  --color-surface-3: #FFFFFF;
+
+  /* Text (Apple Signature High-Contrast Tokens) */
+  --color-text: #09090B;        /* Deep Black (19.5:1 Contrast) */
+  --color-text-muted: #18181B;  /* Dark Charcoal (15:1 Contrast) */
+  --color-text-subtle: #27272A; /* Slate Gray (12:1 Contrast) */
+  --color-text-faint: #3F3F46;  /* Medium Dark Gray (8.5:1 Contrast) */
+
+  /* Borders (Apple Minimal Subtle Lines) */
+  --color-border: #D2D2D7;
+  --color-border-subtle: #E5E5E7;
+  --color-border-hover: #B0B0B5;
+
+  /* Header & Navigation (Apple Glass Blur) */
+  --navbar-bg: rgba(245, 245, 247, 0.88);
+  --glass-border: rgba(0, 0, 0, 0.08);
+
+  /* Shadows (Apple Smooth Elevation) */
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+  /* Scrollbar */
+  --scrollbar-track: #F5F5F7;
+
+  /* Hero & Section Backgrounds */
+  --hero-bg: #F5F5F7;
+  --section-bg-1: #FFFFFF;
+  --section-bg-2: #F5F5F7;
+  --section-bg-3: #FFFFFF;
+
+  /* Cards & Surface Gradients */
+  --card-gradient: #FFFFFF;
+  --card-alt-bg: #FFFFFF;
+  --partner-card-bg: #FFFFFF;
+  --footer-bg: #F5F5F7;
+  --footer-border: #D2D2D7;
+  --contact-card-bg: #FFFFFF;
+
+  /* Partner Category Badges (Apple Pastel Accents) */
+  --cat-blue: #0071E3;
+  --cat-blue-bg: #E8F2FC;
+  --cat-blue-border: #B3D7FF;
+
+  --cat-green: #1D8259;
+  --cat-green-bg: #E6F6F0;
+  --cat-green-border: #A3E2CB;
+
+  --cat-amber: #B25900;
+  --cat-amber-bg: #FDF3E6;
+  --cat-amber-border: #F7D4A8;
+}
+
+/* ============================================================
+   DARK THEME (TASTE MINIMALIST / SANITY DARK PALETTE)
+   ============================================================ */
 html[data-theme="dark"] {
   /* Brand Accents (Taste Crisp White & Gold/Blue Accents) */
   --color-primary: #38BDF8;
@@ -65,72 +131,6 @@ html[data-theme="dark"] {
   --cat-amber: #FBBF24;
   --cat-amber-bg: rgba(251, 191, 36, 0.1);
   --cat-amber-border: rgba(251, 191, 36, 0.25);
-}
-
-/* ============================================================
-   LIGHT THEME (APPLE.COM SIGNATURE LIGHT PALETTE)
-   ============================================================ */
-html[data-theme="light"] {
-  /* Brand Accent Overrides (Apple Signature Blue) */
-  --color-primary: #0071E3;
-  --color-primary-dark: #005BB5;
-  --gradient-primary: linear-gradient(135deg, #0071E3 0%, #2997FF 100%);
-
-  /* Backgrounds (Apple #F5F5F7 Light Gray & Crisp White) */
-  --color-bg: #F5F5F7;
-  --color-bg-alt: #E8E8ED;
-  --color-surface: #FFFFFF;
-  --color-surface-2: #F5F5F7;
-  --color-surface-3: #FFFFFF;
-
-  /* Text (Apple Signature High-Contrast Tokens) */
-  --color-text: #09090B;        /* Deep Black (19.5:1 Contrast) */
-  --color-text-muted: #18181B;  /* Dark Charcoal (15:1 Contrast) */
-  --color-text-subtle: #27272A; /* Slate Gray (12:1 Contrast) */
-  --color-text-faint: #3F3F46;  /* Medium Dark Gray (8.5:1 Contrast) */
-
-  /* Borders (Apple Minimal Subtle Lines) */
-  --color-border: #D2D2D7;
-  --color-border-subtle: #E5E5E7;
-  --color-border-hover: #B0B0B5;
-
-  /* Header & Navigation (Apple Glass Blur) */
-  --navbar-bg: rgba(245, 245, 247, 0.88);
-  --glass-border: rgba(0, 0, 0, 0.08);
-
-  /* Shadows (Apple Smooth Elevation) */
-  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.04);
-  --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.08);
-
-  /* Scrollbar */
-  --scrollbar-track: #F5F5F7;
-
-  /* Hero & Section Backgrounds */
-  --hero-bg: #F5F5F7;
-  --section-bg-1: #FFFFFF;
-  --section-bg-2: #F5F5F7;
-  --section-bg-3: #FFFFFF;
-
-  /* Cards & Surface Gradients */
-  --card-gradient: #FFFFFF;
-  --card-alt-bg: #FFFFFF;
-  --partner-card-bg: #FFFFFF;
-  --footer-bg: #F5F5F7;
-  --footer-border: #D2D2D7;
-  --contact-card-bg: #FFFFFF;
-
-  /* Partner Category Badges (Apple Pastel Accents) */
-  --cat-blue: #0071E3;
-  --cat-blue-bg: #E8F2FC;
-  --cat-blue-border: #B3D7FF;
-
-  --cat-green: #1D8259;
-  --cat-green-bg: #E6F6F0;
-  --cat-green-border: #A3E2CB;
-
-  --cat-amber: #B25900;
-  --cat-amber-bg: #FDF3E6;
-  --cat-amber-border: #F7D4A8;
 }
 
 /* ============================================================
@@ -469,11 +469,11 @@ html[data-theme="light"] .hero-grid {
   transition: opacity 0.2s ease;
 }
 
-.logo-dark-mode { display: block; }
-.logo-light-mode { display: none; }
+.logo-dark-mode { display: none; }
+.logo-light-mode { display: block; }
 
-html[data-theme="light"] .logo-dark-mode { display: none; }
-html[data-theme="light"] .logo-light-mode { display: block; }
+html[data-theme="dark"] .logo-dark-mode { display: block; }
+html[data-theme="dark"] .logo-light-mode { display: none; }
 
 
 

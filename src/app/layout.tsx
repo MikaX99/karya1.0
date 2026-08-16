@@ -44,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className="scroll-smooth" data-theme="dark">
+    <html lang="id" className="scroll-smooth" data-theme="light">
       <head>
         {/* Font Resource Hints — DNS resolve early */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -69,7 +69,7 @@ export default function RootLayout({
             href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
           />
         </noscript>
-        <meta name="theme-color" content="#111111" />
+        <meta name="theme-color" content="#F5F5F7" />
         <meta name="geo.region" content="ID" />
         <meta name="geo.country" content="Indonesia" />
 
