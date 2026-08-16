@@ -576,6 +576,9 @@ html[data-theme="dark"] .logo-light-mode { display: none; }
   transition: all var(--transition-base);
   text-align: center;
   gap: 0.5rem;
+  flex: 1 1 200px;
+  max-width: 230px;
+  width: 100%;
 }
 .client-logo-card:hover {
   border-color: var(--color-border-hover);
@@ -617,24 +620,13 @@ html[data-theme="dark"] .logo-light-mode { display: none; }
 }
 
 /* ============================================================
-   5-COLUMN CLIENTS DIRECTORY GRID
+   CLIENTS DIRECTORY GRID (FLEX CENTERED)
    ============================================================ */
 .clients-directory-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
-}
-
-@media (max-width: 1100px) {
-  .clients-directory-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
-  .clients-directory-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 /* ============================================================
