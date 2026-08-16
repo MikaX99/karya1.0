@@ -400,6 +400,58 @@ html[data-theme="dark"] .glass-card:hover {
 }
 
 /* ============================================================
+   NAVBAR CENTER FLOATING MENU CAPSULE
+   ============================================================ */
+.nav-menu-capsule {
+  display: none;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 4px 6px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s ease;
+}
+
+html[data-theme="dark"] .nav-menu-capsule {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.nav-menu-item {
+  background: transparent;
+  border: none;
+  color: var(--color-text-subtle);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.45rem 1rem;
+  border-radius: 9999px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: var(--font-base);
+  white-space: nowrap;
+}
+
+.nav-menu-item:hover {
+  color: var(--color-text);
+  background: rgba(0, 0, 0, 0.06);
+}
+
+html[data-theme="dark"] .nav-menu-item:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+@media (min-width: 992px) {
+  .nav-menu-capsule.desktop-nav {
+    display: inline-flex !important;
+  }
+}
+
+/* ============================================================
    NAVBAR DUAL CAPSULES (UTILITY + WHATSAPP CTA)
    ============================================================ */
 .nav-capsule-utility {

@@ -102,48 +102,19 @@ export default function Navbar() {
               />
             </a>
 
-            {/* Desktop Nav Links */}
-            <ul
-              style={{
-                display: "none",
-                listStyle: "none",
-                margin: 0,
-                padding: 0,
-                gap: "0.25rem",
-              }}
-              className="desktop-nav"
-            >
+            {/* Desktop Floating Navigation Capsule */}
+            <nav className="nav-menu-capsule desktop-nav" aria-label="Main Navigation">
               {navLinks.map((link) => (
-                <li key={link.href}>
-                  <button
-                    id={`nav-${link.key.toLowerCase()}`}
-                    onClick={() => handleNavClick(link.href)}
-                    style={{
-                      background: "none",
-                      border: "none",
-                      color: "var(--color-text-muted)",
-                      fontSize: "0.9rem",
-                      fontWeight: 500,
-                      cursor: "pointer",
-                      padding: "0.5rem 0.875rem",
-                      borderRadius: "0.5rem",
-                      transition: "all 0.2s ease",
-                      fontFamily: "inherit",
-                    }}
-                    onMouseEnter={(e) => {
-                      (e.target as HTMLElement).style.color = "var(--color-text)";
-                      (e.target as HTMLElement).style.background = "var(--color-surface-2)";
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.target as HTMLElement).style.color = "var(--color-text-muted)";
-                      (e.target as HTMLElement).style.background = "none";
-                    }}
-                  >
-                    {t(link.key)}
-                  </button>
-                </li>
+                <button
+                  key={link.href}
+                  id={`nav-${link.key.toLowerCase()}`}
+                  onClick={() => handleNavClick(link.href)}
+                  className="nav-menu-item"
+                >
+                  {t(link.key)}
+                </button>
               ))}
-            </ul>
+            </nav>
 
             {/* Right side: 2 Distinct Capsule Pills (Utility Capsule + WhatsApp Capsule) */}
             <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
