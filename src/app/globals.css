@@ -1,0 +1,512 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+/* ============================================================
+   DARK THEME (DEFAULT CORPORATE SLATE)
+   ============================================================ */
+:root,
+html[data-theme="dark"] {
+  /* Backgrounds */
+  --color-bg: #0F172A;
+  --color-bg-alt: #1E293B;
+  --color-surface: #1E293B;
+  --color-surface-2: #263548;
+  --color-surface-3: #1E293B;
+
+  /* Text (Optimized High-Contrast Dark Mode Typography) */
+  --color-text: #F8FAFC;
+  --color-text-muted: #CBD5E1;
+  --color-text-subtle: #94A3B8;
+  --color-text-faint: #64748B;
+
+  /* Borders */
+  --color-border: #334155;
+  --color-border-subtle: #1E293B;
+  --color-border-hover: #475569;
+
+  /* Header & Navigation */
+  --navbar-bg: rgba(15, 23, 42, 0.94);
+  --glass-border: #334155;
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+  /* Scrollbar */
+  --scrollbar-track: #0F172A;
+
+  /* Hero & Section Backgrounds */
+  --hero-bg: #0F172A;
+  --section-bg-1: #0F172A;
+  --section-bg-2: #1E293B;
+  --section-bg-3: #0F172A;
+
+  /* Cards & Surface Gradients */
+  --card-gradient: #1E293B;
+  --card-alt-bg: #1E293B;
+  --partner-card-bg: #1E293B;
+  --footer-bg: #0B132B;
+  --footer-border: #1E293B;
+  --contact-card-bg: #1E293B;
+
+  /* Partner Category Badges */
+  --cat-blue: #38BDF8;
+  --cat-blue-bg: rgba(56, 189, 248, 0.12);
+  --cat-blue-border: rgba(56, 189, 248, 0.3);
+
+  --cat-green: #34D399;
+  --cat-green-bg: rgba(52, 211, 153, 0.12);
+  --cat-green-border: rgba(52, 211, 153, 0.3);
+
+  --cat-amber: #FBBF24;
+  --cat-amber-bg: rgba(251, 191, 36, 0.12);
+  --cat-amber-border: rgba(251, 191, 36, 0.3);
+}
+
+/* ============================================================
+   LIGHT THEME (APPLE.COM SIGNATURE PALETTE)
+   ============================================================ */
+html[data-theme="light"] {
+  /* Brand Accent Overrides (Apple Signature Blue) */
+  --color-primary: #0071E3;
+  --color-primary-dark: #005BB5;
+
+  /* Backgrounds (Apple #F5F5F7 Light Gray & Crisp White) */
+  --color-bg: #F5F5F7;
+  --color-bg-alt: #E8E8ED;
+  --color-surface: #FFFFFF;
+  --color-surface-2: #F5F5F7;
+  --color-surface-3: #FFFFFF;
+
+  /* Text (Apple Signature Typography Tokens) */
+  --color-text: #1D1D1F;        /* Apple Charcoal Black */
+  --color-text-muted: #424245;  /* Apple Dark Gray */
+  --color-text-subtle: #6E6E73; /* Apple Medium Muted Gray */
+  --color-text-faint: #86868B;  /* Apple Light Muted Gray */
+
+  /* Borders (Apple Minimal Subtle Lines) */
+  --color-border: #D2D2D7;
+  --color-border-subtle: #E5E5E7;
+  --color-border-hover: #B0B0B5;
+
+  /* Header & Navigation (Apple Glass Blur) */
+  --navbar-bg: rgba(245, 245, 247, 0.88);
+  --glass-border: rgba(0, 0, 0, 0.08);
+
+  /* Shadows (Apple Smooth Elevation) */
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+  /* Scrollbar */
+  --scrollbar-track: #F5F5F7;
+
+  /* Hero & Section Backgrounds */
+  --hero-bg: #F5F5F7;
+  --section-bg-1: #FFFFFF;
+  --section-bg-2: #F5F5F7;
+  --section-bg-3: #FFFFFF;
+
+  /* Cards & Surface Gradients */
+  --card-gradient: #FFFFFF;
+  --card-alt-bg: #FFFFFF;
+  --partner-card-bg: #FFFFFF;
+  --footer-bg: #F5F5F7;
+  --footer-border: #D2D2D7;
+  --contact-card-bg: #FFFFFF;
+
+  /* Partner Category Badges (Apple Pastel Accents) */
+  --cat-blue: #0071E3;
+  --cat-blue-bg: #E8F2FC;
+  --cat-blue-border: #B3D7FF;
+
+  --cat-green: #1D8259;
+  --cat-green-bg: #E6F6F0;
+  --cat-green-border: #A3E2CB;
+
+  --cat-amber: #B25900;
+  --cat-amber-bg: #FDF3E6;
+  --cat-amber-border: #F7D4A8;
+}
+
+/* ============================================================
+   SHARED BRAND COLORS
+   ============================================================ */
+:root {
+  --color-primary: #1E87DA;
+  --color-primary-dark: #1565C0;
+  --color-secondary: #0EA5E9;
+  --color-accent: #059669;
+  --gradient-primary: linear-gradient(135deg, #1E87DA, #1565C0);
+  --font-base: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --transition-base: 0.2s ease-in-out;
+}
+
+/* ============================================================
+   BASE RESET & GLOBAL STYLES
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-base);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* ============================================================
+   SCROLLBAR STYLING
+   ============================================================ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 3px; }
+html[data-theme="dark"] ::-webkit-scrollbar-thumb { background: #334155; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-primary); }
+
+/* ============================================================
+   TYPOGRAPHY HIERARCHY
+   ============================================================ */
+.text-hero {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.text-section-title {
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+/* ============================================================
+   CORPORATE SURFACES & CARDS (NO GLOW)
+   ============================================================ */
+.glass {
+  background: var(--navbar-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.glass-card {
+  background: var(--card-gradient);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.glass-card:hover {
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+/* Gradient Text (Restrained) */
+.gradient-text {
+  color: var(--color-primary);
+}
+
+/* ============================================================
+   BUTTON STYLES (CLEAR CORPORATE HIERARCHY)
+   ============================================================ */
+/* Primary CTA (Solid Corporate Blue) */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-decoration: none;
+  font-size: 0.925rem;
+  white-space: nowrap;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(30, 135, 218, 0.25);
+}
+
+/* Secondary CTA (Subtle Outline) */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background-color: transparent;
+  color: var(--color-text);
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-decoration: none;
+  font-size: 0.925rem;
+  white-space: nowrap;
+}
+.btn-secondary:hover {
+  background-color: var(--color-surface-2);
+  border-color: var(--color-border-hover);
+  transform: translateY(-1px);
+}
+
+/* WhatsApp CTA */
+.btn-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background-color: #16A34A;
+  color: #FFFFFF;
+  font-weight: 600;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-decoration: none;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+.btn-wa:hover {
+  background-color: #15803D;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.25);
+}
+
+/* Theme Toggle Button */
+.btn-theme {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  flex-shrink: 0;
+}
+.btn-theme:hover {
+  border-color: var(--color-border-hover);
+  color: var(--color-text);
+  background-color: var(--color-surface-2);
+}
+
+/* ============================================================
+   SECTION STYLES
+   ============================================================ */
+.section {
+  padding: clamp(3.5rem, 6vw, 6rem) 1.5rem;
+  position: relative;
+  transition: background 0.25s ease;
+}
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.875rem;
+  background: var(--cat-blue-bg);
+  border: 1px solid var(--cat-blue-border);
+  border-radius: 4px;
+  font-size: 0.775rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+/* ============================================================
+   KEYFRAMES & ANIMATIONS
+   ============================================================ */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-marquee { animation: marquee 38s linear infinite; }
+.animate-marquee-reverse { animation: marquee-reverse 38s linear infinite; }
+
+/* ============================================================
+   HERO SUBTLE TEXTURE GRID (NO HEAVY GLOW)
+   ============================================================ */
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ============================================================
+   LOGO IMAGE THEME STYLING
+   ============================================================ */
+.logo-img {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+  transition: opacity 0.2s ease;
+}
+
+.logo-dark-mode { display: block; }
+.logo-light-mode { display: none; }
+
+html[data-theme="light"] .logo-dark-mode { display: none; }
+html[data-theme="light"] .logo-light-mode { display: block; }
+
+/* ============================================================
+   PRODUCT FILTER TABS (CORPORATE SHARP)
+   ============================================================ */
+.filter-tab {
+  padding: 0.5rem 1.125rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-weight: 600;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  font-family: var(--font-base);
+}
+.filter-tab:hover {
+  border-color: var(--color-border-hover);
+  color: var(--color-text);
+}
+.filter-tab.active {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #FFFFFF;
+}
+
+/* ============================================================
+   PRODUCT BADGE
+   ============================================================ */
+.product-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+
+/* ============================================================
+   PARTNER MARQUEE
+   ============================================================ */
+.partners-marquee-wrapper {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+
+/* ============================================================
+   FLOATING WA BUTTON (CLEAN)
+   ============================================================ */
+.floating-wa {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: #16A34A;
+  color: #FFFFFF;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transition: all var(--transition-base);
+}
+.floating-wa:hover {
+  transform: scale(1.05);
+  background-color: #15803D;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================================
+   STAT NUMBER & CLIENT LOGOS
+   ============================================================ */
+.stat-number {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.client-logo-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 1rem;
+  background: var(--card-alt-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  transition: all var(--transition-base);
+  text-align: center;
+  gap: 0.5rem;
+}
+.client-logo-card:hover {
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* ============================================================
+   GOOGLE MAPS DARK MODE STYLING
+   ============================================================ */
+#google-maps-embed {
+  transition: filter 0.3s ease;
+}
+
+html[data-theme="dark"] #google-maps-embed {
+  filter: invert(90%) hue-rotate(180deg) contrast(110%);
+}
+
+/* ============================================================
+   RESPONSIVE HELPERS
+   ============================================================ */
+@media (max-width: 640px) {
+  .floating-wa { bottom: 1.25rem; right: 1.25rem; width: 48px; height: 48px; }
+  .btn-primary, .btn-secondary { padding: 0.65rem 1.25rem; font-size: 0.875rem; }
+}
