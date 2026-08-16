@@ -325,6 +325,7 @@ export default function ProductCard({ product }: { product: Product }) {
             target="_blank"
             rel="noopener noreferrer"
             className="btn-wa"
+            aria-label={`Konsultasi WhatsApp untuk ${product.title}`}
             style={{
               padding: "0.45rem 0.875rem",
               fontSize: "0.78rem",

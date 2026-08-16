@@ -46,12 +46,11 @@ export default function RootLayout({
   return (
     <html lang="id" className="scroll-smooth" data-theme="dark">
       <head>
+        {/* Font Resource Hints — DNS resolve early */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        {/* Async (non-blocking) font load — font-display:swap prevents FOIT */}
         <link
           rel="preload"
           as="style"
@@ -60,7 +59,16 @@ export default function RootLayout({
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+          media="print"
+          // @ts-ignore
+          onLoad="this.media='all'"
         />
+        <noscript>
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+          />
+        </noscript>
         <meta name="theme-color" content="#111111" />
         <meta name="geo.region" content="ID" />
         <meta name="geo.country" content="Indonesia" />
