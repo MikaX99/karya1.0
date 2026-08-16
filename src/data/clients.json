@@ -193,5 +193,20 @@
     ],
     "testimonial": "",
     "contact": ""
+  },
+  {
+    "id": "client-14",
+    "name": "PT Glow Industri Herbal Care (Maklon Skincare Kosmetik)",
+    "abbr": "GIHC",
+    "logo": "/clients/gihc.png",
+    "industry": "Industri Herbal & Farmasi",
+    "color": "#10B981",
+    "since": "2023",
+    "products": [
+      "Sistem Manajemen",
+      "Hardware IT"
+    ],
+    "testimonial": "",
+    "contact": ""
   }
 ]

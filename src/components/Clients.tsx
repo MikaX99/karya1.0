@@ -70,6 +70,7 @@ const bentoOrderIds = [
   "client-03", // NKG
   "client-05", // DIG
   "client-06", // GAS
+  "client-14", // GIHC (PT Glow Industri Herbal Care)
   "client-08", // KAI
   "client-09", // LKI
   "client-10", // MWR
@@ -98,8 +99,9 @@ const directoryOrderIds = [
   "client-10", // 9. MWR
   "client-11", // 10. NXG
   "client-03", // 11. NKG
-  "client-12", // 12. PSG
-  "client-13", // 13. SGI
+  "client-14", // 12. GIHC (PT Glow Industri Herbal Care)
+  "client-12", // 13. PSG
+  "client-13", // 14. SGI
 ];
 
 const directoryClients = directoryOrderIds
