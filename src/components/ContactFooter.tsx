@@ -305,7 +305,7 @@ export default function ContactFooter() {
               >
                 <div style={{ fontSize: "0.78rem", fontWeight: 700, color: "var(--color-text)", display: "flex", alignItems: "center", gap: "0.45rem" }}>
                   <MapPin size={15} color="var(--color-primary)" />
-                  <span>PT Karya Sistem Tangguh — HQ</span>
+                  <span>PT. Karya Sistem Teknologi — HQ</span>
                 </div>
                 <span style={{ fontSize: "0.68rem", fontWeight: 700, color: "#10B981", letterSpacing: "0.04em", fontFamily: "var(--font-mono, monospace)" }}>
                   ● SATELLITE HQ
@@ -499,7 +499,7 @@ export default function ContactFooter() {
             }}
           >
             <div style={{ fontSize: "0.78rem", color: "var(--color-text-faint)" }}>
-              © {new Date().getFullYear()} KaryaSistem. {t("footer_rights")}
+              © {new Date().getFullYear()} PT. Karya Sistem Teknologi. {t("footer_rights")}
             </div>
             <div style={{ fontSize: "0.75rem", color: "var(--color-text-faint)" }}>
               Solusi & Integrasi IT Enterprise Indonesia

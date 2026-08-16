@@ -1,9 +1,9 @@
-# KaryaSistem — IT Enterprise Integrator & Solutions
+# PT. Karya Sistem Teknologi (KaryaSistem) — IT Enterprise Integrator & Solutions
 
 > Distributor and system integrator for Enterprise Server, Networking, Storage, Cyber Security, and Software Licensing in Indonesia.
 
 ## Organization
-- Name: KaryaSistem
+- Name: PT. Karya Sistem Teknologi (KaryaSistem)
 - Type: B2B IT System Integrator & Hardware Distributor
 - Website: https://mikax99.github.io/karya1.0/
 - Phone: +62 878-8120-0477
