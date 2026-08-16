@@ -114,7 +114,7 @@ export default function Clients() {
             const color = industryColors[client.industry] || "#1E87DA";
             return (
               <div key={client.id} className="client-logo-card">
-                {/* Abbreviation Logo Badge */}
+                {/* Logo Image or Abbreviation Badge */}
                 <div
                   style={{
                     width: "48px",
@@ -126,11 +126,21 @@ export default function Clients() {
                     alignItems: "center",
                     justifyContent: "center",
                     flexShrink: 0,
+                    overflow: "hidden",
+                    padding: "4px",
                   }}
                 >
-                  <span style={{ fontSize: "0.95rem", fontWeight: 800, color: color }}>
-                    {client.abbr}
-                  </span>
+                  {(client as any).logo ? (
+                    <img
+                      src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${(client as any).logo}`}
+                      alt={client.name}
+                      style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                    />
+                  ) : (
+                    <span style={{ fontSize: "0.95rem", fontWeight: 800, color: color }}>
+                      {client.abbr}
+                    </span>
+                  )}
                 </div>
 
                 {/* Info */}
