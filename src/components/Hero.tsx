@@ -44,7 +44,7 @@ export default function Hero() {
           }}
         >
           {/* Left Column: Minimal High-Taste Content */}
-          <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
+          <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", zIndex: 2, position: "relative" }}>
             {/* Monospace Uppercase Category Tag */}
             <div
               style={{
@@ -125,12 +125,12 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Guaranteed 1:1 Aspect Ratio Perfect Circle 18 Spiral Rings Container */}
+          {/* Right Column: 25% Enlarged Ambient Background 18 Spiral Rings Artwork */}
           <div
             className="hero-art-container"
             style={{
               width: "100%",
-              maxWidth: "580px",
+              maxWidth: "740px",
               aspectRatio: "1 / 1",
               margin: "0 auto",
               display: "flex",
@@ -141,9 +141,12 @@ export default function Hero() {
               border: "none",
               boxShadow: "none",
               padding: "0",
-              overflow: "hidden",
-              maskImage: "radial-gradient(circle at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 96%)",
-              WebkitMaskImage: "radial-gradient(circle at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 96%)",
+              overflow: "visible",
+              transform: "scale(1.25)",
+              transformOrigin: "center center",
+              maskImage: "radial-gradient(circle at center, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 98%)",
+              WebkitMaskImage: "radial-gradient(circle at center, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 98%)",
+              zIndex: 1,
             }}
           >
             <div

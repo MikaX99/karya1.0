@@ -387,7 +387,7 @@ html[data-theme="light"] .section-badge {
   height: 100%;
   aspect-ratio: 1 / 1;
   object-fit: contain;
-  max-width: 600px;
+  max-width: 760px;
 }
 
 .spiral-track {
