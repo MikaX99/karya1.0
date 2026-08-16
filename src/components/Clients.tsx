@@ -187,7 +187,7 @@ export default function Clients() {
                     margin: "0 0 1rem 0",
                   }}
                 >
-                  "{current.testimonial}"
+                  &ldquo;{current.testimonial}&rdquo;
                 </p>
 
                 <div>

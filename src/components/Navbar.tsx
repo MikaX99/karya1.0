@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { MessageCircle, Menu, X, Sun, Moon } from "lucide-react";
 import config from "@/data/config.json";
 import { useTheme } from "@/context/ThemeContext";
-import CheetahLogo from "@/components/CheetahLogo";
 
 const navLinks = [
   { label: "Layanan", href: "#layanan" },
@@ -78,12 +77,12 @@ export default function Navbar() {
               }}
             >
               <img
-                src="/karya1.0/kst-dark.png"
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/kst-dark.png`}
                 alt="Logo"
                 className="logo-img logo-dark-mode"
               />
               <img
-                src="/karya1.0/kst-light.png"
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/kst-light.png`}
                 alt="Logo"
                 className="logo-img logo-light-mode"
               />

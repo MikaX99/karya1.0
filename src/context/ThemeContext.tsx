@@ -24,15 +24,17 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   // On mount: read localStorage or system preference
   useEffect(() => {
     const stored = localStorage.getItem("sentracomp-theme") as Theme | null;
+    let initial: Theme = "dark";
     if (stored === "light" || stored === "dark") {
-      setTheme(stored);
-      document.documentElement.setAttribute("data-theme", stored);
+      initial = stored;
     } else {
       const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      const initial: Theme = prefersDark ? "dark" : "light";
-      setTheme(initial);
-      document.documentElement.setAttribute("data-theme", initial);
+      initial = prefersDark ? "dark" : "light";
     }
+    document.documentElement.setAttribute("data-theme", initial);
+    requestAnimationFrame(() => {
+      setTheme(initial);
+    });
   }, []);
 
   const toggleTheme = useCallback(() => {

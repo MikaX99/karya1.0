@@ -3,7 +3,6 @@
 import { useState } from "react";
 import productsData from "@/data/products.json";
 import ProductCard from "./ProductCard";
-import { LayoutGrid, Filter } from "lucide-react";
 
 const ALL = "Semua";
 const categories = [ALL, "Server & Storage", "Networking", "Laptop & PC", "Lisensi Software"];

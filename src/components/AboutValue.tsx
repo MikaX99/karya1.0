@@ -1,6 +1,6 @@
 "use client";
 
-import { ShieldCheck, Truck, HeartHandshake, Star } from "lucide-react";
+import { ShieldCheck, Truck, HeartHandshake } from "lucide-react";
 
 const values = [
   {

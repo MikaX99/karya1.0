@@ -8,11 +8,6 @@ export default function Hero() {
     config.whatsapp.defaultMessage
   )}`;
 
-  const handleScrollProducts = () => {
-    const el = document.querySelector("#produk");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
-
   const handleScrollServices = () => {
     const el = document.querySelector("#layanan");
     if (el) el.scrollIntoView({ behavior: "smooth" });

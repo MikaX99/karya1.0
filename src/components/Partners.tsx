@@ -1,49 +1,66 @@
 import React from "react";
 import { Server, Cloud, ShieldCheck } from "lucide-react";
 
+// Kategori 1: Network, Hardware & Cyber Security (17 Brands)
 const networkHardwareSecurity = [
   { name: "Cisco", color: "#049FD9" },
   { name: "MikroTik", color: "#FF6600" },
-  { name: "Ubiquiti UniFi", color: "#0284C7" },
+  { name: "Ubiquiti Networks", color: "#0284C7" },
   { name: "TP-Link Omada", color: "#00A4E4" },
   { name: "Juniper Networks", color: "#A855F7" },
+  { name: "HPE", color: "#0096D6" },
+  { name: "Dell Enterprise", color: "#007DB8" },
+  { name: "Hitachi Vantara", color: "#E60012" },
   { name: "Sophos", color: "#0EA5E9" },
   { name: "Fortinet", color: "#EE3124" },
   { name: "Barracuda", color: "#0284C7" },
   { name: "Symantec", color: "#FBBF24" },
-  { name: "HP Enterprise", color: "#0096D6" },
-  { name: "Dell Enterprise", color: "#007DB8" },
-  { name: "Hitachi Vantara", color: "#E60012" },
+  { name: "Synology", color: "#B5161B" },
+  { name: "Drobo", color: "#2563EB" },
+  { name: "JumpServer", color: "#00BFA5" },
+  { name: "ZITADEL", color: "#F97316" },
+  { name: "Action1", color: "#2563EB" },
 ];
 
+// Kategori 2: Virtualization, Cloud & Backup Storage (16 Brands)
 const virtualizationCloudStorage = [
   { name: "VMware vSphere", color: "#94A3B8" },
+  { name: "VMware vCenter", color: "#60A5FA" },
   { name: "Microsoft Hyper-V", color: "#00A4EF" },
+  { name: "Windows Server", color: "#0078D4" },
   { name: "Proxmox VE", color: "#E57000" },
   { name: "Red Hat", color: "#EE0000" },
   { name: "Veeam Backup", color: "#00B336" },
-  { name: "Synology NAS", color: "#B5161B" },
-  { name: "NetApp Storage", color: "#0067C5" },
+  { name: "NetApp", color: "#0067C5" },
   { name: "Vinchin Backup", color: "#007ACC" },
   { name: "Macrium Reflect", color: "#1E87DA" },
   { name: "Hasleo Software", color: "#3B82F6" },
-  { name: "Nextcloud", color: "#0082C9" },
-  { name: "Plesk Panel", color: "#52B4D6" },
+  { name: "CloudExplorer Lite", color: "#10B981" },
+  { name: "NethServer", color: "#0284C7" },
+  { name: "Zentyal", color: "#74B437" },
+  { name: "MS System Center", color: "#0078D4" },
+  { name: "Plesk", color: "#52B4D6" },
 ];
 
+// Kategori 3: Enterprise Apps, Collaboration & IT Management (17 Brands)
 const emailSysMgmtCollab = [
   { name: "Microsoft 365", color: "#EA3E23" },
   { name: "MS Exchange", color: "#0072C6" },
+  { name: "Exchange Online", color: "#008AD7" },
   { name: "Zimbra", color: "#E84325" },
-  { name: "Grommunio", color: "#1E87DA" },
+  { name: "grommunio", color: "#1E87DA" },
   { name: "BlueMind", color: "#2A82C5" },
   { name: "iRedMail", color: "#00A3E0" },
+  { name: "Nextcloud", color: "#0082C9" },
+  { name: "ONLYOFFICE", color: "#FF6F3D" },
+  { name: "Odoo ERP", color: "#875A7B" },
   { name: "NinjaOne", color: "#00A8FF" },
-  { name: "GLPI ITAM", color: "#17A2B8" },
+  { name: "GLPI ITSM", color: "#17A2B8" },
   { name: "ServiceDesk Plus", color: "#0284C7" },
-  { name: "JumpServer", color: "#00BFA5" },
   { name: "AvePoint", color: "#00B2A9" },
   { name: "BitTitan", color: "#0071C5" },
+  { name: "DataEase", color: "#3370FF" },
+  { name: "Metabase", color: "#509EE3" },
 ];
 
 const row1Items = [...networkHardwareSecurity, ...networkHardwareSecurity];
@@ -77,6 +94,7 @@ function PartnerCard({ partner }: { partner: { name: string; color: string } }) 
           letterSpacing: "0.02em",
           lineHeight: 1.1,
           textAlign: "center",
+          whiteSpace: "nowrap",
         }}
       >
         {partner.name}
@@ -119,13 +137,13 @@ export default function Partners() {
           <p
             style={{
               color: "var(--color-text-muted)",
-              maxWidth: "600px",
+              maxWidth: "640px",
               margin: "0 auto",
               lineHeight: 1.7,
               fontSize: "clamp(0.9rem, 1.4vw, 1.025rem)",
             }}
           >
-            Dukungan 36+ brand ekosistem IT enterprise global dari infrastruktur jaringan, virtualisasi, disaster recovery, hingga sistem manajemen & email.
+            Dukungan 49+ brand ekosistem IT enterprise global dari infrastruktur jaringan, virtualisasi, disaster recovery, hingga sistem manajemen, ERP & email kolaborasi.
           </p>
         </div>
       </div>
@@ -221,7 +239,7 @@ export default function Partners() {
             }}
           >
             <ShieldCheck size={13} strokeWidth={2} />
-            Email Server, Systems & Management Tools
+            Enterprise Apps, Collaboration & IT Management
           </div>
           <div className="partners-marquee-wrapper">
             <div
