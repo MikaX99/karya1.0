@@ -340,24 +340,11 @@ export default function Clients() {
             style={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "space-between",
+              justifyContent: "flex-end",
               marginBottom: "0.875rem",
               padding: "0 0.25rem",
             }}
           >
-            <div
-              style={{
-                fontSize: "0.825rem",
-                fontWeight: 600,
-                color: "var(--color-text-subtle)",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.4rem",
-              }}
-            >
-              <span style={{ color: "var(--color-primary)", fontWeight: 700 }}>✦</span>
-              <span>Geser atau Drag untuk melihat Klien Utama</span>
-            </div>
             <div style={{ display: "flex", gap: "0.5rem" }}>
               <button
                 onClick={slideLeft}
