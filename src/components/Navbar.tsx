@@ -17,15 +17,32 @@ const navLinks = [
 
 export default function Navbar() {
   const { locale, toggleLocale, t } = useLocale();
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
+  const [visible, setVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY < 40) {
+        setVisible(true);
+      } else {
+        if (currentScrollY > lastScrollY && currentScrollY - lastScrollY > 6) {
+          setVisible(false);
+        } else if (lastScrollY > currentScrollY && lastScrollY - currentScrollY > 6) {
+          setVisible(true);
+        }
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   const waUrl = `https://wa.me/${config.whatsapp.number}?text=${encodeURIComponent(
     config.whatsapp.defaultMessage
@@ -50,6 +67,10 @@ export default function Navbar() {
           paddingTop: "0.5rem",
           background: "transparent",
           pointerEvents: "none",
+          transform: visible ? "translateY(0)" : "translateY(-100%)",
+          opacity: visible ? 1 : 0,
+          transition: "transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease",
+          willChange: "transform, opacity",
         }}
       >
         <div className="container" style={{ padding: "0 1.5rem" }}>
