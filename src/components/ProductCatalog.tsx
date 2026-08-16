@@ -37,16 +37,8 @@ export default function ProductCatalog() {
           </p>
         </div>
 
-        {/* Filter Tabs (Corporate Sharp) */}
-        <div
-          style={{
-            display: "flex",
-            gap: "0.5rem",
-            justifyContent: "center",
-            flexWrap: "wrap",
-            marginBottom: "2rem",
-          }}
-        >
+        {/* Filter Tabs (Corporate Sharp & Mobile Touch Scroll) */}
+        <div className="filter-tabs-scroll" style={{ marginBottom: "1.5rem" }}>
           {categories.map((cat) => (
             <button
               key={cat}
@@ -77,6 +69,7 @@ export default function ProductCatalog() {
 
         {/* Product Grid */}
         <div
+          className="product-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",

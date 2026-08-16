@@ -85,6 +85,7 @@ export default function Hero() {
 
         {/* Action Buttons (Clear Visual Hierarchy) */}
         <div
+          className="hero-actions"
           style={{
             display: "flex",
             gap: "1rem",
@@ -155,8 +156,8 @@ export default function Hero() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-            gap: "1.5rem",
+            gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
+            gap: "1.25rem",
             maxWidth: "780px",
             margin: "0 auto",
           }}
@@ -168,10 +169,11 @@ export default function Hero() {
           ].map((stat, idx, arr) => (
             <div
               key={stat.label}
+              className={idx < arr.length - 1 ? "stat-divider" : ""}
               style={{
                 textAlign: "center",
                 borderRight: idx < arr.length - 1 ? "1px solid var(--color-border-subtle)" : "none",
-                padding: "0.5rem 1rem",
+                padding: "0.5rem 0.5rem",
               }}
             >
               <div className="stat-number">{stat.number}</div>

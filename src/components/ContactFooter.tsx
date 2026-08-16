@@ -197,7 +197,7 @@ export default function ContactFooter() {
         }}
       >
         <div
-          className="container"
+          className="container footer-container"
           style={{
             display: "flex",
             alignItems: "center",
@@ -223,7 +223,7 @@ export default function ContactFooter() {
           <div style={{ fontSize: "0.78rem", color: "var(--color-text-faint)", textAlign: "center" }}>
             © {new Date().getFullYear()} KaryaSistem. All rights reserved. System Integrator & Solusi IT Enterprise.
           </div>
-          <div style={{ display: "flex", gap: "1.25rem" }}>
+          <div className="footer-links" style={{ display: "flex", gap: "1.25rem" }}>
             {["Layanan", "Produk", "Klien", "Mitra", "Kontak"].map((item) => (
               <a
                 key={item}

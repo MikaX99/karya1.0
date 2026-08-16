@@ -53,10 +53,10 @@ export default function Clients() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))",
             gap: "1rem",
             marginBottom: "2.5rem",
-            padding: "1.5rem",
+            padding: "1.5rem 1rem",
             background: "var(--card-alt-bg)",
             border: "1px solid var(--color-border)",
             borderRadius: "8px",
@@ -70,6 +70,7 @@ export default function Clients() {
           ].map((stat, idx, arr) => (
             <div
               key={stat.label}
+              className={idx < arr.length - 1 ? "stat-divider" : ""}
               style={{
                 textAlign: "center",
                 padding: "0.5rem",
@@ -96,9 +97,10 @@ export default function Clients() {
 
         {/* Client Logo Grid (Corporate Cards) */}
         <div
+          className="client-logo-grid"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))",
             gap: "1rem",
             marginBottom: "2.5rem",
           }}

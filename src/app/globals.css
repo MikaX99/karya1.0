@@ -504,9 +504,88 @@ html[data-theme="dark"] #google-maps-embed {
 }
 
 /* ============================================================
-   RESPONSIVE HELPERS
+   RESPONSIVE HELPERS & MOBILE OPTIMIZATIONS
    ============================================================ */
+/* Touch Horizontal Scroll for Filter Tabs */
+.filter-tabs-scroll {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.25rem 0.25rem 0.75rem 0.25rem;
+  scrollbar-width: none;
+  justify-content: center;
+}
+.filter-tabs-scroll::-webkit-scrollbar { display: none; }
+
+@media (max-width: 768px) {
+  .filter-tabs-scroll {
+    justify-content: flex-start;
+  }
+
+  .stat-divider {
+    border-right: none !important;
+    border-bottom: 1px solid var(--color-border-subtle);
+    padding-bottom: 0.75rem !important;
+  }
+}
+
 @media (max-width: 640px) {
-  .floating-wa { bottom: 1.25rem; right: 1.25rem; width: 48px; height: 48px; }
-  .btn-primary, .btn-secondary { padding: 0.65rem 1.25rem; font-size: 0.875rem; }
+  .section {
+    padding: 2.5rem 1rem !important;
+  }
+
+  .container {
+    padding: 0 0.5rem !important;
+  }
+
+  .floating-wa {
+    bottom: 1rem;
+    right: 1rem;
+    width: 46px;
+    height: 46px;
+  }
+
+  .btn-primary, .btn-secondary {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-actions {
+    flex-direction: column !important;
+    width: 100%;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .client-logo-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .services-grid, .values-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .footer-container {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 1.25rem !important;
+  }
+
+  .footer-links {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 0.875rem !important;
+  }
 }
