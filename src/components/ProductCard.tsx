@@ -23,6 +23,15 @@ interface Product {
 function getBrandIcon(brand: string) {
   const b = brand.toLowerCase();
 
+  // Sangfor (Tech Emblem S)
+  if (b.includes("sangfor")) {
+    return (
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="#E4002B">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-3h4v-2h-4V9.5h5V7.5H9v9h7v-2h-5z" />
+      </svg>
+    );
+  }
+
   // Sophos (S Shield Security)
   if (b.includes("sophos")) {
     return (
@@ -153,6 +162,7 @@ const brandDetails: Record<string, { color: string; label: string }> = {
   "Microsoft": { color: "#00A4EF", label: "Microsoft Enterprise" },
   "Kaspersky": { color: "#006D5B", label: "Kaspersky Security" },
   "Sophos": { color: "#005A9C", label: "Sophos Security" },
+  "Sangfor": { color: "#E4002B", label: "Sangfor Technologies" },
 };
 
 export default function ProductCard({ product }: { product: Product }) {

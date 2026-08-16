@@ -33,6 +33,17 @@
     "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk unit NAS Storage Enterprise 12-Bay (ID: srv-03)."
   },
   {
+    "id": "srv-04",
+    "category": "Server & Storage",
+    "title": "Sangfor HCI Enterprise Server Node",
+    "brand": "Sangfor",
+    "specs": "Hyper-Converged Infrastructure • Compute + Storage + Network Virtualization • High Availability",
+    "priceDisplay": "Hubungi Sales",
+    "image": "/images/products/sangfor-hci.webp",
+    "badge": "Reseller Resmi",
+    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk unit Sangfor HCI Enterprise Server Node (ID: srv-04)."
+  },
+  {
     "id": "net-01",
     "category": "Networking",
     "title": "Managed Switch 48-Port Gigabit PoE+",
@@ -86,6 +97,17 @@
     "image": "/images/products/firewall-sophos.webp",
     "badge": "Reseller Resmi",
     "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk unit Sophos XGS 2100 Next-Gen Firewall (ID: net-05)."
+  },
+  {
+    "id": "net-06",
+    "category": "Networking",
+    "title": "Sangfor NGAF Next-Gen Application Firewall",
+    "brand": "Sangfor",
+    "specs": "AI-Powered Threat Protection • WAF + Anti-Ransomware • SSL Inspection • 10G SFP+ Uplink",
+    "priceDisplay": "Hubungi Sales",
+    "image": "/images/products/sangfor-ngaf.webp",
+    "badge": "Reseller Resmi",
+    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk unit Sangfor NGAF Next-Gen Application Firewall (ID: net-06)."
   },
   {
     "id": "lpt-01",
@@ -163,5 +185,16 @@
     "image": "/images/products/sophos-interceptx.webp",
     "badge": "Lisensi Resmi",
     "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk lisensi Sophos Intercept X Advanced with XDR (ID: sw-04)."
+  },
+  {
+    "id": "sw-05",
+    "category": "Lisensi Software",
+    "title": "Sangfor VDI Desktop Virtualization License",
+    "brand": "Sangfor",
+    "specs": "Per User/Tahun • aCloud + aDesk Console • Secure Remote Workspace • GPU Acceleration",
+    "priceDisplay": "Hubungi Sales",
+    "image": "/images/products/sangfor-vdi.webp",
+    "badge": "Lisensi Resmi",
+    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk lisensi Sangfor VDI Desktop Virtualization License (ID: sw-05)."
   }
 ]
