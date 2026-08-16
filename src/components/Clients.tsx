@@ -2,18 +2,23 @@
 
 import { useState } from "react";
 import clientsData from "@/data/clients.json";
-import { Users, Building2, MapPin, RefreshCw, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { CheckCircle2, ShieldCheck, Building2, RefreshCw, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { useLocale } from "@/context/LocaleContext";
 
 const industryColors: Record<string, string> = {
-  "Perbankan & Keuangan": "#1E87DA",
-  "Pendidikan": "#0284C7",
-  "Kesehatan": "#059669",
-  "Logistik & Transportasi": "#D97706",
-  "Pemerintahan": "#6366F1",
-  "Manufaktur": "#DC2626",
-  "Retail & E-Commerce": "#DB2777",
-  "Properti & Konstruksi": "#0D9488",
+  "Holding & Investment": "#1E87DA",
+  "Pendidikan & Pelatihan": "#0284C7",
+  "Food & Beverage (F&B)": "#D97706",
+  "Pemerintahan & Hukum": "#6366F1",
+  "Perdagangan Internasional": "#059669",
+  "Distribusi & Logistik": "#1E87DA",
+  "Industri Herbal & Farmasi": "#10B981",
+  "Teknologi & Rekayasa": "#0284C7",
+  "Maritim & Logistik Laut": "#0D9488",
+  "Konstruksi & Properti": "#DC2626",
+  "Teknologi & Digital": "#8B5CF6",
+  "Energi & Pertambangan": "#D97706",
+  "Ekspor Impor & Manufaktur": "#DB2777",
 };
 
 const testimonials = clientsData.filter((c) => c.testimonial);
@@ -65,9 +70,9 @@ export default function Clients() {
           }}
         >
           {[
-            { icon: <Users size={18} color="var(--color-primary)" />, number: "500+", label: t("client_stat_1") },
-            { icon: <Building2 size={18} color="var(--color-primary)" />, number: "12+", label: t("client_stat_2") },
-            { icon: <MapPin size={18} color="var(--color-primary)" />, number: "34", label: t("client_stat_3") },
+            { icon: <CheckCircle2 size={18} color="var(--color-primary)" />, number: "150+", label: t("client_stat_1") },
+            { icon: <ShieldCheck size={18} color="var(--color-primary)" />, number: "99.8%", label: t("client_stat_2") },
+            { icon: <Building2 size={18} color="var(--color-primary)" />, number: "12+", label: t("client_stat_3") },
             { icon: <RefreshCw size={18} color="var(--color-primary)" />, number: "87%", label: t("client_stat_4") },
           ].map((stat, idx, arr) => (
             <div

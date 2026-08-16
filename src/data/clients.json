@@ -1,54 +1,81 @@
 [
   {
     "id": "client-01",
-    "name": "PT. Maju Bersama Tbk",
-    "abbr": "MB",
-    "industry": "Perbankan & Keuangan",
-    "color": "#0EA5E9",
-    "since": "2020",
+    "name": "ALVA GROUP",
+    "abbr": "AG",
+    "industry": "Holding & Investment",
+    "color": "#1E87DA",
+    "since": "2021",
     "products": [
-      "Laptop & PC",
-      "Networking"
+      "Networking",
+      "Server & Storage"
     ],
-    "testimonial": "KaryaSistem sangat profesional, pengiriman tepat waktu dan produk sesuai spesifikasi yang kami butuhkan. Layanan purna jualnya responsif.",
-    "contact": "Bapak Andi — IT Manager"
+    "testimonial": "KaryaSistem memberikan dukungan infrastruktur jaringan yang sangat andal dan responsif untuk mendukung integrasi operasional seluruh unit bisnis kami.",
+    "contact": "Management Representative — ALVA GROUP"
   },
   {
     "id": "client-02",
-    "name": "Universitas Teknologi Nusantara",
-    "abbr": "UTN",
-    "industry": "Pendidikan",
-    "color": "#6366F1",
-    "since": "2021",
+    "name": "Indonesia Raya Academy",
+    "abbr": "IRA",
+    "industry": "Pendidikan & Pelatihan",
+    "color": "#0284C7",
+    "since": "2022",
     "products": [
-      "Laptop & PC",
-      "Networking",
+      "Web Application",
       "Lisensi Software"
     ],
-    "testimonial": "Kami sangat puas dengan kualitas produk dan kecepatan pengiriman. KaryaSistem memahami kebutuhan institusi pendidikan dengan baik.",
-    "contact": "Ibu Dewi — Kepala Divisi IT"
+    "testimonial": "Implementasi platform sistem terpadu berjalan lancar dan mempermudah operasional akademik kami secara signifikan.",
+    "contact": "Kepala Divisi Teknologi — Indonesia Raya Academy"
   },
   {
     "id": "client-03",
-    "name": "PT. PLN Persero",
-    "abbr": "PLN",
-    "industry": "Energi",
-    "color": "#10B981",
+    "name": "NEXMAN COFFEE",
+    "abbr": "NMC",
+    "industry": "Food & Beverage (F&B)",
+    "color": "#D97706",
+    "since": "2023",
+    "products": [
+      "Networking",
+      "Perangkat Keras IT"
+    ],
+    "testimonial": "",
+    "contact": ""
+  },
+  {
+    "id": "client-04",
+    "name": "PENGADILAN MILITER II-08 JAKARTA",
+    "abbr": "PMIL",
+    "industry": "Pemerintahan & Hukum",
+    "color": "#6366F1",
+    "since": "2021",
+    "products": [
+      "Infrastruktur Jaringan",
+      "Lisensi Software"
+    ],
+    "testimonial": "Pengadaan perangkat dan pemeliharaan sistem IT dilaksanakan secara profesional, transparan, dan tepat waktu.",
+    "contact": "Divisi IT & Sarana — Dilmil II-08 Jakarta"
+  },
+  {
+    "id": "client-05",
+    "name": "PT DEMODAS INTERNATIONAL GROUP",
+    "abbr": "DIG",
+    "industry": "Perdagangan Internasional",
+    "color": "#059669",
     "since": "2022",
     "products": [
       "Server & Storage",
       "Networking"
     ],
-    "testimonial": "Sistem server yang KaryaSistem sediakan sangat stabil dan sudah berjalan lebih dari 2 tahun tanpa downtime berarti.",
-    "contact": "Bapak Hendra — Direktur IT"
+    "testimonial": "",
+    "contact": ""
   },
   {
-    "id": "client-04",
-    "name": "PT. Logistik Express Indonesia",
-    "abbr": "LEI",
-    "industry": "Logistik & Transportasi",
-    "color": "#F59E0B",
-    "since": "2021",
+    "id": "client-06",
+    "name": "PT Global Agung Siamasei",
+    "abbr": "GAS",
+    "industry": "Distribusi & Logistik",
+    "color": "#1E87DA",
+    "since": "2022",
     "products": [
       "Networking",
       "Laptop & PC"
@@ -57,40 +84,54 @@
     "contact": ""
   },
   {
-    "id": "client-05",
-    "name": "Pemerintah Kota Cerdas",
-    "abbr": "PKC",
-    "industry": "Pemerintahan",
-    "color": "#8B5CF6",
+    "id": "client-07",
+    "name": "PT Glow Industri Herbal Care",
+    "abbr": "GIHC",
+    "industry": "Industri Herbal & Farmasi",
+    "color": "#10B981",
     "since": "2023",
     "products": [
-      "Laptop & PC",
-      "Lisensi Software"
-    ],
-    "testimonial": "Proses pengadaan transparan dan sesuai regulasi. KaryaSistem memberikan harga kompetitif dengan dokumentasi lengkap.",
-    "contact": "Dinas Komunikasi & Informatika"
-  },
-  {
-    "id": "client-06",
-    "name": "PT. Manufaktur Prima",
-    "abbr": "MP",
-    "industry": "Manufaktur",
-    "color": "#EF4444",
-    "since": "2020",
-    "products": [
-      "Server & Storage",
-      "Networking"
+      "Sistem Manajemen",
+      "Hardware IT"
     ],
     "testimonial": "",
     "contact": ""
   },
   {
-    "id": "client-07",
-    "name": "CV. Retail Sukses Group",
-    "abbr": "RSG",
-    "industry": "Retail & E-Commerce",
-    "color": "#EC4899",
+    "id": "client-08",
+    "name": "PT Karya Abadi Indotech",
+    "abbr": "KAI",
+    "industry": "Teknologi & Rekayasa",
+    "color": "#0284C7",
+    "since": "2021",
+    "products": [
+      "Server & Storage",
+      "Disaster Recovery"
+    ],
+    "testimonial": "Solusi disaster recovery dan backup data otomatis dari KaryaSistem sangat solid menjaga kontinuitas sistem kerja perusahaan kami.",
+    "contact": "Operational Director — PT Karya Abadi Indotech"
+  },
+  {
+    "id": "client-09",
+    "name": "PT Layanan Kapal Indonesia",
+    "abbr": "LKI",
+    "industry": "Maritim & Logistik Laut",
+    "color": "#0D9488",
     "since": "2022",
+    "products": [
+      "Infrastruktur Jaringan",
+      "Hardware Enterprise"
+    ],
+    "testimonial": "",
+    "contact": ""
+  },
+  {
+    "id": "client-10",
+    "name": "PT Merpati Wahana Raya",
+    "abbr": "MWR",
+    "industry": "Konstruksi & Properti",
+    "color": "#DC2626",
+    "since": "2021",
     "products": [
       "Networking",
       "Lisensi Software"
@@ -99,17 +140,45 @@
     "contact": ""
   },
   {
-    "id": "client-08",
-    "name": "PT. Properti Gemilang",
-    "abbr": "PG",
-    "industry": "Properti & Konstruksi",
-    "color": "#14B8A6",
+    "id": "client-11",
+    "name": "PT NEXTIVE GEMILANG",
+    "abbr": "NXG",
+    "industry": "Teknologi & Digital",
+    "color": "#8B5CF6",
     "since": "2023",
     "products": [
-      "Laptop & PC",
+      "Web Application",
+      "Cloud Services"
+    ],
+    "testimonial": "",
+    "contact": ""
+  },
+  {
+    "id": "client-12",
+    "name": "PT Petrokindo Sapta Gemilang",
+    "abbr": "PSG",
+    "industry": "Energi & Pertambangan",
+    "color": "#D97706",
+    "since": "2020",
+    "products": [
+      "Server Enterprise",
+      "Infrastruktur Jaringan"
+    ],
+    "testimonial": "KaryaSistem selalu menyediakan perangkat berkualitas tinggi dengan garansi resmi dan dukungan teknis on-site yang tanggap.",
+    "contact": "IT & Infrastructure Lead — PT Petrokindo Sapta Gemilang"
+  },
+  {
+    "id": "client-13",
+    "name": "PT SILICAG GLOBAL INTERNATIONAL",
+    "abbr": "SGI",
+    "industry": "Ekspor Impor & Manufaktur",
+    "color": "#DB2777",
+    "since": "2022",
+    "products": [
+      "Hardware Enterprise",
       "Lisensi Software"
     ],
-    "testimonial": "Harga bersaing, produk original, dan tim sales KaryaSistem sangat membantu dalam proses pemilihan spesifikasi.",
-    "contact": "Ibu Sarah — HRD & GA Manager"
+    "testimonial": "",
+    "contact": ""
   }
 ]
