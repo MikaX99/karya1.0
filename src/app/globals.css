@@ -365,13 +365,21 @@ html[data-theme="dark"] ::-webkit-scrollbar-thumb { background: #334155; }
 .animate-marquee-reverse { animation: marquee-reverse 38s linear infinite; }
 
 /* ============================================================
-   HERO SUBTLE TEXTURE GRID (NO HEAVY GLOW)
+   HERO ANTI-MAINSTREAM CYBER HEXAGON & BLUEPRINT MESH PATTERN
    ============================================================ */
 .hero-grid {
-  background-image:
-    linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg width='60' height='104' viewBox='0 0 60 104' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l30 17.32v34.64L30 69.28 0 51.96V17.32zm0 104l30-17.32V52L30 34.64 0 52v34.64z' fill='none' stroke='%23ffffff' stroke-opacity='0.08' stroke-width='1'/%3E%3Ccircle cx='30' cy='34.64' r='1.5' fill='%230a84ff' fill-opacity='0.5'/%3E%3Ccircle cx='30' cy='69.28' r='1.5' fill='%2364d2ff' fill-opacity='0.4'/%3E%3C/svg%3E"),
+    radial-gradient(circle at 50% 30%, rgba(10, 132, 255, 0.18) 0%, rgba(0, 242, 254, 0.04) 40%, transparent 70%);
+  background-size: 60px 104px, 100% 100%;
+  background-position: center top, center center;
+}
+
+html[data-theme="light"] .hero-grid {
+  background-image: 
+    url("data:image/svg+xml,%3Csvg width='60' height='104' viewBox='0 0 60 104' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l30 17.32v34.64L30 69.28 0 51.96V17.32zm0 104l30-17.32V52L30 34.64 0 52v34.64z' fill='none' stroke='%23000000' stroke-opacity='0.06' stroke-width='1'/%3E%3Ccircle cx='30' cy='34.64' r='1.5' fill='%230071e3' fill-opacity='0.4'/%3E%3Ccircle cx='30' cy='69.28' r='1.5' fill='%232997ff' fill-opacity='0.3'/%3E%3C/svg%3E"),
+    radial-gradient(circle at 50% 30%, rgba(0, 113, 227, 0.08) 0%, rgba(41, 151, 255, 0.02) 40%, transparent 70%);
+  background-size: 60px 104px, 100% 100%;
 }
 
 /* ============================================================
