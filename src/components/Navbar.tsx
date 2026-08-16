@@ -64,7 +64,7 @@ export default function Navbar() {
               height: "70px",
             }}
           >
-            {/* Logo Image */}
+            {/* Logo Image & Unique Typography Brand */}
             <a
               href="#"
               onClick={(e) => {
@@ -75,6 +75,7 @@ export default function Navbar() {
               style={{
                 display: "flex",
                 alignItems: "center",
+                gap: "0.65rem",
                 textDecoration: "none",
               }}
             >
@@ -88,6 +89,9 @@ export default function Navbar() {
                 alt="Logo"
                 className="logo-img logo-light-mode"
               />
+              <span className="brand-typography">
+                Karya<span className="brand-highlight">Sistem</span>
+              </span>
             </a>
 
             {/* Desktop Nav Links */}

@@ -388,6 +388,30 @@ html[data-theme="light"] .logo-dark-mode { display: none; }
 html[data-theme="light"] .logo-light-mode { display: block; }
 
 /* ============================================================
+   BRAND TYPOGRAPHY STYLING
+   ============================================================ */
+.brand-typography {
+  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  color: var(--color-text);
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  font-family: var(--font-base), system-ui, -apple-system, sans-serif;
+  transition: opacity 0.2s ease;
+}
+
+.brand-highlight {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #00F2FE 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  margin-left: 1px;
+}
+
+/* ============================================================
    PRODUCT FILTER TABS (CORPORATE SHARP)
    ============================================================ */
 .filter-tab {
