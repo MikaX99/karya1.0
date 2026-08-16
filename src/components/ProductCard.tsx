@@ -164,106 +164,103 @@ export default function ProductCard({ product }: { product: Product }) {
       id={`product-${product.id}`}
       className="glass-card"
       style={{
-        borderRadius: "8px",
+        borderRadius: "12px",
         overflow: "hidden",
         display: "flex",
         flexDirection: "column",
+        width: "100%",
+        height: "100%",
       }}
     >
-      {/* Product Image & Brand Logo Header */}
+      {/* Compact Header Bar */}
       <div
         style={{
-          height: "160px",
+          padding: "0.875rem 1rem",
           background: "var(--color-surface-2)",
           display: "flex",
           alignItems: "center",
-          justifyContent: "center",
-          position: "relative",
+          justifyContent: "space-between",
           borderBottom: "1px solid var(--color-border)",
           flexShrink: 0,
         }}
       >
-        {/* Brand Logo & Emblem Container */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "0.5rem",
-          }}
-        >
+        {/* Brand Pill */}
+        <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
           <div
             style={{
-              width: "52px",
-              height: "52px",
+              width: "32px",
+              height: "32px",
               borderRadius: "8px",
               background: "var(--color-surface)",
               border: "1px solid var(--color-border)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
+              boxShadow: "0 2px 6px rgba(0,0,0,0.04)",
+              flexShrink: 0,
             }}
           >
             {brandIcon}
           </div>
-
-          {/* Brand Logo Text Tag */}
           <span
             style={{
-              fontSize: "0.85rem",
-              fontWeight: 800,
+              fontSize: "0.8rem",
+              fontWeight: 700,
               color: brandInfo.color,
-              letterSpacing: "0.02em",
-              lineHeight: 1,
+              letterSpacing: "0.01em",
             }}
           >
             {brandInfo.label}
           </span>
         </div>
 
-        {/* Status Badge */}
+        {/* Minimal Status Badge */}
         <span
           className="product-badge"
-          style={{ position: "absolute", top: "0.75rem", left: "0.75rem" }}
+          style={{
+            fontSize: "0.65rem",
+            padding: "0.2rem 0.55rem",
+            borderRadius: "9999px",
+            lineHeight: 1.2,
+          }}
         >
           {product.badge}
         </span>
       </div>
 
-      {/* Product Info */}
+      {/* Product Body */}
       <div
         style={{
-          padding: "1.25rem",
+          padding: "1rem",
           display: "flex",
           flexDirection: "column",
-          gap: "0.625rem",
+          gap: "0.4rem",
           flex: 1,
         }}
       >
-        <span
+        <div
           style={{
-            fontSize: "0.7rem",
+            fontSize: "0.65rem",
             fontWeight: 700,
             color: "var(--color-primary)",
             textTransform: "uppercase",
-            letterSpacing: "0.05em",
+            letterSpacing: "0.06em",
             display: "flex",
             alignItems: "center",
-            gap: "0.3rem",
+            gap: "0.25rem",
           }}
         >
-          <Tag size={10} />
+          <Tag size={9} />
           {product.category}
-        </span>
+        </div>
 
         <h3
           style={{
-            fontSize: "0.95rem",
+            fontSize: "0.875rem",
             fontWeight: 700,
             color: "var(--color-text)",
-            margin: 0,
-            lineHeight: 1.4,
+            margin: "0.15rem 0 0 0",
+            lineHeight: 1.35,
             display: "-webkit-box",
             WebkitLineClamp: 2,
             WebkitBoxOrient: "vertical",
@@ -275,32 +272,32 @@ export default function ProductCard({ product }: { product: Product }) {
 
         <p
           style={{
-            fontSize: "0.78rem",
-            color: "var(--color-text-muted)",
-            margin: 0,
-            lineHeight: 1.55,
+            fontSize: "0.75rem",
+            color: "var(--color-text-subtle)",
+            margin: "0.25rem 0 0 0",
+            lineHeight: 1.45,
             flex: 1,
           }}
         >
           {product.specs}
         </p>
 
-        {/* Footer CTA */}
+        {/* Minimal Footer CTA */}
         <div
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            gap: "0.75rem",
+            gap: "0.5rem",
             marginTop: "auto",
-            paddingTop: "0.75rem",
+            paddingTop: "0.65rem",
             borderTop: "1px solid var(--color-border-subtle)",
           }}
         >
           <div>
             <div
               style={{
-                fontSize: "0.625rem",
+                fontSize: "0.6rem",
                 color: "var(--color-text-faint)",
                 fontWeight: 600,
                 textTransform: "uppercase",
@@ -311,7 +308,7 @@ export default function ProductCard({ product }: { product: Product }) {
             </div>
             <div
               style={{
-                fontSize: "0.85rem",
+                fontSize: "0.825rem",
                 fontWeight: 700,
                 color: "var(--color-text)",
               }}
@@ -327,13 +324,13 @@ export default function ProductCard({ product }: { product: Product }) {
             className="btn-wa"
             aria-label={`Konsultasi WhatsApp untuk ${product.title}`}
             style={{
-              padding: "0.45rem 0.875rem",
-              fontSize: "0.78rem",
-              borderRadius: "4px",
+              padding: "0.4rem 0.8rem",
+              fontSize: "0.75rem",
+              borderRadius: "9999px",
               flexShrink: 0,
             }}
           >
-            <MessageCircle size={13} />
+            <MessageCircle size={12} />
             {t("product_quote_btn")}
           </a>
         </div>
