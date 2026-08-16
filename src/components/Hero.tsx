@@ -91,7 +91,7 @@ export default function Hero() {
             </p>
 
             {/* Action Pills */}
-            <div style={{ display: "flex", gap: "0.875rem", flexWrap: "wrap", marginBottom: "3rem" }}>
+            <div style={{ display: "flex", gap: "0.875rem", flexWrap: "wrap", marginBottom: "1rem" }}>
               <a
                 id="hero-wa-cta"
                 href={waUrl}
@@ -125,7 +125,7 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Borderless & Enlarged Spiral Typography Art with Edge Fade */}
+          {/* Right Column: Borderless & Dense Concentric Spiral Typography Art */}
           <div
             className="hero-art-container"
             style={{
@@ -147,35 +147,41 @@ export default function Hero() {
           >
             <div className="hero-spiral-wrapper" style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
               <svg viewBox="0 0 500 500" className="hero-spiral-svg" style={{ width: "100%", maxHeight: "580px" }}>
-                <path id="circle-1" d="M 250, 250 m -50, 0 a 50,50 0 1,1 100,0 a 50,50 0 1,1 -100,0" fill="none" />
-                <path id="circle-2" d="M 250, 250 m -100, 0 a 100,100 0 1,1 200,0 a 100,100 0 1,1 -200,0" fill="none" />
-                <path id="circle-3" d="M 250, 250 m -150, 0 a 150,150 0 1,1 300,0 a 150,150 0 1,1 -300,0" fill="none" />
-                <path id="circle-4" d="M 250, 250 m -200, 0 a 200,200 0 1,1 400,0 a 200,200 0 1,1 -400,0" fill="none" />
-                <path id="circle-5" d="M 250, 250 m -240, 0 a 240,240 0 1,1 480,0 a 240,240 0 1,1 -480,0" fill="none" />
+                <path id="circle-1" d="M 250, 250 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" fill="none" />
+                <path id="circle-2" d="M 250, 250 m -80, 0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0" fill="none" />
+                <path id="circle-3" d="M 250, 250 m -120, 0 a 120,120 0 1,1 240,0 a 120,120 0 1,1 -240,0" fill="none" />
+                <path id="circle-4" d="M 250, 250 m -160, 0 a 160,160 0 1,1 320,0 a 160,160 0 1,1 -320,0" fill="none" />
+                <path id="circle-5" d="M 250, 250 m -200, 0 a 200,200 0 1,1 400,0 a 200,200 0 1,1 -400,0" fill="none" />
+                <path id="circle-6" d="M 250, 250 m -238, 0 a 238,238 0 1,1 476,0 a 238,238 0 1,1 -476,0" fill="none" />
 
                 <text className="spiral-track track-1">
                   <textPath href="#circle-1" startOffset="0%">
-                    KARYASISTEM IT SOLUTIONS • HARDWARE • SOFTWARE •
+                    KARYASISTEM IT SOLUTIONS • HARDWARE &amp; SOFTWARE • SYSTEM INTEGRATION •
                   </textPath>
                 </text>
                 <text className="spiral-track track-2">
                   <textPath href="#circle-2" startOffset="0%">
-                    ENTERPRISE IT INTEGRATION • DELL • CISCO • LENOVO • HP • MICROSOFT •
+                    HIGH PERFORMANCE SERVERS • DELL POWEREDGE • HPE PROLIANT • CISCO NETWORKING • LENOVO THINKSYSTEM • MICROSOFT LICENSING •
                   </textPath>
                 </text>
                 <text className="spiral-track track-3">
                   <textPath href="#circle-3" startOffset="0%">
-                    PENGADAAN SERVER &amp; JARINGAN TERPERCAYA • GARANSI RESMI INDONESIA •
+                    DISTRIBUTOR RESMI PERANGKAT IT ENTERPRISE • GARANSI RESMI INDONESIA • CLOUD INTEGRATION • CYBERSECURITY &amp; FIREWALL PROTECTION • BACKUP STORAGE SOLUTIONS •
                   </textPath>
                 </text>
                 <text className="spiral-track track-4">
                   <textPath href="#circle-4" startOffset="0%">
-                    KARYASISTEM CORPORATE PROVIDER • DISTRIBUTOR RESMI PERANGKAT IT •
+                    SOLUSI INFRASTRUKTUR TEKNOLOGI INFORMASI • SERVIS &amp; DUKUNGAN TEKNIS ENTERPRISE • VIRTUALIZATION &amp; DATA CENTER • PENGADAAN JARINGAN PERUSAHAAN TERINTEGRASI •
                   </textPath>
                 </text>
                 <text className="spiral-track track-5">
                   <textPath href="#circle-5" startOffset="0%">
-                    SOLUSI INFRASTRUKTUR TEKNOLOGI INFORMASI • SERVIS &amp; DUKUNGAN TEKNIS LENGKAP •
+                    KARYASISTEM CORPORATE IT PROVIDER • IT INFRASTRUCTURE ARCHITECTURE • SWITCHING &amp; ROUTING • SAN &amp; NAS STORAGE • ENTERPRISE SOFTWARE SOLUTIONS • IMPLEMENTASI INFRASTRUKTUR IT TERPERCAYA •
+                  </textPath>
+                </text>
+                <text className="spiral-track track-6">
+                  <textPath href="#circle-6" startOffset="0%">
+                    MITRA STRATEGIS PENGADAAN IT INSTANSI &amp; BISNIS • KEAMANAN SIBER ENTERPRISE • PENYEDIA LAPTOP &amp; SERVER KORPORAT • GARANSI PURNAJUAL RESMI SELURUH INDONESIA • KARYASISTEM IT INTEGRATION PROVIDER •
                   </textPath>
                 </text>
               </svg>
