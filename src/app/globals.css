@@ -2,70 +2,70 @@
 @import "tailwindcss";
 
 /* ============================================================
-   DARK THEME (MACOS / MACBOOK SPACE GRAY SIGNATURE PALETTE)
+   DARK THEME (TASTE MINIMALIST / SANITY DARK PALETTE)
    ============================================================ */
 :root,
 html[data-theme="dark"] {
-  /* Brand Accent Overrides (macOS System Accent Blue & Electric Cyan) */
-  --color-primary: #0A84FF;
-  --color-primary-dark: #0066CC;
-  --gradient-primary: linear-gradient(135deg, #0A84FF 0%, #64D2FF 100%);
+  /* Brand Accents (Taste Crisp White & Gold/Blue Accents) */
+  --color-primary: #38BDF8;
+  --color-primary-dark: #0284C7;
+  --gradient-primary: linear-gradient(135deg, #FFFFFF 0%, #A1A1AA 100%);
 
-  /* Backgrounds (macOS Space Gray Graphite & Elevated Window Surfaces) */
-  --color-bg: #1E1E22;            /* macOS Dark Space Gray Base */
-  --color-bg-alt: #252529;        /* macOS System Gray Panel */
-  --color-surface: #2B2B30;       /* macOS Window Card Surface */
-  --color-surface-2: #34343A;     /* macOS Elevated Control Surface */
-  --color-surface-3: #3E3E45;     /* macOS High-Elevated Active Surface */
+  /* Backgrounds (Taste Pure Matte #111111 Dark Surface) */
+  --color-bg: #111111;            /* Taste Pure Matte Black */
+  --color-bg-alt: #161618;        /* Taste Dark Secondary Slate */
+  --color-surface: #1A1A1E;       /* Taste Dark Card Surface */
+  --color-surface-2: #222226;     /* Taste Dark Control Surface */
+  --color-surface-3: #2A2A30;     /* Taste High-Elevated Surface */
 
-  /* Text (macOS Crisp Neutral Typography) */
-  --color-text: #F3F3F5;          /* macOS Crisp Off-White */
-  --color-text-muted: #B0B0B5;    /* macOS Muted Gray */
-  --color-text-subtle: #86868B;   /* macOS Medium Dim Gray */
-  --color-text-faint: #65656A;    /* macOS Subtext Gray */
+  /* Text (Taste Ultra-High Contrast Typography) */
+  --color-text: #FFFFFF;          /* Taste Pure White */
+  --color-text-muted: #A1A1AA;    /* Taste Zinc Muted Gray */
+  --color-text-subtle: #71717A;   /* Taste Dim Gray */
+  --color-text-faint: #52525B;    /* Taste Subtext Gray */
 
-  /* Borders (macOS Precise Panel Hairlines) */
-  --color-border: rgba(255, 255, 255, 0.14);
-  --color-border-subtle: rgba(255, 255, 255, 0.07);
-  --color-border-hover: rgba(255, 255, 255, 0.28);
+  /* Borders (Taste Hairline Crisp Lines) */
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-subtle: rgba(255, 255, 255, 0.04);
+  --color-border-hover: rgba(255, 255, 255, 0.18);
 
-  /* Header & Navigation (macOS Vibrancy Translucent Glass) */
-  --navbar-bg: rgba(30, 30, 34, 0.85);
-  --glass-border: rgba(255, 255, 255, 0.12);
+  /* Header & Navigation (Taste Matte Translucent Glass) */
+  --navbar-bg: rgba(17, 17, 17, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.08);
 
-  /* Shadows (macOS Soft Panel Elevation & Ambient Blue Glow) */
-  --shadow-card: 0 4px 18px rgba(0, 0, 0, 0.35);
-  --shadow-card-hover: 0 12px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(10, 132, 255, 0.16);
+  /* Shadows (Taste Clean Elevation) */
+  --shadow-card: 0 2px 10px rgba(0, 0, 0, 0.4);
+  --shadow-card-hover: 0 10px 30px rgba(0, 0, 0, 0.6);
 
   /* Scrollbar */
-  --scrollbar-track: #1E1E22;
+  --scrollbar-track: #111111;
 
-  /* Hero & Section Backgrounds (macOS Space Gray Section Tones) */
-  --hero-bg: #1E1E22;
-  --section-bg-1: #1E1E22;
-  --section-bg-2: #252529;
-  --section-bg-3: #1E1E22;
+  /* Hero & Section Backgrounds (Taste Deep Matte Tones) */
+  --hero-bg: #111111;
+  --section-bg-1: #111111;
+  --section-bg-2: #161618;
+  --section-bg-3: #111111;
 
   /* Cards & Surface Gradients */
-  --card-gradient: linear-gradient(180deg, #2D2D32 0%, #252529 100%);
-  --card-alt-bg: #2B2B30;
-  --partner-card-bg: #2B2B30;
-  --footer-bg: #161619;
-  --footer-border: rgba(255, 255, 255, 0.12);
-  --contact-card-bg: #2B2B30;
+  --card-gradient: #1A1A1E;
+  --card-alt-bg: #1A1A1E;
+  --partner-card-bg: #1A1A1E;
+  --footer-bg: #0D0D0F;
+  --footer-border: rgba(255, 255, 255, 0.08);
+  --contact-card-bg: #1A1A1E;
 
-  /* Partner Category Badges (macOS System Accent Tokens) */
-  --cat-blue: #64D2FF;
-  --cat-blue-bg: rgba(100, 210, 255, 0.14);
-  --cat-blue-border: rgba(100, 210, 255, 0.35);
+  /* Partner Category Badges (Taste Minimal Accents) */
+  --cat-blue: #38BDF8;
+  --cat-blue-bg: rgba(56, 189, 248, 0.1);
+  --cat-blue-border: rgba(56, 189, 248, 0.25);
 
-  --cat-green: #30D158;
-  --cat-green-bg: rgba(48, 209, 88, 0.14);
-  --cat-green-border: rgba(48, 209, 88, 0.35);
+  --cat-green: #34D399;
+  --cat-green-bg: rgba(52, 211, 153, 0.1);
+  --cat-green-border: rgba(52, 211, 153, 0.25);
 
-  --cat-amber: #FF9F0A;
-  --cat-amber-bg: rgba(255, 159, 10, 0.14);
-  --cat-amber-border: rgba(255, 159, 10, 0.35);
+  --cat-amber: #FBBF24;
+  --cat-amber-bg: rgba(251, 191, 36, 0.1);
+  --cat-amber-border: rgba(251, 191, 36, 0.25);
 }
 
 /* ============================================================
@@ -336,16 +336,21 @@ html[data-theme="dark"] ::-webkit-scrollbar-thumb { background: #334155; }
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.35rem 0.875rem;
-  background: var(--cat-blue-bg);
-  border: 1px solid var(--cat-blue-border);
-  border-radius: 4px;
+  padding: 0.4rem 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
   font-size: 0.775rem;
-  font-weight: 700;
-  color: var(--color-primary);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  letter-spacing: 0.03em;
+  margin-bottom: 1.25rem;
+}
+
+html[data-theme="light"] .section-badge {
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: var(--color-text);
 }
 
 /* ============================================================
@@ -365,21 +370,16 @@ html[data-theme="dark"] ::-webkit-scrollbar-thumb { background: #334155; }
 .animate-marquee-reverse { animation: marquee-reverse 38s linear infinite; }
 
 /* ============================================================
-   HERO DENSE & SUBTLE CYBER HEXAGON MICRO-MESH PATTERN
+   HERO TASTE MINIMALIST BACKGROUND (PURE MATTE + SUBTLE LIGHTING)
    ============================================================ */
 .hero-grid {
-  background-image: 
-    url("data:image/svg+xml,%3Csvg width='28' height='48' viewBox='0 0 28 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 0l14 8v16L14 32 0 24V8zm0 48l14-8V24L14 16 0 24v16z' fill='none' stroke='%23ffffff' stroke-opacity='0.035' stroke-width='0.8'/%3E%3Ccircle cx='14' cy='16' r='1' fill='%230a84ff' fill-opacity='0.25'/%3E%3Ccircle cx='14' cy='32' r='1' fill='%2364d2ff' fill-opacity='0.2'/%3E%3C/svg%3E"),
-    radial-gradient(circle at 50% 30%, rgba(10, 132, 255, 0.08) 0%, transparent 65%);
-  background-size: 28px 48px, 100% 100%;
-  background-position: center top, center center;
+  background-image: radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
+  background-size: 100% 100%;
 }
 
 html[data-theme="light"] .hero-grid {
-  background-image: 
-    url("data:image/svg+xml,%3Csvg width='28' height='48' viewBox='0 0 28 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 0l14 8v16L14 32 0 24V8zm0 48l14-8V24L14 16 0 24v16z' fill='none' stroke='%23000000' stroke-opacity='0.03' stroke-width='0.8'/%3E%3Ccircle cx='14' cy='16' r='1' fill='%230071e3' fill-opacity='0.2'/%3E%3Ccircle cx='14' cy='32' r='1' fill='%232997ff' fill-opacity='0.15'/%3E%3C/svg%3E"),
-    radial-gradient(circle at 50% 30%, rgba(0, 113, 227, 0.04) 0%, transparent 65%);
-  background-size: 28px 48px, 100% 100%;
+  background-image: radial-gradient(circle at 50% 30%, rgba(0, 0, 0, 0.03) 0%, transparent 60%);
+  background-size: 100% 100%;
 }
 
 /* ============================================================
