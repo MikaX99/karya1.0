@@ -98,6 +98,7 @@ export default function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary"
+                aria-label="Konsultasi Gratis via WhatsApp KaryaSistem"
                 style={{
                   borderRadius: "9999px",
                   padding: "0.85rem 1.75rem",

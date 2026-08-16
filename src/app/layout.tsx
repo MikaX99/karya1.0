@@ -72,6 +72,32 @@ export default function RootLayout({
         <meta name="theme-color" content="#111111" />
         <meta name="geo.region" content="ID" />
         <meta name="geo.country" content="Indonesia" />
+
+        {/* ─── Security Meta Tags (GitHub Pages fallback) ─────────────────── */}
+        {/* Prevents MIME-type sniffing */}
+        <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
+        {/* Prevents clickjacking / iframe embedding */}
+        <meta httpEquiv="X-Frame-Options" content="DENY" />
+        {/* Legacy XSS filter for older browsers */}
+        <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
+        {/* Controls referrer information sent on navigation */}
+        <meta name="referrer" content="strict-origin-when-cross-origin" />
+        {/* Content Security Policy — restricts resource origins */}
+        <meta
+          httpEquiv="Content-Security-Policy"
+          content={[
+            "default-src 'self'",
+            "script-src 'self' 'unsafe-inline'",
+            "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+            "font-src 'self' https://fonts.gstatic.com",
+            "img-src 'self' data: https:",
+            "connect-src 'self'",
+            "frame-src https://www.google.com https://maps.google.com",
+            "object-src 'none'",
+            "base-uri 'self'",
+            "form-action 'self'",
+          ].join("; ")}
+        />
       </head>
       <body className="antialiased">
         <LocaleProvider>

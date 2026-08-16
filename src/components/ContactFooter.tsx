@@ -168,6 +168,7 @@ export default function ContactFooter() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-wa"
+                aria-label="Hubungi Sales KaryaSistem via WhatsApp"
                 style={{
                   justifyContent: "center",
                   padding: "0.875rem",
@@ -202,6 +203,7 @@ export default function ContactFooter() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Lokasi Kantor KaryaSistem"
+                sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
               />
               <a
                 id="open-maps-link"
