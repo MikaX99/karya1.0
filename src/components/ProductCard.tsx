@@ -231,35 +231,19 @@ export default function ProductCard({ product }: { product: Product }) {
       {/* Product Body */}
       <div
         style={{
-          padding: "1rem",
+          padding: "0.875rem 1rem",
           display: "flex",
           flexDirection: "column",
-          gap: "0.4rem",
+          gap: "0.35rem",
           flex: 1,
         }}
       >
-        <div
-          style={{
-            fontSize: "0.65rem",
-            fontWeight: 700,
-            color: "var(--color-primary)",
-            textTransform: "uppercase",
-            letterSpacing: "0.06em",
-            display: "flex",
-            alignItems: "center",
-            gap: "0.25rem",
-          }}
-        >
-          <Tag size={9} />
-          {product.category}
-        </div>
-
         <h3
           style={{
             fontSize: "0.875rem",
             fontWeight: 700,
             color: "var(--color-text)",
-            margin: "0.15rem 0 0 0",
+            margin: 0,
             lineHeight: 1.35,
             display: "-webkit-box",
             WebkitLineClamp: 2,
@@ -270,17 +254,28 @@ export default function ProductCard({ product }: { product: Product }) {
           {product.title}
         </h3>
 
-        <p
+        {/* Nested Spec Box */}
+        <div
           style={{
-            fontSize: "0.75rem",
-            color: "var(--color-text-subtle)",
-            margin: "0.25rem 0 0 0",
-            lineHeight: 1.45,
+            background: "var(--color-surface-2)",
+            border: "1px solid var(--color-border-subtle)",
+            borderRadius: "8px",
+            padding: "0.45rem 0.65rem",
+            margin: "0.25rem 0",
             flex: 1,
           }}
         >
-          {product.specs}
-        </p>
+          <p
+            style={{
+              fontSize: "0.725rem",
+              color: "var(--color-text-subtle)",
+              margin: 0,
+              lineHeight: 1.4,
+            }}
+          >
+            {product.specs}
+          </p>
+        </div>
 
         {/* Minimal Footer CTA */}
         <div
@@ -290,31 +285,18 @@ export default function ProductCard({ product }: { product: Product }) {
             justifyContent: "space-between",
             gap: "0.5rem",
             marginTop: "auto",
-            paddingTop: "0.65rem",
+            paddingTop: "0.5rem",
             borderTop: "1px solid var(--color-border-subtle)",
           }}
         >
-          <div>
-            <div
-              style={{
-                fontSize: "0.6rem",
-                color: "var(--color-text-faint)",
-                fontWeight: 600,
-                textTransform: "uppercase",
-                letterSpacing: "0.05em",
-              }}
-            >
-              {t("product_price_label")}
-            </div>
-            <div
-              style={{
-                fontSize: "0.825rem",
-                fontWeight: 700,
-                color: "var(--color-text)",
-              }}
-            >
-              {product.priceDisplay}
-            </div>
+          <div
+            style={{
+              fontSize: "0.825rem",
+              fontWeight: 700,
+              color: "var(--color-text)",
+            }}
+          >
+            {product.priceDisplay}
           </div>
           <a
             id={`wa-btn-${product.id}`}
@@ -324,7 +306,7 @@ export default function ProductCard({ product }: { product: Product }) {
             className="btn-wa"
             aria-label={`Konsultasi WhatsApp untuk ${product.title}`}
             style={{
-              padding: "0.4rem 0.8rem",
+              padding: "0.38rem 0.75rem",
               fontSize: "0.75rem",
               borderRadius: "9999px",
               flexShrink: 0,

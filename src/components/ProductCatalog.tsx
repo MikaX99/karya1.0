@@ -91,34 +91,16 @@ export default function ProductCatalog() {
           </button>
         </div>
 
-        {/* Product Count */}
+        {/* Product Container (Flex Centered with Switch Animation) */}
         <div
-          style={{
-            textAlign: "center",
-            marginBottom: "1.5rem",
-            fontSize: "0.8rem",
-            color: "var(--color-text-faint)",
-          }}
-        >
-          {t("catalog_showing")}{" "}
-          <span style={{ color: "var(--color-text)", fontWeight: 600 }}>{filtered.length}</span>{" "}
-          {t("catalog_item")}
-          {activeCategoryVal !== "Semua" && (
-            <span>{" "}{t("catalog_in_cat")}{" "}
-              <span style={{ color: "var(--color-primary)", fontWeight: 600 }}>
-                {t(categoriesConfig.find((c) => c.value === activeCategoryVal)?.key || "")}
-              </span>
-            </span>
-          )}
-        </div>
-
-        {/* Product Container (Flex Centered) */}
-        <div
+          key={activeCategoryVal}
+          className="catalog-grid-animated"
           style={{
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "center",
             gap: "1.25rem",
+            marginTop: "2rem",
           }}
         >
           {filtered.map((product) => (
