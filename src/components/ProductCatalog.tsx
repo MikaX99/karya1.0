@@ -88,17 +88,27 @@ export default function ProductCatalog() {
           )}
         </div>
 
-        {/* Product Grid */}
+        {/* Product Container (Flex Centered) */}
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 320px))",
+            display: "flex",
+            flexWrap: "wrap",
             justifyContent: "center",
             gap: "1.25rem",
           }}
         >
           {filtered.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <div
+              key={product.id}
+              style={{
+                flex: "1 1 280px",
+                maxWidth: "320px",
+                width: "100%",
+                display: "flex",
+              }}
+            >
+              <ProductCard product={product} />
+            </div>
           ))}
         </div>
 
