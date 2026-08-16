@@ -214,7 +214,7 @@ export default function Hero() {
             gap: 2.5rem !important;
           }
           .hero-art-container {
-            max-width: 100% !important;
+            display: none !important;
           }
         }
       `}</style>
