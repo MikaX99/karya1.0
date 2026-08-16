@@ -564,29 +564,105 @@ html[data-theme="dark"] .logo-light-mode { display: none; }
 
 
 /* ============================================================
-   PRODUCT FILTER TABS (CORPORATE SHARP)
+   FUTURISTIC FLOATING CAPSULE TAB BAR (REFERENCE CISCO AI STYLE)
    ============================================================ */
-.filter-tab {
-  padding: 0.5rem 1.125rem;
-  border-radius: 6px;
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  color: var(--color-text-muted);
+.futuristic-tab-container {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  max-width: 100%;
+  width: max-content;
+  margin: 0 auto 2rem auto;
+  padding: 5px 8px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+html[data-theme="dark"] .futuristic-tab-container {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+.futuristic-tab-track {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+  padding: 2px 4px;
+}
+
+.futuristic-tab-track::-webkit-scrollbar {
+  display: none;
+}
+
+.futuristic-tab-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  color: var(--color-text-subtle);
   cursor: pointer;
-  transition: all var(--transition-base);
-  font-weight: 600;
-  font-size: 0.85rem;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.futuristic-tab-arrow:hover {
+  color: var(--color-text);
+  background: rgba(0, 0, 0, 0.06);
+}
+
+html[data-theme="dark"] .futuristic-tab-arrow:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.futuristic-tab-item {
+  padding: 0.55rem 1.25rem;
+  border-radius: 9999px;
+  border: none;
+  background: transparent;
+  color: var(--color-text-subtle);
+  font-weight: 500;
+  font-size: 0.875rem;
   white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   font-family: var(--font-base);
 }
-.filter-tab:hover {
-  border-color: var(--color-border-hover);
+
+.futuristic-tab-item:hover:not(.active) {
   color: var(--color-text);
+  background: rgba(0, 0, 0, 0.05);
 }
-.filter-tab.active {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
-  color: #FFFFFF;
+
+html[data-theme="dark"] .futuristic-tab-item:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.futuristic-tab-item.active {
+  background: #FFFFFF;
+  color: #09090B;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+html[data-theme="dark"] .futuristic-tab-item.active {
+  background: #FFFFFF;
+  color: #09090B;
+  font-weight: 700;
+  box-shadow: 0 4px 18px rgba(255, 255, 255, 0.22);
 }
 
 /* ============================================================

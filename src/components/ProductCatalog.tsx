@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import productsData from "@/data/products.json";
 import ProductCard from "./ProductCard";
 import { useLocale } from "@/context/LocaleContext";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const categoriesConfig = [
   { key: "cat_all", value: "Semua" },
@@ -16,6 +17,19 @@ const categoriesConfig = [
 export default function ProductCatalog() {
   const { t } = useLocale();
   const [activeCategoryVal, setActiveCategoryVal] = useState("Semua");
+  const tabTrackRef = useRef<HTMLDivElement>(null);
+
+  const scrollTabsLeft = () => {
+    if (tabTrackRef.current) {
+      tabTrackRef.current.scrollBy({ left: -200, behavior: "smooth" });
+    }
+  };
+
+  const scrollTabsRight = () => {
+    if (tabTrackRef.current) {
+      tabTrackRef.current.scrollBy({ left: 200, behavior: "smooth" });
+    }
+  };
 
   const filtered =
     activeCategoryVal === "Semua"
@@ -44,27 +58,37 @@ export default function ProductCatalog() {
           </p>
         </div>
 
-        {/* Filter Tabs (Corporate Sharp) */}
-        <div
-          style={{
-            display: "flex",
-            gap: "0.5rem",
-            justifyContent: "center",
-            flexWrap: "wrap",
-            marginBottom: "2rem",
-          }}
-        >
-          {categoriesConfig.map((cat) => (
-            <button
-              key={cat.key}
-              id={`filter-${cat.value.toLowerCase().replace(/\s+/g, "-").replace(/&/g, "and")}`}
-              className={`filter-tab ${activeCategoryVal === cat.value ? "active" : ""}`}
-              onClick={() => setActiveCategoryVal(cat.value)}
-              aria-pressed={activeCategoryVal === cat.value}
-            >
-              {t(cat.key)}
-            </button>
-          ))}
+        {/* Futuristic Floating Capsule Segmented Bar */}
+        <div className="futuristic-tab-container">
+          <button
+            onClick={scrollTabsLeft}
+            className="futuristic-tab-arrow"
+            aria-label="Scroll categories left"
+          >
+            <ChevronLeft size={16} />
+          </button>
+
+          <div ref={tabTrackRef} className="futuristic-tab-track">
+            {categoriesConfig.map((cat) => (
+              <button
+                key={cat.key}
+                id={`filter-${cat.value.toLowerCase().replace(/\s+/g, "-").replace(/&/g, "and")}`}
+                className={`futuristic-tab-item ${activeCategoryVal === cat.value ? "active" : ""}`}
+                onClick={() => setActiveCategoryVal(cat.value)}
+                aria-pressed={activeCategoryVal === cat.value}
+              >
+                {t(cat.key)}
+              </button>
+            ))}
+          </div>
+
+          <button
+            onClick={scrollTabsRight}
+            className="futuristic-tab-arrow"
+            aria-label="Scroll categories right"
+          >
+            <ChevronRight size={16} />
+          </button>
         </div>
 
         {/* Product Count */}
