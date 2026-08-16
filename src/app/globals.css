@@ -2,70 +2,70 @@
 @import "tailwindcss";
 
 /* ============================================================
-   DARK THEME (APPLE PRO SIGNATURE DARK PALETTE)
+   DARK THEME (MACOS / MACBOOK SPACE GRAY SIGNATURE PALETTE)
    ============================================================ */
 :root,
 html[data-theme="dark"] {
-  /* Brand Accent Overrides (Apple Pro Electric Blue) */
-  --color-primary: #2997FF;
-  --color-primary-dark: #0071E3;
-  --gradient-primary: linear-gradient(135deg, #2997FF 0%, #00F2FE 100%);
+  /* Brand Accent Overrides (macOS System Accent Blue & Electric Cyan) */
+  --color-primary: #0A84FF;
+  --color-primary-dark: #0066CC;
+  --gradient-primary: linear-gradient(135deg, #0A84FF 0%, #64D2FF 100%);
 
-  /* Backgrounds (Apple Pitch Black & Dark Obsidian Slate) */
-  --color-bg: #000000;
-  --color-bg-alt: #161618;
-  --color-surface: #1C1C1E;
-  --color-surface-2: #2C2C2E;
-  --color-surface-3: #3A3A3C;
+  /* Backgrounds (macOS Space Gray Graphite & Elevated Window Surfaces) */
+  --color-bg: #1E1E22;            /* macOS Dark Space Gray Base */
+  --color-bg-alt: #252529;        /* macOS System Gray Panel */
+  --color-surface: #2B2B30;       /* macOS Window Card Surface */
+  --color-surface-2: #34343A;     /* macOS Elevated Control Surface */
+  --color-surface-3: #3E3E45;     /* macOS High-Elevated Active Surface */
 
-  /* Text (Apple Signature Pro Typography) */
-  --color-text: #F5F5F7;        /* Apple Silver White */
-  --color-text-muted: #A1A1A6;  /* Apple Dark Slate Gray */
-  --color-text-subtle: #86868B; /* Apple Medium Dim Gray */
-  --color-text-faint: #6E6E73;  /* Apple Subtext Gray */
+  /* Text (macOS Crisp Neutral Typography) */
+  --color-text: #F3F3F5;          /* macOS Crisp Off-White */
+  --color-text-muted: #B0B0B5;    /* macOS Muted Gray */
+  --color-text-subtle: #86868B;   /* macOS Medium Dim Gray */
+  --color-text-faint: #65656A;    /* macOS Subtext Gray */
 
-  /* Borders (Apple Minimal Hairline Glass Lines) */
-  --color-border: rgba(255, 255, 255, 0.12);
-  --color-border-subtle: rgba(255, 255, 255, 0.06);
-  --color-border-hover: rgba(255, 255, 255, 0.25);
+  /* Borders (macOS Precise Panel Hairlines) */
+  --color-border: rgba(255, 255, 255, 0.14);
+  --color-border-subtle: rgba(255, 255, 255, 0.07);
+  --color-border-hover: rgba(255, 255, 255, 0.28);
 
-  /* Header & Navigation (Apple Frosted Glass) */
-  --navbar-bg: rgba(22, 22, 24, 0.84);
-  --glass-border: rgba(255, 255, 255, 0.1);
+  /* Header & Navigation (macOS Vibrancy Translucent Glass) */
+  --navbar-bg: rgba(30, 30, 34, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.12);
 
-  /* Shadows (Apple Smooth Ambient Glow) */
-  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.4);
-  --shadow-card-hover: 0 12px 36px rgba(0, 0, 0, 0.6), 0 0 24px rgba(41, 151, 255, 0.18);
+  /* Shadows (macOS Soft Panel Elevation & Ambient Blue Glow) */
+  --shadow-card: 0 4px 18px rgba(0, 0, 0, 0.35);
+  --shadow-card-hover: 0 12px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(10, 132, 255, 0.16);
 
   /* Scrollbar */
-  --scrollbar-track: #000000;
+  --scrollbar-track: #1E1E22;
 
-  /* Hero & Section Backgrounds */
-  --hero-bg: #000000;
-  --section-bg-1: #000000;
-  --section-bg-2: #161618;
-  --section-bg-3: #000000;
+  /* Hero & Section Backgrounds (macOS Space Gray Section Tones) */
+  --hero-bg: #1E1E22;
+  --section-bg-1: #1E1E22;
+  --section-bg-2: #252529;
+  --section-bg-3: #1E1E22;
 
   /* Cards & Surface Gradients */
-  --card-gradient: linear-gradient(180deg, #1C1C1E 0%, #161618 100%);
-  --card-alt-bg: #1C1C1E;
-  --partner-card-bg: #1C1C1E;
-  --footer-bg: #000000;
-  --footer-border: rgba(255, 255, 255, 0.1);
-  --contact-card-bg: #1C1C1E;
+  --card-gradient: linear-gradient(180deg, #2D2D32 0%, #252529 100%);
+  --card-alt-bg: #2B2B30;
+  --partner-card-bg: #2B2B30;
+  --footer-bg: #161619;
+  --footer-border: rgba(255, 255, 255, 0.12);
+  --contact-card-bg: #2B2B30;
 
-  /* Partner Category Badges (Apple Pro Neon Accents) */
+  /* Partner Category Badges (macOS System Accent Tokens) */
   --cat-blue: #64D2FF;
-  --cat-blue-bg: rgba(100, 210, 255, 0.12);
-  --cat-blue-border: rgba(100, 210, 255, 0.3);
+  --cat-blue-bg: rgba(100, 210, 255, 0.14);
+  --cat-blue-border: rgba(100, 210, 255, 0.35);
 
   --cat-green: #30D158;
-  --cat-green-bg: rgba(48, 209, 88, 0.12);
-  --cat-green-border: rgba(48, 209, 88, 0.3);
+  --cat-green-bg: rgba(48, 209, 88, 0.14);
+  --cat-green-border: rgba(48, 209, 88, 0.35);
 
   --cat-amber: #FF9F0A;
-  --cat-amber-bg: rgba(255, 159, 10, 0.12);
-  --cat-amber-border: rgba(255, 159, 10, 0.3);
+  --cat-amber-bg: rgba(255, 159, 10, 0.14);
+  --cat-amber-border: rgba(255, 159, 10, 0.35);
 }
 
 /* ============================================================
