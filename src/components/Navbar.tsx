@@ -78,12 +78,12 @@ export default function Navbar() {
               }}
             >
               <img
-                src="/kst-dark.png"
+                src="/karya1.0/kst-dark.png"
                 alt="Logo"
                 className="logo-img logo-dark-mode"
               />
               <img
-                src="/kst-light.png"
+                src="/karya1.0/kst-light.png"
                 alt="Logo"
                 className="logo-img logo-light-mode"
               />
