@@ -208,13 +208,13 @@ export default function ContactFooter() {
         >
           <div style={{ display: "flex", alignItems: "center" }}>
             <img
-              src="/kst-dark.png"
+              src="./kst-dark.png"
               alt="Logo"
               className="logo-img logo-dark-mode"
               style={{ height: "34px" }}
             />
             <img
-              src="/kst-light.png"
+              src="./kst-light.png"
               alt="Logo"
               className="logo-img logo-light-mode"
               style={{ height: "34px" }}

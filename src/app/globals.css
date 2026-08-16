@@ -366,9 +366,12 @@ html[data-theme="dark"] ::-webkit-scrollbar-thumb { background: #334155; }
    ============================================================ */
 .hero-grid {
   background-image:
-    linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
+    linear-gradient(rgba(148, 163, 184, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.04) 1px, transparent 1px);
+  background-size: 36px 36px;
+  background-repeat: repeat;
+  background-position: center top;
+  pointer-events: none;
 }
 
 /* ============================================================
