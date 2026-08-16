@@ -1,20 +1,22 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { MessageCircle, Menu, X, Sun, Moon } from "lucide-react";
+import { MessageCircle, Menu, X, Sun, Moon, Globe } from "lucide-react";
 import config from "@/data/config.json";
 import { useTheme } from "@/context/ThemeContext";
+import { useLocale } from "@/context/LocaleContext";
 
 const navLinks = [
-  { label: "Layanan", href: "#layanan" },
-  { label: "Produk", href: "#produk" },
-  { label: "Mitra", href: "#mitra" },
-  { label: "Klien", href: "#klien" },
-  { label: "Keunggulan", href: "#keunggulan" },
-  { label: "Kontak", href: "#kontak" },
+  { key: "nav_Layanan", href: "#layanan" },
+  { key: "nav_Produk", href: "#produk" },
+  { key: "nav_Mitra", href: "#mitra" },
+  { key: "nav_Klien", href: "#klien" },
+  { key: "nav_Keunggulan", href: "#keunggulan" },
+  { key: "nav_Kontak", href: "#kontak" },
 ];
 
 export default function Navbar() {
+  const { locale, toggleLocale, t } = useLocale();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
@@ -102,7 +104,7 @@ export default function Navbar() {
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <button
-                    id={`nav-${link.label.toLowerCase()}`}
+                    id={`nav-${link.key.toLowerCase()}`}
                     onClick={() => handleNavClick(link.href)}
                     style={{
                       background: "none",
@@ -125,14 +127,37 @@ export default function Navbar() {
                       (e.target as HTMLElement).style.background = "none";
                     }}
                   >
-                    {link.label}
+                    {t(link.key)}
                   </button>
                 </li>
               ))}
             </ul>
 
-            {/* Right side: Theme toggle + CTA + Hamburger */}
-            <div style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}>
+            {/* Right side: Language Switcher + Theme toggle + CTA + Hamburger */}
+            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+              {/* Language Switcher */}
+              <button
+                id="lang-toggle"
+                aria-label={`Switch to ${locale === "id" ? "English" : "Bahasa Indonesia"}`}
+                onClick={toggleLocale}
+                className="btn-theme"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.35rem",
+                  padding: "0 0.65rem",
+                  width: "auto",
+                  height: "38px",
+                  fontSize: "0.78rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.04em",
+                }}
+                title={`Switch language (${locale.toUpperCase()})`}
+              >
+                <Globe size={15} />
+                <span>{locale === "id" ? "EN" : "ID"}</span>
+              </button>
+
               {/* Theme Toggle */}
               <button
                 id="theme-toggle"
@@ -153,7 +178,7 @@ export default function Navbar() {
                 style={{ display: "none" }}
               >
                 <MessageCircle size={16} />
-                Konsultasi WA
+                {t('navbar_wa')}
               </a>
 
               {/* Mobile hamburger */}
@@ -205,7 +230,7 @@ export default function Navbar() {
           {navLinks.map((link) => (
             <button
               key={link.href}
-              id={`mobile-nav-${link.label.toLowerCase()}`}
+              id={`mobile-nav-${link.key.toLowerCase()}`}
               onClick={() => handleNavClick(link.href)}
               style={{
                 background: "none",
@@ -229,20 +254,44 @@ export default function Navbar() {
                 (e.target as HTMLElement).style.color = "var(--color-text)";
               }}
             >
-              {link.label}
+              {t(link.key)}
             </button>
           ))}
-          <div style={{ marginTop: "1rem" }}>
+
+          {/* Mobile Language Switcher */}
+          <div style={{ marginTop: "0.75rem" }}>
+            <button
+              id="mobile-lang-toggle"
+              onClick={toggleLocale}
+              className="btn-theme"
+              style={{
+                width: "100%",
+                height: "44px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "0.5rem",
+                fontSize: "0.9rem",
+                fontWeight: 600,
+                borderRadius: "0.75rem",
+              }}
+            >
+              <Globe size={18} />
+              <span>Bahasa: {locale === "id" ? "English (EN)" : "Bahasa Indonesia (ID)"}</span>
+            </button>
+          </div>
+
+          <div style={{ marginTop: "0.5rem" }}>
             <a
               id="mobile-wa-cta"
               href={waUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-wa"
-              style={{ width: "100%", justifyContent: "center", fontSize: "1rem", padding: "1rem" }}
+              style={{ width: "100%", justifyContent: "center", fontSize: "1rem", padding: "1rem", borderRadius: "0.75rem" }}
             >
               <MessageCircle size={20} />
-              Konsultasi via WhatsApp
+              {t('navbar_wa_mobile')}
             </a>
           </div>
         </div>
@@ -258,3 +307,4 @@ export default function Navbar() {
     </>
   );
 }
+

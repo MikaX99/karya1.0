@@ -1,73 +1,78 @@
-import { Network, Code2, ShieldAlert, ShoppingBag, CheckCircle2 } from "lucide-react";
+"use client";
 
-const services = [
-  {
-    id: "network-infrastructure",
-    icon: <Network size={24} strokeWidth={1.75} />,
-    title: "Network & Infrastructure",
-    description: "Desain strategis, implementasi, manajemen jaringan, solusi virtualisasi dan cloud untuk kontinuitas bisnis enterprise Anda.",
-    highlights: [
-      "Strategic Design, Planning & Deployment",
-      "Network & Infrastructure Management",
-      "Virtualization & Cloud Solutions",
-      "Security & Compliance Assurance",
-      "Business Continuity & Resilience",
-      "Operational Excellence & Optimization",
-    ],
-    color: "#1E87DA",
-  },
-  {
-    id: "web-application",
-    icon: <Code2 size={24} strokeWidth={1.75} />,
-    title: "Web Application",
-    description: "Pengembangan aplikasi web kustom dan sistem manajemen terintegrasi untuk mempercepat dan mengoptimalkan performa bisnis.",
-    highlights: [
-      "Website Company Profile",
-      "Web Application Development",
-      "Document Management System (DMS)",
-      "Warehouse Management System (WMS)",
-      "Form Survey & Management System",
-    ],
-    color: "#0284C7",
-  },
-  {
-    id: "disaster-recovery",
-    icon: <ShieldAlert size={24} strokeWidth={1.75} />,
-    title: "IT Disaster Recovery",
-    description: "Analisis risiko, strategi pemulihan bencana, backup data otomatis, dan recovery sistem untuk keamanan operasional tanpa cela.",
-    highlights: [
-      "Risk Identification & Impact Analysis",
-      "Comprehensive Recovery Plan",
-      "Automated Data Backup",
-      "Rapid System Recovery",
-      "Continuous Improvement & Audit",
-    ],
-    color: "#059669",
-  },
-  {
-    id: "procurement",
-    icon: <ShoppingBag size={24} strokeWidth={1.75} />,
-    title: "Procurement",
-    description: "Layanan pengadaan perangkat lunak dan keras IT, akuisisi perangkat jaringan, lisensi resmi, dan vendor management.",
-    highlights: [
-      "IT Hardware Procurement Solutions",
-      "Network Device Acquisition & Deployment",
-      "Software Licensing & Procurement",
-      "Cloud Services & Vendor Management",
-    ],
-    color: "#D97706",
-  },
-];
+import { Network, Code2, ShieldAlert, ShoppingBag, CheckCircle2 } from "lucide-react";
+import { useLocale } from "@/context/LocaleContext";
 
 export default function Services() {
+  const { t } = useLocale();
+
+  const services = [
+    {
+      id: "network-infrastructure",
+      icon: <Network size={24} strokeWidth={1.75} />,
+      titleKey: "service_net_title",
+      descKey: "service_net_desc",
+      highlights: [
+        "service_net_h1",
+        "service_net_h2",
+        "service_net_h3",
+        "service_net_h4",
+        "service_net_h5",
+        "service_net_h6",
+      ],
+      color: "#1E87DA",
+    },
+    {
+      id: "web-application",
+      icon: <Code2 size={24} strokeWidth={1.75} />,
+      titleKey: "service_web_title",
+      descKey: "service_web_desc",
+      highlights: [
+        "service_web_h1",
+        "service_web_h2",
+        "service_web_h3",
+        "service_web_h4",
+        "service_web_h5",
+      ],
+      color: "#0284C7",
+    },
+    {
+      id: "disaster-recovery",
+      icon: <ShieldAlert size={24} strokeWidth={1.75} />,
+      titleKey: "service_dr_title",
+      descKey: "service_dr_desc",
+      highlights: [
+        "service_dr_h1",
+        "service_dr_h2",
+        "service_dr_h3",
+        "service_dr_h4",
+        "service_dr_h5",
+      ],
+      color: "#059669",
+    },
+    {
+      id: "procurement",
+      icon: <ShoppingBag size={24} strokeWidth={1.75} />,
+      titleKey: "service_proc_title",
+      descKey: "service_proc_desc",
+      highlights: [
+        "service_proc_h1",
+        "service_proc_h2",
+        "service_proc_h3",
+        "service_proc_h4",
+      ],
+      color: "#D97706",
+    },
+  ];
+
   return (
     <section id="layanan" className="section" style={{ background: "var(--section-bg-1)" }}>
       <div className="container">
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-          <span className="section-badge">Layanan Kami</span>
+          <span className="section-badge">{t("services_badge")}</span>
           <h2 className="text-section-title" style={{ margin: "0 0 0.875rem 0", color: "var(--color-text)" }}>
-            Solusi & Layanan <span style={{ color: "var(--color-primary)" }}>IT Integrasi</span>
+            {t("services_title_prefix")} <span style={{ color: "var(--color-primary)" }}>{t("services_title_highlight")}</span>
           </h2>
           <p
             style={{
@@ -78,7 +83,7 @@ export default function Services() {
               fontSize: "clamp(0.9rem, 1.4vw, 1.025rem)",
             }}
           >
-            Layanan teknologi terintegrasi mencakup perencanaan infrastruktur, aplikasi web bisnis, pemulihan bencana IT, hingga pengadaan perangkat.
+            {t("services_subtitle")}
           </p>
         </div>
 
@@ -130,7 +135,7 @@ export default function Services() {
                   margin: "0 0 0.625rem 0",
                 }}
               >
-                {service.title}
+                {t(service.titleKey)}
               </h3>
 
               {/* Description */}
@@ -142,7 +147,7 @@ export default function Services() {
                   margin: "0 0 1.25rem 0",
                 }}
               >
-                {service.description}
+                {t(service.descKey)}
               </p>
 
               {/* Highlights Checklist */}
@@ -158,9 +163,9 @@ export default function Services() {
                   paddingTop: "1rem",
                 }}
               >
-                {service.highlights.map((h) => (
+                {service.highlights.map((hKey) => (
                   <li
-                    key={h}
+                    key={hKey}
                     style={{
                       display: "flex",
                       alignItems: "flex-start",
@@ -176,7 +181,7 @@ export default function Services() {
                       color={service.color}
                       style={{ marginTop: "2px", flexShrink: 0 }}
                     />
-                    <span>{h}</span>
+                    <span>{t(hKey)}</span>
                   </li>
                 ))}
               </ul>
@@ -187,3 +192,5 @@ export default function Services() {
     </section>
   );
 }
+
+

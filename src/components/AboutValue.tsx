@@ -1,49 +1,52 @@
 "use client";
 
 import { ShieldCheck, Truck, HeartHandshake } from "lucide-react";
-
-const values = [
-  {
-    id: "garansi-resmi",
-    icon: <ShieldCheck size={28} strokeWidth={1.75} />,
-    title: "Garansi Resmi Vendor",
-    description: "Setiap perangkat yang kami sediakan dilengkapi dengan garansi resmi produsen. Proteksi penuh mencakup penggantian suku cadang dan dukungan teknis resmi.",
-    stat: "3 Tahun",
-    statLabel: "Garansi Rata-rata",
-    color: "#059669",
-    features: ["Garansi Spareparts", "On-site Service", "NBD Response"],
-  },
-  {
-    id: "pengiriman-cepat",
-    icon: <Truck size={28} strokeWidth={1.75} />,
-    title: "Pengiriman Aman & Terjamin",
-    description: "Pengiriman ke seluruh jaringan operasional bisnis di Indonesia menggunakan kemasan khusus standar perangkat elektronik dan asuransi penuh.",
-    stat: "1-3 Hari",
-    statLabel: "Estimasi Pengiriman",
-    color: "#1E87DA",
-    features: ["Standard Packaging IT", "Asuransi Pengiriman", "Tracking Terintegrasi"],
-  },
-  {
-    id: "purnajual",
-    icon: <HeartHandshake size={28} strokeWidth={1.75} />,
-    title: "Dukungan Purnajual Terpercaya",
-    description: "Komitmen purnajual berkelanjutan melalui tim teknisi berpengalaman untuk membantu instalasi, konfigurasi, serta pemeliharaan berkala sistem Anda.",
-    stat: "24/7",
-    statLabel: "Helpdesk Support",
-    color: "#0284C7",
-    features: ["Technical Support", "Preventive Maintenance", "Konsultasi IT"],
-  },
-];
+import { useLocale } from "@/context/LocaleContext";
 
 export default function AboutValue() {
+  const { t } = useLocale();
+
+  const values = [
+    {
+      id: "garansi-resmi",
+      icon: <ShieldCheck size={28} strokeWidth={1.75} />,
+      titleKey: "val_1_title",
+      descKey: "val_1_desc",
+      stat: "3 Tahun",
+      statLabelKey: "val_1_stat_label",
+      color: "#059669",
+      features: ["val_1_f1", "val_1_f2", "val_1_f3"],
+    },
+    {
+      id: "pengiriman-cepat",
+      icon: <Truck size={28} strokeWidth={1.75} />,
+      titleKey: "val_2_title",
+      descKey: "val_2_desc",
+      stat: "1-3 Hari",
+      statLabelKey: "val_2_stat_label",
+      color: "#1E87DA",
+      features: ["val_2_f1", "val_2_f2", "val_2_f3"],
+    },
+    {
+      id: "purnajual",
+      icon: <HeartHandshake size={28} strokeWidth={1.75} />,
+      titleKey: "val_3_title",
+      descKey: "val_3_desc",
+      stat: "24/7",
+      statLabelKey: "val_3_stat_label",
+      color: "#0284C7",
+      features: ["val_3_f1", "val_3_f2", "val_3_f3"],
+    },
+  ];
+
   return (
     <section id="keunggulan" className="section" style={{ background: "var(--section-bg-1)" }}>
       <div className="container">
         {/* Section Header */}
         <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-          <span className="section-badge">Keunggulan</span>
+          <span className="section-badge">{t("value_badge")}</span>
           <h2 className="text-section-title" style={{ margin: "0 0 0.875rem 0", color: "var(--color-text)" }}>
-            Mengapa Memilih <span style={{ color: "var(--color-primary)" }}>KaryaSistem</span>
+            {t("value_title_prefix")} <span style={{ color: "var(--color-primary)" }}>{t("value_title_highlight")}</span>
           </h2>
           <p
             style={{
@@ -54,7 +57,7 @@ export default function AboutValue() {
               fontSize: "clamp(0.9rem, 1.4vw, 1.025rem)",
             }}
           >
-            Mitra integrasi teknologi terpercaya berorientasi pada keberlanjutan dan keandalan sistem bisnis Anda.
+            {t("value_subtitle")}
           </p>
         </div>
 
@@ -116,7 +119,7 @@ export default function AboutValue() {
                       letterSpacing: "0.05em",
                     }}
                   >
-                    {value.statLabel}
+                    {t(value.statLabelKey)}
                   </div>
                 </div>
               </div>
@@ -130,7 +133,7 @@ export default function AboutValue() {
                   margin: "0 0 0.75rem 0",
                 }}
               >
-                {value.title}
+                {t(value.titleKey)}
               </h3>
               <p
                 style={{
@@ -141,7 +144,7 @@ export default function AboutValue() {
                   flex: 1,
                 }}
               >
-                {value.description}
+                {t(value.descKey)}
               </p>
 
               {/* Feature Checklist */}
@@ -154,9 +157,9 @@ export default function AboutValue() {
                   paddingTop: "1rem",
                 }}
               >
-                {value.features.map((feature) => (
+                {value.features.map((featureKey) => (
                   <span
-                    key={feature}
+                    key={featureKey}
                     style={{
                       padding: "0.25rem 0.6rem",
                       background: "var(--color-surface-2)",
@@ -167,7 +170,7 @@ export default function AboutValue() {
                       color: "var(--color-text-muted)",
                     }}
                   >
-                    {feature}
+                    {t(featureKey)}
                   </span>
                 ))}
               </div>
@@ -178,3 +181,4 @@ export default function AboutValue() {
     </section>
   );
 }
+

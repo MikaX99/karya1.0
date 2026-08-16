@@ -2,8 +2,11 @@
 
 import { MapPin, Phone, Mail, Clock, MessageCircle, ExternalLink } from "lucide-react";
 import config from "@/data/config.json";
+import { useLocale } from "@/context/LocaleContext";
 
 export default function ContactFooter() {
+  const { t } = useLocale();
+
   const waUrl = `https://wa.me/${config.whatsapp.number}?text=${encodeURIComponent(
     config.whatsapp.defaultMessage
   )}`;
@@ -14,9 +17,9 @@ export default function ContactFooter() {
       <section id="kontak" className="section" style={{ background: "var(--section-bg-2)" }}>
         <div className="container">
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <span className="section-badge">Hubungi Kami</span>
+            <span className="section-badge">{t("contact_badge")}</span>
             <h2 className="text-section-title" style={{ margin: "0 0 0.875rem 0", color: "var(--color-text)" }}>
-              Konsultasikan <span style={{ color: "var(--color-primary)" }}>Kebutuhan IT Anda</span>
+              {t("contact_title_prefix")} <span style={{ color: "var(--color-primary)" }}>{t("contact_title_highlight")}</span>
             </h2>
             <p
               style={{
@@ -27,7 +30,7 @@ export default function ContactFooter() {
                 fontSize: "clamp(0.9rem, 1.4vw, 1.025rem)",
               }}
             >
-              Tim teknis dan sales profesional kami siap membantu memberikan analisis dan penawaran terbaik untuk operasional perusahaan Anda.
+              {t("contact_subtitle")}
             </p>
           </div>
 
@@ -45,25 +48,25 @@ export default function ContactFooter() {
               {[
                 {
                   icon: <MapPin size={18} color="var(--color-primary)" />,
-                  label: "Alamat Kantor",
+                  label: t("contact_addr_label"),
                   value: config.company.address,
                   id: "contact-address",
                 },
                 {
                   icon: <Phone size={18} color="var(--color-primary)" />,
-                  label: "Telepon / WhatsApp",
+                  label: t("contact_phone_label"),
                   value: config.company.phone,
                   id: "contact-phone",
                 },
                 {
                   icon: <Mail size={18} color="var(--color-primary)" />,
-                  label: "Email Resmi",
+                  label: t("contact_email_label"),
                   value: config.company.email,
                   id: "contact-email",
                 },
                 {
                   icon: <Clock size={18} color="var(--color-primary)" />,
-                  label: "Jam Operasional",
+                  label: t("contact_hours_label"),
                   value: config.company.hours,
                   id: "contact-hours",
                 },
@@ -131,7 +134,7 @@ export default function ContactFooter() {
                 }}
               >
                 <MessageCircle size={18} />
-                Hubungi Tim Sales via WhatsApp
+                {t("contact_sales_wa")}
               </a>
             </div>
 
@@ -180,7 +183,7 @@ export default function ContactFooter() {
                 }}
               >
                 <ExternalLink size={12} />
-                Buka Google Maps
+                {t("contact_open_maps")}
               </a>
             </div>
           </div>
@@ -221,13 +224,19 @@ export default function ContactFooter() {
             />
           </div>
           <div style={{ fontSize: "0.78rem", color: "var(--color-text-faint)", textAlign: "center" }}>
-            © {new Date().getFullYear()} KaryaSistem. All rights reserved. System Integrator & Solusi IT Enterprise.
+            © {new Date().getFullYear()} KaryaSistem. {t("footer_rights")}
           </div>
           <div style={{ display: "flex", gap: "1.25rem" }}>
-            {["Layanan", "Produk", "Klien", "Mitra", "Kontak"].map((item) => (
+            {[
+              { key: "nav_Layanan", href: "#layanan" },
+              { key: "nav_Produk", href: "#produk" },
+              { key: "nav_Klien", href: "#klien" },
+              { key: "nav_Mitra", href: "#mitra" },
+              { key: "nav_Kontak", href: "#kontak" },
+            ].map((item) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+                key={item.key}
+                href={item.href}
                 style={{
                   fontSize: "0.78rem",
                   color: "var(--color-text-muted)",
@@ -238,7 +247,7 @@ export default function ContactFooter() {
                 onMouseEnter={(e) => ((e.target as HTMLElement).style.color = "var(--color-primary)")}
                 onMouseLeave={(e) => ((e.target as HTMLElement).style.color = "var(--color-text-muted)")}
               >
-                {item}
+                {t(item.key)}
               </a>
             ))}
           </div>
@@ -251,3 +260,4 @@ export default function ContactFooter() {
     </>
   );
 }
+

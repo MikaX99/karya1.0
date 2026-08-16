@@ -2,8 +2,14 @@ import type { Metadata } from "next";
 import "./globals.css";
 import config from "@/data/config.json";
 import { ThemeProvider } from "@/context/ThemeContext";
+import { LocaleProvider } from "@/context/LocaleContext";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NODE_ENV === "production"
+      ? "https://mikax99.github.io/karya1.0"
+      : "http://localhost:3000"
+  ),
   title: config.seo.title,
   description: config.seo.description,
   keywords: config.seo.keywords,
@@ -51,7 +57,7 @@ export default function RootLayout({
         <meta name="geo.country" content="Indonesia" />
       </head>
       <body className="antialiased">
-        <ThemeProvider>{children}</ThemeProvider>
+        <LocaleProvider><ThemeProvider>{children}</ThemeProvider></LocaleProvider>
       </body>
     </html>
   );

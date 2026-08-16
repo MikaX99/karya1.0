@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import { MessageCircle, Tag, Cpu } from "lucide-react";
 import config from "@/data/config.json";
+import { useLocale } from "@/context/LocaleContext";
 
 interface Product {
   id: string;
@@ -143,6 +146,8 @@ const brandDetails: Record<string, { color: string; label: string }> = {
 };
 
 export default function ProductCard({ product }: { product: Product }) {
+  const { t } = useLocale();
+
   const waUrl = `https://wa.me/${config.whatsapp.number}?text=${encodeURIComponent(
     product.waTemplate
   )}`;
@@ -302,7 +307,7 @@ export default function ProductCard({ product }: { product: Product }) {
                 letterSpacing: "0.05em",
               }}
             >
-              Harga
+              {t("product_price_label")}
             </div>
             <div
               style={{
@@ -328,10 +333,11 @@ export default function ProductCard({ product }: { product: Product }) {
             }}
           >
             <MessageCircle size={13} />
-            Minta Penawaran
+            {t("product_quote_btn")}
           </a>
         </div>
       </div>
     </div>
   );
 }
+

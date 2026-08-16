@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
-const isProd = process.env.NODE_ENV === "production";
-const basePath = isProd ? "/karya1.0" : "";
+const isGithubActions = process.env.GITHUB_ACTIONS === "true";
+const basePath = isGithubActions ? "/karya1.0" : (process.env.BASE_PATH || "");
 
 const nextConfig: NextConfig = {
   output: "export",

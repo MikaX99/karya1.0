@@ -3,6 +3,7 @@
 import { useState } from "react";
 import clientsData from "@/data/clients.json";
 import { Users, Building2, MapPin, RefreshCw, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { useLocale } from "@/context/LocaleContext";
 
 const industryColors: Record<string, string> = {
   "Perbankan & Keuangan": "#1E87DA",
@@ -18,6 +19,7 @@ const industryColors: Record<string, string> = {
 const testimonials = clientsData.filter((c) => c.testimonial);
 
 export default function Clients() {
+  const { t } = useLocale();
   const [activeTestimonial, setActiveTestimonial] = useState(0);
 
   const prev = () =>
@@ -32,9 +34,9 @@ export default function Clients() {
       <div className="container">
         {/* Section Header */}
         <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-          <span className="section-badge">Client Area</span>
+          <span className="section-badge">{t("clients_badge")}</span>
           <h2 className="text-section-title" style={{ margin: "0 0 0.875rem 0", color: "var(--color-text)" }}>
-            Dipercaya oleh <span style={{ color: "var(--color-primary)" }}>Perusahaan Enterprise</span>
+            {t("clients_title_prefix")} <span style={{ color: "var(--color-primary)" }}>{t("clients_title_highlight")}</span>
           </h2>
           <p
             style={{
@@ -45,7 +47,7 @@ export default function Clients() {
               fontSize: "clamp(0.9rem, 1.4vw, 1.025rem)",
             }}
           >
-            KaryaSistem menjadi mitra integrasi teknologi bagi berbagai sektor industri di seluruh Indonesia.
+            {t("clients_subtitle")}
           </p>
         </div>
 
@@ -63,10 +65,10 @@ export default function Clients() {
           }}
         >
           {[
-            { icon: <Users size={18} color="var(--color-primary)" />, number: "500+", label: "Klien Enterprise" },
-            { icon: <Building2 size={18} color="var(--color-primary)" />, number: "12+", label: "Sektor Industri" },
-            { icon: <MapPin size={18} color="var(--color-primary)" />, number: "34", label: "Kota di Indonesia" },
-            { icon: <RefreshCw size={18} color="var(--color-primary)" />, number: "87%", label: "Tingkat Repeat Order" },
+            { icon: <Users size={18} color="var(--color-primary)" />, number: "500+", label: t("client_stat_1") },
+            { icon: <Building2 size={18} color="var(--color-primary)" />, number: "12+", label: t("client_stat_2") },
+            { icon: <MapPin size={18} color="var(--color-primary)" />, number: "34", label: t("client_stat_3") },
+            { icon: <RefreshCw size={18} color="var(--color-primary)" />, number: "87%", label: t("client_stat_4") },
           ].map((stat, idx, arr) => (
             <div
               key={stat.label}
@@ -157,7 +159,7 @@ export default function Clients() {
 
                 {/* Since */}
                 <div style={{ fontSize: "0.7rem", color: "var(--color-text-faint)" }}>
-                  Klien sejak {client.since}
+                  {t("client_since")} {client.since}
                 </div>
               </div>
             );
@@ -260,3 +262,4 @@ export default function Clients() {
     </section>
   );
 }
+

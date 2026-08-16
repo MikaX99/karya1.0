@@ -2,8 +2,11 @@
 
 import { MessageCircle, ChevronDown, ShieldCheck, Truck, Award } from "lucide-react";
 import config from "@/data/config.json";
+import { useLocale } from "@/context/LocaleContext";
 
 export default function Hero() {
+  const { t } = useLocale();
+
   const waUrl = `https://wa.me/${config.whatsapp.number}?text=${encodeURIComponent(
     config.whatsapp.defaultMessage
   )}`;
@@ -46,7 +49,7 @@ export default function Hero() {
       >
         {/* Company Category Badge */}
         <div style={{ marginBottom: "1.25rem" }}>
-          <span className="section-badge">IT System Integrator & Solutions Provider</span>
+          <span className="section-badge">{t("hero_badge")}</span>
         </div>
 
         {/* Corporate Headline */}
@@ -60,8 +63,9 @@ export default function Hero() {
             color: "var(--color-text)",
           }}
         >
-          Solusi & Integrasi IT untuk{" "}
-          <span style={{ color: "var(--color-primary)" }}>Operasional Bisnis</span> Anda
+          {t("hero_title_prefix")}{" "}
+          <span style={{ color: "var(--color-primary)" }}>{t("hero_title_highlight")}</span>{" "}
+          {t("hero_title_suffix")}
         </h1>
 
         {/* Business Subheadline */}
@@ -75,7 +79,7 @@ export default function Hero() {
             fontWeight: 400,
           }}
         >
-          <strong style={{ color: "var(--color-text)", fontWeight: 600 }}>KaryaSistem</strong> membantu perusahaan membangun, mengelola, dan mengintegrasikan infrastruktur jaringan, perangkat enterprise, keamanan IT, serta aplikasi bisnis terpadu.
+          <strong style={{ color: "var(--color-text)", fontWeight: 600 }}>KaryaSistem</strong> {t("hero_desc")}
         </p>
 
         {/* Action Buttons (Clear Visual Hierarchy) */}
@@ -96,14 +100,14 @@ export default function Hero() {
             className="btn-primary"
           >
             <MessageCircle size={18} />
-            Konsultasi Gratis
+            {t("cta_primary")}
           </a>
           <button
             id="hero-scroll-services"
             onClick={handleScrollServices}
             className="btn-secondary"
           >
-            Lihat Layanan
+            {t("cta_secondary")}
             <ChevronDown size={16} />
           </button>
         </div>
@@ -125,9 +129,9 @@ export default function Hero() {
           }}
         >
           {[
-            { icon: <ShieldCheck size={16} color="var(--color-primary)" />, text: "Garansi Resmi Vendor" },
-            { icon: <Truck size={16} color="var(--color-primary)" />, text: "Pengiriman Seluruh Indonesia" },
-            { icon: <Award size={16} color="var(--color-primary)" />, text: "Dukungan Purnajual Terjamin" },
+            { icon: <ShieldCheck size={16} color="var(--color-primary)" />, text: t("trust_1") },
+            { icon: <Truck size={16} color="var(--color-primary)" />, text: t("trust_2") },
+            { icon: <Award size={16} color="var(--color-primary)" />, text: t("trust_3") },
           ].map((item) => (
             <div
               key={item.text}
@@ -157,9 +161,9 @@ export default function Hero() {
           }}
         >
           {[
-            { number: "10+", label: "Tahun Pengalaman" },
-            { number: "36+", label: "Brand Vendor Partner" },
-            { number: "99%", label: "Tingkat Kepuasan Klien" },
+            { number: "10+", label: t("stat_1") },
+            { number: "36+", label: t("stat_2") },
+            { number: "99%", label: t("stat_3") },
           ].map((stat, idx, arr) => (
             <div
               key={stat.label}

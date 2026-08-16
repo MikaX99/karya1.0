@@ -3,25 +3,33 @@
 import { useState } from "react";
 import productsData from "@/data/products.json";
 import ProductCard from "./ProductCard";
+import { useLocale } from "@/context/LocaleContext";
 
-const ALL = "Semua";
-const categories = [ALL, "Server & Storage", "Networking", "Laptop & PC", "Lisensi Software"];
+const categoriesConfig = [
+  { key: "cat_all", value: "Semua" },
+  { key: "cat_server", value: "Server & Storage" },
+  { key: "cat_network", value: "Networking" },
+  { key: "cat_laptop", value: "Laptop & PC" },
+  { key: "cat_license", value: "Lisensi Software" },
+];
 
 export default function ProductCatalog() {
-  const [activeCategory, setActiveCategory] = useState(ALL);
+  const { t } = useLocale();
+  const [activeCategoryVal, setActiveCategoryVal] = useState("Semua");
+
   const filtered =
-    activeCategory === ALL
+    activeCategoryVal === "Semua"
       ? productsData
-      : productsData.filter((p) => p.category === activeCategory);
+      : productsData.filter((p) => p.category === activeCategoryVal);
 
   return (
     <section id="produk" className="section" style={{ background: "var(--section-bg-2)" }}>
       <div className="container">
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
-          <span className="section-badge">Katalog Perangkat</span>
+          <span className="section-badge">{t("catalog_badge")}</span>
           <h2 className="text-section-title" style={{ margin: "0 0 0.875rem 0", color: "var(--color-text)" }}>
-            Perangkat & Hardware <span style={{ color: "var(--color-primary)" }}>Enterprise</span>
+            {t("catalog_title_prefix")} <span style={{ color: "var(--color-primary)" }}>{t("catalog_title_highlight")}</span>
           </h2>
           <p
             style={{
@@ -32,7 +40,7 @@ export default function ProductCatalog() {
               fontSize: "clamp(0.9rem, 1.4vw, 1.025rem)",
             }}
           >
-            Penyediaan server, jaringan, laptop bisnis, dan lisensi software bergaransi resmi vendor.
+            {t("catalog_subtitle")}
           </p>
         </div>
 
@@ -46,15 +54,15 @@ export default function ProductCatalog() {
             marginBottom: "2rem",
           }}
         >
-          {categories.map((cat) => (
+          {categoriesConfig.map((cat) => (
             <button
-              key={cat}
-              id={`filter-${cat.toLowerCase().replace(/\s+/g, "-").replace(/&/g, "and")}`}
-              className={`filter-tab ${activeCategory === cat ? "active" : ""}`}
-              onClick={() => setActiveCategory(cat)}
-              aria-pressed={activeCategory === cat}
+              key={cat.key}
+              id={`filter-${cat.value.toLowerCase().replace(/\s+/g, "-").replace(/&/g, "and")}`}
+              className={`filter-tab ${activeCategoryVal === cat.value ? "active" : ""}`}
+              onClick={() => setActiveCategoryVal(cat.value)}
+              aria-pressed={activeCategoryVal === cat.value}
             >
-              {cat}
+              {t(cat.key)}
             </button>
           ))}
         </div>
@@ -68,9 +76,15 @@ export default function ProductCatalog() {
             color: "var(--color-text-faint)",
           }}
         >
-          Menampilkan <span style={{ color: "var(--color-text)", fontWeight: 600 }}>{filtered.length}</span> item
-          {activeCategory !== ALL && (
-            <span> dalam kategori <span style={{ color: "var(--color-primary)", fontWeight: 600 }}>{activeCategory}</span></span>
+          {t("catalog_showing")}{" "}
+          <span style={{ color: "var(--color-text)", fontWeight: 600 }}>{filtered.length}</span>{" "}
+          {t("catalog_item")}
+          {activeCategoryVal !== "Semua" && (
+            <span>{" "}{t("catalog_in_cat")}{" "}
+              <span style={{ color: "var(--color-primary)", fontWeight: 600 }}>
+                {t(categoriesConfig.find((c) => c.value === activeCategoryVal)?.key || "")}
+              </span>
+            </span>
           )}
         </div>
 
@@ -95,10 +109,11 @@ export default function ProductCatalog() {
               color: "var(--color-text-faint)",
             }}
           >
-            Tidak ada produk dalam kategori ini.
+            {t("catalog_empty")}
           </div>
         )}
       </div>
     </section>
   );
 }
+

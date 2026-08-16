@@ -3,8 +3,10 @@
 import { useState } from "react";
 import { MessageCircle } from "lucide-react";
 import config from "@/data/config.json";
+import { useLocale } from "@/context/LocaleContext";
 
 export default function FloatingWA() {
+  const { t } = useLocale();
   const [tooltip, setTooltip] = useState(false);
 
   const waUrl = `https://wa.me/${config.whatsapp.number}?text=${encodeURIComponent(
@@ -36,10 +38,10 @@ export default function FloatingWA() {
               marginBottom: "0.2rem",
             }}
           >
-            Konsultasi IT via WA
+            {t("floating_wa_title")}
           </div>
           <div style={{ fontSize: "0.75rem", color: "var(--color-text-muted)", lineHeight: 1.4 }}>
-            Tim sales siap membantu kebutuhan perusahaan Anda
+            {t("floating_wa_desc")}
           </div>
         </div>
       )}
@@ -60,3 +62,4 @@ export default function FloatingWA() {
     </div>
   );
 }
+
