@@ -850,15 +850,20 @@ html[data-theme="dark"] .futuristic-tab-item.active {
 .product-badge {
   display: inline-flex;
   align-items: center;
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.68rem;
+  justify-content: center;
+  text-align: center;
+  padding: 0.25rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   background: var(--color-surface-2);
   border: 1px solid var(--color-border);
   color: var(--color-text-muted);
+  white-space: nowrap;
+  line-height: 1;
+  flex-shrink: 0;
 }
 
 /* ============================================================

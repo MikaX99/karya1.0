@@ -205,7 +205,7 @@ export default function ProductCard({ product }: { product: Product }) {
         }}
       >
         {/* Brand Pill */}
-        <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", minWidth: 0, flexShrink: 1 }}>
           <div
             style={{
               width: "32px",
@@ -228,6 +228,9 @@ export default function ProductCard({ product }: { product: Product }) {
               fontWeight: 700,
               color: brandInfo.color,
               letterSpacing: "0.01em",
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
             }}
           >
             {brandInfo.label}
@@ -239,9 +242,14 @@ export default function ProductCard({ product }: { product: Product }) {
           className="product-badge"
           style={{
             fontSize: "0.65rem",
-            padding: "0.2rem 0.55rem",
+            padding: "0.25rem 0.6rem",
             borderRadius: "9999px",
-            lineHeight: 1.2,
+            lineHeight: 1,
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            textAlign: "center",
+            flexShrink: 0,
           }}
         >
           {product.badge}
