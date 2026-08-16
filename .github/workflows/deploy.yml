@@ -27,14 +27,14 @@ jobs:
           node-version: "20"
           cache: npm
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
       - name: Install dependencies
         run: npm ci
 
-      - name: Build site
-        run: npx next build --webpack
+      - name: Build static site
+        run: npm run build
+        env:
+          GITHUB_ACTIONS: "true"
+          NEXT_PUBLIC_BASE_PATH: "/karya1.0"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
