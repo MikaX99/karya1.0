@@ -252,6 +252,7 @@ export default function ContactFooter() {
         >
           {/* Main Footer Row: Brand Logo, Navigation Links & Social Icons */}
           <div
+            className="footer-main-row"
             style={{
               display: "flex",
               alignItems: "center",
@@ -277,7 +278,7 @@ export default function ContactFooter() {
             </div>
 
             {/* Navigation Links */}
-            <div style={{ display: "flex", gap: "1.25rem", flexWrap: "wrap" }}>
+            <div className="footer-nav-links" style={{ display: "flex", gap: "1.25rem", flexWrap: "wrap" }}>
               {[
                 { key: "nav_Layanan", href: "#layanan" },
                 { key: "nav_Produk", href: "#produk" },
@@ -304,7 +305,7 @@ export default function ContactFooter() {
             </div>
 
             {/* Social Media Links (FB, TikTok, IG, LinkedIn) */}
-            <div style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}>
+            <div className="footer-social-links" style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}>
               {socialLinks.map((social) => (
                 <a
                   key={social.name}
@@ -349,6 +350,7 @@ export default function ContactFooter() {
 
           {/* Bottom Divider & Copyright */}
           <div
+            className="footer-bottom-row"
             style={{
               borderTop: "1px solid var(--color-border-subtle)",
               paddingTop: "1.25rem",
@@ -370,7 +372,29 @@ export default function ContactFooter() {
       </footer>
 
       <style>{`
-        @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr !important; } }
+        @media (max-width: 768px) {
+          .contact-grid { grid-template-columns: 1fr !important; }
+          .footer-main-row {
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
+            gap: 1.25rem !important;
+          }
+          .footer-nav-links {
+            justify-content: center !important;
+            flex-wrap: wrap !important;
+            gap: 0.75rem 1.25rem !important;
+          }
+          .footer-social-links {
+            justify-content: center !important;
+          }
+          .footer-bottom-row {
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
+            gap: 0.5rem !important;
+          }
+        }
       `}</style>
     </>
   );
