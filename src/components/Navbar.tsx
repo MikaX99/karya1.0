@@ -145,52 +145,42 @@ export default function Navbar() {
               ))}
             </ul>
 
-            {/* Right side: Language Switcher + Theme toggle + CTA + Hamburger */}
-            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-              {/* Language Switcher */}
-              <button
-                id="lang-toggle"
-                aria-label={`Switch to ${locale === "id" ? "English" : "Bahasa Indonesia"}`}
-                onClick={toggleLocale}
-                className="btn-theme"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.35rem",
-                  padding: "0 0.65rem",
-                  width: "auto",
-                  height: "38px",
-                  fontSize: "0.78rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.04em",
-                }}
-                title={`Switch language (${locale.toUpperCase()})`}
-              >
-                <Globe size={15} />
-                <span>{locale === "id" ? "EN" : "ID"}</span>
-              </button>
+            {/* Right side: 2 Distinct Capsule Pills (Utility Capsule + WhatsApp Capsule) */}
+            <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+              {/* CAPSULE 1: Utility Capsule (Language Switcher + Darkmode Toggle) */}
+              <div className="nav-capsule-utility">
+                <button
+                  id="lang-toggle"
+                  aria-label={`Switch to ${locale === "id" ? "English" : "Bahasa Indonesia"}`}
+                  onClick={toggleLocale}
+                  className="nav-capsule-item"
+                  title={`Switch language (${locale.toUpperCase()})`}
+                >
+                  <Globe size={14} />
+                  <span>{locale === "id" ? "EN" : "ID"}</span>
+                </button>
+                <div className="nav-capsule-divider" />
+                <button
+                  id="theme-toggle"
+                  aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+                  onClick={toggleTheme}
+                  className="nav-capsule-item nav-capsule-icon-only"
+                  title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+                >
+                  {theme === "dark" ? <Sun size={15} /> : <Moon size={15} />}
+                </button>
+              </div>
 
-              {/* Theme Toggle */}
-              <button
-                id="theme-toggle"
-                aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-                onClick={toggleTheme}
-                className="btn-theme"
-              >
-                {theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
-              </button>
-
-              {/* Desktop WA CTA */}
+              {/* CAPSULE 2: WhatsApp Chat Pill Capsule */}
               <a
                 id="navbar-wa-cta"
                 href={waUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-wa"
-                style={{ display: "none" }}
+                className="nav-capsule-wa nav-capsule-wa-desktop"
               >
                 <MessageCircle size={16} />
-                {t('navbar_wa')}
+                <span>{t('navbar_wa')}</span>
               </a>
 
               {/* Mobile hamburger */}
