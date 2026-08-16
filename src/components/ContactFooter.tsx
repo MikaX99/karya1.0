@@ -81,173 +81,112 @@ export default function ContactFooter() {
             style={{
               display: "grid",
               gridTemplateColumns: "1fr 1fr",
-              gap: "1.75rem",
+              gap: "2rem",
               alignItems: "stretch",
               marginBottom: "2rem",
             }}
             className="contact-grid"
           >
-            {/* Left Column: Glass Futuristic Contact Command Hub */}
+            {/* Left Column: Ultra-Minimalist Contact Details */}
             <div
-              className="glass-card"
               style={{
-                padding: "1.75rem",
-                borderRadius: "16px",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
-                background: "var(--card-gradient)",
-                border: "1px solid var(--color-border)",
-                boxShadow: "0 10px 30px rgba(0,0,0,0.06)",
               }}
             >
-              <div>
-                {/* Header Status Bar inside Card */}
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    marginBottom: "1.25rem",
-                    paddingBottom: "0.875rem",
-                    borderBottom: "1px solid var(--color-border)",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontSize: "0.75rem",
-                      fontWeight: 700,
-                      letterSpacing: "0.12em",
-                      color: "var(--color-primary)",
-                      textTransform: "uppercase",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "0.4rem",
-                      fontFamily: "var(--font-mono, monospace)",
-                    }}
-                  >
-                    <span className="live-pulse"></span> SYSTEM HQ &amp; CONTACT
-                  </span>
-                  <span
-                    style={{
-                      fontSize: "0.72rem",
-                      color: "var(--color-text-subtle)",
-                      fontWeight: 600,
-                      fontFamily: "var(--font-mono, monospace)",
-                    }}
-                  >
-                    FAST RESPONSE &lt; 15m
-                  </span>
-                </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+                {[
+                  {
+                    icon: <MapPin size={20} color="var(--color-primary)" />,
+                    label: t("contact_addr_label"),
+                    value: config.company.address,
+                    href: config.maps.googleMapsUrl,
+                    id: "contact-address",
+                  },
+                  {
+                    icon: <Phone size={20} color="var(--color-primary)" />,
+                    label: t("contact_phone_label"),
+                    value: config.company.phone,
+                    href: waUrl,
+                    id: "contact-phone",
+                  },
+                  {
+                    icon: <Mail size={20} color="var(--color-primary)" />,
+                    label: t("contact_email_label"),
+                    value: config.company.email,
+                    href: `mailto:${config.company.email}`,
+                    id: "contact-email",
+                  },
+                  {
+                    icon: <Clock size={20} color="var(--color-primary)" />,
+                    label: t("contact_hours_label"),
+                    value: config.company.hours,
+                    href: null,
+                    id: "contact-hours",
+                  },
+                ].map((item, idx, arr) => {
+                  const ContentWrapper = item.href ? "a" : "div";
+                  const wrapperProps = item.href
+                    ? {
+                        href: item.href,
+                        target: "_blank",
+                        rel: "noopener noreferrer",
+                        style: { textDecoration: "none", color: "inherit" },
+                      }
+                    : {};
 
-                {/* 4 Interactive Contact Item Rows */}
-                <div style={{ display: "flex", flexDirection: "column", gap: "0.875rem" }}>
-                  {[
-                    {
-                      icon: <MapPin size={18} color="var(--color-primary)" />,
-                      label: t("contact_addr_label"),
-                      value: config.company.address,
-                      href: config.maps.googleMapsUrl,
-                      target: "_blank",
-                      id: "contact-address",
-                    },
-                    {
-                      icon: <Phone size={18} color="var(--color-primary)" />,
-                      label: t("contact_phone_label"),
-                      value: config.company.phone,
-                      href: waUrl,
-                      target: "_blank",
-                      id: "contact-phone",
-                    },
-                    {
-                      icon: <Mail size={18} color="var(--color-primary)" />,
-                      label: t("contact_email_label"),
-                      value: config.company.email,
-                      href: `mailto:${config.company.email}`,
-                      target: "_self",
-                      id: "contact-email",
-                    },
-                    {
-                      icon: <Clock size={18} color="var(--color-primary)" />,
-                      label: t("contact_hours_label"),
-                      value: config.company.hours,
-                      href: null,
-                      target: "_self",
-                      id: "contact-hours",
-                    },
-                  ].map((item) => {
-                    const ContentWrapper = item.href ? "a" : "div";
-                    const wrapperProps = item.href
-                      ? {
-                          href: item.href,
-                          target: item.target,
-                          rel: "noopener noreferrer",
-                          style: { textDecoration: "none", color: "inherit" },
-                        }
-                      : {};
-
-                    return (
-                      <ContentWrapper key={item.id} id={item.id} {...wrapperProps}>
+                  return (
+                    <ContentWrapper key={item.id} id={item.id} {...wrapperProps}>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "flex-start",
+                          gap: "1.25rem",
+                          paddingBottom: idx < arr.length - 1 ? "1.25rem" : "0",
+                          borderBottom: idx < arr.length - 1 ? "1px solid var(--color-border-subtle)" : "none",
+                          transition: "opacity 0.2s ease",
+                        }}
+                      >
                         <div
                           style={{
                             display: "flex",
-                            gap: "1rem",
                             alignItems: "center",
-                            padding: "0.875rem 1.15rem",
-                            background: "var(--color-surface-2)",
+                            justifyContent: "center",
+                            width: "40px",
+                            height: "40px",
+                            borderRadius: "10px",
+                            background: "var(--color-surface)",
                             border: "1px solid var(--color-border)",
-                            borderRadius: "12px",
-                            transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
-                            cursor: item.href ? "pointer" : "default",
+                            flexShrink: 0,
                           }}
-                          className="contact-item-row"
                         >
+                          {item.icon}
+                        </div>
+                        <div style={{ flexGrow: 1 }}>
                           <div
                             style={{
-                              width: "38px",
-                              height: "38px",
-                              borderRadius: "10px",
-                              background: "var(--color-surface)",
-                              border: "1px solid var(--color-border)",
-                              display: "flex",
-                              alignItems: "center",
-                              justifyContent: "center",
-                              flexShrink: 0,
-                              boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+                              fontSize: "0.72rem",
+                              fontWeight: 700,
+                              textTransform: "uppercase",
+                              letterSpacing: "0.08em",
+                              color: "var(--color-text-faint)",
+                              marginBottom: "0.25rem",
                             }}
                           >
-                            {item.icon}
+                            {item.label}
                           </div>
-                          <div style={{ flexGrow: 1 }}>
-                            <div
-                              style={{
-                                fontSize: "0.68rem",
-                                color: "var(--color-text-faint)",
-                                fontWeight: 700,
-                                textTransform: "uppercase",
-                                letterSpacing: "0.06em",
-                                marginBottom: "0.15rem",
-                              }}
-                            >
-                              {item.label}
-                            </div>
-                            <div style={{ fontSize: "0.875rem", color: "var(--color-text)", fontWeight: 600 }}>
-                              {item.value}
-                            </div>
+                          <div style={{ fontSize: "0.95rem", color: "var(--color-text)", fontWeight: 600, lineHeight: 1.4 }}>
+                            {item.value}
                           </div>
-                          {item.href && (
-                            <div style={{ color: "var(--color-text-subtle)", opacity: 0.6, fontSize: "0.75rem" }}>
-                              ↗
-                            </div>
-                          )}
                         </div>
-                      </ContentWrapper>
-                    );
-                  })}
-                </div>
+                      </div>
+                    </ContentWrapper>
+                  );
+                })}
               </div>
 
-              {/* Bottom WhatsApp Capsule CTA */}
+              {/* WhatsApp CTA Button */}
               <a
                 id="contact-wa-btn"
                 href={waUrl}
@@ -260,7 +199,7 @@ export default function ContactFooter() {
                   padding: "0.875rem 1.5rem",
                   fontSize: "0.925rem",
                   borderRadius: "9999px",
-                  marginTop: "1.25rem",
+                  marginTop: "1.5rem",
                   width: "100%",
                 }}
               >
@@ -269,56 +208,25 @@ export default function ContactFooter() {
               </a>
             </div>
 
-            {/* Right Column: Futuristic Map Viewport Card */}
+            {/* Right Column: Clean Pure Map Viewport */}
             <div
-              className="glass-card"
               style={{
-                borderRadius: "16px",
+                borderRadius: "12px",
                 overflow: "hidden",
                 border: "1px solid var(--color-border)",
                 position: "relative",
                 background: "var(--color-surface-2)",
-                minHeight: "440px",
+                minHeight: "380px",
                 display: "flex",
                 flexDirection: "column",
               }}
             >
-              {/* Top Floating Header Banner on Map */}
-              <div
-                style={{
-                  position: "absolute",
-                  top: "14px",
-                  left: "14px",
-                  right: "14px",
-                  zIndex: 5,
-                  padding: "0.6rem 1.15rem",
-                  background: "var(--navbar-bg)",
-                  backdropFilter: "blur(16px)",
-                  WebkitBackdropFilter: "blur(16px)",
-                  border: "1px solid var(--glass-border)",
-                  borderRadius: "9999px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  boxShadow: "0 6px 20px rgba(0,0,0,0.08)",
-                }}
-              >
-                <div style={{ fontSize: "0.78rem", fontWeight: 700, color: "var(--color-text)", display: "flex", alignItems: "center", gap: "0.45rem" }}>
-                  <MapPin size={15} color="var(--color-primary)" />
-                  <span>PT. Karya Sistem Teknologi — HQ</span>
-                </div>
-                <span style={{ fontSize: "0.68rem", fontWeight: 700, color: "#10B981", letterSpacing: "0.04em", fontFamily: "var(--font-mono, monospace)" }}>
-                  ● SATELLITE HQ
-                </span>
-              </div>
-
-              {/* Google Maps Embed */}
               <iframe
                 id="google-maps-embed"
                 src={config.maps.embedUrl}
                 width="100%"
                 height="100%"
-                style={{ border: 0, display: "block", minHeight: "440px", flexGrow: 1 }}
+                style={{ border: 0, display: "block", minHeight: "380px", flexGrow: 1 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -334,27 +242,26 @@ export default function ContactFooter() {
                 rel="noopener noreferrer"
                 style={{
                   position: "absolute",
-                  bottom: "14px",
-                  right: "14px",
+                  bottom: "12px",
+                  right: "12px",
                   zIndex: 5,
                   display: "flex",
                   alignItems: "center",
                   gap: "0.4rem",
-                  padding: "0.5rem 1rem",
+                  padding: "0.45rem 0.9rem",
                   background: "var(--navbar-bg)",
                   backdropFilter: "blur(16px)",
                   WebkitBackdropFilter: "blur(16px)",
                   border: "1px solid var(--glass-border)",
                   borderRadius: "9999px",
                   color: "var(--color-text)",
-                  fontSize: "0.78rem",
+                  fontSize: "0.75rem",
                   textDecoration: "none",
                   fontWeight: 700,
-                  boxShadow: "0 6px 20px rgba(0,0,0,0.1)",
-                  transition: "transform 0.2s ease",
+                  boxShadow: "0 4px 16px rgba(0,0,0,0.1)",
                 }}
               >
-                <ExternalLink size={13} />
+                <ExternalLink size={12} />
                 <span>{t("contact_open_maps")}</span>
               </a>
             </div>
