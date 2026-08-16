@@ -61,8 +61,8 @@ export default function Navbar() {
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              minHeight: "76px",
-              padding: "0.35rem 0",
+              minHeight: "96px",
+              padding: "0.5rem 0",
             }}
           >
             {/* Logo Image */}
@@ -88,7 +88,7 @@ export default function Navbar() {
                 decoding="async"
                 fetchPriority="high"
                 className="logo-img logo-dark-mode"
-                style={{ width: "auto", height: "70px", objectFit: "contain" }}
+                style={{ width: "auto", height: "92px", objectFit: "contain" }}
               />
               <img
                 src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/kst-light.png`}
@@ -98,7 +98,7 @@ export default function Navbar() {
                 decoding="async"
                 fetchPriority="high"
                 className="logo-img logo-light-mode"
-                style={{ width: "auto", height: "70px", objectFit: "contain" }}
+                style={{ width: "auto", height: "92px", objectFit: "contain" }}
               />
             </a>
 
