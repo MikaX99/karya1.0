@@ -19,6 +19,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
+      className="futuristic-grid-bg"
       style={{
         minHeight: "88vh",
         position: "relative",
@@ -45,7 +46,7 @@ export default function Hero() {
         >
           {/* Left Column: Minimal High-Taste Content */}
           <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", zIndex: 2, position: "relative" }}>
-            {/* Monospace Uppercase Category Tag */}
+            {/* Monospace Uppercase Category Tag with Live Pulse */}
             <div
               style={{
                 fontSize: "0.78rem",
@@ -55,9 +56,11 @@ export default function Hero() {
                 textTransform: "uppercase",
                 marginBottom: "1.25rem",
                 fontFamily: "var(--font-mono, monospace)",
+                display: "inline-flex",
+                alignItems: "center",
               }}
             >
-              SOLUSI &amp; INTEGRASI IT ENTERPRISE
+              <span className="live-pulse"></span> SOLUSI &amp; INTEGRASI IT ENTERPRISE
             </div>
 
             {/* Main Bold Headline */}
