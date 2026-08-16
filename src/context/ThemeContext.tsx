@@ -23,7 +23,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   // On mount: read localStorage or system preference
   useEffect(() => {
-    const stored = localStorage.getItem("sentracomp-theme") as Theme | null;
+    const stored = localStorage.getItem("karyasistem-theme") as Theme | null;
     let initial: Theme = "dark";
     if (stored === "light" || stored === "dark") {
       initial = stored;
@@ -41,7 +41,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setTheme((prev) => {
       const next: Theme = prev === "dark" ? "light" : "dark";
       document.documentElement.setAttribute("data-theme", next);
-      localStorage.setItem("sentracomp-theme", next);
+      localStorage.setItem("karyasistem-theme", next);
       return next;
     });
   }, []);
