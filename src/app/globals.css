@@ -365,8 +365,18 @@ html[data-theme="light"] .section-badge {
   100% { transform: translateX(0); }
 }
 
-.animate-marquee { animation: marquee 38s linear infinite; }
-.animate-marquee-reverse { animation: marquee-reverse 38s linear infinite; }
+.animate-marquee {
+  animation: marquee 38s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+.animate-marquee-reverse {
+  animation: marquee-reverse 38s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
 
 /* ============================================================
    CONCENTRIC SPIRAL TYPOGRAPHY ARTWORK (TASTE DESIGN SYSTEM)
@@ -387,11 +397,15 @@ html[data-theme="light"] .section-badge {
   aspect-ratio: 1 / 1;
   object-fit: contain;
   max-width: 760px;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .spiral-track {
   font-family: var(--font-mono, monospace), system-ui, sans-serif;
   text-transform: uppercase;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .track-1 { animation: spin-slow 24s linear infinite; transform-origin: 250px 250px; fill: var(--color-text); font-size: 9.5px; font-weight: 800; opacity: 0.98; }
