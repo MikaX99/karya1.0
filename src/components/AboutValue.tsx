@@ -1,6 +1,6 @@
 "use client";
 
-import { ShieldCheck, Truck, HeartHandshake } from "lucide-react";
+import { Layers, Rocket, Activity } from "lucide-react";
 import { useLocale } from "@/context/LocaleContext";
 
 export default function AboutValue() {
@@ -8,31 +8,34 @@ export default function AboutValue() {
 
   const values = [
     {
-      id: "garansi-resmi",
-      icon: <ShieldCheck size={28} strokeWidth={1.75} />,
+      id: "easy-integrations",
+      icon: <Layers size={26} strokeWidth={1.75} />,
       titleKey: "val_1_title",
+      taglineKey: "val_1_tagline",
       descKey: "val_1_desc",
-      stat: "3 Tahun",
+      stat: "24/7",
       statLabelKey: "val_1_stat_label",
-      color: "#059669",
+      color: "#1E87DA",
       features: ["val_1_f1", "val_1_f2", "val_1_f3"],
     },
     {
-      id: "pengiriman-cepat",
-      icon: <Truck size={28} strokeWidth={1.75} />,
+      id: "smart-deployment",
+      icon: <Rocket size={26} strokeWidth={1.75} />,
       titleKey: "val_2_title",
+      taglineKey: "val_2_tagline",
       descKey: "val_2_desc",
-      stat: "1-3 Hari",
+      stat: "Zero-Friction",
       statLabelKey: "val_2_stat_label",
-      color: "#1E87DA",
+      color: "#059669",
       features: ["val_2_f1", "val_2_f2", "val_2_f3"],
     },
     {
-      id: "purnajual",
-      icon: <HeartHandshake size={28} strokeWidth={1.75} />,
+      id: "realtime-monitoring",
+      icon: <Activity size={26} strokeWidth={1.75} />,
       titleKey: "val_3_title",
+      taglineKey: "val_3_tagline",
       descKey: "val_3_desc",
-      stat: "24/7",
+      stat: "Real-time",
       statLabelKey: "val_3_stat_label",
       color: "#0284C7",
       features: ["val_3_f1", "val_3_f2", "val_3_f3"],
@@ -65,8 +68,8 @@ export default function AboutValue() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-            gap: "1.25rem",
+            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gap: "1.5rem",
           }}
         >
           {values.map((value) => (
@@ -88,7 +91,7 @@ export default function AboutValue() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
-                  marginBottom: "1.5rem",
+                  marginBottom: "1.25rem",
                 }}
               >
                 <div
@@ -107,7 +110,7 @@ export default function AboutValue() {
                   {value.icon}
                 </div>
                 <div style={{ textAlign: "right" }}>
-                  <div style={{ fontSize: "1.2rem", fontWeight: 800, color: "var(--color-text)" }}>
+                  <div style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--color-text)" }}>
                     {value.stat}
                   </div>
                   <div
@@ -124,17 +127,31 @@ export default function AboutValue() {
                 </div>
               </div>
 
-              {/* Title & Description */}
+              {/* Title */}
               <h3
                 style={{
-                  fontSize: "1.1rem",
+                  fontSize: "1.2rem",
                   fontWeight: 700,
                   color: "var(--color-text)",
-                  margin: "0 0 0.75rem 0",
+                  margin: "0 0 0.35rem 0",
                 }}
               >
                 {t(value.titleKey)}
               </h3>
+
+              {/* Tagline */}
+              <div
+                style={{
+                  fontSize: "0.8rem",
+                  fontWeight: 600,
+                  color: "var(--color-primary)",
+                  marginBottom: "0.875rem",
+                }}
+              >
+                {t(value.taglineKey)}
+              </div>
+
+              {/* Description */}
               <p
                 style={{
                   color: "var(--color-text-muted)",
@@ -181,4 +198,5 @@ export default function AboutValue() {
     </section>
   );
 }
+
 
