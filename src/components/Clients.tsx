@@ -114,6 +114,96 @@ export default function Clients() {
   const [isScrollingActive, setIsScrollingActive] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const isDraggingRef = useRef(false);
+  const startXRef = useRef(0);
+  const scrollLeftRef = useRef(0);
+  const isUserInteractingRef = useRef(false);
+  const [isMouseDown, setIsMouseDown] = useState(false);
+
+  // Mouse Drag Handlers
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!sliderRef.current) return;
+    isDraggingRef.current = true;
+    setIsMouseDown(true);
+    isUserInteractingRef.current = true;
+    startXRef.current = e.pageX - sliderRef.current.offsetLeft;
+    scrollLeftRef.current = sliderRef.current.scrollLeft;
+  };
+
+  const handleMouseUpOrLeave = () => {
+    isDraggingRef.current = false;
+    setIsMouseDown(false);
+    setTimeout(() => {
+      isUserInteractingRef.current = false;
+    }, 2500);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDraggingRef.current || !sliderRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - sliderRef.current.offsetLeft;
+    const walk = (x - startXRef.current) * 1.5;
+    sliderRef.current.scrollLeft = scrollLeftRef.current - walk;
+  };
+
+  // Touch Swipe Handlers (Mobile)
+  const handleTouchStart = () => {
+    isUserInteractingRef.current = true;
+  };
+
+  const handleTouchEnd = () => {
+    setTimeout(() => {
+      isUserInteractingRef.current = false;
+    }, 2500);
+  };
+
+  // Button Arrow Navigation
+  const slideLeft = () => {
+    if (sliderRef.current) {
+      isUserInteractingRef.current = true;
+      sliderRef.current.scrollBy({ left: -380, behavior: "smooth" });
+      setTimeout(() => {
+        isUserInteractingRef.current = false;
+      }, 2500);
+    }
+  };
+
+  const slideRight = () => {
+    if (sliderRef.current) {
+      isUserInteractingRef.current = true;
+      sliderRef.current.scrollBy({ left: 380, behavior: "smooth" });
+      setTimeout(() => {
+        isUserInteractingRef.current = false;
+      }, 2500);
+    }
+  };
+
+  // Idle Auto-scroll Effect
+  useEffect(() => {
+    let animFrame: number;
+    const autoScroll = () => {
+      if (
+        sliderRef.current &&
+        !isUserInteractingRef.current &&
+        !isDraggingRef.current &&
+        isScrollingActive
+      ) {
+        sliderRef.current.scrollLeft += 0.65;
+        if (
+          sliderRef.current.scrollLeft >=
+          sliderRef.current.scrollWidth - sliderRef.current.clientWidth - 2
+        ) {
+          sliderRef.current.scrollLeft = 0;
+        }
+      }
+      animFrame = requestAnimationFrame(autoScroll);
+    };
+
+    animFrame = requestAnimationFrame(autoScroll);
+    return () => cancelAnimationFrame(animFrame);
+  }, [isScrollingActive]);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -243,15 +333,85 @@ export default function Clients() {
           ))}
         </div>
 
-        {/* BENTO GRID - ROLLING AUTO-SLIDE FEATURED CLIENTS */}
+        {/* BENTO GRID - SLIDABLE & DRAGGABLE FEATURED CLIENTS */}
         <div style={{ marginBottom: "2.5rem" }}>
-          {/* Marquee Wrapper */}
-          <div className="bento-marquee-wrapper">
+          {/* Controls & Indicator Header */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              marginBottom: "0.875rem",
+              padding: "0 0.25rem",
+            }}
+          >
             <div
-              className={`bento-marquee-track ${
-                isScrollingActive ? "bento-marquee-running" : ""
-              }`}
+              style={{
+                fontSize: "0.825rem",
+                fontWeight: 600,
+                color: "var(--color-text-subtle)",
+                display: "flex",
+                alignItems: "center",
+                gap: "0.4rem",
+              }}
             >
+              <span style={{ color: "var(--color-primary)", fontWeight: 700 }}>✦</span>
+              <span>Geser atau Drag untuk melihat Klien Utama</span>
+            </div>
+            <div style={{ display: "flex", gap: "0.5rem" }}>
+              <button
+                onClick={slideLeft}
+                aria-label="Slide Left"
+                style={{
+                  width: "34px",
+                  height: "34px",
+                  borderRadius: "50%",
+                  background: "var(--color-surface)",
+                  border: "1px solid var(--color-border)",
+                  color: "var(--color-text)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  cursor: "pointer",
+                  transition: "all 0.2s ease",
+                }}
+              >
+                <ChevronLeft size={18} />
+              </button>
+              <button
+                onClick={slideRight}
+                aria-label="Slide Right"
+                style={{
+                  width: "34px",
+                  height: "34px",
+                  borderRadius: "50%",
+                  background: "var(--color-surface)",
+                  border: "1px solid var(--color-border)",
+                  color: "var(--color-text)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  cursor: "pointer",
+                  transition: "all 0.2s ease",
+                }}
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div>
+          </div>
+
+          {/* Draggable & Touch-swipeable Slider Wrapper */}
+          <div
+            ref={sliderRef}
+            className={`bento-marquee-wrapper ${isMouseDown ? "dragging" : ""}`}
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUpOrLeave}
+            onMouseLeave={handleMouseUpOrLeave}
+            onMouseMove={handleMouseMove}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
+            <div className="bento-marquee-track">
               {rollingClients.map((client: any, idx: number) => {
                 const meta = featuredMeta[client.id] || {
                   badge: client.industry,

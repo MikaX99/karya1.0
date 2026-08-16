@@ -588,27 +588,32 @@ html[data-theme="dark"] .logo-light-mode { display: none; }
 }
 
 /* ============================================================
-   BENTO MARQUEE AUTO-SLIDE STYLING
+   BENTO SLIDER (TOUCH & MOUSE DRAG SLIDE)
    ============================================================ */
 .bento-marquee-wrapper {
-  overflow: hidden;
-  mask-image: linear-gradient(90deg, transparent 0%, black 2%, black 98%, transparent 100%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 2%, black 98%, transparent 100%);
-  padding: 0.5rem 0;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  cursor: grab;
+  user-select: none;
+  padding: 0.5rem 0.25rem;
+}
+
+.bento-marquee-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.bento-marquee-wrapper.dragging {
+  cursor: grabbing !important;
+  scroll-behavior: auto !important;
 }
 
 .bento-marquee-track {
   display: flex;
   gap: 1.25rem;
   width: max-content;
-}
-
-.bento-marquee-running {
-  animation: marquee 50s linear infinite;
-}
-
-.bento-marquee-track:hover {
-  animation-play-state: paused !important;
 }
 
 /* ============================================================
