@@ -1,12 +1,17 @@
+"use client";
+
+import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Services from "@/components/Services";
-import ProductCatalog from "@/components/ProductCatalog";
-import Partners from "@/components/Partners";
-import Clients from "@/components/Clients";
-import AboutValue from "@/components/AboutValue";
-import ContactFooter from "@/components/ContactFooter";
-import FloatingWA from "@/components/FloatingWA";
+
+// Lazy-load below-the-fold sections for lighter initial JS bundle
+const Services = dynamic(() => import("@/components/Services"), { ssr: false });
+const ProductCatalog = dynamic(() => import("@/components/ProductCatalog"), { ssr: false });
+const Partners = dynamic(() => import("@/components/Partners"), { ssr: false });
+const Clients = dynamic(() => import("@/components/Clients"), { ssr: false });
+const AboutValue = dynamic(() => import("@/components/AboutValue"), { ssr: false });
+const ContactFooter = dynamic(() => import("@/components/ContactFooter"), { ssr: false });
+const FloatingWA = dynamic(() => import("@/components/FloatingWA"), { ssr: false });
 
 export default function Home() {
   return (
@@ -15,7 +20,7 @@ export default function Home() {
       <Navbar />
 
       <main>
-        {/* [1] Hero Section */}
+        {/* [1] Hero Section — always SSR for LCP */}
         <Hero />
 
         {/* [2] IT Services */}
