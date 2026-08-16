@@ -370,6 +370,35 @@ html[data-theme="light"] .section-badge {
 .animate-marquee-reverse { animation: marquee-reverse 38s linear infinite; }
 
 /* ============================================================
+   CONCENTRIC SPIRAL TYPOGRAPHY ARTWORK (TASTE DESIGN SYSTEM)
+   ============================================================ */
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes spin-reverse-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+.hero-spiral-svg {
+  width: 100%;
+  height: 100%;
+  max-width: 480px;
+}
+
+.spiral-track {
+  font-family: var(--font-mono, monospace), system-ui, sans-serif;
+  text-transform: uppercase;
+}
+
+.track-1 { animation: spin-slow 35s linear infinite; transform-origin: 250px 250px; fill: var(--color-text); font-size: 11.5px; font-weight: 700; letter-spacing: 0.15em; opacity: 0.9; }
+.track-2 { animation: spin-reverse-slow 48s linear infinite; transform-origin: 250px 250px; fill: var(--color-text-muted); font-size: 10.5px; font-weight: 600; letter-spacing: 0.12em; opacity: 0.7; }
+.track-3 { animation: spin-slow 64s linear infinite; transform-origin: 250px 250px; fill: var(--color-text-subtle); font-size: 9.5px; font-weight: 500; letter-spacing: 0.1em; opacity: 0.5; }
+.track-4 { animation: spin-reverse-slow 80s linear infinite; transform-origin: 250px 250px; fill: var(--color-text-faint); font-size: 9px; font-weight: 500; letter-spacing: 0.08em; opacity: 0.35; }
+
+/* ============================================================
    HERO TASTE MINIMALIST BACKGROUND (PURE MATTE + SUBTLE LIGHTING)
    ============================================================ */
 .hero-grid {
