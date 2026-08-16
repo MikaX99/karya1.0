@@ -491,6 +491,11 @@ html[data-theme="light"] .logo-light-mode { display: block; }
   border-color: var(--color-border-hover);
   box-shadow: var(--shadow-card-hover);
 }
+.bento-featured-card:hover {
+  border-color: var(--color-primary) !important;
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover) !important;
+}
 
 /* ============================================================
    GOOGLE MAPS DARK MODE STYLING
