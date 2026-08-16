@@ -97,6 +97,7 @@ export default function RootLayout({
             "base-uri 'self'",
             "form-action 'self'",
           ].join("; ")}
+        />
         {/* Canonical Link */}
         <link rel="canonical" href="https://mikax99.github.io/karya1.0/" />
 
