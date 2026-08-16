@@ -47,12 +47,9 @@ export default function Navbar() {
           left: 0,
           right: 0,
           zIndex: 50,
-          transition: "all 0.4s ease",
-          background: scrolled ? "var(--navbar-bg)" : "transparent",
-          backdropFilter: scrolled ? "blur(20px)" : "none",
-          WebkitBackdropFilter: scrolled ? "blur(20px)" : "none",
-          borderBottom: scrolled ? "1px solid var(--glass-border)" : "none",
-          boxShadow: scrolled ? "0 4px 30px rgba(0,0,0,0.15)" : "none",
+          paddingTop: "0.5rem",
+          background: "transparent",
+          pointerEvents: "none",
         }}
       >
         <div className="container" style={{ padding: "0 1.5rem" }}>
@@ -61,8 +58,8 @@ export default function Navbar() {
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              minHeight: "72px",
-              padding: "0.25rem 0",
+              minHeight: "64px",
+              pointerEvents: "auto",
             }}
           >
             {/* Logo Image */}
