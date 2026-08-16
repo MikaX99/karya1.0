@@ -61,10 +61,11 @@ export default function Navbar() {
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              height: "70px",
+              minHeight: "76px",
+              padding: "0.35rem 0",
             }}
           >
-            {/* Logo Image & Unique Typography Brand */}
+            {/* Logo Image */}
             <a
               href="#"
               onClick={(e) => {
@@ -87,7 +88,7 @@ export default function Navbar() {
                 decoding="async"
                 fetchPriority="high"
                 className="logo-img logo-dark-mode"
-                style={{ width: "auto", height: "52px", objectFit: "contain" }}
+                style={{ width: "auto", height: "70px", objectFit: "contain" }}
               />
               <img
                 src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/kst-light.png`}
@@ -97,7 +98,7 @@ export default function Navbar() {
                 decoding="async"
                 fetchPriority="high"
                 className="logo-img logo-light-mode"
-                style={{ width: "auto", height: "52px", objectFit: "contain" }}
+                style={{ width: "auto", height: "70px", objectFit: "contain" }}
               />
             </a>
 
