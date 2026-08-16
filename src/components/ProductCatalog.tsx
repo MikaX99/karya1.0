@@ -92,7 +92,7 @@ export default function ProductCatalog() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 320px))",
             justifyContent: "center",
             gap: "1.25rem",
           }}
