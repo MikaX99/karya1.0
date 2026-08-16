@@ -122,28 +122,6 @@ export default function Hero() {
                 {t("cta_secondary")}
                 <ChevronDown size={16} />
               </button>
-            </div>
-
-            {/* Monospace Technical Metadata Ticker Bar */}
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "1rem 2rem",
-                paddingTop: "1.5rem",
-                borderTop: "1px solid var(--color-border)",
-                fontSize: "0.75rem",
-                fontWeight: 600,
-                fontFamily: "var(--font-mono, monospace)",
-                color: "var(--color-text-subtle)",
-                letterSpacing: "0.06em",
-              }}
-            >
-              <div>SERVER: <span style={{ color: "var(--color-text)" }}>DELL & HPE</span></div>
-              <div>NETWORK: <span style={{ color: "var(--color-text)" }}>CISCO</span></div>
-              <div>LAPTOP: <span style={{ color: "var(--color-text)" }}>LENOVO</span></div>
-              <div>GARANSI: <span style={{ color: "#30D158" }}>RESMI 100%</span></div>
-            </div>
           </div>
 
           {/* Right Column: Borderless & Enlarged Spiral Typography Art with Edge Fade */}
