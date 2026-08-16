@@ -498,6 +498,30 @@ html[data-theme="light"] .logo-light-mode { display: block; }
 }
 
 /* ============================================================
+   BENTO MARQUEE AUTO-SLIDE STYLING
+   ============================================================ */
+.bento-marquee-wrapper {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent 0%, black 2%, black 98%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 2%, black 98%, transparent 100%);
+  padding: 0.5rem 0;
+}
+
+.bento-marquee-track {
+  display: flex;
+  gap: 1.25rem;
+  width: max-content;
+}
+
+.bento-marquee-running {
+  animation: marquee 50s linear infinite;
+}
+
+.bento-marquee-track:hover {
+  animation-play-state: paused !important;
+}
+
+/* ============================================================
    GOOGLE MAPS DARK MODE STYLING
    ============================================================ */
 #google-maps-embed {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import clientsData from "@/data/clients.json";
 import {
   CheckCircle2,
@@ -61,17 +61,52 @@ const featuredMeta: Record<
 
 const testimonials = clientsData.filter((c) => c.testimonial);
 
-// Order top 3 explicitly: PLN (client-07), Dilmil (client-04), ALVA GROUP (client-01)
-const featuredIds = ["client-07", "client-04", "client-01"];
-const featuredClients = featuredIds
-  .map((id) => clientsData.find((c) => c.id === id))
-  .filter(Boolean);
+// Order top 3 explicitly: PLN (client-07), Dilmil (client-04), ALVA GROUP (client-01), followed by all other clients
+const bentoOrderIds = [
+  "client-07", // PLN
+  "client-04", // Dilmil
+  "client-01", // ALVA GROUP
+  "client-02", // IRA
+  "client-03", // NEXMAN COFFEE
+  "client-05", // DIG
+  "client-06", // GAS
+  "client-08", // KAI
+  "client-09", // LKI
+  "client-10", // MWR
+  "client-11", // NXG
+  "client-12", // PSG
+  "client-13", // SGI
+];
 
-const standardClients = clientsData.filter((c) => !featuredIds.includes(c.id));
+const orderedAllClients = bentoOrderIds
+  .map((id) => clientsData.find((c) => c.id === id))
+  .filter(Boolean) as typeof clientsData;
+
+// Duplicated array for seamless infinite marquee loop
+const rollingClients = [...orderedAllClients, ...orderedAllClients];
 
 export default function Clients() {
   const { t } = useLocale();
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [isScrollingActive, setIsScrollingActive] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsScrollingActive(true);
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const prev = () =>
     setActiveTestimonial(
@@ -85,6 +120,7 @@ export default function Clients() {
   return (
     <section
       id="klien"
+      ref={sectionRef}
       className="section"
       style={{ background: "var(--section-bg-2)" }}
     >
@@ -184,230 +220,274 @@ export default function Clients() {
           ))}
         </div>
 
-        {/* BENTO GRID - FEATURED TOP 3 CLIENTS */}
+        {/* BENTO GRID - ROLLING AUTO-SLIDE FEATURED CLIENTS */}
         <div style={{ marginBottom: "2.5rem" }}>
           <div
             style={{
-              fontSize: "0.8rem",
-              fontWeight: 700,
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              color: "var(--color-primary)",
-              marginBottom: "1rem",
               display: "flex",
               alignItems: "center",
+              justifyContent: "space-between",
+              marginBottom: "1rem",
+              flexWrap: "wrap",
               gap: "0.5rem",
             }}
           >
-            <Crown size={16} /> Featured Partners
+            <div
+              style={{
+                fontSize: "0.8rem",
+                fontWeight: 700,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                color: "var(--color-primary)",
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+              }}
+            >
+              <Crown size={16} /> Featured Corporate Showcase
+            </div>
+
+            <div
+              style={{
+                fontSize: "0.725rem",
+                fontWeight: 600,
+                color: "var(--color-text-subtle)",
+                display: "flex",
+                alignItems: "center",
+                gap: "0.4rem",
+                padding: "0.25rem 0.65rem",
+                background: "var(--color-surface-2)",
+                border: "1px solid var(--color-border)",
+                borderRadius: "20px",
+              }}
+            >
+              <span
+                style={{
+                  width: "7px",
+                  height: "7px",
+                  borderRadius: "50%",
+                  background: isScrollingActive ? "#10B981" : "#F59E0B",
+                  boxShadow: isScrollingActive ? "0 0 8px #10B981" : "none",
+                }}
+              />
+              {isScrollingActive
+                ? "Auto-Rolling Active"
+                : "Initial Focus: PLN • Dilmil • ALVA"}
+            </div>
           </div>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-              gap: "1.25rem",
-            }}
-          >
-            {featuredClients.map((client: any) => {
-              const meta = featuredMeta[client.id] || {
-                badge: "Featured Partner",
-                badgeColor: "var(--color-primary)",
-                badgeBg: "rgba(30, 135, 218, 0.12)",
-                icon: <Crown size={15} />,
-              };
-              const industryColor =
-                industryColors[client.industry] || "#1E87DA";
+          {/* Marquee Wrapper */}
+          <div className="bento-marquee-wrapper">
+            <div
+              className={`bento-marquee-track ${
+                isScrollingActive ? "bento-marquee-running" : ""
+              }`}
+            >
+              {rollingClients.map((client: any, idx: number) => {
+                const meta = featuredMeta[client.id] || {
+                  badge: client.industry,
+                  badgeColor: "var(--color-primary)",
+                  badgeBg: "rgba(30, 135, 218, 0.12)",
+                  icon: <Building2 size={14} />,
+                };
+                const industryColor =
+                  industryColors[client.industry] || "#1E87DA";
 
-              return (
-                <div
-                  key={client.id}
-                  style={{
-                    background: "var(--card-gradient)",
-                    border: "1px solid var(--color-border)",
-                    borderRadius: "12px",
-                    padding: "1.75rem",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                    position: "relative",
-                    overflow: "hidden",
-                    boxShadow: "0 4px 20px rgba(0,0,0,0.06)",
-                    transition: "transform 0.25s ease, border-color 0.25s ease",
-                  }}
-                  className="bento-featured-card"
-                >
-                  {/* Top Highlight Badge */}
+                return (
                   <div
+                    key={`${client.id}-${idx}`}
                     style={{
+                      width: "360px",
+                      minWidth: "320px",
+                      flexShrink: 0,
+                      background: "var(--card-gradient)",
+                      border: "1px solid var(--color-border)",
+                      borderRadius: "12px",
+                      padding: "1.5rem",
                       display: "flex",
-                      alignItems: "center",
+                      flexDirection: "column",
                       justifyContent: "space-between",
-                      marginBottom: "1.25rem",
+                      position: "relative",
+                      overflow: "hidden",
+                      boxShadow: "0 4px 20px rgba(0,0,0,0.06)",
+                      transition:
+                        "transform 0.25s ease, border-color 0.25s ease",
                     }}
+                    className="bento-featured-card"
                   >
-                    <span
-                      style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: "0.35rem",
-                        padding: "0.35rem 0.75rem",
-                        background: meta.badgeBg,
-                        border: `1px solid ${meta.badgeColor}40`,
-                        borderRadius: "20px",
-                        fontSize: "0.725rem",
-                        fontWeight: 700,
-                        color: meta.badgeColor,
-                      }}
-                    >
-                      {meta.icon}
-                      {meta.badge}
-                    </span>
-                    <span
-                      style={{
-                        fontSize: "0.725rem",
-                        color: "var(--color-text-subtle)",
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: "0.25rem",
-                      }}
-                    >
-                      <Calendar size={13} /> {t("client_since")} {client.since}
-                    </span>
-                  </div>
-
-                  {/* Logo + Title Header */}
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "1.25rem",
-                      marginBottom: "1.25rem",
-                    }}
-                  >
+                    {/* Top Highlight Badge */}
                     <div
                       style={{
-                        width: "84px",
-                        height: "84px",
-                        borderRadius: "10px",
-                        background: "#ffffff",
-                        border: "1px solid var(--color-border)",
                         display: "flex",
                         alignItems: "center",
-                        justifyContent: "center",
-                        flexShrink: 0,
-                        overflow: "hidden",
-                        padding: "8px",
-                        boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+                        justifyContent: "space-between",
+                        marginBottom: "1rem",
                       }}
                     >
-                      {client.logo ? (
-                        <img
-                          src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${client.logo}`}
-                          alt={client.name}
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            objectFit: "contain",
-                          }}
-                        />
-                      ) : (
-                        <span
-                          style={{
-                            fontSize: "1.5rem",
-                            fontWeight: 800,
-                            color: industryColor,
-                          }}
-                        >
-                          {client.abbr}
-                        </span>
-                      )}
-                    </div>
-
-                    <div>
-                      <h3
-                        style={{
-                          fontSize: "1.1rem",
-                          fontWeight: 800,
-                          color: "var(--color-text)",
-                          margin: "0 0 0.35rem 0",
-                          lineHeight: 1.3,
-                        }}
-                      >
-                        {client.name}
-                      </h3>
                       <span
                         style={{
-                          display: "inline-block",
-                          padding: "0.2rem 0.6rem",
-                          background: "var(--color-surface-2)",
-                          border: "1px solid var(--color-border)",
-                          borderRadius: "4px",
-                          fontSize: "0.7rem",
-                          fontWeight: 600,
-                          color: "var(--color-text-muted)",
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "0.35rem",
+                          padding: "0.3rem 0.65rem",
+                          background: meta.badgeBg,
+                          border: `1px solid ${meta.badgeColor}40`,
+                          borderRadius: "20px",
+                          fontSize: "0.725rem",
+                          fontWeight: 700,
+                          color: meta.badgeColor,
                         }}
                       >
-                        {client.industry}
+                        {meta.icon}
+                        {meta.badge}
+                      </span>
+                      <span
+                        style={{
+                          fontSize: "0.7rem",
+                          color: "var(--color-text-subtle)",
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "0.25rem",
+                        }}
+                      >
+                        <Calendar size={12} /> {t("client_since")}{" "}
+                        {client.since}
                       </span>
                     </div>
-                  </div>
 
-                  {/* Products Delivered */}
-                  {client.products && client.products.length > 0 && (
+                    {/* Logo + Title Header */}
                     <div
                       style={{
-                        paddingTop: "1rem",
-                        borderTop: "1px solid var(--color-border-subtle)",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "1rem",
+                        marginBottom: "1rem",
                       }}
                     >
                       <div
                         style={{
-                          fontSize: "0.7rem",
-                          fontWeight: 600,
-                          color: "var(--color-text-subtle)",
-                          marginBottom: "0.4rem",
+                          width: "76px",
+                          height: "76px",
+                          borderRadius: "10px",
+                          background: "#ffffff",
+                          border: "1px solid var(--color-border)",
                           display: "flex",
                           alignItems: "center",
-                          gap: "0.3rem",
+                          justifyContent: "center",
+                          flexShrink: 0,
+                          overflow: "hidden",
+                          padding: "6px",
+                          boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
                         }}
                       >
-                        <Layers size={13} color="var(--color-primary)" /> Solusi
-                        Terimplementasi:
-                      </div>
-                      <div
-                        style={{
-                          display: "flex",
-                          flexWrap: "wrap",
-                          gap: "0.4rem",
-                        }}
-                      >
-                        {client.products.map((prod: string) => (
-                          <span
-                            key={prod}
+                        {client.logo ? (
+                          <img
+                            src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${client.logo}`}
+                            alt={client.name}
                             style={{
-                              fontSize: "0.725rem",
-                              fontWeight: 600,
-                              background: "var(--color-surface-1)",
-                              border: "1px solid var(--color-border)",
-                              borderRadius: "4px",
-                              padding: "0.15rem 0.5rem",
-                              color: "var(--color-text)",
+                              width: "100%",
+                              height: "100%",
+                              objectFit: "contain",
+                            }}
+                          />
+                        ) : (
+                          <span
+                            style={{
+                              fontSize: "1.4rem",
+                              fontWeight: 800,
+                              color: industryColor,
                             }}
                           >
-                            {prod}
+                            {client.abbr}
                           </span>
-                        ))}
+                        )}
+                      </div>
+
+                      <div>
+                        <h3
+                          style={{
+                            fontSize: "1.025rem",
+                            fontWeight: 800,
+                            color: "var(--color-text)",
+                            margin: "0 0 0.35rem 0",
+                            lineHeight: 1.3,
+                          }}
+                        >
+                          {client.name}
+                        </h3>
+                        <span
+                          style={{
+                            display: "inline-block",
+                            padding: "0.15rem 0.5rem",
+                            background: "var(--color-surface-2)",
+                            border: "1px solid var(--color-border)",
+                            borderRadius: "4px",
+                            fontSize: "0.68rem",
+                            fontWeight: 600,
+                            color: "var(--color-text-muted)",
+                          }}
+                        >
+                          {client.industry}
+                        </span>
                       </div>
                     </div>
-                  )}
-                </div>
-              );
-            })}
+
+                    {/* Products Delivered */}
+                    {client.products && client.products.length > 0 && (
+                      <div
+                        style={{
+                          paddingTop: "0.875rem",
+                          borderTop: "1px solid var(--color-border-subtle)",
+                        }}
+                      >
+                        <div
+                          style={{
+                            fontSize: "0.68rem",
+                            fontWeight: 600,
+                            color: "var(--color-text-subtle)",
+                            marginBottom: "0.35rem",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "0.3rem",
+                          }}
+                        >
+                          <Layers size={12} color="var(--color-primary)" />{" "}
+                          Solusi Terimplementasi:
+                        </div>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexWrap: "wrap",
+                            gap: "0.35rem",
+                          }}
+                        >
+                          {client.products.map((prod: string) => (
+                            <span
+                              key={prod}
+                              style={{
+                                fontSize: "0.7rem",
+                                fontWeight: 600,
+                                background: "var(--color-surface-1)",
+                                border: "1px solid var(--color-border)",
+                                borderRadius: "4px",
+                                padding: "0.15rem 0.45rem",
+                                color: "var(--color-text)",
+                              }}
+                            >
+                              {prod}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
 
-        {/* STANDARD CLIENT LOGO GRID (Other 10 Clients) */}
+        {/* STANDARD CLIENT LOGO GRID (Static Overview for all 13 Clients) */}
         <div style={{ marginBottom: "2.5rem" }}>
           <div
             style={{
@@ -422,7 +502,7 @@ export default function Clients() {
               gap: "0.5rem",
             }}
           >
-            <Building2 size={16} /> Additional Corporate Clients
+            <Building2 size={16} /> All Corporate Clients Directory
           </div>
 
           <div
@@ -432,7 +512,7 @@ export default function Clients() {
               gap: "1rem",
             }}
           >
-            {standardClients.map((client) => {
+            {orderedAllClients.map((client) => {
               const color = industryColors[client.industry] || "#1E87DA";
               return (
                 <div key={client.id} className="client-logo-card">
