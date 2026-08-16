@@ -125,13 +125,13 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Borderless & Dense Concentric Spiral Typography Art */}
+          {/* Right Column: 18 Concentric Spiral Typography Rings with Partners & Clients */}
           <div
             className="hero-art-container"
             style={{
               width: "100%",
               height: "100%",
-              minHeight: "520px",
+              minHeight: "540px",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -141,49 +141,49 @@ export default function Hero() {
               boxShadow: "none",
               padding: "0",
               overflow: "hidden",
-              maskImage: "radial-gradient(circle at center, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 95%)",
-              WebkitMaskImage: "radial-gradient(circle at center, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 95%)",
+              maskImage: "radial-gradient(circle at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 96%)",
+              WebkitMaskImage: "radial-gradient(circle at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 96%)",
             }}
           >
             <div className="hero-spiral-wrapper" style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <svg viewBox="0 0 500 500" className="hero-spiral-svg" style={{ width: "100%", maxHeight: "580px" }}>
-                <path id="circle-1" d="M 250, 250 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" fill="none" />
-                <path id="circle-2" d="M 250, 250 m -80, 0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0" fill="none" />
-                <path id="circle-3" d="M 250, 250 m -120, 0 a 120,120 0 1,1 240,0 a 120,120 0 1,1 -240,0" fill="none" />
-                <path id="circle-4" d="M 250, 250 m -160, 0 a 160,160 0 1,1 320,0 a 160,160 0 1,1 -320,0" fill="none" />
-                <path id="circle-5" d="M 250, 250 m -200, 0 a 200,200 0 1,1 400,0 a 200,200 0 1,1 -400,0" fill="none" />
-                <path id="circle-6" d="M 250, 250 m -238, 0 a 238,238 0 1,1 476,0 a 238,238 0 1,1 -476,0" fill="none" />
+              <svg viewBox="0 0 500 500" className="hero-spiral-svg" style={{ width: "100%", maxHeight: "620px" }}>
+                <path id="c-1" d="M 250, 250 m -16, 0 a 16,16 0 1,1 32,0 a 16,16 0 1,1 -32,0" fill="none" />
+                <path id="c-2" d="M 250, 250 m -28, 0 a 28,28 0 1,1 56,0 a 28,28 0 1,1 -56,0" fill="none" />
+                <path id="c-3" d="M 250, 250 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" fill="none" />
+                <path id="c-4" d="M 250, 250 m -54, 0 a 54,54 0 1,1 108,0 a 54,54 0 1,1 -108,0" fill="none" />
+                <path id="c-5" d="M 250, 250 m -68, 0 a 68,68 0 1,1 136,0 a 68,68 0 1,1 -136,0" fill="none" />
+                <path id="c-6" d="M 250, 250 m -82, 0 a 82,82 0 1,1 164,0 a 82,82 0 1,1 -164,0" fill="none" />
+                <path id="c-7" d="M 250, 250 m -96, 0 a 96,96 0 1,1 192,0 a 96,96 0 1,1 -192,0" fill="none" />
+                <path id="c-8" d="M 250, 250 m -110, 0 a 110,110 0 1,1 220,0 a 110,110 0 1,1 -220,0" fill="none" />
+                <path id="c-9" d="M 250, 250 m -124, 0 a 124,124 0 1,1 248,0 a 124,124 0 1,1 -248,0" fill="none" />
+                <path id="c-10" d="M 250, 250 m -138, 0 a 138,138 0 1,1 276,0 a 138,138 0 1,1 -276,0" fill="none" />
+                <path id="c-11" d="M 250, 250 m -152, 0 a 152,152 0 1,1 304,0 a 152,152 0 1,1 -304,0" fill="none" />
+                <path id="c-12" d="M 250, 250 m -166, 0 a 166,166 0 1,1 332,0 a 166,166 0 1,1 -332,0" fill="none" />
+                <path id="c-13" d="M 250, 250 m -180, 0 a 180,180 0 1,1 360,0 a 180,180 0 1,1 -360,0" fill="none" />
+                <path id="c-14" d="M 250, 250 m -194, 0 a 194,194 0 1,1 388,0 a 194,194 0 1,1 -388,0" fill="none" />
+                <path id="c-15" d="M 250, 250 m -208, 0 a 208,208 0 1,1 416,0 a 208,208 0 1,1 -416,0" fill="none" />
+                <path id="c-16" d="M 250, 250 m -222, 0 a 222,222 0 1,1 444,0 a 222,222 0 1,1 -444,0" fill="none" />
+                <path id="c-17" d="M 250, 250 m -236, 0 a 236,236 0 1,1 472,0 a 236,236 0 1,1 -472,0" fill="none" />
+                <path id="c-18" d="M 250, 250 m -248, 0 a 248,248 0 1,1 496,0 a 248,248 0 1,1 -496,0" fill="none" />
 
-                <text className="spiral-track track-1">
-                  <textPath href="#circle-1" startOffset="0%">
-                    KARYASISTEM IT SOLUTIONS • HARDWARE &amp; SOFTWARE • SYSTEM INTEGRATION •
-                  </textPath>
-                </text>
-                <text className="spiral-track track-2">
-                  <textPath href="#circle-2" startOffset="0%">
-                    HIGH PERFORMANCE SERVERS • DELL POWEREDGE • HPE PROLIANT • CISCO NETWORKING • LENOVO THINKSYSTEM • MICROSOFT LICENSING •
-                  </textPath>
-                </text>
-                <text className="spiral-track track-3">
-                  <textPath href="#circle-3" startOffset="0%">
-                    DISTRIBUTOR RESMI PERANGKAT IT ENTERPRISE • GARANSI RESMI INDONESIA • CLOUD INTEGRATION • CYBERSECURITY &amp; FIREWALL PROTECTION • BACKUP STORAGE SOLUTIONS •
-                  </textPath>
-                </text>
-                <text className="spiral-track track-4">
-                  <textPath href="#circle-4" startOffset="0%">
-                    SOLUSI INFRASTRUKTUR TEKNOLOGI INFORMASI • SERVIS &amp; DUKUNGAN TEKNIS ENTERPRISE • VIRTUALIZATION &amp; DATA CENTER • PENGADAAN JARINGAN PERUSAHAAN TERINTEGRASI •
-                  </textPath>
-                </text>
-                <text className="spiral-track track-5">
-                  <textPath href="#circle-5" startOffset="0%">
-                    KARYASISTEM CORPORATE IT PROVIDER • IT INFRASTRUCTURE ARCHITECTURE • SWITCHING &amp; ROUTING • SAN &amp; NAS STORAGE • ENTERPRISE SOFTWARE SOLUTIONS • IMPLEMENTASI INFRASTRUKTUR IT TERPERCAYA •
-                  </textPath>
-                </text>
-                <text className="spiral-track track-6">
-                  <textPath href="#circle-6" startOffset="0%">
-                    MITRA STRATEGIS PENGADAAN IT INSTANSI &amp; BISNIS • KEAMANAN SIBER ENTERPRISE • PENYEDIA LAPTOP &amp; SERVER KORPORAT • GARANSI PURNAJUAL RESMI SELURUH INDONESIA • KARYASISTEM IT INTEGRATION PROVIDER •
-                  </textPath>
-                </text>
+                <text className="spiral-track track-1"><textPath href="#c-1" startOffset="0%">KARYASISTEM IT •</textPath></text>
+                <text className="spiral-track track-2"><textPath href="#c-2" startOffset="0%">DELL TECHNOLOGIES • HPE PROLIANT •</textPath></text>
+                <text className="spiral-track track-3"><textPath href="#c-3" startOffset="0%">CISCO SYSTEMS • LENOVO ENTERPRISE •</textPath></text>
+                <text className="spiral-track track-4"><textPath href="#c-4" startOffset="0%">MICROSOFT • FORTINET • SANGFOR • MIKROTIK •</textPath></text>
+                <text className="spiral-track track-5"><textPath href="#c-5" startOffset="0%">PARTNER KLIEN: PT PLN (PERSERO) • ALVA GROUP •</textPath></text>
+                <text className="spiral-track track-6"><textPath href="#c-6" startOffset="0%">APC SCHNEIDER • HIKVISION • RUJIE REYEE • LOGITECH •</textPath></text>
+                <text className="spiral-track track-7"><textPath href="#c-7" startOffset="0%">PARTNER KLIEN: INDONESIA RAYA ACADEMY • DILMIL II-08 JAKARTA •</textPath></text>
+                <text className="spiral-track track-8"><textPath href="#c-8" startOffset="0%">SERVER &amp; STORAGE • NETWORKING • CLOUD &amp; VIRTUALIZATION •</textPath></text>
+                <text className="spiral-track track-9"><textPath href="#c-9" startOffset="0%">PARTNER KLIEN: PT KARYA ABADI INDOTECH • PT DEMODAS INT •</textPath></text>
+                <text className="spiral-track track-10"><textPath href="#c-10" startOffset="0%">CYBERSECURITY &amp; FIREWALL • BACKUP &amp; DISASTER RECOVERY •</textPath></text>
+                <text className="spiral-track track-11"><textPath href="#c-11" startOffset="0%">PARTNER KLIEN: PT PETROKINDO SAPTA GEMILANG • PT GLOBAL AGUNG •</textPath></text>
+                <text className="spiral-track track-12"><textPath href="#c-12" startOffset="0%">GARANSI RESMI INDONESIA • SERVIS &amp; DUKUNGAN KORPORAT 24/7 •</textPath></text>
+                <text className="spiral-track track-13"><textPath href="#c-13" startOffset="0%">PARTNER KLIEN: PT LAYANAN KAPAL INDONESIA • PT MERPATI WAHANA •</textPath></text>
+                <text className="spiral-track track-14"><textPath href="#c-14" startOffset="0%">DISTRIBUTOR RESMI PERANGKAT IT • IMPLEMENTASI SISTEM TERPADU •</textPath></text>
+                <text className="spiral-track track-15"><textPath href="#c-15" startOffset="0%">PARTNER KLIEN: PT SILICAG GLOBAL • PT NEXTIVE GEMILANG • NKG •</textPath></text>
+                <text className="spiral-track track-16"><textPath href="#c-16" startOffset="0%">INFRASTRUKTUR TEKNOLOGI INFORMASI PERUSAHAAN &amp; INSTANSI •</textPath></text>
+                <text className="spiral-track track-17"><textPath href="#c-17" startOffset="0%">DELL • HPE • CISCO • LENOVO • ASUS • MICROSOFT • FORTINET • SANGFOR •</textPath></text>
+                <text className="spiral-track track-18"><textPath href="#c-18" startOffset="0%">KARYASISTEM ENTERPRISE IT INTEGRATOR • TERPERCAYA SEJAK 2020 •</textPath></text>
               </svg>
             </div>
           </div>
@@ -197,7 +197,7 @@ export default function Hero() {
             gap: 2.5rem !important;
           }
           .hero-art-container {
-            min-height: 360px !important;
+            min-height: 380px !important;
           }
         }
       `}</style>

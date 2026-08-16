@@ -393,12 +393,24 @@ html[data-theme="light"] .section-badge {
   text-transform: uppercase;
 }
 
-.track-1 { animation: spin-slow 35s linear infinite; transform-origin: 250px 250px; fill: var(--color-text); font-size: 11px; font-weight: 700; letter-spacing: 0.15em; opacity: 0.95; }
-.track-2 { animation: spin-reverse-slow 48s linear infinite; transform-origin: 250px 250px; fill: var(--color-text-muted); font-size: 10px; font-weight: 600; letter-spacing: 0.12em; opacity: 0.8; }
-.track-3 { animation: spin-slow 64s linear infinite; transform-origin: 250px 250px; fill: var(--color-text-subtle); font-size: 9.5px; font-weight: 500; letter-spacing: 0.1em; opacity: 0.65; }
-.track-4 { animation: spin-reverse-slow 80s linear infinite; transform-origin: 250px 250px; fill: var(--color-text-subtle); font-size: 9px; font-weight: 500; letter-spacing: 0.08em; opacity: 0.5; }
-.track-5 { animation: spin-slow 96s linear infinite; transform-origin: 250px 250px; fill: var(--color-text-faint); font-size: 8.5px; font-weight: 500; letter-spacing: 0.06em; opacity: 0.35; }
-.track-6 { animation: spin-reverse-slow 112s linear infinite; transform-origin: 250px 250px; fill: var(--color-text-faint); font-size: 8px; font-weight: 500; letter-spacing: 0.05em; opacity: 0.22; }
+.track-1 { animation: spin-slow 24s linear infinite; transform-origin: 250px 250px; fill: var(--color-text); font-size: 9.5px; font-weight: 800; opacity: 0.98; }
+.track-2 { animation: spin-reverse-slow 30s linear infinite; transform-origin: 250px 250px; fill: var(--color-text-muted); font-size: 9px; font-weight: 700; opacity: 0.92; }
+.track-3 { animation: spin-slow 36s linear infinite; transform-origin: 250px 250px; fill: var(--color-text-muted); font-size: 8.5px; font-weight: 700; opacity: 0.88; }
+.track-4 { animation: spin-reverse-slow 42s linear infinite; transform-origin: 250px 250px; fill: var(--color-text-subtle); font-size: 8.2px; font-weight: 600; opacity: 0.82; }
+.track-5 { animation: spin-slow 48s linear infinite; transform-origin: 250px 250px; fill: var(--color-primary); font-size: 8px; font-weight: 700; opacity: 0.8; }
+.track-6 { animation: spin-reverse-slow 54s linear infinite; transform-origin: 250px 250px; fill: var(--color-text-subtle); font-size: 7.8px; font-weight: 600; opacity: 0.74; }
+.track-7 { animation: spin-slow 60s linear infinite; transform-origin: 250px 250px; fill: var(--color-primary); font-size: 7.5px; font-weight: 700; opacity: 0.7; }
+.track-8 { animation: spin-reverse-slow 66s linear infinite; transform-origin: 250px 250px; fill: var(--color-text-subtle); font-size: 7.2px; font-weight: 500; opacity: 0.65; }
+.track-9 { animation: spin-slow 72s linear infinite; transform-origin: 250px 250px; fill: var(--color-primary); font-size: 7px; font-weight: 700; opacity: 0.6; }
+.track-10 { animation: spin-reverse-slow 78s linear infinite; transform-origin: 250px 250px; fill: var(--color-text-faint); font-size: 6.8px; font-weight: 500; opacity: 0.55; }
+.track-11 { animation: spin-slow 84s linear infinite; transform-origin: 250px 250px; fill: var(--color-primary); font-size: 6.6px; font-weight: 700; opacity: 0.5; }
+.track-12 { animation: spin-reverse-slow 90s linear infinite; transform-origin: 250px 250px; fill: var(--color-text-faint); font-size: 6.4px; font-weight: 500; opacity: 0.45; }
+.track-13 { animation: spin-slow 96s linear infinite; transform-origin: 250px 250px; fill: var(--color-primary); font-size: 6.2px; font-weight: 700; opacity: 0.4; }
+.track-14 { animation: spin-reverse-slow 102s linear infinite; transform-origin: 250px 250px; fill: var(--color-text-faint); font-size: 6px; font-weight: 500; opacity: 0.35; }
+.track-15 { animation: spin-slow 108s linear infinite; transform-origin: 250px 250px; fill: var(--color-primary); font-size: 5.8px; font-weight: 700; opacity: 0.3; }
+.track-16 { animation: spin-reverse-slow 114s linear infinite; transform-origin: 250px 250px; fill: var(--color-text-faint); font-size: 5.6px; font-weight: 500; opacity: 0.25; }
+.track-17 { animation: spin-slow 120s linear infinite; transform-origin: 250px 250px; fill: var(--color-text-faint); font-size: 5.4px; font-weight: 500; opacity: 0.2; }
+.track-18 { animation: spin-reverse-slow 126s linear infinite; transform-origin: 250px 250px; fill: var(--color-text-faint); font-size: 5.2px; font-weight: 500; opacity: 0.15; }
 
 /* ============================================================
    HERO TASTE MINIMALIST BACKGROUND (PURE MATTE + SUBTLE LIGHTING)
