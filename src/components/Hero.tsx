@@ -57,7 +57,7 @@ export default function Hero() {
                 fontFamily: "var(--font-mono, monospace)",
               }}
             >
-              SOLUSI & INTEGRASI IT ENTERPRISE
+              SOLUSI &amp; INTEGRASI IT ENTERPRISE
             </div>
 
             {/* Main Bold Headline */}
@@ -122,6 +122,7 @@ export default function Hero() {
                 {t("cta_secondary")}
                 <ChevronDown size={16} />
               </button>
+            </div>
           </div>
 
           {/* Right Column: Borderless & Enlarged Spiral Typography Art with Edge Fade */}
@@ -164,7 +165,7 @@ export default function Hero() {
                 </text>
                 <text className="spiral-track track-3">
                   <textPath href="#circle-3" startOffset="0%">
-                    PENGADAAN SERVER & JARINGAN TERPERCAYA • GARANSI RESMI INDONESIA •
+                    PENGADAAN SERVER &amp; JARINGAN TERPERCAYA • GARANSI RESMI INDONESIA •
                   </textPath>
                 </text>
                 <text className="spiral-track track-4">
@@ -174,7 +175,7 @@ export default function Hero() {
                 </text>
                 <text className="spiral-track track-5">
                   <textPath href="#circle-5" startOffset="0%">
-                    SOLUSI INFRASTRUKTUR TEKNOLOGI INFORMASI • SERVIS & DUKUNGAN TEKNIS LENGKAP •
+                    SOLUSI INFRASTRUKTUR TEKNOLOGI INFORMASI • SERVIS &amp; DUKUNGAN TEKNIS LENGKAP •
                   </textPath>
                 </text>
               </svg>
