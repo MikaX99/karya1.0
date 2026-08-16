@@ -37,10 +37,10 @@ export default function Hero() {
           className="hero-split-grid"
           style={{
             display: "grid",
-            gridTemplateColumns: "1.1fr 0.9fr",
-            gap: "3.5rem",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "3rem",
             alignItems: "center",
-            minHeight: "70vh",
+            minHeight: "75vh",
           }}
         >
           {/* Left Column: Minimal High-Taste Content */}
@@ -146,30 +146,33 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Taste Concentric Rotating Spiral Typography Art */}
+          {/* Right Column: Borderless & Enlarged Spiral Typography Art with Edge Fade */}
           <div
             className="hero-art-container"
             style={{
+              width: "100%",
               height: "100%",
-              minHeight: "420px",
+              minHeight: "520px",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               position: "relative",
-              background: "var(--color-surface)",
-              border: "1px solid var(--color-border)",
-              borderRadius: "1.5rem",
+              background: "transparent",
+              border: "none",
+              boxShadow: "none",
+              padding: "0",
               overflow: "hidden",
-              padding: "2rem",
-              boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
+              maskImage: "radial-gradient(circle at center, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 95%)",
+              WebkitMaskImage: "radial-gradient(circle at center, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 95%)",
             }}
           >
             <div className="hero-spiral-wrapper" style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <svg viewBox="0 0 500 500" className="hero-spiral-svg" style={{ width: "100%", maxHeight: "420px" }}>
-                <path id="circle-1" d="M 250, 250 m -70, 0 a 70,70 0 1,1 140,0 a 70,70 0 1,1 -140,0" fill="none" />
-                <path id="circle-2" d="M 250, 250 m -120, 0 a 120,120 0 1,1 240,0 a 120,120 0 1,1 -240,0" fill="none" />
-                <path id="circle-3" d="M 250, 250 m -170, 0 a 170,170 0 1,1 340,0 a 340,170 0 1,1 -340,0" fill="none" />
-                <path id="circle-4" d="M 250, 250 m -220, 0 a 220,220 0 1,1 440,0 a 220,220 0 1,1 -440,0" fill="none" />
+              <svg viewBox="0 0 500 500" className="hero-spiral-svg" style={{ width: "100%", maxHeight: "580px" }}>
+                <path id="circle-1" d="M 250, 250 m -50, 0 a 50,50 0 1,1 100,0 a 50,50 0 1,1 -100,0" fill="none" />
+                <path id="circle-2" d="M 250, 250 m -100, 0 a 100,100 0 1,1 200,0 a 100,100 0 1,1 -200,0" fill="none" />
+                <path id="circle-3" d="M 250, 250 m -150, 0 a 150,150 0 1,1 300,0 a 150,150 0 1,1 -300,0" fill="none" />
+                <path id="circle-4" d="M 250, 250 m -200, 0 a 200,200 0 1,1 400,0 a 200,200 0 1,1 -400,0" fill="none" />
+                <path id="circle-5" d="M 250, 250 m -240, 0 a 240,240 0 1,1 480,0 a 240,240 0 1,1 -480,0" fill="none" />
 
                 <text className="spiral-track track-1">
                   <textPath href="#circle-1" startOffset="0%">
@@ -191,6 +194,11 @@ export default function Hero() {
                     KARYASISTEM CORPORATE PROVIDER • DISTRIBUTOR RESMI PERANGKAT IT •
                   </textPath>
                 </text>
+                <text className="spiral-track track-5">
+                  <textPath href="#circle-5" startOffset="0%">
+                    SOLUSI INFRASTRUKTUR TEKNOLOGI INFORMASI • SERVIS & DUKUNGAN TEKNIS LENGKAP •
+                  </textPath>
+                </text>
               </svg>
             </div>
           </div>
@@ -204,7 +212,7 @@ export default function Hero() {
             gap: 2.5rem !important;
           }
           .hero-art-container {
-            min-height: 320px !important;
+            min-height: 360px !important;
           }
         }
       `}</style>

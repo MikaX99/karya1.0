@@ -385,7 +385,7 @@ html[data-theme="light"] .section-badge {
 .hero-spiral-svg {
   width: 100%;
   height: 100%;
-  max-width: 480px;
+  max-width: 640px;
 }
 
 .spiral-track {
@@ -393,10 +393,11 @@ html[data-theme="light"] .section-badge {
   text-transform: uppercase;
 }
 
-.track-1 { animation: spin-slow 35s linear infinite; transform-origin: 250px 250px; fill: var(--color-text); font-size: 11.5px; font-weight: 700; letter-spacing: 0.15em; opacity: 0.9; }
-.track-2 { animation: spin-reverse-slow 48s linear infinite; transform-origin: 250px 250px; fill: var(--color-text-muted); font-size: 10.5px; font-weight: 600; letter-spacing: 0.12em; opacity: 0.7; }
-.track-3 { animation: spin-slow 64s linear infinite; transform-origin: 250px 250px; fill: var(--color-text-subtle); font-size: 9.5px; font-weight: 500; letter-spacing: 0.1em; opacity: 0.5; }
-.track-4 { animation: spin-reverse-slow 80s linear infinite; transform-origin: 250px 250px; fill: var(--color-text-faint); font-size: 9px; font-weight: 500; letter-spacing: 0.08em; opacity: 0.35; }
+.track-1 { animation: spin-slow 35s linear infinite; transform-origin: 250px 250px; fill: var(--color-text); font-size: 11.5px; font-weight: 700; letter-spacing: 0.15em; opacity: 0.95; }
+.track-2 { animation: spin-reverse-slow 48s linear infinite; transform-origin: 250px 250px; fill: var(--color-text-muted); font-size: 10.5px; font-weight: 600; letter-spacing: 0.12em; opacity: 0.75; }
+.track-3 { animation: spin-slow 64s linear infinite; transform-origin: 250px 250px; fill: var(--color-text-subtle); font-size: 9.5px; font-weight: 500; letter-spacing: 0.1em; opacity: 0.55; }
+.track-4 { animation: spin-reverse-slow 80s linear infinite; transform-origin: 250px 250px; fill: var(--color-text-faint); font-size: 9px; font-weight: 500; letter-spacing: 0.08em; opacity: 0.38; }
+.track-5 { animation: spin-slow 96s linear infinite; transform-origin: 250px 250px; fill: var(--color-text-faint); font-size: 8.5px; font-weight: 500; letter-spacing: 0.06em; opacity: 0.22; }
 
 /* ============================================================
    HERO TASTE MINIMALIST BACKGROUND (PURE MATTE + SUBTLE LIGHTING)
