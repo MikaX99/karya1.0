@@ -2,6 +2,7 @@ const { execSync } = require("child_process");
 const path = require("path");
 
 console.log("🚀 [1/3] Memulai build khusus GitHub Pages (basePath: /karya1.0)...");
+execSync("rm -rf .next out", { stdio: "inherit" });
 execSync("GITHUB_ACTIONS=true npm run build", { stdio: "inherit" });
 
 const outDir = path.resolve("out");
@@ -21,6 +22,7 @@ try {
 }
 
 console.log("🔄 [3/3] Memulihkan build lokal untuk http://localhost:8080...");
+execSync("rm -rf .next out", { stdio: "inherit" });
 execSync("npm run build", { stdio: "inherit" });
 
 console.log("\n🎉 SELESAI! Keduanya sudah beres:");
