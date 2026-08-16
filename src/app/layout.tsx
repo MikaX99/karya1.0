@@ -97,6 +97,43 @@ export default function RootLayout({
             "base-uri 'self'",
             "form-action 'self'",
           ].join("; ")}
+        {/* Canonical Link */}
+        <link rel="canonical" href="https://mikax99.github.io/karya1.0/" />
+
+        {/* Schema.org Structured Data for AI Agents & Search Engines */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": "https://mikax99.github.io/karya1.0/#organization",
+                  "name": config.company.name,
+                  "url": "https://mikax99.github.io/karya1.0/",
+                  "logo": "https://mikax99.github.io/karya1.0/kst-dark.png",
+                  "description": config.company.description,
+                  "contactPoint": {
+                    "@type": "ContactPoint",
+                    "telephone": config.company.phone,
+                    "contactType": "sales",
+                    "areaServed": "ID",
+                    "availableLanguage": ["Indonesian", "English"]
+                  }
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://mikax99.github.io/karya1.0/#website",
+                  "url": "https://mikax99.github.io/karya1.0/",
+                  "name": config.company.name,
+                  "publisher": {
+                    "@id": "https://mikax99.github.io/karya1.0/#organization"
+                  }
+                }
+              ]
+            }),
+          }}
         />
       </head>
       <body className="antialiased">
