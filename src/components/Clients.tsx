@@ -117,17 +117,18 @@ export default function Clients() {
                 {/* Logo Image or Abbreviation Badge */}
                 <div
                   style={{
-                    width: "48px",
-                    height: "48px",
-                    borderRadius: "6px",
-                    background: "var(--color-surface-2)",
+                    width: "72px",
+                    height: "72px",
+                    borderRadius: "8px",
+                    background: "#ffffff",
                     border: "1px solid var(--color-border)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     flexShrink: 0,
                     overflow: "hidden",
-                    padding: "4px",
+                    padding: "6px",
+                    boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
                   }}
                 >
                   {(client as any).logo ? (
@@ -137,7 +138,7 @@ export default function Clients() {
                       style={{ width: "100%", height: "100%", objectFit: "contain" }}
                     />
                   ) : (
-                    <span style={{ fontSize: "0.95rem", fontWeight: 800, color: color }}>
+                    <span style={{ fontSize: "1.25rem", fontWeight: 800, color: color }}>
                       {client.abbr}
                     </span>
                   )}
