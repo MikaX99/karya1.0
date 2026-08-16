@@ -1,0 +1,145 @@
+[
+  {
+    "id": "srv-01",
+    "category": "Server & Storage",
+    "title": "Rackmount Server Enterprise 2U Dual Xeon",
+    "brand": "Dell PowerEdge",
+    "specs": "2x Intel Xeon Silver • 64GB DDR4 • 2x 1.92TB SSD • Redundant PSU",
+    "priceDisplay": "Hubungi Sales",
+    "image": "/images/products/server-2u.webp",
+    "badge": "Garansi Resmi 3 Thn",
+    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk unit Rackmount Server Enterprise 2U Dual Xeon (ID: srv-01)."
+  },
+  {
+    "id": "srv-02",
+    "category": "Server & Storage",
+    "title": "Tower Server Workstation Intel Xeon E",
+    "brand": "HP ProLiant",
+    "specs": "Intel Xeon E-2378G • 32GB ECC DDR4 • 4TB SATA HDD • RAID Controller",
+    "priceDisplay": "Hubungi Sales",
+    "image": "/images/products/server-tower.webp",
+    "badge": "Garansi Resmi 3 Thn",
+    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk unit Tower Server Workstation Intel Xeon E (ID: srv-02)."
+  },
+  {
+    "id": "srv-03",
+    "category": "Server & Storage",
+    "title": "NAS Storage Enterprise 12-Bay",
+    "brand": "Synology",
+    "specs": "12-Bay • Redundant PSU • 10GbE • iSCSI Support • Virtualization Ready",
+    "priceDisplay": "Hubungi Sales",
+    "image": "/images/products/nas-storage.webp",
+    "badge": "Stok Tersedia",
+    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk unit NAS Storage Enterprise 12-Bay (ID: srv-03)."
+  },
+  {
+    "id": "net-01",
+    "category": "Networking",
+    "title": "Managed Switch 48-Port Gigabit PoE+",
+    "brand": "Cisco Catalyst",
+    "specs": "48x GbE PoE+ • 4x 10G SFP+ Uplink • 740W PoE Budget • Layer 3",
+    "priceDisplay": "Hubungi Sales",
+    "image": "/images/products/switch-cisco.webp",
+    "badge": "Garansi Resmi",
+    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk unit Managed Switch 48-Port Gigabit PoE+ (ID: net-01)."
+  },
+  {
+    "id": "net-02",
+    "category": "Networking",
+    "title": "Wireless Access Point Wi-Fi 6 Indoor",
+    "brand": "Ubiquiti UniFi",
+    "specs": "Wi-Fi 6 AX3000 • 2.4GHz + 5GHz • PoE Powered • 300+ Client Support",
+    "priceDisplay": "Hubungi Sales",
+    "image": "/images/products/ap-wifi6.webp",
+    "badge": "Best Seller",
+    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk unit Wireless Access Point Wi-Fi 6 Indoor (ID: net-02)."
+  },
+  {
+    "id": "net-03",
+    "category": "Networking",
+    "title": "Router Enterprise RouterBoard CCR2004",
+    "brand": "Mikrotik",
+    "specs": "4x 1G SFP • 16x RJ45 PoE • RouterOS L6 • Hardware Offload",
+    "priceDisplay": "Hubungi Sales",
+    "image": "/images/products/router-mikrotik.webp",
+    "badge": "Garansi Resmi",
+    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk unit Router Enterprise RouterBoard CCR2004 (ID: net-03)."
+  },
+  {
+    "id": "net-04",
+    "category": "Networking",
+    "title": "Firewall Next-Gen Enterprise Security",
+    "brand": "Fortinet FortiGate",
+    "specs": "10Gbps Firewall • IPS/IDS • SSL Inspection • SD-WAN Ready",
+    "priceDisplay": "Hubungi Sales",
+    "image": "/images/products/firewall-fortigate.webp",
+    "badge": "Recommended",
+    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk unit Firewall Next-Gen Enterprise Security (ID: net-04)."
+  },
+  {
+    "id": "lpt-01",
+    "category": "Laptop & PC",
+    "title": "Laptop Business ThinkPad X1 Carbon Gen 12",
+    "brand": "Lenovo",
+    "specs": "Intel Core Ultra 7 • 32GB LPDDR5 • 1TB NVMe SSD • 14\" WUXGA IPS",
+    "priceDisplay": "Hubungi Sales",
+    "image": "/images/products/laptop-thinkpad.webp",
+    "badge": "Garansi Resmi 3 Thn",
+    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk unit Laptop Business ThinkPad X1 Carbon Gen 12 (ID: lpt-01)."
+  },
+  {
+    "id": "lpt-02",
+    "category": "Laptop & PC",
+    "title": "Desktop Workstation PC All-in-One",
+    "brand": "HP EliteOne 870",
+    "specs": "Intel Core i7-13700 • 16GB DDR5 • 512GB SSD • 27\" IPS QHD Touch",
+    "priceDisplay": "Hubungi Sales",
+    "image": "/images/products/pc-aio.webp",
+    "badge": "Stok Tersedia",
+    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk unit Desktop Workstation PC All-in-One (ID: lpt-02)."
+  },
+  {
+    "id": "lpt-03",
+    "category": "Laptop & PC",
+    "title": "Laptop Enterprise Dell Latitude 5540",
+    "brand": "Dell",
+    "specs": "Intel Core i5-1345U • 16GB DDR4 • 256GB SSD • 15.6\" FHD • Win 11 Pro",
+    "priceDisplay": "Hubungi Sales",
+    "image": "/images/products/laptop-dell.webp",
+    "badge": "Garansi Resmi",
+    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk unit Laptop Enterprise Dell Latitude 5540 (ID: lpt-03)."
+  },
+  {
+    "id": "sw-01",
+    "category": "Lisensi Software",
+    "title": "Microsoft 365 Business Premium",
+    "brand": "Microsoft",
+    "specs": "1 User/Tahun • Teams + Office Apps + Exchange + Defender + Intune",
+    "priceDisplay": "Hubungi Sales",
+    "image": "/images/products/ms365.webp",
+    "badge": "Lisensi Resmi",
+    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk lisensi Microsoft 365 Business Premium (ID: sw-01)."
+  },
+  {
+    "id": "sw-02",
+    "category": "Lisensi Software",
+    "title": "Windows Server 2025 Standard",
+    "brand": "Microsoft",
+    "specs": "16 Core License • Hyper-V • Active Directory • RDS included",
+    "priceDisplay": "Hubungi Sales",
+    "image": "/images/products/windows-server.webp",
+    "badge": "Lisensi Resmi",
+    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk lisensi Windows Server 2025 Standard (ID: sw-02)."
+  },
+  {
+    "id": "sw-03",
+    "category": "Lisensi Software",
+    "title": "Antivirus Endpoint Protection Enterprise",
+    "brand": "Kaspersky",
+    "specs": "Per Device/Tahun • EDR • Cloud Management Console • Multi-Platform",
+    "priceDisplay": "Hubungi Sales",
+    "image": "/images/products/antivirus.webp",
+    "badge": "Lisensi Resmi",
+    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk lisensi Antivirus Endpoint Protection Enterprise (ID: sw-03)."
+  }
+]

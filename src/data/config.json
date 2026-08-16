@@ -1,0 +1,26 @@
+{
+  "company": {
+    "name": "KaryaSistem",
+    "tagline": "Solusi IT Enterprise Terpercaya",
+    "description": "Distributor resmi perangkat IT enterprise: server, networking, laptop, dan lisensi software bergaransi resmi untuk bisnis dan instansi di seluruh Indonesia.",
+    "address": "Jl. Contoh No. 123, Kota Anda, Indonesia",
+    "phone": "+62 878-8120-0477",
+    "email": "sales@karyasistem.com",
+    "hours": "Senin – Jumat: 08.00 – 17.00 WIB"
+  },
+  "whatsapp": {
+    "number": "6287881200477",
+    "displayNumber": "+62 878-8120-0477",
+    "defaultMessage": "Halo KaryaSistem, saya ingin berkonsultasi mengenai kebutuhan IT perusahaan kami."
+  },
+  "maps": {
+    "embedUrl": "https://maps.google.com/maps?q=-6.157864333267043,106.95494887976591&z=16&output=embed",
+    "googleMapsUrl": "https://maps.google.com/?q=-6.157864333267043,106.95494887976591"
+  },
+  "seo": {
+    "title": "KaryaSistem — Solusi & Integrasi IT untuk Operasional Bisnis Anda",
+    "description": "Distributor resmi server Dell/HP, switch Cisco, laptop Lenovo, dan lisensi Microsoft untuk bisnis dan instansi. Garansi resmi, pengiriman cepat, purnajual terpercaya.",
+    "keywords": "pengadaan IT, server enterprise, switch cisco, laptop bisnis, lisensi microsoft, IT solusi, hardware komputer, jaringan enterprise, karyasistem",
+    "ogImage": "/og-image.png"
+  }
+}

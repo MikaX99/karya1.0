@@ -1,0 +1,115 @@
+[
+  {
+    "id": "client-01",
+    "name": "PT. Maju Bersama Tbk",
+    "abbr": "MB",
+    "industry": "Perbankan & Keuangan",
+    "color": "#0EA5E9",
+    "since": "2020",
+    "products": [
+      "Laptop & PC",
+      "Networking"
+    ],
+    "testimonial": "KaryaSistem sangat profesional, pengiriman tepat waktu dan produk sesuai spesifikasi yang kami butuhkan. Layanan purna jualnya responsif.",
+    "contact": "Bapak Andi — IT Manager"
+  },
+  {
+    "id": "client-02",
+    "name": "Universitas Teknologi Nusantara",
+    "abbr": "UTN",
+    "industry": "Pendidikan",
+    "color": "#6366F1",
+    "since": "2021",
+    "products": [
+      "Laptop & PC",
+      "Networking",
+      "Lisensi Software"
+    ],
+    "testimonial": "Kami sangat puas dengan kualitas produk dan kecepatan pengiriman. KaryaSistem memahami kebutuhan institusi pendidikan dengan baik.",
+    "contact": "Ibu Dewi — Kepala Divisi IT"
+  },
+  {
+    "id": "client-03",
+    "name": "PT. PLN Persero",
+    "abbr": "PLN",
+    "industry": "Energi",
+    "color": "#10B981",
+    "since": "2022",
+    "products": [
+      "Server & Storage",
+      "Networking"
+    ],
+    "testimonial": "Sistem server yang KaryaSistem sediakan sangat stabil dan sudah berjalan lebih dari 2 tahun tanpa downtime berarti.",
+    "contact": "Bapak Hendra — Direktur IT"
+  },
+  {
+    "id": "client-04",
+    "name": "PT. Logistik Express Indonesia",
+    "abbr": "LEI",
+    "industry": "Logistik & Transportasi",
+    "color": "#F59E0B",
+    "since": "2021",
+    "products": [
+      "Networking",
+      "Laptop & PC"
+    ],
+    "testimonial": "",
+    "contact": ""
+  },
+  {
+    "id": "client-05",
+    "name": "Pemerintah Kota Cerdas",
+    "abbr": "PKC",
+    "industry": "Pemerintahan",
+    "color": "#8B5CF6",
+    "since": "2023",
+    "products": [
+      "Laptop & PC",
+      "Lisensi Software"
+    ],
+    "testimonial": "Proses pengadaan transparan dan sesuai regulasi. KaryaSistem memberikan harga kompetitif dengan dokumentasi lengkap.",
+    "contact": "Dinas Komunikasi & Informatika"
+  },
+  {
+    "id": "client-06",
+    "name": "PT. Manufaktur Prima",
+    "abbr": "MP",
+    "industry": "Manufaktur",
+    "color": "#EF4444",
+    "since": "2020",
+    "products": [
+      "Server & Storage",
+      "Networking"
+    ],
+    "testimonial": "",
+    "contact": ""
+  },
+  {
+    "id": "client-07",
+    "name": "CV. Retail Sukses Group",
+    "abbr": "RSG",
+    "industry": "Retail & E-Commerce",
+    "color": "#EC4899",
+    "since": "2022",
+    "products": [
+      "Networking",
+      "Lisensi Software"
+    ],
+    "testimonial": "",
+    "contact": ""
+  },
+  {
+    "id": "client-08",
+    "name": "PT. Properti Gemilang",
+    "abbr": "PG",
+    "industry": "Properti & Konstruksi",
+    "color": "#14B8A6",
+    "since": "2023",
+    "products": [
+      "Laptop & PC",
+      "Lisensi Software"
+    ],
+    "testimonial": "Harga bersaing, produk original, dan tim sales KaryaSistem sangat membantu dalam proses pemilihan spesifikasi.",
+    "contact": "Ibu Sarah — HRD & GA Manager"
+  }
+]
