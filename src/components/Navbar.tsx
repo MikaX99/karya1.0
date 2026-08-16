@@ -87,7 +87,7 @@ export default function Navbar() {
                 decoding="async"
                 fetchPriority="high"
                 className="logo-img logo-dark-mode"
-                style={{ width: "145px", height: "auto", maxHeight: "38px", objectFit: "contain" }}
+                style={{ width: "auto", height: "52px", objectFit: "contain" }}
               />
               <img
                 src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/kst-light.png`}
@@ -97,11 +97,8 @@ export default function Navbar() {
                 decoding="async"
                 fetchPriority="high"
                 className="logo-img logo-light-mode"
-                style={{ width: "145px", height: "auto", maxHeight: "38px", objectFit: "contain" }}
+                style={{ width: "auto", height: "52px", objectFit: "contain" }}
               />
-              <span className="brand-typography">
-                Karya<span className="brand-highlight">Sistem</span>
-              </span>
             </a>
 
             {/* Desktop Nav Links */}
