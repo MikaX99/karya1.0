@@ -78,12 +78,12 @@ export default function Navbar() {
               }}
             >
               <img
-                src="./kst-dark.png"
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/kst-dark.png`}
                 alt="Logo"
                 className="logo-img logo-dark-mode"
               />
               <img
-                src="./kst-light.png"
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/kst-light.png`}
                 alt="Logo"
                 className="logo-img logo-light-mode"
               />
