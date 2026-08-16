@@ -7,6 +7,13 @@ const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
   basePath,
+  reactStrictMode: true,
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production" ? { exclude: ["error"] } : false,
+  },
+  experimental: {
+    optimizePackageImports: ["lucide-react"],
+  },
   env: {
     NEXT_PUBLIC_BASE_PATH: basePath,
   },
@@ -16,4 +23,3 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-

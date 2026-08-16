@@ -81,12 +81,20 @@ export default function Navbar() {
             >
               <img
                 src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/kst-dark.png`}
-                alt="Logo"
+                alt="KaryaSistem Logo"
+                width="160"
+                height="40"
+                decoding="async"
+                fetchPriority="high"
                 className="logo-img logo-dark-mode"
               />
               <img
                 src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/kst-light.png`}
-                alt="Logo"
+                alt="KaryaSistem Logo"
+                width="160"
+                height="40"
+                decoding="async"
+                fetchPriority="high"
                 className="logo-img logo-light-mode"
               />
               <span className="brand-typography">

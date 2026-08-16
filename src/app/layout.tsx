@@ -52,12 +52,23 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-        <meta name="theme-color" content="#0F172A" />
+        <link
+          rel="preload"
+          as="style"
+          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        />
+        <meta name="theme-color" content="#111111" />
         <meta name="geo.region" content="ID" />
         <meta name="geo.country" content="Indonesia" />
       </head>
       <body className="antialiased">
-        <LocaleProvider><ThemeProvider>{children}</ThemeProvider></LocaleProvider>
+        <LocaleProvider>
+          <ThemeProvider>{children}</ThemeProvider>
+        </LocaleProvider>
       </body>
     </html>
   );

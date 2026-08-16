@@ -353,6 +353,10 @@ export default function Clients() {
                           <img
                             src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${client.logo}`}
                             alt={client.name}
+                            width="56"
+                            height="56"
+                            loading="lazy"
+                            decoding="async"
                             style={{
                               width: "100%",
                               height: "100%",
@@ -515,6 +519,10 @@ export default function Clients() {
                       <img
                         src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${(client as any).logo}`}
                         alt={client.name}
+                        width="56"
+                        height="56"
+                        loading="lazy"
+                        decoding="async"
                         style={{
                           width: "100%",
                           height: "100%",
