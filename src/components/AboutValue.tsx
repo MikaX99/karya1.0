@@ -47,6 +47,7 @@ export default function AboutValue() {
   }, [manualOverride]);
 
   const handleMouseEnter = (idx: number) => {
+    // Desktop hover trigger strictly on mouse over (>=768px)
     if (typeof window !== "undefined" && window.innerWidth >= 768) {
       setActiveFolderIndex(idx);
     }
