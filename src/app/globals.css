@@ -843,6 +843,11 @@ html[data-theme="dark"] .futuristic-tab-container {
 }
 
 @media (max-width: 768px) {
+  #navbar {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+  }
+
   .mobile-hide-grid-all {
     display: none !important;
   }
