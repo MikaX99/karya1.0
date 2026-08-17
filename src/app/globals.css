@@ -777,8 +777,25 @@ html[data-theme="dark"] .futuristic-tab-container {
   -ms-overflow-style: none;
   scroll-behavior: smooth;
   padding: 2px 4px;
-  touch-action: pan-y;
-  overscroll-behavior-x: contain;
+}
+
+/* Brand Filter Centering Rules */
+.brand-filter-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 960px;
+  margin: 1.25rem auto 0 auto;
+}
+
+.brand-filter-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  width: 100%;
 }
 
 /* Catalog Mobile Category Stack Deck Controls */
