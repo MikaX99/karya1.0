@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useLocale } from "@/context/LocaleContext";
-import { ChevronDown, Layers, Rocket, Activity } from "lucide-react";
+import { ChevronDown, Layers, Rocket, Activity, FileText } from "lucide-react";
 
 export default function AboutValue() {
   const { t } = useLocale();
@@ -10,17 +10,18 @@ export default function AboutValue() {
   const [manualOverride, setManualOverride] = useState(false);
 
   useEffect(() => {
-    // Scroll-driven trigger only applies on Mobile screens (<768px)
+    // Mobile scroll-driven trigger logic (<768px)
     const handleScroll = () => {
       if (manualOverride) return;
       if (typeof window !== "undefined" && window.innerWidth >= 768) return;
 
+      const folder0 = document.getElementById("value-easy-integrations");
       const folder1 = document.getElementById("value-smart-deployment");
       const folder2 = document.getElementById("value-realtime-monitoring");
 
-      const focusPoint = window.innerHeight * 0.50; // Focus zone: center of mobile screen (50%)
+      const windowHeight = window.innerHeight;
+      const focusPoint = windowHeight * 0.48; // 4.8 / 10 screen height
 
-      // 1. If Card #3 top has reached/crossed the focus zone -> Open Card #3
       if (folder2) {
         const r2 = folder2.getBoundingClientRect();
         if (r2.top <= focusPoint) {
@@ -29,7 +30,6 @@ export default function AboutValue() {
         }
       }
 
-      // 2. If Card #2 top has reached/crossed the focus zone -> Open Card #2
       if (folder1) {
         const r1 = folder1.getBoundingClientRect();
         if (r1.top <= focusPoint) {
@@ -38,7 +38,6 @@ export default function AboutValue() {
         }
       }
 
-      // 3. Default to Card #1 open when viewing upper section / Card #1
       setActiveFolderIndex(0);
     };
 
@@ -48,7 +47,6 @@ export default function AboutValue() {
   }, [manualOverride]);
 
   const handleMouseEnter = (idx: number) => {
-    // Desktop hover trigger (>=768px)
     if (typeof window !== "undefined" && window.innerWidth >= 768) {
       setActiveFolderIndex(idx);
     }
@@ -65,37 +63,43 @@ export default function AboutValue() {
   const folders = [
     {
       id: "easy-integrations",
+      refNo: "FILE REF: KS-SYS-01",
+      stamp: "CLASSIFIED // INTEGRATION",
       index: "01",
       titleKey: "val_1_title",
       taglineKey: "val_1_tagline",
       descKey: "val_1_desc",
       statKey: "val_1_stat",
       statLabelKey: "val_1_stat_label",
-      icon: <Layers size={18} />,
+      icon: <Layers size={17} />,
       tabs: ["Easy Integrations", "Seamless Systems"],
       categoryLabel: "Integrasi & Support 24/7",
     },
     {
       id: "smart-deployment",
+      refNo: "FILE REF: KS-SYS-02",
+      stamp: "APPROVED // DEPLOYMENT",
       index: "02",
       titleKey: "val_2_title",
       taglineKey: "val_2_tagline",
       descKey: "val_2_desc",
       statKey: "val_2_stat",
       statLabelKey: "val_2_stat_label",
-      icon: <Rocket size={18} />,
+      icon: <Rocket size={17} />,
       tabs: ["Smart Deployment", "Zero-Friction Growth"],
       categoryLabel: "Implementasi & Skalabilitas",
     },
     {
       id: "realtime-monitoring",
+      refNo: "FILE REF: KS-SYS-03",
+      stamp: "VERIFIED // MONITORING",
       index: "03",
       titleKey: "val_3_title",
       taglineKey: "val_3_tagline",
       descKey: "val_3_desc",
       statKey: "val_3_stat",
       statLabelKey: "val_3_stat_label",
-      icon: <Activity size={18} />,
+      icon: <Activity size={17} />,
       tabs: ["Realtime Monitoring", "Continuous Optimization"],
       categoryLabel: "Visibilitas & Analitik Performa",
     },
@@ -123,14 +127,14 @@ export default function AboutValue() {
           </p>
         </div>
 
-        {/* Stacked Folder Tabs Container matching Site Primary Theme */}
+        {/* Stacked Archival Physical File Folders Container */}
         <div
           style={{
             maxWidth: "960px",
             margin: "0 auto",
             display: "flex",
             flexDirection: "column",
-            gap: "0.5rem",
+            gap: "0.75rem",
           }}
         >
           {folders.map((folder, idx) => {
@@ -139,21 +143,25 @@ export default function AboutValue() {
             return (
               <div
                 key={folder.id}
+                id={`value-${folder.id}`}
                 onMouseEnter={() => handleMouseEnter(idx)}
                 style={{
-                  borderRadius: "14px",
+                  borderRadius: "16px",
                   overflow: "hidden",
                   background: isActive ? "var(--color-surface-2)" : "var(--color-surface)",
                   border: isActive ? "1px solid var(--color-primary)" : "1px solid var(--color-border)",
-                  boxShadow: isActive ? "0 8px 30px rgba(0, 113, 227, 0.12)" : "0 2px 8px rgba(0,0,0,0.03)",
-                  transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                  boxShadow: isActive
+                    ? "0 14px 36px rgba(0, 113, 227, 0.15), 0 2px 8px rgba(0,0,0,0.06)"
+                    : "0 2px 10px rgba(0,0,0,0.03)",
+                  transition: "all 0.35s cubic-bezier(0.16, 1, 0.3, 1)",
+                  position: "relative",
                 }}
               >
-                {/* Folder Header Bar */}
+                {/* Physical Archival Folder Ear Tab Header */}
                 <div
                   onClick={() => handleFolderClick(idx)}
                   style={{
-                    padding: "0.875rem 1.25rem",
+                    padding: "0.85rem 1.25rem",
                     cursor: "pointer",
                     display: "flex",
                     alignItems: "center",
@@ -164,66 +172,81 @@ export default function AboutValue() {
                     background: isActive ? "var(--color-primary)" : "var(--color-surface-2)",
                     color: isActive ? "#ffffff" : "var(--color-text)",
                     transition: "all 0.25s ease",
+                    borderBottom: isActive ? "1px solid rgba(255,255,255,0.15)" : "none",
                   }}
                 >
-                  {/* Left Tabs Pills */}
-                  <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
+                  {/* Left Side: Physical Binder Rivet Eyelet & Archival Folder Label */}
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.6rem", flexWrap: "wrap" }}>
+                    {/* Metallic Rivet Eyelet Accent */}
+                    <div
+                      style={{
+                        width: "10px",
+                        height: "10px",
+                        borderRadius: "50%",
+                        background: isActive ? "#ffffff" : "var(--color-surface)",
+                        border: isActive ? "2px solid rgba(255,255,255,0.5)" : "2px solid var(--color-border)",
+                        boxShadow: "inset 0 1px 2px rgba(0,0,0,0.2)",
+                        flexShrink: 0,
+                      }}
+                    />
+
+                    {/* Monospaced Archival Ref Number */}
                     <span
                       style={{
-                        fontFamily: "monospace",
-                        fontSize: "0.75rem",
-                        fontWeight: 800,
-                        opacity: isActive ? 0.9 : 0.6,
-                        marginRight: "0.2rem",
+                        fontFamily: "monospace, monospace",
+                        fontSize: "0.72rem",
+                        fontWeight: 700,
+                        opacity: isActive ? 0.95 : 0.65,
+                        letterSpacing: "0.06em",
                       }}
                     >
-                      {folder.index}
+                      {folder.refNo}
                     </span>
-                    {folder.tabs.map((tabLabel, tIdx) => (
-                      <div
-                        key={tIdx}
-                        style={{
-                          background:
-                            tIdx === 0
-                              ? isActive
-                                ? "rgba(255, 255, 255, 0.22)"
-                                : "var(--color-surface)"
-                              : "transparent",
-                          color: isActive ? "#ffffff" : "var(--color-text)",
-                          padding: "0.32rem 0.75rem",
-                          borderRadius: "20px 20px 6px 6px",
-                          fontSize: "0.78rem",
-                          fontWeight: 700,
-                          letterSpacing: "0.01em",
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "0.4rem",
-                          border: tIdx === 0 && !isActive ? "1px solid var(--color-border)" : "none",
-                        }}
-                      >
-                        {tIdx === 0 && folder.icon}
-                        <span>{tIdx === 0 ? t(folder.titleKey) : tabLabel}</span>
-                      </div>
-                    ))}
+
+                    {/* Folder Ear Tab Badge */}
+                    <div
+                      style={{
+                        background: isActive ? "rgba(255, 255, 255, 0.2)" : "var(--color-surface)",
+                        color: isActive ? "#ffffff" : "var(--color-text)",
+                        padding: "0.3rem 0.75rem",
+                        borderRadius: "16px 16px 4px 4px",
+                        fontSize: "0.78rem",
+                        fontWeight: 700,
+                        letterSpacing: "0.01em",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "0.4rem",
+                        border: isActive ? "1px solid rgba(255,255,255,0.25)" : "1px solid var(--color-border)",
+                      }}
+                    >
+                      {folder.icon}
+                      <span>{t(folder.titleKey)}</span>
+                    </div>
                   </div>
 
-                  {/* Right Folder Category & Chevron */}
+                  {/* Right Side: Archival Folder Stamp & Chevron Indicator */}
                   <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
                     <span
                       style={{
-                        fontSize: "0.75rem",
-                        fontWeight: 600,
-                        opacity: isActive ? 0.9 : 0.7,
+                        fontSize: "0.68rem",
+                        fontWeight: 700,
+                        opacity: isActive ? 0.9 : 0.6,
                         fontFamily: "monospace, sans-serif",
-                        letterSpacing: "0.04em",
+                        letterSpacing: "0.06em",
+                        textTransform: "uppercase",
+                        background: isActive ? "rgba(0,0,0,0.18)" : "transparent",
+                        padding: "0.2rem 0.5rem",
+                        borderRadius: "4px",
+                        border: isActive ? "1px solid rgba(255,255,255,0.2)" : "1px dashed var(--color-border)",
                       }}
                     >
-                      {folder.categoryLabel}
+                      {folder.stamp}
                     </span>
+
                     <div
                       style={{
-                        width: "24px",
-                        height: "24px",
+                        width: "26px",
+                        height: "26px",
                         borderRadius: "50%",
                         background: isActive ? "rgba(255, 255, 255, 0.25)" : "var(--color-surface)",
                         border: isActive ? "none" : "1px solid var(--color-border)",
@@ -239,7 +262,7 @@ export default function AboutValue() {
                   </div>
                 </div>
 
-                {/* Expanded Folder Content Body */}
+                {/* Expanded Physical Archival Folder Body */}
                 {isActive && (
                   <div
                     style={{
@@ -252,7 +275,7 @@ export default function AboutValue() {
                       animation: "fadeIn 0.3s ease-in-out",
                     }}
                   >
-                    {/* Tagline & Stat */}
+                    {/* Archival Folder Metadata Tagline & Stat */}
                     <div
                       style={{
                         display: "flex",
@@ -269,9 +292,13 @@ export default function AboutValue() {
                           textTransform: "uppercase",
                           letterSpacing: "0.06em",
                           color: "var(--color-primary)",
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "0.4rem",
                         }}
                       >
-                        {t(folder.taglineKey)}
+                        <FileText size={15} />
+                        <span>{t(folder.taglineKey)}</span>
                       </div>
                       <div
                         style={{
@@ -293,7 +320,7 @@ export default function AboutValue() {
                       </div>
                     </div>
 
-                    {/* Title */}
+                    {/* Original Title */}
                     <h3
                       style={{
                         fontSize: "1.3rem",
@@ -305,7 +332,7 @@ export default function AboutValue() {
                       {t(folder.titleKey)}
                     </h3>
 
-                    {/* Original Description */}
+                    {/* Original Description Text */}
                     <p
                       style={{
                         color: "var(--color-text-muted)",
