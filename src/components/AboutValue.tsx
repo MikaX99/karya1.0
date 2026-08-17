@@ -1,6 +1,6 @@
 "use client";
 
-import { Layers, Rocket, Activity } from "lucide-react";
+import { ShieldCheck, Clock, Cpu } from "lucide-react";
 import { useLocale } from "@/context/LocaleContext";
 
 export default function AboutValue() {
@@ -8,37 +8,28 @@ export default function AboutValue() {
 
   const values = [
     {
-      id: "easy-integrations",
-      icon: <Layers size={26} strokeWidth={1.75} />,
+      id: "official-warranty",
+      icon: <ShieldCheck size={22} color="var(--color-primary)" strokeWidth={2} />,
+      metric: "100%",
       titleKey: "val_1_title",
       taglineKey: "val_1_tagline",
       descKey: "val_1_desc",
-      stat: "24/7",
-      statLabelKey: "val_1_stat_label",
-      color: "#1E87DA",
-      features: ["val_1_f1", "val_1_f2", "val_1_f3"],
     },
     {
-      id: "smart-deployment",
-      icon: <Rocket size={26} strokeWidth={1.75} />,
+      id: "fast-response",
+      icon: <Clock size={22} color="var(--color-primary)" strokeWidth={2} />,
+      metric: "< 15m",
       titleKey: "val_2_title",
       taglineKey: "val_2_tagline",
       descKey: "val_2_desc",
-      stat: "Zero-Friction",
-      statLabelKey: "val_2_stat_label",
-      color: "#059669",
-      features: ["val_2_f1", "val_2_f2", "val_2_f3"],
     },
     {
-      id: "realtime-monitoring",
-      icon: <Activity size={26} strokeWidth={1.75} />,
+      id: "pre-staging",
+      icon: <Cpu size={22} color="var(--color-primary)" strokeWidth={2} />,
+      metric: "Staging",
       titleKey: "val_3_title",
       taglineKey: "val_3_tagline",
       descKey: "val_3_desc",
-      stat: "Real-time",
-      statLabelKey: "val_3_stat_label",
-      color: "#0284C7",
-      features: ["val_3_f1", "val_3_f2", "val_3_f3"],
     },
   ];
 
@@ -64,67 +55,77 @@ export default function AboutValue() {
           </p>
         </div>
 
-        {/* Value Cards Grid */}
+        {/* Ultra-Clean Minimalist Bento Grid */}
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-            gap: "1.5rem",
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gap: "1.25rem",
           }}
         >
-          {values.map((value) => (
+          {values.map((item) => (
             <div
-              key={value.id}
-              id={`value-${value.id}`}
-              className="glass-card"
+              key={item.id}
+              id={`value-${item.id}`}
               style={{
-                borderRadius: "8px",
-                padding: "2rem",
+                borderRadius: "14px",
+                padding: "2.25rem 2rem",
                 display: "flex",
                 flexDirection: "column",
-                position: "relative",
+                background: "var(--color-surface)",
+                border: "1px solid var(--color-border)",
+                boxShadow: "0 4px 24px rgba(0,0,0,0.02)",
+                transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
               }}
             >
-              {/* Stat Highlight Header */}
+              {/* Metric & Icon Header */}
               <div
                 style={{
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
-                  marginBottom: "1.25rem",
+                  marginBottom: "1.5rem",
                 }}
               >
                 <div
                   style={{
-                    width: "48px",
-                    height: "48px",
-                    borderRadius: "6px",
+                    fontSize: "2.2rem",
+                    fontWeight: 800,
+                    color: "var(--color-text)",
+                    letterSpacing: "-0.03em",
+                    lineHeight: 1,
+                  }}
+                >
+                  {item.metric}
+                </div>
+                <div
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    borderRadius: "10px",
                     background: "var(--color-surface-2)",
                     border: "1px solid var(--color-border)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    color: value.color,
                   }}
                 >
-                  {value.icon}
+                  {item.icon}
                 </div>
-                <div style={{ textAlign: "right" }}>
-                  <div style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--color-text)" }}>
-                    {value.stat}
-                  </div>
-                  <div
-                    style={{
-                      fontSize: "0.65rem",
-                      color: "var(--color-text-faint)",
-                      fontWeight: 600,
-                      textTransform: "uppercase",
-                      letterSpacing: "0.05em",
-                    }}
-                  >
-                    {t(value.statLabelKey)}
-                  </div>
-                </div>
+              </div>
+
+              {/* Tagline Badge */}
+              <div
+                style={{
+                  fontSize: "0.75rem",
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.06em",
+                  color: "var(--color-primary)",
+                  marginBottom: "0.5rem",
+                }}
+              >
+                {t(item.taglineKey)}
               </div>
 
               {/* Title */}
@@ -133,64 +134,24 @@ export default function AboutValue() {
                   fontSize: "1.2rem",
                   fontWeight: 700,
                   color: "var(--color-text)",
-                  margin: "0 0 0.35rem 0",
+                  margin: "0 0 0.75rem 0",
+                  lineHeight: 1.3,
                 }}
               >
-                {t(value.titleKey)}
+                {t(item.titleKey)}
               </h3>
-
-              {/* Tagline */}
-              <div
-                style={{
-                  fontSize: "0.8rem",
-                  fontWeight: 600,
-                  color: "var(--color-primary)",
-                  marginBottom: "0.875rem",
-                }}
-              >
-                {t(value.taglineKey)}
-              </div>
 
               {/* Description */}
               <p
                 style={{
                   color: "var(--color-text-muted)",
-                  fontSize: "0.85rem",
+                  fontSize: "0.875rem",
                   lineHeight: 1.65,
-                  margin: "0 0 1.5rem 0",
-                  flex: 1,
+                  margin: 0,
                 }}
               >
-                {t(value.descKey)}
+                {t(item.descKey)}
               </p>
-
-              {/* Feature Checklist */}
-              <div
-                style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: "0.4rem",
-                  borderTop: "1px solid var(--color-border-subtle)",
-                  paddingTop: "1rem",
-                }}
-              >
-                {value.features.map((featureKey) => (
-                  <span
-                    key={featureKey}
-                    style={{
-                      padding: "0.25rem 0.6rem",
-                      background: "var(--color-surface-2)",
-                      border: "1px solid var(--color-border)",
-                      borderRadius: "4px",
-                      fontSize: "0.72rem",
-                      fontWeight: 600,
-                      color: "var(--color-text-muted)",
-                    }}
-                  >
-                    {t(featureKey)}
-                  </span>
-                ))}
-              </div>
             </div>
           ))}
         </div>
