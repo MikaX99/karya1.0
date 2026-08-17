@@ -19,32 +19,25 @@ export default function AboutValue() {
       const folder1 = document.getElementById("value-smart-deployment");
       const folder2 = document.getElementById("value-realtime-monitoring");
 
-      // Midpoint trigger threshold (posisi 5.5 / 10 layar)
-      const triggerPoint = window.innerHeight * 0.55;
+      // Target trigger zone: Zone 4 (posisi 4 / 10 layar HP)
+      const zone4 = window.innerHeight * 0.4;
 
-      if (folder2) {
-        const r2 = folder2.getBoundingClientRect();
-        if (r2.top <= triggerPoint) {
-          setActiveFolderIndex(2);
-          return;
-        }
-      }
+      const cards = [folder0, folder1, folder2];
+      let closestIdx = 0;
+      let minDistance = Infinity;
 
-      if (folder1) {
-        const r1 = folder1.getBoundingClientRect();
-        if (r1.top <= triggerPoint) {
-          setActiveFolderIndex(1);
-          return;
+      cards.forEach((card, idx) => {
+        if (card) {
+          const rect = card.getBoundingClientRect();
+          const dist = Math.abs(rect.top - zone4);
+          if (dist < minDistance) {
+            minDistance = dist;
+            closestIdx = idx;
+          }
         }
-      }
+      });
 
-      if (folder0) {
-        const r0 = folder0.getBoundingClientRect();
-        if (r0.top <= triggerPoint) {
-          setActiveFolderIndex(0);
-          return;
-        }
-      }
+      setActiveFolderIndex(closestIdx);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
