@@ -781,7 +781,11 @@ html[data-theme="dark"] .futuristic-tab-container {
   overscroll-behavior-x: contain;
 }
 
-/* Catalog Responsive Filter Visibility & Controls */
+/* Catalog Mobile Category Stack Deck Controls */
+.mobile-category-stacks {
+  display: none;
+}
+
 .catalog-mobile-filter {
   display: none;
 }
@@ -791,15 +795,47 @@ html[data-theme="dark"] .futuristic-tab-container {
 }
 
 @media (max-width: 768px) {
+  .mobile-hide-grid-all {
+    display: none !important;
+  }
+
   .catalog-desktop-filter {
     display: none !important;
+  }
+
+  .mobile-category-stacks {
+    display: flex !important;
+    flex-direction: column;
+    gap: 0.85rem;
+    width: 100%;
+    margin: 0 auto 1.5rem auto;
+  }
+
+  .category-stack-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 1.2rem 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .category-stack-card:active {
+    transform: scale(0.98);
+    border-color: var(--color-primary);
+    background: var(--color-surface-2);
   }
 
   .catalog-mobile-filter {
     display: flex !important;
     flex-direction: column;
     gap: 0.65rem;
-    max-width: 100%;
+    width: 100%;
     margin: 0 auto 1.25rem auto;
   }
 

@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import productsData from "@/data/products.json";
 import ProductCard from "./ProductCard";
 import { useLocale } from "@/context/LocaleContext";
-import { ChevronLeft, ChevronRight, Filter, Tag, ChevronDown } from "lucide-react";
+import { ChevronLeft, ChevronRight, Filter, Tag, ChevronDown, Server, Network, Laptop, ShieldCheck, ArrowRight, ArrowLeft, Layers } from "lucide-react";
 
 const categoriesConfig = [
   { key: "cat_all", value: "Semua" },
@@ -12,6 +12,45 @@ const categoriesConfig = [
   { key: "cat_network", value: "Networking" },
   { key: "cat_laptop", value: "Laptop & PC" },
   { key: "cat_license", value: "Lisensi Software" },
+];
+
+const categoryStacks = [
+  {
+    value: "Server & Storage",
+    title: "Server & Enterprise Storage",
+    desc: "Dell PowerEdge, HPE ProLiant, Synology NAS",
+    count: "3 Perangkat Enterprise",
+    icon: <Server size={22} color="#0071E3" />,
+    color: "#0071E3",
+    bgTint: "rgba(0, 113, 227, 0.08)",
+  },
+  {
+    value: "Networking",
+    title: "Enterprise Networking & Security",
+    desc: "Cisco Catalyst, Ubiquiti UniFi, MikroTik, Fortinet",
+    count: "4 Perangkat Jaringan",
+    icon: <Network size={22} color="#0284C7" />,
+    color: "#0284C7",
+    bgTint: "rgba(2, 132, 199, 0.08)",
+  },
+  {
+    value: "Laptop & PC",
+    title: "Laptop & Workstation Bisnis",
+    desc: "Lenovo ThinkPad X1, HP Enterprise, Dell Latitude",
+    count: "3 Laptop & Workstation",
+    icon: <Laptop size={22} color="#059669" />,
+    color: "#059669",
+    bgTint: "rgba(5, 150, 105, 0.08)",
+  },
+  {
+    value: "Lisensi Software",
+    title: "Lisensi Software & Sekuritas",
+    desc: "Microsoft 365, Windows Server 2025, Kaspersky, Sophos",
+    count: "5 Lisensi Resmi Vendor",
+    icon: <ShieldCheck size={22} color="#D97706" />,
+    color: "#D97706",
+    bgTint: "rgba(217, 119, 6, 0.08)",
+  },
 ];
 
 const brandConfig = [
@@ -113,52 +152,117 @@ export default function ProductCatalog() {
           </p>
         </div>
 
-        {/* 📱 MOBILE NATIVE DROPDOWN SELECT CONTROLS (< 768px) */}
-        <div className="catalog-mobile-filter">
-          {/* Category Dropdown */}
-          <div className="mobile-filter-select-wrapper">
-            <div style={{ position: "absolute", left: "1rem", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "var(--color-primary)" }}>
-              <Filter size={17} />
+        {/* 📱 MOBILE CATEGORY STACK DECK (< 768px) */}
+        {activeCategoryVal === "Semua" && (
+          <div className="mobile-category-stacks">
+            <div style={{ fontSize: "0.78rem", fontWeight: 700, color: "var(--color-primary)", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "0.2rem", display: "flex", alignItems: "center", gap: "0.4rem" }}>
+              <Layers size={15} />
+              <span>Pilih Kategori Perangkat:</span>
             </div>
-            <select
-              className="mobile-filter-select"
-              value={activeCategoryVal}
-              onChange={(e) => handleCategoryChange(e.target.value)}
-              aria-label="Pilih Kategori Produk"
-            >
-              {categoriesConfig.map((cat) => (
-                <option key={cat.key} value={cat.value}>
-                  Kategori: {t(cat.key)}
-                </option>
-              ))}
-            </select>
-            <div style={{ position: "absolute", right: "1rem", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "var(--color-text-muted)" }}>
-              <ChevronDown size={17} />
-            </div>
-          </div>
 
-          {/* Brand Dropdown */}
-          <div className="mobile-filter-select-wrapper">
-            <div style={{ position: "absolute", left: "1rem", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "var(--color-primary)" }}>
-              <Tag size={17} />
-            </div>
-            <select
-              className="mobile-filter-select"
-              value={activeBrandVal}
-              onChange={(e) => setActiveBrandVal(e.target.value)}
-              aria-label="Pilih Brand Perangkat"
+            {categoryStacks.map((stack) => (
+              <div
+                key={stack.value}
+                onClick={() => handleCategoryChange(stack.value)}
+                className="category-stack-card"
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: "0.85rem" }}>
+                  <div
+                    style={{
+                      width: "44px",
+                      height: "44px",
+                      borderRadius: "12px",
+                      background: stack.bgTint,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      flexShrink: 0,
+                    }}
+                  >
+                    {stack.icon}
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "0.2rem" }}>
+                    <span style={{ fontSize: "0.95rem", fontWeight: 700, color: "var(--color-text)", lineHeight: 1.3 }}>
+                      {stack.title}
+                    </span>
+                    <span style={{ fontSize: "0.75rem", color: "var(--color-text-muted)", lineHeight: 1.35 }}>
+                      {stack.desc}
+                    </span>
+                    <span style={{ fontSize: "0.7rem", fontWeight: 700, color: stack.color, marginTop: "0.15rem" }}>
+                      {stack.count}
+                    </span>
+                  </div>
+                </div>
+
+                <div
+                  style={{
+                    width: "32px",
+                    height: "32px",
+                    borderRadius: "50%",
+                    background: "var(--color-surface-2)",
+                    border: "1px solid var(--color-border)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "var(--color-primary)",
+                    flexShrink: 0,
+                  }}
+                >
+                  <ArrowRight size={16} />
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* 📱 MOBILE ACTIVE CATEGORY FILTER CONTROLS (< 768px when category selected) */}
+        {activeCategoryVal !== "Semua" && (
+          <div className="catalog-mobile-filter">
+            <button
+              onClick={() => handleCategoryChange("Semua")}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                padding: "0.6rem 1rem",
+                borderRadius: "10px",
+                background: "var(--color-surface-2)",
+                border: "1px solid var(--color-border)",
+                color: "var(--color-primary)",
+                fontSize: "0.825rem",
+                fontWeight: 700,
+                cursor: "pointer",
+                marginBottom: "0.5rem",
+                width: "fit-content",
+              }}
             >
-              {availableBrands.map((b) => (
-                <option key={b.value} value={b.value}>
-                  Brand: {b.label}
-                </option>
-              ))}
-            </select>
-            <div style={{ position: "absolute", right: "1rem", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "var(--color-text-muted)" }}>
-              <ChevronDown size={17} />
+              <ArrowLeft size={16} />
+              <span>Kembali ke Semua Kategori</span>
+            </button>
+
+            {/* Brand Select for Active Category */}
+            <div className="mobile-filter-select-wrapper">
+              <div style={{ position: "absolute", left: "1rem", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "var(--color-primary)" }}>
+                <Tag size={17} />
+              </div>
+              <select
+                className="mobile-filter-select"
+                value={activeBrandVal}
+                onChange={(e) => setActiveBrandVal(e.target.value)}
+                aria-label="Pilih Brand Perangkat"
+              >
+                {availableBrands.map((b) => (
+                  <option key={b.value} value={b.value}>
+                    Filter Brand: {b.label}
+                  </option>
+                ))}
+              </select>
+              <div style={{ position: "absolute", right: "1rem", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "var(--color-text-muted)" }}>
+                <ChevronDown size={17} />
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* 💻 DESKTOP PILLS FILTER CONTROLS (> 768px) */}
         <div className="catalog-desktop-filter">
@@ -240,7 +344,7 @@ export default function ProductCatalog() {
         {/* Product Container (Flex Centered with Switch Animation) */}
         <div
           key={`${activeCategoryVal}-${activeBrandVal}`}
-          className="catalog-grid-animated"
+          className={`catalog-grid-animated ${activeCategoryVal === "Semua" ? "mobile-hide-grid-all" : ""}`}
           style={{
             display: "flex",
             flexWrap: "wrap",
