@@ -1,61 +1,120 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocale } from "@/context/LocaleContext";
-import { Layers, Rocket, Activity, CheckCircle2, ArrowRight } from "lucide-react";
+import { ChevronDown, Layers, Rocket, Activity, FileText } from "lucide-react";
 
 export default function AboutValue() {
   const { t } = useLocale();
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [activeFolderIndex, setActiveFolderIndex] = useState(-1);
+  const [manualOverride, setManualOverride] = useState(false);
 
-  const values = [
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.innerWidth >= 768) {
+      setActiveFolderIndex(-1);
+    }
+
+    // Mobile scroll-driven trigger logic (<768px)
+    const handleScroll = () => {
+      if (manualOverride) return;
+      if (typeof window !== "undefined" && window.innerWidth >= 768) return;
+
+      const folder0 = document.getElementById("value-easy-integrations");
+      const folder1 = document.getElementById("value-smart-deployment");
+      const folder2 = document.getElementById("value-realtime-monitoring");
+
+      const windowHeight = window.innerHeight;
+      const focusPoint = windowHeight * 0.48; // 4.8 / 10 screen height
+
+      if (folder2) {
+        const r2 = folder2.getBoundingClientRect();
+        if (r2.top <= focusPoint) {
+          setActiveFolderIndex(2);
+          return;
+        }
+      }
+
+      if (folder1) {
+        const r1 = folder1.getBoundingClientRect();
+        if (r1.top <= focusPoint) {
+          setActiveFolderIndex(1);
+          return;
+        }
+      }
+
+      setActiveFolderIndex(0);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [manualOverride]);
+
+  const handleMouseEnter = (idx: number) => {
+    if (typeof window !== "undefined" && window.innerWidth >= 768) {
+      setActiveFolderIndex(idx);
+    }
+  };
+
+  const handleMouseLeaveContainer = () => {
+    if (typeof window !== "undefined" && window.innerWidth >= 768) {
+      setActiveFolderIndex(-1);
+    }
+  };
+
+  const handleFolderClick = (idx: number) => {
+    setActiveFolderIndex(idx);
+    setManualOverride(true);
+    setTimeout(() => {
+      setManualOverride(false);
+    }, 4000);
+  };
+
+  const folders = [
     {
       id: "easy-integrations",
+      earPosition: "left",
+      refNo: "FILE REF: KS-SYS-01",
+      stamp: "CLASSIFIED // INTEGRATION",
       index: "01",
       titleKey: "val_1_title",
       taglineKey: "val_1_tagline",
       descKey: "val_1_desc",
       statKey: "val_1_stat",
       statLabelKey: "val_1_stat_label",
-      icon: <Layers size={22} />,
-      bullets: [
-        "End-to-End Technology Integration",
-        "Seamless Infrastructure Compatibility",
-        "24/7 Dedicated Technical SLA Support",
-        "Enterprise System Synchronization",
-      ],
+      icon: <Layers size={17} />,
+      tabs: ["Easy Integrations", "Seamless Systems"],
+      categoryLabel: "Integrasi & Support 24/7",
     },
     {
       id: "smart-deployment",
+      earPosition: "center",
+      refNo: "FILE REF: KS-SYS-02",
+      stamp: "APPROVED // DEPLOYMENT",
       index: "02",
       titleKey: "val_2_title",
       taglineKey: "val_2_tagline",
       descKey: "val_2_desc",
       statKey: "val_2_stat",
       statLabelKey: "val_2_stat_label",
-      icon: <Rocket size={22} />,
-      bullets: [
-        "Zero-Friction System Deployment",
-        "Pre-Configured Hardware Staging",
-        "Rapid Onboarding & Technical Setup",
-        "Enterprise Scalability Assurance",
-      ],
+      icon: <Rocket size={17} />,
+      tabs: ["Smart Deployment", "Zero-Friction Growth"],
+      categoryLabel: "Implementasi & Skalabilitas",
     },
     {
       id: "realtime-monitoring",
+      earPosition: "right",
+      refNo: "FILE REF: KS-SYS-03",
+      stamp: "VERIFIED // MONITORING",
       index: "03",
       titleKey: "val_3_title",
       taglineKey: "val_3_tagline",
       descKey: "val_3_desc",
       statKey: "val_3_stat",
       statLabelKey: "val_3_stat_label",
-      icon: <Activity size={22} />,
-      bullets: [
-        "Real-time Performance Analytics",
-        "Automated Threat & Load Detection",
-        "Continuous System Optimization",
-        "Comprehensive SLA Audit Reports",
-      ],
+      icon: <Activity size={17} />,
+      tabs: ["Realtime Monitoring", "Continuous Optimization"],
+      categoryLabel: "Visibilitas & Analitik Performa",
     },
   ];
 
@@ -63,7 +122,7 @@ export default function AboutValue() {
     <section id="keunggulan" className="section" style={{ background: "var(--section-bg-1)" }}>
       <div className="container">
         {/* Section Header */}
-        <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
+        <div style={{ textAlign: "center", marginBottom: "3rem" }}>
           <span className="section-badge">{t("value_badge")}</span>
           <h2 className="text-section-title" style={{ margin: "0 0 0.875rem 0", color: "var(--color-text)" }}>
             {t("value_title_prefix")} <span style={{ color: "var(--color-primary)" }}>{t("value_title_highlight")}</span>
@@ -81,154 +140,258 @@ export default function AboutValue() {
           </p>
         </div>
 
-        {/* Immersive 3-Column Architectural Cards Grid */}
+        {/* Stacked Archival Physical File Folders Container */}
         <div
+          onMouseLeave={handleMouseLeaveContainer}
           style={{
-            maxWidth: "1140px",
+            maxWidth: "960px",
             margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(310px, 1fr))",
-            gap: "1.5rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.25rem",
           }}
         >
-          {values.map((val, idx) => {
-            const isHovered = hoveredIndex === idx;
+          {folders.map((folder, idx) => {
+            const isActive = activeFolderIndex === idx;
 
             return (
               <div
-                key={val.id}
-                onMouseEnter={() => setHoveredIndex(idx)}
-                onMouseLeave={() => setHoveredIndex(null)}
+                key={folder.id}
+                id={`value-${folder.id}`}
+                onMouseEnter={() => handleMouseEnter(idx)}
                 style={{
-                  background: "var(--color-surface)",
-                  borderRadius: "18px",
-                  padding: "2rem 1.75rem",
-                  border: isHovered ? "1px solid var(--color-primary)" : "1px solid var(--color-border)",
-                  boxShadow: isHovered
-                    ? "0 20px 48px rgba(0, 113, 227, 0.14), 0 4px 12px rgba(0,0,0,0.04)"
-                    : "0 2px 10px rgba(0,0,0,0.02)",
-                  transform: isHovered ? "translateY(-6px)" : "translateY(0)",
-                  transition: "all 0.35s cubic-bezier(0.16, 1, 0.3, 1)",
                   display: "flex",
                   flexDirection: "column",
-                  justifyContent: "space-between",
-                  position: "relative",
-                  overflow: "hidden",
+                  transition: "all 0.35s cubic-bezier(0.16, 1, 0.3, 1)",
                 }}
               >
-                {/* Top Header Row: Icon Badge & Monospaced Index Tag */}
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1.5rem" }}>
+                {/* Physical Trapezoidal Sloped File Folder Ear Tab (Staggered Left, Center, Right) */}
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent:
+                      folder.earPosition === "left"
+                        ? "flex-start"
+                        : folder.earPosition === "center"
+                        ? "center"
+                        : "flex-end",
+                    paddingLeft: folder.earPosition === "left" ? "1.5rem" : "0",
+                    paddingRight: folder.earPosition === "right" ? "1.5rem" : "0",
+                    marginBottom: "-1px",
+                    zIndex: isActive ? 2 : 1,
+                  }}
+                >
                   <div
+                    onClick={() => handleFolderClick(idx)}
                     style={{
-                      width: "48px",
-                      height: "48px",
-                      borderRadius: "14px",
-                      background: isHovered ? "var(--color-primary)" : "rgba(0, 113, 227, 0.08)",
-                      color: isHovered ? "#ffffff" : "var(--color-primary)",
-                      display: "flex",
+                      background: isActive ? "var(--color-primary)" : "var(--color-surface-2)",
+                      color: isActive ? "#ffffff" : "var(--color-text)",
+                      padding: "0.45rem 1.65rem 0.4rem 1.65rem",
+                      fontSize: "0.825rem",
+                      fontWeight: 700,
+                      cursor: "pointer",
+                      display: "inline-flex",
                       alignItems: "center",
-                      justifyContent: "center",
-                      border: "1px solid rgba(0, 113, 227, 0.15)",
-                      transition: "all 0.3s ease",
+                      gap: "0.5rem",
+                      userSelect: "none",
+                      borderTopLeftRadius: "12px",
+                      borderTopRightRadius: "12px",
+                      border: isActive ? "1px solid var(--color-primary)" : "1px solid var(--color-border)",
+                      borderBottom: "none",
+                      boxShadow: isActive ? "0 -4px 14px rgba(0, 113, 227, 0.2)" : "0 -2px 6px rgba(0,0,0,0.03)",
+                      clipPath: "polygon(0% 100%, 12px 0%, calc(100% - 12px) 0%, 100% 100%)",
+                      transition: "all 0.25s ease",
                     }}
                   >
-                    {val.icon}
-                  </div>
-
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "0.4rem",
-                      padding: "0.25rem 0.65rem",
-                      borderRadius: "6px",
-                      background: "var(--color-surface-2)",
-                      border: "1px solid var(--color-border)",
-                    }}
-                  >
-                    <span style={{ fontSize: "0.7rem", fontWeight: 700, fontFamily: "monospace", color: "var(--color-primary)" }}>
-                      INDEX // {val.index}
+                    {folder.icon}
+                    <span>{t(folder.titleKey)}</span>
+                    <span style={{ fontSize: "0.7rem", opacity: 0.8, fontFamily: "monospace" }}>
+                      [{folder.index}]
                     </span>
                   </div>
                 </div>
 
-                {/* Content Block: Title & Tagline & Description */}
-                <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem", marginBottom: "1.5rem" }}>
-                  <span
-                    style={{
-                      fontSize: "0.75rem",
-                      fontWeight: 700,
-                      textTransform: "uppercase",
-                      letterSpacing: "0.06em",
-                      color: "var(--color-primary)",
-                    }}
-                  >
-                    {t(val.taglineKey)}
-                  </span>
-                  <h3 style={{ fontSize: "1.3rem", fontWeight: 700, color: "var(--color-text)", margin: 0, lineHeight: 1.3 }}>
-                    {t(val.titleKey)}
-                  </h3>
-                  <p style={{ fontSize: "0.925rem", color: "var(--color-text-muted)", lineHeight: 1.65, margin: 0 }}>
-                    {t(val.descKey)}
-                  </p>
-                </div>
-
-                {/* Feature Checkmarks List (Matching Reference Screenshot) */}
+                {/* Main Physical Archival Folder Card Body */}
                 <div
                   style={{
-                    paddingTop: "1.25rem",
-                    borderTop: "1px solid var(--color-border-subtle)",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.65rem",
+                    borderRadius: folder.earPosition === "left" ? "0 16px 16px 16px" : folder.earPosition === "right" ? "16px 0 16px 16px" : "16px",
+                    overflow: "hidden",
+                    background: isActive ? "var(--color-surface-2)" : "var(--color-surface)",
+                    border: isActive ? "1px solid var(--color-primary)" : "1px solid var(--color-border)",
+                    boxShadow: isActive
+                      ? "0 14px 36px rgba(0, 113, 227, 0.15), 0 2px 8px rgba(0,0,0,0.06)"
+                      : "0 2px 10px rgba(0,0,0,0.03)",
+                    transition: "all 0.35s cubic-bezier(0.16, 1, 0.3, 1)",
                   }}
                 >
-                  {val.bullets.map((bulletText, bIdx) => (
-                    <div key={bIdx} style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
-                      <CheckCircle2 size={16} style={{ color: "var(--color-primary)", flexShrink: 0 }} />
-                      <span style={{ fontSize: "0.85rem", fontWeight: 500, color: "var(--color-text)", lineHeight: 1.4 }}>
-                        {bulletText}
+                  {/* Folder Sub-Header Bar */}
+                  <div
+                    onClick={() => handleFolderClick(idx)}
+                    style={{
+                      padding: "0.85rem 1.25rem",
+                      cursor: "pointer",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      userSelect: "none",
+                      flexWrap: "wrap",
+                      gap: "0.5rem",
+                      background: isActive ? "var(--color-primary)" : "var(--color-surface-2)",
+                      color: isActive ? "#ffffff" : "var(--color-text)",
+                      transition: "all 0.25s ease",
+                      borderBottom: isActive ? "1px solid rgba(255,255,255,0.15)" : "none",
+                    }}
+                  >
+                    {/* Left: Rivet Eyelet & Archival Ref */}
+                    <div style={{ display: "flex", alignItems: "center", gap: "0.6rem", flexWrap: "wrap" }}>
+                      <div
+                        style={{
+                          width: "10px",
+                          height: "10px",
+                          borderRadius: "50%",
+                          background: isActive ? "#ffffff" : "var(--color-surface)",
+                          border: isActive ? "2px solid rgba(255,255,255,0.5)" : "2px solid var(--color-border)",
+                          boxShadow: "inset 0 1px 2px rgba(0,0,0,0.2)",
+                          flexShrink: 0,
+                        }}
+                      />
+
+                      <span
+                        style={{
+                          fontFamily: "monospace, monospace",
+                          fontSize: "0.72rem",
+                          fontWeight: 700,
+                          opacity: isActive ? 0.95 : 0.65,
+                          letterSpacing: "0.06em",
+                        }}
+                      >
+                        {folder.refNo}
                       </span>
                     </div>
-                  ))}
-                </div>
 
-                {/* Bottom Card Stat Badge Footer */}
-                <div
-                  style={{
-                    marginTop: "1.5rem",
-                    paddingTop: "1rem",
-                    borderTop: "1px dashed var(--color-border)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <div style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
-                    <span style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--color-primary)" }}>
-                      {t(val.statKey)}
-                    </span>
-                    <span style={{ fontSize: "0.75rem", color: "var(--color-text-subtle)", fontWeight: 600 }}>
-                      {t(val.statLabelKey)}
-                    </span>
+                    {/* Right: Archival Stamp & Chevron Indicator */}
+                    <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+                      <span
+                        style={{
+                          fontSize: "0.68rem",
+                          fontWeight: 700,
+                          opacity: isActive ? 0.9 : 0.6,
+                          fontFamily: "monospace, sans-serif",
+                          letterSpacing: "0.06em",
+                          textTransform: "uppercase",
+                          background: isActive ? "rgba(0,0,0,0.18)" : "transparent",
+                          padding: "0.2rem 0.5rem",
+                          borderRadius: "4px",
+                          border: isActive ? "1px solid rgba(255,255,255,0.2)" : "1px dashed var(--color-border)",
+                        }}
+                      >
+                        {folder.stamp}
+                      </span>
+
+                      <div
+                        style={{
+                          width: "26px",
+                          height: "26px",
+                          borderRadius: "50%",
+                          background: isActive ? "rgba(255, 255, 255, 0.25)" : "var(--color-surface)",
+                          border: isActive ? "none" : "1px solid var(--color-border)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          transition: "transform 0.3s ease",
+                          transform: isActive ? "rotate(180deg)" : "rotate(0deg)",
+                        }}
+                      >
+                        <ChevronDown size={15} color={isActive ? "#ffffff" : "var(--color-text)"} />
+                      </div>
+                    </div>
                   </div>
 
-                  <div
-                    style={{
-                      width: "32px",
-                      height: "32px",
-                      borderRadius: "50%",
-                      background: isHovered ? "var(--color-primary)" : "var(--color-surface-2)",
-                      color: isHovered ? "#ffffff" : "var(--color-text-subtle)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      transition: "all 0.3s ease",
-                      transform: isHovered ? "translateX(2px)" : "none",
-                    }}
-                  >
-                    <ArrowRight size={15} />
-                  </div>
+                  {/* Expanded Content Body */}
+                  {isActive && (
+                    <div
+                      style={{
+                        padding: "1.75rem",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "1.25rem",
+                        background: "var(--color-surface)",
+                        color: "var(--color-text)",
+                        animation: "fadeIn 0.3s ease-in-out",
+                      }}
+                    >
+                      {/* Tagline & Stat */}
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          flexWrap: "wrap",
+                          gap: "1rem",
+                        }}
+                      >
+                        <div
+                          style={{
+                            fontSize: "0.8rem",
+                            fontWeight: 700,
+                            textTransform: "uppercase",
+                            letterSpacing: "0.06em",
+                            color: "var(--color-primary)",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "0.4rem",
+                          }}
+                        >
+                          <FileText size={15} />
+                          <span>{t(folder.taglineKey)}</span>
+                        </div>
+
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "0.5rem",
+                            padding: "0.3rem 0.75rem",
+                            borderRadius: "9999px",
+                            background: "var(--color-surface-2)",
+                            border: "1px solid var(--color-border)",
+                          }}
+                        >
+                          <span style={{ fontSize: "0.95rem", fontWeight: 800, color: "var(--color-primary)" }}>
+                            {t(folder.statKey)}
+                          </span>
+                          <span style={{ fontSize: "0.72rem", color: "var(--color-text-subtle)", fontWeight: 600 }}>
+                            {t(folder.statLabelKey)}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Original Title */}
+                      <h3
+                        style={{
+                          fontSize: "1.3rem",
+                          fontWeight: 700,
+                          color: "var(--color-text)",
+                          margin: 0,
+                        }}
+                      >
+                        {t(folder.titleKey)}
+                      </h3>
+
+                      {/* Original Description Text */}
+                      <p
+                        style={{
+                          color: "var(--color-text-muted)",
+                          fontSize: "0.925rem",
+                          lineHeight: 1.7,
+                          margin: 0,
+                          maxWidth: "840px",
+                        }}
+                      >
+                        {t(folder.descKey)}
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             );
