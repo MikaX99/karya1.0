@@ -38,12 +38,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const toggleTheme = useCallback((e?: React.MouseEvent | MouseEvent) => {
-    // 1. Calculate EXACT center pixel coordinates of the theme button on screen
+    // Exact requested theme ripple epicenter coordinates: x = window.innerWidth - 80, y = 35
     let x = typeof window !== "undefined" ? window.innerWidth - 80 : 300;
     let y = 35;
 
     if (typeof document !== "undefined") {
-      // Find the target button (handle SVG/path clicks via closest('button'))
       const rawTarget = (e?.currentTarget || e?.target) as HTMLElement | null;
       const buttonEl =
         rawTarget?.closest?.("button") ||
@@ -54,11 +53,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         const rect = buttonEl.getBoundingClientRect();
         if (rect.width > 0 && rect.height > 0) {
           x = Math.round(rect.left + rect.width / 2);
-          y = Math.round(rect.top + rect.height / 2);
+          y = 35; // Top position 35px
         }
-      } else if (e && e.clientX && e.clientX !== 0) {
-        x = e.clientX;
-        y = e.clientY;
       }
     }
 
