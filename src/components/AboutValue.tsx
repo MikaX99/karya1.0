@@ -6,10 +6,14 @@ import { ChevronDown, Layers, Rocket, Activity, FileText } from "lucide-react";
 
 export default function AboutValue() {
   const { t } = useLocale();
-  const [activeFolderIndex, setActiveFolderIndex] = useState(0);
+  const [activeFolderIndex, setActiveFolderIndex] = useState(-1);
   const [manualOverride, setManualOverride] = useState(false);
 
   useEffect(() => {
+    if (typeof window !== "undefined" && window.innerWidth >= 768) {
+      setActiveFolderIndex(-1);
+    }
+
     // Mobile scroll-driven trigger logic (<768px)
     const handleScroll = () => {
       if (manualOverride) return;
@@ -50,6 +54,13 @@ export default function AboutValue() {
     // Desktop hover trigger strictly on mouse over (>=768px)
     if (typeof window !== "undefined" && window.innerWidth >= 768) {
       setActiveFolderIndex(idx);
+    }
+  };
+
+  const handleMouseLeaveContainer = () => {
+    // Close all cards when mouse leaves the section on Desktop
+    if (typeof window !== "undefined" && window.innerWidth >= 768) {
+      setActiveFolderIndex(-1);
     }
   };
 
@@ -133,6 +144,7 @@ export default function AboutValue() {
 
         {/* Stacked Archival Physical File Folders Container */}
         <div
+          onMouseLeave={handleMouseLeaveContainer}
           style={{
             maxWidth: "960px",
             margin: "0 auto",
