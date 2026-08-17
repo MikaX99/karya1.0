@@ -38,28 +38,27 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const toggleTheme = useCallback((e?: React.MouseEvent | MouseEvent) => {
-    // 1. Calculate EXACT button center coordinates synchronously BEFORE any state update
-    let x = window.innerWidth / 2;
-    let y = 40;
+    // 1. Calculate EXACT center pixel coordinates of the theme button on screen
+    let x = typeof window !== "undefined" ? window.innerWidth - 80 : 300;
+    let y = 35;
 
-    if (e) {
-      const target = (e.currentTarget || e.target) as HTMLElement | null;
-      if (target && typeof target.getBoundingClientRect === "function") {
-        const rect = target.getBoundingClientRect();
-        x = rect.left + rect.width / 2;
-        y = rect.top + rect.height / 2;
-      } else if (e.clientX && e.clientX !== 0) {
-        x = e.clientX;
-        y = e.clientY;
-      }
-    } else if (typeof document !== "undefined") {
-      const btn =
+    if (typeof document !== "undefined") {
+      // Find the target button (handle SVG/path clicks via closest('button'))
+      const rawTarget = (e?.currentTarget || e?.target) as HTMLElement | null;
+      const buttonEl =
+        rawTarget?.closest?.("button") ||
         document.getElementById("theme-toggle") ||
         document.getElementById("mobile-theme-toggle");
-      if (btn) {
-        const rect = btn.getBoundingClientRect();
-        x = rect.left + rect.width / 2;
-        y = rect.top + rect.height / 2;
+
+      if (buttonEl && typeof buttonEl.getBoundingClientRect === "function") {
+        const rect = buttonEl.getBoundingClientRect();
+        if (rect.width > 0 && rect.height > 0) {
+          x = Math.round(rect.left + rect.width / 2);
+          y = Math.round(rect.top + rect.height / 2);
+        }
+      } else if (e && e.clientX && e.clientX !== 0) {
+        x = e.clientX;
+        y = e.clientY;
       }
     }
 

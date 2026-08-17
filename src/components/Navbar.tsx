@@ -172,7 +172,7 @@ export default function Navbar() {
                 <button
                   id="theme-toggle"
                   aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-                  onClick={toggleTheme}
+                  onClick={(e) => toggleTheme(e)}
                   className="nav-capsule-item nav-capsule-icon-only"
                   title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
                 >
@@ -286,7 +286,7 @@ export default function Navbar() {
 
             <button
               id="mobile-theme-toggle"
-              onClick={toggleTheme}
+              onClick={(e) => toggleTheme(e)}
               style={{
                 width: "44px",
                 height: "44px",
