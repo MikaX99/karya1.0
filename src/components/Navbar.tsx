@@ -84,9 +84,11 @@ export default function Navbar() {
               justifyContent: "space-between",
               minHeight: "64px",
               pointerEvents: "auto",
+              position: "relative",
+              width: "100%",
             }}
           >
-            {/* Logo Image */}
+            {/* Logo Image (Aligned to Left Grid Edge) */}
             <a
               href="#"
               onClick={(e) => {
@@ -99,6 +101,7 @@ export default function Navbar() {
                 alignItems: "center",
                 gap: "0.65rem",
                 textDecoration: "none",
+                zIndex: 2,
               }}
             >
               <img
@@ -123,8 +126,17 @@ export default function Navbar() {
               />
             </a>
 
-            {/* Desktop Floating Navigation Capsule */}
-            <nav className="nav-menu-capsule desktop-nav" aria-label="Main Navigation">
+            {/* Desktop Floating Navigation Capsule (100% Centered) */}
+            <nav
+              className="nav-menu-capsule desktop-nav"
+              aria-label="Main Navigation"
+              style={{
+                position: "absolute",
+                left: "50%",
+                transform: "translateX(-50%)",
+                zIndex: 1,
+              }}
+            >
               {navLinks.map((link) => (
                 <button
                   key={link.href}
