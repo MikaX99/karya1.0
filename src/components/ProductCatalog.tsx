@@ -112,119 +112,84 @@ export default function ProductCatalog() {
           </p>
         </div>
 
-        {/* Sticky Glass Filter Container (Touch-Protected for Mobile) */}
-        <div
-          className="catalog-sticky-header"
-          style={{
-            position: "sticky",
-            top: "72px",
-            zIndex: 60,
-            background: "var(--color-surface-2)",
-            backdropFilter: "blur(20px)",
-            WebkitBackdropFilter: "blur(20px)",
-            borderRadius: "20px",
-            padding: "0.85rem 1rem",
-            border: "1px solid var(--color-border)",
-            boxShadow: "0 10px 30px rgba(0, 0, 0, 0.05)",
-            display: "flex",
-            flexDirection: "column",
-            gap: "0.75rem",
-            marginBottom: "1.5rem",
-            touchAction: "pan-y",
-          }}
-        >
-          {/* Category Filter Capsule Bar */}
-          <div className="futuristic-tab-container" style={{ margin: 0 }}>
-            <button
-              onClick={scrollTabsLeft}
-              className="futuristic-tab-arrow"
-              aria-label="Scroll categories left"
-            >
-              <ChevronLeft size={16} />
-            </button>
-
-            <div ref={tabTrackRef} className="futuristic-tab-track">
-              {categoriesConfig.map((cat) => (
-                <button
-                  key={cat.key}
-                  id={`filter-${cat.value.toLowerCase().replace(/\s+/g, "-").replace(/&/g, "and")}`}
-                  className={`futuristic-tab-item ${activeCategoryVal === cat.value ? "active" : ""}`}
-                  onClick={() => handleCategoryChange(cat.value)}
-                  aria-pressed={activeCategoryVal === cat.value}
-                >
-                  {t(cat.key)}
-                </button>
-              ))}
-            </div>
-
-            <button
-              onClick={scrollTabsRight}
-              className="futuristic-tab-arrow"
-              aria-label="Scroll categories right"
-            >
-              <ChevronRight size={16} />
-            </button>
-          </div>
-
-          {/* Brand Filter Pills Track (Horizontal Scroll & Fade Cue on Mobile) */}
-          <div
-            className="brand-filter-track"
-            style={{
-              justifyContent: "center",
-              flexWrap: "wrap",
-            }}
+        {/* Clean Segmented Category Bar */}
+        <div className="futuristic-tab-container">
+          <button
+            onClick={scrollTabsLeft}
+            className="futuristic-tab-arrow"
+            aria-label="Scroll categories left"
           >
-            <span
-              style={{
-                fontSize: "0.68rem",
-                fontWeight: 700,
-                fontFamily: "monospace, sans-serif",
-                color: "var(--color-primary)",
-                letterSpacing: "0.06em",
-                marginRight: "0.2rem",
-                flexShrink: 0,
-                opacity: 0.85,
-              }}
-            >
-              BRAND //
-            </span>
+            <ChevronLeft size={16} />
+          </button>
 
-            {availableBrands.map((b) => (
+          <div ref={tabTrackRef} className="futuristic-tab-track">
+            {categoriesConfig.map((cat) => (
               <button
-                key={b.value}
-                id={`brand-filter-${b.value.toLowerCase()}`}
-                onClick={() => setActiveBrandVal(b.value)}
-                style={{
-                  background:
-                    activeBrandVal === b.value
-                      ? "var(--color-primary)"
-                      : "var(--color-surface)",
-                  color:
-                    activeBrandVal === b.value
-                      ? "#ffffff"
-                      : "var(--color-text-subtle)",
-                  border:
-                    activeBrandVal === b.value
-                      ? "1px solid var(--color-primary)"
-                      : "1px solid var(--color-border)",
-                  borderRadius: "9999px",
-                  padding: "0.25rem 0.7rem",
-                  fontSize: "0.72rem",
-                  fontWeight: 600,
-                  cursor: "pointer",
-                  whiteSpace: "nowrap",
-                  flexShrink: 0,
-                  transition: "all 0.2s cubic-bezier(0.16, 1, 0.3, 1)",
-                  boxShadow:
-                    activeBrandVal === b.value
-                      ? "0 4px 14px rgba(0, 113, 227, 0.25)"
-                      : "none",
-                }}
+                key={cat.key}
+                id={`filter-${cat.value.toLowerCase().replace(/\s+/g, "-").replace(/&/g, "and")}`}
+                className={`futuristic-tab-item ${activeCategoryVal === cat.value ? "active" : ""}`}
+                onClick={() => handleCategoryChange(cat.value)}
+                aria-pressed={activeCategoryVal === cat.value}
               >
-                {b.label}
+                {t(cat.key)}
               </button>
             ))}
           </div>
+
+          <button
+            onClick={scrollTabsRight}
+            className="futuristic-tab-arrow"
+            aria-label="Scroll categories right"
+          >
+            <ChevronRight size={16} />
+          </button>
+        </div>
+
+        {/* Clean Centered Brand Filter Bar */}
+        <div
+          className="brand-filter-track"
+          style={{
+            justifyContent: "center",
+            flexWrap: "wrap",
+            gap: "0.45rem",
+            marginTop: "1.15rem",
+          }}
+        >
+          {availableBrands.map((b) => (
+            <button
+              key={b.value}
+              id={`brand-filter-${b.value.toLowerCase()}`}
+              onClick={() => setActiveBrandVal(b.value)}
+              style={{
+                background:
+                  activeBrandVal === b.value
+                    ? "var(--color-primary)"
+                    : "var(--color-surface)",
+                color:
+                  activeBrandVal === b.value
+                    ? "#ffffff"
+                    : "var(--color-text-subtle)",
+                border:
+                  activeBrandVal === b.value
+                    ? "1px solid var(--color-primary)"
+                    : "1px solid var(--color-border)",
+                borderRadius: "9999px",
+                padding: "0.32rem 0.8rem",
+                fontSize: "0.76rem",
+                fontWeight: 600,
+                cursor: "pointer",
+                whiteSpace: "nowrap",
+                flexShrink: 0,
+                transition: "all 0.2s cubic-bezier(0.16, 1, 0.3, 1)",
+                boxShadow:
+                  activeBrandVal === b.value
+                    ? "0 4px 14px rgba(0, 113, 227, 0.25)"
+                    : "none",
+              }}
+            >
+              {b.label}
+            </button>
+          ))}
         </div>
 
         {/* Product Container (Flex Centered with Switch Animation) */}

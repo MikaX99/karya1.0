@@ -796,14 +796,9 @@ html[data-theme="dark"] .futuristic-tab-container {
     overflow-x: auto;
     flex-wrap: nowrap !important;
     justify-content: flex-start !important;
-    padding-right: 2.5rem;
-    -webkit-mask-image: linear-gradient(to right, #000000 82%, transparent 100%);
-    mask-image: linear-gradient(to right, #000000 82%, transparent 100%);
-  }
-
-  .catalog-sticky-header {
-    top: 64px !important;
-    padding: 0.65rem 0.75rem !important;
+    padding-right: 2rem;
+    -webkit-mask-image: linear-gradient(to right, #000000 85%, transparent 100%);
+    mask-image: linear-gradient(to right, #000000 85%, transparent 100%);
   }
 }
 
