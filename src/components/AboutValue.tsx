@@ -1,12 +1,52 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocale } from "@/context/LocaleContext";
 import { ChevronDown, Layers, Rocket, Activity } from "lucide-react";
 
 export default function AboutValue() {
   const { t } = useLocale();
   const [activeFolderIndex, setActiveFolderIndex] = useState(0);
+  const [manualOverride, setManualOverride] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (manualOverride) return;
+
+      const section = document.getElementById("keunggulan");
+      if (!section) return;
+
+      const rect = section.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // Trigger active folder selection based on section scroll progress
+      if (rect.top <= windowHeight * 0.75 && rect.bottom >= windowHeight * 0.25) {
+        const totalDist = windowHeight * 0.75 - rect.top;
+        const totalSpan = rect.height + windowHeight * 0.25;
+        const progress = Math.min(Math.max(totalDist / totalSpan, 0), 1);
+
+        if (progress < 0.35) {
+          setActiveFolderIndex(0);
+        } else if (progress < 0.7) {
+          setActiveFolderIndex(1);
+        } else {
+          setActiveFolderIndex(2);
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [manualOverride]);
+
+  const handleFolderClick = (idx: number) => {
+    setActiveFolderIndex(idx);
+    setManualOverride(true);
+    setTimeout(() => {
+      setManualOverride(false);
+    }, 4000);
+  };
 
   const folders = [
     {
@@ -96,7 +136,7 @@ export default function AboutValue() {
               >
                 {/* Folder Header Bar */}
                 <div
-                  onClick={() => setActiveFolderIndex(idx)}
+                  onClick={() => handleFolderClick(idx)}
                   style={{
                     padding: "0.875rem 1.25rem",
                     cursor: "pointer",
