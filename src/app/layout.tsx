@@ -115,6 +115,13 @@ export default function RootLayout({
                   "url": "https://mikax99.github.io/karya1.0/",
                   "logo": "https://mikax99.github.io/karya1.0/kst-dark.png",
                   "description": config.company.description,
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Rawa Makmur, Cakung Timur, Cakung",
+                    "addressLocality": "Jakarta Timur",
+                    "addressRegion": "DKI Jakarta",
+                    "addressCountry": "ID"
+                  },
                   "contactPoint": {
                     "@type": "ContactPoint",
                     "telephone": config.company.phone,
