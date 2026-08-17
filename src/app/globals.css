@@ -163,7 +163,36 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* ============================================================
+   SILKY SMOOTH UNIVERSAL THEME TRANSITION SYSTEM
+   ============================================================ */
+html,
+body,
+header,
+section,
+.section,
+.glass-card,
+.nav-menu-capsule,
+.nav-capsule-utility,
+.mobile-frosted-menu,
+.futuristic-tab-container,
+.category-stack-card,
+.brand-filter-track button,
+.product-badge,
+a,
+button,
+div,
+p,
+span,
+h1, h2, h3, h4, h5, h6,
+input, select, textarea,
+svg {
+  transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ============================================================
