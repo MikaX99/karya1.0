@@ -777,6 +777,34 @@ html[data-theme="dark"] .futuristic-tab-container {
   -ms-overflow-style: none;
   scroll-behavior: smooth;
   padding: 2px 4px;
+  touch-action: pan-y;
+  overscroll-behavior-x: contain;
+}
+
+/* Brand Filter Track styling with mobile swipe protection & fade mask */
+.brand-filter-track {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  touch-action: pan-y;
+  overscroll-behavior-x: contain;
+}
+
+@media (max-width: 768px) {
+  .futuristic-tab-track,
+  .brand-filter-track {
+    overflow-x: auto;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    padding-right: 2.5rem;
+    -webkit-mask-image: linear-gradient(to right, #000000 82%, transparent 100%);
+    mask-image: linear-gradient(to right, #000000 82%, transparent 100%);
+  }
+
+  .catalog-sticky-header {
+    top: 64px !important;
+    padding: 0.65rem 0.75rem !important;
+  }
 }
 
 .futuristic-tab-track::-webkit-scrollbar {
