@@ -15,10 +15,11 @@ export default function AboutValue() {
       if (manualOverride) return;
       if (typeof window !== "undefined" && window.innerWidth >= 768) return;
 
+      const folder0 = document.getElementById("value-easy-integrations");
       const folder1 = document.getElementById("value-smart-deployment");
       const folder2 = document.getElementById("value-realtime-monitoring");
 
-      // Midpoint trigger threshold (5.5 / 10 of screen height)
+      // Midpoint trigger threshold (posisi 5.5 / 10 layar)
       const triggerPoint = window.innerHeight * 0.55;
 
       if (folder2) {
@@ -37,8 +38,13 @@ export default function AboutValue() {
         }
       }
 
-      // Default to Card #1 open as soon as section reaches viewport
-      setActiveFolderIndex(0);
+      if (folder0) {
+        const r0 = folder0.getBoundingClientRect();
+        if (r0.top <= triggerPoint) {
+          setActiveFolderIndex(0);
+          return;
+        }
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
