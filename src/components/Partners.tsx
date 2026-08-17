@@ -119,6 +119,59 @@ function PartnerCard({ partner, officialLabel }: { partner: { name: string; colo
   );
 }
 
+function MarqueeRow({
+  items,
+  icon,
+  label,
+  colorVar,
+  direction,
+  officialLabel,
+}: {
+  items: { name: string; color: string }[];
+  icon: React.ReactNode;
+  label: string;
+  colorVar: string;
+  direction: "normal" | "reverse";
+  officialLabel: string;
+}) {
+  return (
+    <div>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "0.4rem",
+          marginBottom: "0.625rem",
+          fontSize: "0.75rem",
+          fontWeight: 700,
+          color: `var(${colorVar})`,
+          textTransform: "uppercase",
+          letterSpacing: "0.05em",
+        }}
+      >
+        {icon}
+        {label}
+      </div>
+      <div className="partners-marquee-wrapper">
+        <div
+          className={direction === "reverse" ? "animate-marquee-reverse" : "animate-marquee"}
+          style={{
+            display: "flex",
+            gap: "0.75rem",
+            width: "max-content",
+            padding: "0.25rem 0",
+          }}
+        >
+          {items.map((partner, i) => (
+            <PartnerCard key={`${partner.name}-${i}`} partner={partner} officialLabel={officialLabel} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Partners() {
   const { t } = useLocale();
 
@@ -159,115 +212,31 @@ export default function Partners() {
 
       {/* 3 Categorized Marquee Rows */}
       <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-        {/* Row 1: Enterprise Apps, Collaboration & IT Management */}
-        <div>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "0.4rem",
-              marginBottom: "0.625rem",
-              fontSize: "0.75rem",
-              fontWeight: 700,
-              color: "var(--cat-amber)",
-              textTransform: "uppercase",
-              letterSpacing: "0.05em",
-            }}
-          >
-            <ShieldCheck size={13} strokeWidth={2} />
-            {t("partner_cat_3")}
-          </div>
-          <div className="partners-marquee-wrapper">
-            <div
-              className="animate-marquee"
-              style={{
-                display: "flex",
-                gap: "0.75rem",
-                width: "max-content",
-                padding: "0.2rem 0",
-              }}
-            >
-              {row3Items.map((partner, i) => (
-                <PartnerCard key={`r1-${partner.name}-${i}`} partner={partner} officialLabel={t("partner_official")} />
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Row 2: Virtualization, Cloud & Backup Storage */}
-        <div>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "0.4rem",
-              marginBottom: "0.625rem",
-              fontSize: "0.75rem",
-              fontWeight: 700,
-              color: "var(--cat-green)",
-              textTransform: "uppercase",
-              letterSpacing: "0.05em",
-            }}
-          >
-            <Cloud size={13} strokeWidth={2} />
-            {t("partner_cat_2")}
-          </div>
-          <div className="partners-marquee-wrapper">
-            <div
-              className="animate-marquee-reverse"
-              style={{
-                display: "flex",
-                gap: "0.75rem",
-                width: "max-content",
-                padding: "0.25rem 0",
-              }}
-            >
-              {row2Items.map((partner, i) => (
-                <PartnerCard key={`r2-${partner.name}-${i}`} partner={partner} officialLabel={t("partner_official")} />
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Row 3: Network, Hardware & Cyber Security */}
-        <div>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "0.4rem",
-              marginBottom: "0.625rem",
-              fontSize: "0.75rem",
-              fontWeight: 700,
-              color: "var(--cat-blue)",
-              textTransform: "uppercase",
-              letterSpacing: "0.05em",
-            }}
-          >
-            <Server size={13} strokeWidth={2} />
-            {t("partner_cat_1")}
-          </div>
-          <div className="partners-marquee-wrapper">
-            <div
-              className="animate-marquee"
-              style={{
-                display: "flex",
-                gap: "0.75rem",
-                width: "max-content",
-                padding: "0.25rem 0",
-              }}
-            >
-              {row1Items.map((partner, i) => (
-                <PartnerCard key={`r3-${partner.name}-${i}`} partner={partner} officialLabel={t("partner_official")} />
-              ))}
-            </div>
-          </div>
-        </div>
+        <MarqueeRow
+          items={row3Items}
+          icon={<ShieldCheck size={13} strokeWidth={2} />}
+          label={t("partner_cat_3")}
+          colorVar="--cat-amber"
+          direction="normal"
+          officialLabel={t("partner_official")}
+        />
+        <MarqueeRow
+          items={row2Items}
+          icon={<Cloud size={13} strokeWidth={2} />}
+          label={t("partner_cat_2")}
+          colorVar="--cat-green"
+          direction="reverse"
+          officialLabel={t("partner_official")}
+        />
+        <MarqueeRow
+          items={row1Items}
+          icon={<Server size={13} strokeWidth={2} />}
+          label={t("partner_cat_1")}
+          colorVar="--cat-blue"
+          direction="normal"
+          officialLabel={t("partner_official")}
+        />
       </div>
     </section>
   );
 }
-

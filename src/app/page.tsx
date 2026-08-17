@@ -7,13 +7,13 @@ import Clients from "@/components/Clients";
 import AboutValue from "@/components/AboutValue";
 import ContactFooter from "@/components/ContactFooter";
 import FloatingWA from "@/components/FloatingWA";
-import ScrollObserver from "@/components/ScrollObserver";
+import ScrollRevealProvider from "@/components/ScrollRevealProvider";
 
 export default function Home() {
   return (
     <>
       {/* Scroll Reveal Observer */}
-      <ScrollObserver />
+      <ScrollRevealProvider />
 
       {/* Sticky Glassmorphism Navbar (with Dark/Light toggle) */}
       <Navbar />

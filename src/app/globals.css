@@ -1173,3 +1173,117 @@ html[data-theme="dark"] #google-maps-embed {
   .floating-wa { bottom: 1.25rem; right: 1.25rem; width: 48px; height: 48px; }
   .btn-primary, .btn-secondary { padding: 0.65rem 1.25rem; font-size: 0.875rem; }
 }
+
+/* ============================================================
+   MOBILE NAV ITEM (moved from Navbar inline styles + JS hover)
+   ============================================================ */
+.mobile-nav-item {
+  background: transparent;
+  border: none;
+  color: var(--color-text);
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  text-align: left;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.mobile-nav-item:hover {
+  background: rgba(0, 113, 227, 0.08);
+  color: var(--color-primary);
+}
+
+/* ============================================================
+   FOOTER NAV LINK (moved from ContactFooter JS hover)
+   ============================================================ */
+.footer-nav-link {
+  font-size: 0.825rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.footer-nav-link:hover {
+  color: var(--color-primary);
+}
+
+/* ============================================================
+   FOOTER SOCIAL ICON (moved from ContactFooter JS hover)
+   ============================================================ */
+.footer-social-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.footer-social-icon:hover {
+  color: var(--social-hover-color, var(--color-primary));
+  border-color: var(--social-hover-color, var(--color-primary));
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--social-hover-color, var(--color-primary)) 20%, transparent);
+}
+
+/* ============================================================
+   HERO RESPONSIVE (moved from Hero.tsx inline <style> tag)
+   ============================================================ */
+@media (max-width: 960px) {
+  .hero-split-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+  }
+  .hero-art-container {
+    display: none !important;
+  }
+}
+
+/* ============================================================
+   NAVBAR RESPONSIVE (moved from Navbar.tsx inline <style> tag)
+   ============================================================ */
+@media (min-width: 768px) {
+  .desktop-nav { display: flex !important; }
+  #navbar-wa-cta { display: inline-flex !important; }
+  #mobile-menu-toggle { display: none !important; }
+}
+
+/* ============================================================
+   CONTACT FOOTER RESPONSIVE (moved from ContactFooter inline <style>)
+   ============================================================ */
+@media (max-width: 768px) {
+  .contact-grid { grid-template-columns: 1fr !important; }
+  .footer-main-row {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 1.25rem !important;
+  }
+  .footer-nav-links {
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 0.75rem 1.25rem !important;
+  }
+  .footer-social-links {
+    justify-content: center !important;
+  }
+  .footer-bottom-row {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 0.5rem !important;
+  }
+}

@@ -5,15 +5,7 @@ import { MessageCircle, Menu, X, Sun, Moon, Globe } from "lucide-react";
 import config from "@/data/config.json";
 import { useTheme } from "@/context/ThemeContext";
 import { useLocale } from "@/context/LocaleContext";
-
-const navLinks = [
-  { key: "nav_Layanan", href: "#layanan" },
-  { key: "nav_Produk", href: "#produk" },
-  { key: "nav_Mitra", href: "#mitra" },
-  { key: "nav_Klien", href: "#klien" },
-  { key: "nav_Keunggulan", href: "#keunggulan" },
-  { key: "nav_Kontak", href: "#kontak" },
-];
+import { navLinks } from "@/data/navLinks";
 
 export default function Navbar() {
   const { locale, toggleLocale, t } = useLocale();
@@ -226,30 +218,7 @@ export default function Navbar() {
               key={link.href}
               id={`mobile-nav-${link.key.toLowerCase()}`}
               onClick={() => handleNavClick(link.href)}
-              style={{
-                background: "transparent",
-                border: "none",
-                color: "var(--color-text)",
-                fontSize: "1.05rem",
-                fontWeight: 700,
-                cursor: "pointer",
-                padding: "0.85rem 1rem",
-                borderRadius: "14px",
-                textAlign: "left",
-                transition: "all 0.2s ease",
-                fontFamily: "inherit",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "rgba(0, 113, 227, 0.08)";
-                (e.currentTarget as HTMLElement).style.color = "var(--color-primary)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "transparent";
-                (e.currentTarget as HTMLElement).style.color = "var(--color-text)";
-              }}
+              className="mobile-nav-item"
             >
               <span>{t(link.key)}</span>
               <span style={{ fontSize: "0.85rem", opacity: 0.5 }}>→</span>
@@ -329,13 +298,7 @@ export default function Navbar() {
         </div>
       )}
 
-      <style>{`
-        @media (min-width: 768px) {
-          .desktop-nav { display: flex !important; }
-          #navbar-wa-cta { display: inline-flex !important; }
-          #mobile-menu-toggle { display: none !important; }
-        }
-      `}</style>
+
     </>
   );
 }

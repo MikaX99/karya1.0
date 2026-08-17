@@ -3,6 +3,7 @@
 import { MapPin, Phone, Mail, Clock, MessageCircle, ExternalLink } from "lucide-react";
 import config from "@/data/config.json";
 import { useLocale } from "@/context/LocaleContext";
+import { navLinks } from "@/data/navLinks";
 
 const socialLinks = [
   {
@@ -330,25 +331,13 @@ export default function ContactFooter() {
 
             {/* Navigation Links */}
             <div className="footer-nav-links" style={{ display: "flex", gap: "1.25rem", flexWrap: "wrap" }}>
-              {[
-                { key: "nav_Layanan", href: "#layanan" },
-                { key: "nav_Produk", href: "#produk" },
-                { key: "nav_Klien", href: "#klien" },
-                { key: "nav_Mitra", href: "#mitra" },
-                { key: "nav_Kontak", href: "#kontak" },
-              ].map((item) => (
+              {navLinks
+                .filter((item) => item.key !== "nav_Keunggulan")
+                .map((item) => (
                 <a
                   key={item.key}
                   href={item.href}
-                  style={{
-                    fontSize: "0.825rem",
-                    color: "var(--color-text-muted)",
-                    textDecoration: "none",
-                    fontWeight: 600,
-                    transition: "color 0.2s ease",
-                  }}
-                  onMouseEnter={(e) => ((e.target as HTMLElement).style.color = "var(--color-primary)")}
-                  onMouseLeave={(e) => ((e.target as HTMLElement).style.color = "var(--color-text-muted)")}
+                  className="footer-nav-link"
                 >
                   {t(item.key)}
                 </a>
@@ -365,33 +354,8 @@ export default function ContactFooter() {
                   rel="noopener noreferrer"
                   aria-label={social.name}
                   title={social.name}
-                  style={{
-                    width: "38px",
-                    height: "38px",
-                    borderRadius: "8px",
-                    background: "var(--color-surface-2)",
-                    border: "1px solid var(--color-border)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "var(--color-text-muted)",
-                    textDecoration: "none",
-                    transition: "all 0.25s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    const el = e.currentTarget;
-                    el.style.color = social.hoverColor;
-                    el.style.borderColor = social.hoverColor;
-                    el.style.transform = "translateY(-3px)";
-                    el.style.boxShadow = `0 4px 12px ${social.hoverColor}33`;
-                  }}
-                  onMouseLeave={(e) => {
-                    const el = e.currentTarget;
-                    el.style.color = "var(--color-text-muted)";
-                    el.style.borderColor = "var(--color-border)";
-                    el.style.transform = "translateY(0)";
-                    el.style.boxShadow = "none";
-                  }}
+                  className="footer-social-icon"
+                  style={{ "--social-hover-color": social.hoverColor } as React.CSSProperties}
                 >
                   {social.icon}
                 </a>
@@ -422,31 +386,7 @@ export default function ContactFooter() {
         </div>
       </footer>
 
-      <style>{`
-        @media (max-width: 768px) {
-          .contact-grid { grid-template-columns: 1fr !important; }
-          .footer-main-row {
-            flex-direction: column !important;
-            align-items: center !important;
-            text-align: center !important;
-            gap: 1.25rem !important;
-          }
-          .footer-nav-links {
-            justify-content: center !important;
-            flex-wrap: wrap !important;
-            gap: 0.75rem 1.25rem !important;
-          }
-          .footer-social-links {
-            justify-content: center !important;
-          }
-          .footer-bottom-row {
-            flex-direction: column !important;
-            align-items: center !important;
-            text-align: center !important;
-            gap: 0.5rem !important;
-          }
-        }
-      `}</style>
+
     </>
   );
 }

@@ -214,17 +214,6 @@ export default function Hero() {
         </div>
       </div>
 
-      <style>{`
-        @media (max-width: 960px) {
-          .hero-split-grid {
-            grid-template-columns: 1fr !important;
-            gap: 2.5rem !important;
-          }
-          .hero-art-container {
-            display: none !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }
