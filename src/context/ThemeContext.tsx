@@ -38,17 +38,39 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const toggleTheme = useCallback((e?: React.MouseEvent | MouseEvent) => {
+    // 1. Extract EXACT center pixel coordinates of the theme toggle button
+    let x = window.innerWidth / 2;
+    let y = 40;
+
+    // Check if event target has bounding rect
+    if (e && e.currentTarget && (e.currentTarget as HTMLElement).getBoundingClientRect) {
+      const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+      x = rect.left + rect.width / 2;
+      y = rect.top + rect.height / 2;
+    } else if (e && e.clientX && e.clientX !== 0) {
+      x = e.clientX;
+      y = e.clientY;
+    } else if (typeof document !== "undefined") {
+      // Fallback to DOM button element position
+      const btn =
+        document.getElementById("theme-toggle") ||
+        document.getElementById("mobile-theme-toggle");
+      if (btn) {
+        const rect = btn.getBoundingClientRect();
+        x = rect.left + rect.width / 2;
+        y = rect.top + rect.height / 2;
+      }
+    }
+
     setTheme((prevTheme) => {
       const nextTheme: Theme = prevTheme === "dark" ? "light" : "dark";
 
-      // Circular Radial Ripple View Transition originating from click point
+      // 2. Circular Radial Ripple View Transition originating from exact button center (x, y)
       if (
         typeof document !== "undefined" &&
         "startViewTransition" in document &&
         !window.matchMedia("(prefers-reduced-motion: reduce)").matches
       ) {
-        const x = e?.clientX ?? window.innerWidth / 2;
-        const y = e?.clientY ?? 40;
         const endRadius = Math.hypot(
           Math.max(x, window.innerWidth - x),
           Math.max(y, window.innerHeight - y)
