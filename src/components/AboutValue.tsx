@@ -19,25 +19,24 @@ export default function AboutValue() {
       const folder1 = document.getElementById("value-smart-deployment");
       const folder2 = document.getElementById("value-realtime-monitoring");
 
-      // Target trigger zone: Zone 4 (posisi 4 / 10 layar HP)
-      const zone4 = window.innerHeight * 0.4;
+      const windowHeight = window.innerHeight;
+      // Active viewing band (25% to 70% of screen height)
+      const targetZoneTop = windowHeight * 0.25;
+      const targetZoneBottom = windowHeight * 0.70;
 
       const cards = [folder0, folder1, folder2];
-      let closestIdx = 0;
-      let minDistance = Infinity;
 
-      cards.forEach((card, idx) => {
+      for (let i = 0; i < cards.length; i++) {
+        const card = cards[i];
         if (card) {
           const rect = card.getBoundingClientRect();
-          const dist = Math.abs(rect.top - zone4);
-          if (dist < minDistance) {
-            minDistance = dist;
-            closestIdx = idx;
+          // If card top position enters the active viewing band, open it
+          if (rect.top >= targetZoneTop && rect.top <= targetZoneBottom) {
+            setActiveFolderIndex(i);
+            return;
           }
         }
-      });
-
-      setActiveFolderIndex(closestIdx);
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
