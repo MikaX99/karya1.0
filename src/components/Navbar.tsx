@@ -213,91 +213,112 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Frosted Glass Floating Drawer Menu */}
       {mobileOpen && (
-        <div
-          style={{
-            position: "fixed",
-            top: "70px",
-            left: 0,
-            right: 0,
-            bottom: 0,
-            zIndex: 49,
-            background: "var(--navbar-bg)",
-            backdropFilter: "blur(20px)",
-            WebkitBackdropFilter: "blur(20px)",
-            display: "flex",
-            flexDirection: "column",
-            padding: "2rem 1.5rem",
-            gap: "0.5rem",
-            borderTop: "1px solid var(--color-border)",
-          }}
-        >
+        <div className="mobile-frosted-menu">
           {navLinks.map((link) => (
             <button
               key={link.href}
               id={`mobile-nav-${link.key.toLowerCase()}`}
               onClick={() => handleNavClick(link.href)}
               style={{
-                background: "none",
+                background: "transparent",
                 border: "none",
                 color: "var(--color-text)",
-                fontSize: "1.25rem",
-                fontWeight: 600,
+                fontSize: "1.05rem",
+                fontWeight: 700,
                 cursor: "pointer",
-                padding: "1rem",
-                borderRadius: "0.75rem",
+                padding: "0.85rem 1rem",
+                borderRadius: "14px",
                 textAlign: "left",
                 transition: "all 0.2s ease",
                 fontFamily: "inherit",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
               }}
               onMouseEnter={(e) => {
-                (e.target as HTMLElement).style.background = "rgba(14,165,233,0.08)";
-                (e.target as HTMLElement).style.color = "var(--color-primary)";
+                (e.currentTarget as HTMLElement).style.background = "rgba(0, 113, 227, 0.08)";
+                (e.currentTarget as HTMLElement).style.color = "var(--color-primary)";
               }}
               onMouseLeave={(e) => {
-                (e.target as HTMLElement).style.background = "none";
-                (e.target as HTMLElement).style.color = "var(--color-text)";
+                (e.currentTarget as HTMLElement).style.background = "transparent";
+                (e.currentTarget as HTMLElement).style.color = "var(--color-text)";
               }}
             >
-              {t(link.key)}
+              <span>{t(link.key)}</span>
+              <span style={{ fontSize: "0.85rem", opacity: 0.5 }}>→</span>
             </button>
           ))}
 
-          {/* Mobile Language Switcher */}
-          <div style={{ marginTop: "0.75rem" }}>
+          {/* Divider */}
+          <div style={{ height: "1px", background: "var(--color-border)", opacity: 0.6, margin: "0.4rem 0" }} />
+
+          {/* Mobile Language & Theme Controls Row */}
+          <div style={{ display: "flex", alignItems: "center", gap: "0.65rem" }}>
             <button
               id="mobile-lang-toggle"
               onClick={toggleLocale}
-              className="btn-theme"
               style={{
-                width: "100%",
+                flex: 1,
                 height: "44px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                gap: "0.5rem",
-                fontSize: "0.9rem",
-                fontWeight: 600,
-                borderRadius: "0.75rem",
+                gap: "0.45rem",
+                fontSize: "0.85rem",
+                fontWeight: 700,
+                borderRadius: "12px",
+                background: "var(--color-surface)",
+                border: "1px solid var(--color-border)",
+                color: "var(--color-text)",
+                cursor: "pointer",
               }}
             >
-              <Globe size={18} />
-              <span>Bahasa: {locale === "id" ? "English (EN)" : "Bahasa Indonesia (ID)"}</span>
+              <Globe size={16} color="var(--color-primary)" />
+              <span>{locale === "id" ? "English (EN)" : "Indonesia (ID)"}</span>
+            </button>
+
+            <button
+              id="mobile-theme-toggle"
+              onClick={toggleTheme}
+              style={{
+                width: "44px",
+                height: "44px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                borderRadius: "12px",
+                background: "var(--color-surface)",
+                border: "1px solid var(--color-border)",
+                color: "var(--color-text)",
+                cursor: "pointer",
+                flexShrink: 0,
+              }}
+            >
+              {theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
             </button>
           </div>
 
-          <div style={{ marginTop: "0.5rem" }}>
+          {/* WhatsApp Action Button */}
+          <div style={{ marginTop: "0.25rem" }}>
             <a
               id="mobile-wa-cta"
               href={waUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-wa"
-              style={{ width: "100%", justifyContent: "center", fontSize: "1rem", padding: "1rem", borderRadius: "0.75rem" }}
+              style={{
+                width: "100%",
+                justifyContent: "center",
+                fontSize: "0.925rem",
+                padding: "0.85rem",
+                borderRadius: "12px",
+                boxShadow: "0 8px 24px rgba(16, 185, 129, 0.28)",
+              }}
             >
-              <MessageCircle size={20} />
-              {t('navbar_wa_mobile')}
+              <MessageCircle size={18} />
+              <span>{t('navbar_wa_mobile')}</span>
             </a>
           </div>
         </div>
