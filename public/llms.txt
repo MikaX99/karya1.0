@@ -6,7 +6,7 @@
 - Name: PT. Karya Sistem Teknologi (KaryaSistem)
 - Type: B2B IT System Integrator & Hardware Distributor
 - Website: https://mikax99.github.io/karya1.0/
-- Address: Rawa Makmur, Cakung, Kota Adm. Jakarta Timur, Provinsi DKI Jakarta
+- Address: Rawa Makmur, Cakung, Jakarta Timur, DKI Jakarta
 - Phone: +62 878-8120-0477
 - Email: sales@karyasistem.com
 

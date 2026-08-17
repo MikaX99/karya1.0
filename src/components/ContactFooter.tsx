@@ -177,7 +177,14 @@ export default function ContactFooter() {
                             {item.label}
                           </div>
                           <div style={{ fontSize: "0.95rem", color: "var(--color-text)", fontWeight: 600, lineHeight: 1.4 }}>
-                            {item.value}
+                            {item.id === "contact-address" ? (
+                              <div style={{ display: "flex", flexDirection: "column", gap: "0.15rem" }}>
+                                <span style={{ fontWeight: 700, color: "var(--color-text)" }}>Rawa Makmur, Cakung</span>
+                                <span style={{ fontSize: "0.85rem", color: "var(--color-text-muted)", fontWeight: 500 }}>Jakarta Timur, DKI Jakarta</span>
+                              </div>
+                            ) : (
+                              item.value
+                            )}
                           </div>
                         </div>
                       </div>
