@@ -1,6 +1,5 @@
 "use client";
 
-import { ShieldCheck, Clock, Cpu } from "lucide-react";
 import { useLocale } from "@/context/LocaleContext";
 
 export default function AboutValue() {
@@ -9,7 +8,8 @@ export default function AboutValue() {
   const values = [
     {
       id: "official-warranty",
-      icon: <ShieldCheck size={22} color="var(--color-primary)" strokeWidth={2} />,
+      tag: "01 // GUARANTEED",
+      dotColor: "#10B981",
       metric: "100%",
       titleKey: "val_1_title",
       taglineKey: "val_1_tagline",
@@ -17,7 +17,8 @@ export default function AboutValue() {
     },
     {
       id: "fast-response",
-      icon: <Clock size={22} color="var(--color-primary)" strokeWidth={2} />,
+      tag: "02 // FAST SLA",
+      dotColor: "var(--color-primary)",
       metric: "< 15m",
       titleKey: "val_2_title",
       taglineKey: "val_2_tagline",
@@ -25,7 +26,8 @@ export default function AboutValue() {
     },
     {
       id: "pre-staging",
-      icon: <Cpu size={22} color="var(--color-primary)" strokeWidth={2} />,
+      tag: "03 // PRE-CONFIG",
+      dotColor: "#F59E0B",
       metric: "Staging",
       titleKey: "val_3_title",
       taglineKey: "val_3_tagline",
@@ -78,7 +80,7 @@ export default function AboutValue() {
                 transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
               }}
             >
-              {/* Metric & Icon Header */}
+              {/* Metric & Technical Tag Header */}
               <div
                 style={{
                   display: "flex",
@@ -98,19 +100,41 @@ export default function AboutValue() {
                 >
                   {item.metric}
                 </div>
+
+                {/* Monospaced Technical Tag with Live Status Indicator Dot */}
                 <div
                   style={{
-                    width: "40px",
-                    height: "40px",
-                    borderRadius: "10px",
-                    background: "var(--color-surface-2)",
-                    border: "1px solid var(--color-border)",
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "center",
+                    gap: "0.45rem",
+                    padding: "0.3rem 0.65rem",
+                    background: "var(--color-surface-2)",
+                    border: "1px solid var(--color-border)",
+                    borderRadius: "6px",
                   }}
                 >
-                  {item.icon}
+                  <span
+                    style={{
+                      width: "6px",
+                      height: "6px",
+                      borderRadius: "50%",
+                      background: item.dotColor,
+                      boxShadow: `0 0 8px ${item.dotColor}`,
+                      flexShrink: 0,
+                    }}
+                  />
+                  <span
+                    style={{
+                      fontSize: "0.68rem",
+                      fontWeight: 700,
+                      fontFamily: "monospace, monospace",
+                      color: "var(--color-text-subtle)",
+                      letterSpacing: "0.06em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {item.tag}
+                  </span>
                 </div>
               </div>
 
