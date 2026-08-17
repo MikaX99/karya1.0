@@ -194,9 +194,22 @@ svg {
   transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
               border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
               color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-              box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-              fill 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-              stroke 0.45s cubic-bezier(0.4, 0, 0.2, 1) !important;
+              box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* ============================================================
+   CIRCULAR RADIAL RIPPLE THEME TRANSITION (VIEW TRANSITIONS API)
+   ============================================================ */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 9999;
 }
 
 /* ============================================================

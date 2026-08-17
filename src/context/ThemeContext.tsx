@@ -6,7 +6,7 @@ type Theme = "dark" | "light";
 
 interface ThemeContextValue {
   theme: Theme;
-  toggleTheme: () => void;
+  toggleTheme: (e?: React.MouseEvent | MouseEvent) => void;
 }
 
 const ThemeContext = createContext<ThemeContextValue>({
@@ -37,12 +37,50 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     });
   }, []);
 
-  const toggleTheme = useCallback(() => {
-    setTheme((prev) => {
-      const next: Theme = prev === "dark" ? "light" : "dark";
-      document.documentElement.setAttribute("data-theme", next);
-      localStorage.setItem("karyasistem-theme", next);
-      return next;
+  const toggleTheme = useCallback((e?: React.MouseEvent | MouseEvent) => {
+    setTheme((prevTheme) => {
+      const nextTheme: Theme = prevTheme === "dark" ? "light" : "dark";
+
+      // Circular Radial Ripple View Transition originating from click point
+      if (
+        typeof document !== "undefined" &&
+        "startViewTransition" in document &&
+        !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ) {
+        const x = e?.clientX ?? window.innerWidth / 2;
+        const y = e?.clientY ?? 40;
+        const endRadius = Math.hypot(
+          Math.max(x, window.innerWidth - x),
+          Math.max(y, window.innerHeight - y)
+        );
+
+        const transition = (document as any).startViewTransition(() => {
+          document.documentElement.setAttribute("data-theme", nextTheme);
+          localStorage.setItem("karyasistem-theme", nextTheme);
+        });
+
+        transition.ready.then(() => {
+          const clipPath = [
+            `circle(0px at ${x}px ${y}px)`,
+            `circle(${endRadius}px at ${x}px ${y}px)`,
+          ];
+          document.documentElement.animate(
+            {
+              clipPath: clipPath,
+            },
+            {
+              duration: 520,
+              easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+              pseudoElement: "::view-transition-new(root)",
+            }
+          );
+        });
+      } else {
+        document.documentElement.setAttribute("data-theme", nextTheme);
+        localStorage.setItem("karyasistem-theme", nextTheme);
+      }
+
+      return nextTheme;
     });
   }, []);
 
