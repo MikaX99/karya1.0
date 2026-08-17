@@ -15,25 +15,30 @@ export default function AboutValue() {
       if (manualOverride) return;
       if (typeof window !== "undefined" && window.innerWidth >= 768) return;
 
-      const section = document.getElementById("keunggulan");
-      if (!section) return;
+      const folder1 = document.getElementById("value-smart-deployment");
+      const folder2 = document.getElementById("value-realtime-monitoring");
 
-      const rect = section.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
+      // Midpoint trigger threshold (5.5 / 10 of screen height)
+      const triggerPoint = window.innerHeight * 0.55;
 
-      if (rect.top <= windowHeight * 0.75 && rect.bottom >= windowHeight * 0.25) {
-        const totalDist = windowHeight * 0.75 - rect.top;
-        const totalSpan = rect.height + windowHeight * 0.25;
-        const progress = Math.min(Math.max(totalDist / totalSpan, 0), 1);
-
-        if (progress < 0.35) {
-          setActiveFolderIndex(0);
-        } else if (progress < 0.7) {
-          setActiveFolderIndex(1);
-        } else {
+      if (folder2) {
+        const r2 = folder2.getBoundingClientRect();
+        if (r2.top <= triggerPoint) {
           setActiveFolderIndex(2);
+          return;
         }
       }
+
+      if (folder1) {
+        const r1 = folder1.getBoundingClientRect();
+        if (r1.top <= triggerPoint) {
+          setActiveFolderIndex(1);
+          return;
+        }
+      }
+
+      // Default to Card #1 open as soon as section reaches viewport
+      setActiveFolderIndex(0);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
