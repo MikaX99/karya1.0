@@ -75,7 +75,7 @@ export default function Services() {
     <section id="layanan" className="section" style={{ background: "var(--section-bg-1)" }}>
       <div className="container">
         {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
+        <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
           <span className="section-badge">{t("services_badge")}</span>
           <h2 className="text-section-title" style={{ margin: "0 0 0.875rem 0", color: "var(--color-text)" }}>
             {t("services_title_prefix")} <span style={{ color: "var(--color-primary)" }}>{t("services_title_highlight")}</span>
@@ -93,12 +93,13 @@ export default function Services() {
           </p>
         </div>
 
-        {/* 4-Column Grid matching reference screenshot */}
+        {/* Dynamic Compact Grid matching reference screenshot without wasted white space */}
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-            gap: "1.25rem",
+            gap: "1.1rem",
+            alignItems: "stretch",
           }}
         >
           {services.map((service) => {
@@ -111,31 +112,31 @@ export default function Services() {
                 onMouseEnter={() => setHoveredId(service.id)}
                 onMouseLeave={() => setHoveredId(null)}
                 style={{
-                  borderRadius: "16px",
-                  padding: "1.85rem 1.6rem",
+                  borderRadius: "14px",
+                  padding: "1.4rem 1.3rem",
                   display: "flex",
                   flexDirection: "column",
                   background: "var(--color-surface)",
                   border: isHovered ? `1px solid ${service.color}` : "1px solid var(--color-border)",
                   boxShadow: isHovered
-                    ? `0 16px 36px ${service.bgTint.replace('0.08', '0.2')}, 0 2px 8px rgba(0,0,0,0.04)`
-                    : "0 2px 8px rgba(0,0,0,0.02)",
-                  transform: isHovered ? "translateY(-5px)" : "translateY(0)",
-                  transition: "all 0.35s cubic-bezier(0.16, 1, 0.3, 1)",
+                    ? `0 14px 32px ${service.bgTint.replace('0.08', '0.18')}, 0 2px 8px rgba(0,0,0,0.04)`
+                    : "0 2px 6px rgba(0,0,0,0.02)",
+                  transform: isHovered ? "translateY(-4px)" : "translateY(0)",
+                  transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
                 }}
               >
-                {/* Soft Tint Rounded Icon Container (Matching Screenshot) */}
+                {/* Soft Tint Rounded Icon Container */}
                 <div
                   style={{
-                    width: "48px",
-                    height: "48px",
-                    borderRadius: "12px",
+                    width: "44px",
+                    height: "44px",
+                    borderRadius: "11px",
                     background: service.bgTint,
                     border: `1px solid ${service.bgTint.replace('0.08', '0.18')}`,
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    marginBottom: "1.5rem",
+                    marginBottom: "1rem",
                     color: service.color,
                     flexShrink: 0,
                     transition: "all 0.3s ease",
@@ -147,63 +148,69 @@ export default function Services() {
                 {/* Title */}
                 <h3
                   style={{
-                    fontSize: "1.2rem",
+                    fontSize: "1.15rem",
                     fontWeight: 700,
                     color: "var(--color-text)",
-                    margin: "0 0 0.75rem 0",
-                    lineHeight: 1.35,
+                    margin: "0 0 0.5rem 0",
+                    lineHeight: 1.3,
                   }}
                 >
                   {t(service.titleKey)}
                 </h3>
 
-                {/* Description */}
+                {/* Description - Tight fit */}
                 <p
                   style={{
                     color: "var(--color-text-muted)",
-                    fontSize: "0.875rem",
-                    lineHeight: 1.6,
-                    margin: "0 0 1.5rem 0",
+                    fontSize: "0.85rem",
+                    lineHeight: 1.55,
+                    margin: "0 0 1rem 0",
                   }}
                 >
                   {t(service.descKey)}
                 </p>
 
-                {/* Highlights Checklist with Subtle Top Divider Line (Matching Screenshot) */}
-                <ul
+                {/* Highlights Checklist with Top Divider Line */}
+                <div
                   style={{
-                    listStyle: "none",
-                    margin: "auto 0 0 0",
-                    padding: 0,
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.6rem",
+                    marginTop: "auto",
                     borderTop: "1px solid var(--color-border-subtle)",
-                    paddingTop: "1.25rem",
+                    paddingTop: "0.9rem",
                   }}
                 >
-                  {service.highlights.map((hKey) => (
-                    <li
-                      key={hKey}
-                      style={{
-                        display: "flex",
-                        alignItems: "flex-start",
-                        gap: "0.55rem",
-                        fontSize: "0.825rem",
-                        color: "var(--color-text)",
-                        fontWeight: 500,
-                        lineHeight: 1.45,
-                      }}
-                    >
-                      <CheckCircle2
-                        size={15}
-                        color={service.color}
-                        style={{ marginTop: "2px", flexShrink: 0 }}
-                      />
-                      <span>{t(hKey)}</span>
-                    </li>
-                  ))}
-                </ul>
+                  <ul
+                    style={{
+                      listStyle: "none",
+                      margin: 0,
+                      padding: 0,
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "0.45rem",
+                    }}
+                  >
+                    {service.highlights.map((hKey) => (
+                      <li
+                        key={hKey}
+                        style={{
+                          display: "flex",
+                          alignItems: "flex-start",
+                          gap: "0.5rem",
+                          fontSize: "0.81rem",
+                          color: "var(--color-text)",
+                          fontWeight: 500,
+                          lineHeight: 1.4,
+                        }}
+                      >
+                        <CheckCircle2
+                          size={14}
+                          color={service.color}
+                          style={{ marginTop: "2px", flexShrink: 0 }}
+                        />
+                        <span>{t(hKey)}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             );
           })}
