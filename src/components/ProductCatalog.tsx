@@ -74,7 +74,6 @@ export default function ProductCatalog() {
   const [activeCategoryVal, setActiveCategoryVal] = useState("Semua");
   const [activeBrandVal, setActiveBrandVal] = useState("Semua");
   const tabTrackRef = useRef<HTMLDivElement>(null);
-  const brandTrackRef = useRef<HTMLDivElement>(null);
 
   const scrollTabsLeft = () => {
     if (tabTrackRef.current) {
@@ -301,7 +300,7 @@ export default function ProductCatalog() {
 
           {/* Clean Centered Brand Filter Bar */}
           <div className="brand-filter-container">
-            <div ref={brandTrackRef} className="brand-filter-track">
+            <div className="brand-filter-track">
               {availableBrands.map((b) => (
                 <button
                   key={b.value}
