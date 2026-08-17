@@ -304,27 +304,27 @@ export default function ContactFooter() {
               gap: "1.5rem",
             }}
           >
-            {/* Logo */}
+            {/* Logo (+25% size increase) */}
             <div style={{ display: "flex", alignItems: "center" }}>
               <img
                 src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/kst-dark.png`}
                 alt="KaryaSistem Logo"
-                width="81"
-                height="34"
+                width="101"
+                height="43"
                 loading="lazy"
                 decoding="async"
                 className="logo-img logo-dark-mode"
-                style={{ width: "81px", height: "34px", objectFit: "contain", aspectRatio: "81 / 34" }}
+                style={{ width: "101px", height: "43px", objectFit: "contain", aspectRatio: "101 / 43" }}
               />
               <img
                 src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/kst-light.png`}
                 alt="KaryaSistem Logo"
-                width="81"
-                height="34"
+                width="101"
+                height="43"
                 loading="lazy"
                 decoding="async"
                 className="logo-img logo-light-mode"
-                style={{ width: "81px", height: "34px", objectFit: "contain", aspectRatio: "81 / 34" }}
+                style={{ width: "101px", height: "43px", objectFit: "contain", aspectRatio: "101 / 43" }}
               />
             </div>
 
