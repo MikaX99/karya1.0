@@ -21,16 +21,10 @@ export function useTheme() {
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("light");
 
-  // On mount: read localStorage or system preference
+  // On mount: read localStorage or default to LIGHT MODE for mobile & desktop
   useEffect(() => {
     const stored = localStorage.getItem("karyasistem-theme") as Theme | null;
-    let initial: Theme = "light";
-    if (stored === "light" || stored === "dark") {
-      initial = stored;
-    } else {
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      initial = prefersDark ? "dark" : "light";
-    }
+    const initial: Theme = stored === "dark" ? "dark" : "light";
     document.documentElement.setAttribute("data-theme", initial);
     requestAnimationFrame(() => {
       setTheme(initial);
