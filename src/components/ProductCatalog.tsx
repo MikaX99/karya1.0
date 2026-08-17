@@ -35,6 +35,7 @@ export default function ProductCatalog() {
   const [activeCategoryVal, setActiveCategoryVal] = useState("Semua");
   const [activeBrandVal, setActiveBrandVal] = useState("Semua");
   const tabTrackRef = useRef<HTMLDivElement>(null);
+  const brandTrackRef = useRef<HTMLDivElement>(null);
 
   const scrollTabsLeft = () => {
     if (tabTrackRef.current) {
@@ -45,6 +46,18 @@ export default function ProductCatalog() {
   const scrollTabsRight = () => {
     if (tabTrackRef.current) {
       tabTrackRef.current.scrollBy({ left: 200, behavior: "smooth" });
+    }
+  };
+
+  const scrollBrandsLeft = () => {
+    if (brandTrackRef.current) {
+      brandTrackRef.current.scrollBy({ left: -180, behavior: "smooth" });
+    }
+  };
+
+  const scrollBrandsRight = () => {
+    if (brandTrackRef.current) {
+      brandTrackRef.current.scrollBy({ left: 180, behavior: "smooth" });
     }
   };
 
@@ -145,51 +158,45 @@ export default function ProductCatalog() {
           </button>
         </div>
 
-        {/* Clean Centered Brand Filter Bar */}
-        <div
-          className="brand-filter-track"
-          style={{
-            justifyContent: "center",
-            flexWrap: "wrap",
-            gap: "0.45rem",
-            marginTop: "1.15rem",
-          }}
-        >
-          {availableBrands.map((b) => (
-            <button
-              key={b.value}
-              id={`brand-filter-${b.value.toLowerCase()}`}
-              onClick={() => setActiveBrandVal(b.value)}
-              style={{
-                background:
-                  activeBrandVal === b.value
-                    ? "var(--color-primary)"
-                    : "var(--color-surface)",
-                color:
-                  activeBrandVal === b.value
-                    ? "#ffffff"
-                    : "var(--color-text-subtle)",
-                border:
-                  activeBrandVal === b.value
-                    ? "1px solid var(--color-primary)"
-                    : "1px solid var(--color-border)",
-                borderRadius: "9999px",
-                padding: "0.32rem 0.8rem",
-                fontSize: "0.76rem",
-                fontWeight: 600,
-                cursor: "pointer",
-                whiteSpace: "nowrap",
-                flexShrink: 0,
-                transition: "all 0.2s cubic-bezier(0.16, 1, 0.3, 1)",
-                boxShadow:
-                  activeBrandVal === b.value
-                    ? "0 4px 14px rgba(0, 113, 227, 0.25)"
-                    : "none",
-              }}
-            >
-              {b.label}
-            </button>
-          ))}
+        {/* Responsive Brand Filter Bar Container */}
+        <div className="brand-filter-container">
+          <div ref={brandTrackRef} className="brand-filter-track">
+            {availableBrands.map((b) => (
+              <button
+                key={b.value}
+                id={`brand-filter-${b.value.toLowerCase()}`}
+                onClick={() => setActiveBrandVal(b.value)}
+                style={{
+                  background:
+                    activeBrandVal === b.value
+                      ? "var(--color-primary)"
+                      : "var(--color-surface)",
+                  color:
+                    activeBrandVal === b.value
+                      ? "#ffffff"
+                      : "var(--color-text-subtle)",
+                  border:
+                    activeBrandVal === b.value
+                      ? "1px solid var(--color-primary)"
+                      : "1px solid var(--color-border)",
+                  borderRadius: "9999px",
+                  padding: "0.3rem 0.75rem",
+                  fontSize: "0.75rem",
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  whiteSpace: "nowrap",
+                  flexShrink: 0,
+                  transition: "all 0.2s cubic-bezier(0.16, 1, 0.3, 1)",
+                  boxShadow:
+                    activeBrandVal === b.value
+                      ? "0 4px 14px rgba(0, 113, 227, 0.25)"
+                      : "none",
+                }}
+              >
+                {b.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Product Container (Flex Centered with Switch Animation) */}
