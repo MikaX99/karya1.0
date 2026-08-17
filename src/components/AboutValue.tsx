@@ -10,8 +10,10 @@ export default function AboutValue() {
   const [manualOverride, setManualOverride] = useState(false);
 
   useEffect(() => {
+    // Scroll-driven trigger only applies on Mobile screens (<768px)
     const handleScroll = () => {
       if (manualOverride) return;
+      if (typeof window !== "undefined" && window.innerWidth >= 768) return;
 
       const section = document.getElementById("keunggulan");
       if (!section) return;
@@ -19,7 +21,6 @@ export default function AboutValue() {
       const rect = section.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
-      // Trigger active folder selection based on section scroll progress
       if (rect.top <= windowHeight * 0.75 && rect.bottom >= windowHeight * 0.25) {
         const totalDist = windowHeight * 0.75 - rect.top;
         const totalSpan = rect.height + windowHeight * 0.25;
@@ -39,6 +40,13 @@ export default function AboutValue() {
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, [manualOverride]);
+
+  const handleMouseEnter = (idx: number) => {
+    // Desktop hover trigger (>=768px)
+    if (typeof window !== "undefined" && window.innerWidth >= 768) {
+      setActiveFolderIndex(idx);
+    }
+  };
 
   const handleFolderClick = (idx: number) => {
     setActiveFolderIndex(idx);
@@ -125,6 +133,7 @@ export default function AboutValue() {
             return (
               <div
                 key={folder.id}
+                onMouseEnter={() => handleMouseEnter(idx)}
                 style={{
                   borderRadius: "14px",
                   overflow: "hidden",
