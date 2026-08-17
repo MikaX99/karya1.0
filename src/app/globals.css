@@ -781,46 +781,54 @@ html[data-theme="dark"] .futuristic-tab-container {
   overscroll-behavior-x: contain;
 }
 
-/* Brand Filter Responsive Container & Track */
-.brand-filter-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 920px;
-  margin: 1.1rem auto 0 auto;
-  position: relative;
-  width: 100%;
-}
-
-.brand-filter-track {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  touch-action: pan-y;
-  overscroll-behavior-x: contain;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.brand-filter-track::-webkit-scrollbar {
+/* Catalog Responsive Filter Visibility & Controls */
+.catalog-mobile-filter {
   display: none;
 }
 
-@media (max-width: 992px) {
-  .brand-filter-container {
-    padding: 0 0.25rem;
+.catalog-desktop-filter {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .catalog-desktop-filter {
+    display: none !important;
   }
 
-  .brand-filter-track {
-    overflow-x: auto;
-    flex-wrap: nowrap !important;
-    justify-content: flex-start !important;
-    padding: 4px 1.5rem 4px 2px;
-    -webkit-mask-image: linear-gradient(to right, #000000 88%, transparent 100%);
-    mask-image: linear-gradient(to right, #000000 88%, transparent 100%);
+  .catalog-mobile-filter {
+    display: flex !important;
+    flex-direction: column;
+    gap: 0.65rem;
+    max-width: 100%;
+    margin: 0 auto 1.25rem auto;
+  }
+
+  .mobile-filter-select-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  .mobile-filter-select {
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 0.75rem 2.5rem 0.75rem 2.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    font-family: var(--font-base);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .mobile-filter-select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.15);
   }
 }
 

@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import productsData from "@/data/products.json";
 import ProductCard from "./ProductCard";
 import { useLocale } from "@/context/LocaleContext";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Filter, Tag, ChevronDown } from "lucide-react";
 
 const categoriesConfig = [
   { key: "cat_all", value: "Semua" },
@@ -46,18 +46,6 @@ export default function ProductCatalog() {
   const scrollTabsRight = () => {
     if (tabTrackRef.current) {
       tabTrackRef.current.scrollBy({ left: 200, behavior: "smooth" });
-    }
-  };
-
-  const scrollBrandsLeft = () => {
-    if (brandTrackRef.current) {
-      brandTrackRef.current.scrollBy({ left: -180, behavior: "smooth" });
-    }
-  };
-
-  const scrollBrandsRight = () => {
-    if (brandTrackRef.current) {
-      brandTrackRef.current.scrollBy({ left: 180, behavior: "smooth" });
     }
   };
 
@@ -125,77 +113,127 @@ export default function ProductCatalog() {
           </p>
         </div>
 
-        {/* Clean Segmented Category Bar */}
-        <div className="futuristic-tab-container">
-          <button
-            onClick={scrollTabsLeft}
-            className="futuristic-tab-arrow"
-            aria-label="Scroll categories left"
-          >
-            <ChevronLeft size={16} />
-          </button>
-
-          <div ref={tabTrackRef} className="futuristic-tab-track">
-            {categoriesConfig.map((cat) => (
-              <button
-                key={cat.key}
-                id={`filter-${cat.value.toLowerCase().replace(/\s+/g, "-").replace(/&/g, "and")}`}
-                className={`futuristic-tab-item ${activeCategoryVal === cat.value ? "active" : ""}`}
-                onClick={() => handleCategoryChange(cat.value)}
-                aria-pressed={activeCategoryVal === cat.value}
-              >
-                {t(cat.key)}
-              </button>
-            ))}
+        {/* 📱 MOBILE NATIVE DROPDOWN SELECT CONTROLS (< 768px) */}
+        <div className="catalog-mobile-filter">
+          {/* Category Dropdown */}
+          <div className="mobile-filter-select-wrapper">
+            <div style={{ position: "absolute", left: "1rem", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "var(--color-primary)" }}>
+              <Filter size={17} />
+            </div>
+            <select
+              className="mobile-filter-select"
+              value={activeCategoryVal}
+              onChange={(e) => handleCategoryChange(e.target.value)}
+              aria-label="Pilih Kategori Produk"
+            >
+              {categoriesConfig.map((cat) => (
+                <option key={cat.key} value={cat.value}>
+                  Kategori: {t(cat.key)}
+                </option>
+              ))}
+            </select>
+            <div style={{ position: "absolute", right: "1rem", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "var(--color-text-muted)" }}>
+              <ChevronDown size={17} />
+            </div>
           </div>
 
-          <button
-            onClick={scrollTabsRight}
-            className="futuristic-tab-arrow"
-            aria-label="Scroll categories right"
-          >
-            <ChevronRight size={16} />
-          </button>
+          {/* Brand Dropdown */}
+          <div className="mobile-filter-select-wrapper">
+            <div style={{ position: "absolute", left: "1rem", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "var(--color-primary)" }}>
+              <Tag size={17} />
+            </div>
+            <select
+              className="mobile-filter-select"
+              value={activeBrandVal}
+              onChange={(e) => setActiveBrandVal(e.target.value)}
+              aria-label="Pilih Brand Perangkat"
+            >
+              {availableBrands.map((b) => (
+                <option key={b.value} value={b.value}>
+                  Brand: {b.label}
+                </option>
+              ))}
+            </select>
+            <div style={{ position: "absolute", right: "1rem", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "var(--color-text-muted)" }}>
+              <ChevronDown size={17} />
+            </div>
+          </div>
         </div>
 
-        {/* Responsive Brand Filter Bar Container */}
-        <div className="brand-filter-container">
-          <div ref={brandTrackRef} className="brand-filter-track">
-            {availableBrands.map((b) => (
-              <button
-                key={b.value}
-                id={`brand-filter-${b.value.toLowerCase()}`}
-                onClick={() => setActiveBrandVal(b.value)}
-                style={{
-                  background:
-                    activeBrandVal === b.value
-                      ? "var(--color-primary)"
-                      : "var(--color-surface)",
-                  color:
-                    activeBrandVal === b.value
-                      ? "#ffffff"
-                      : "var(--color-text-subtle)",
-                  border:
-                    activeBrandVal === b.value
-                      ? "1px solid var(--color-primary)"
-                      : "1px solid var(--color-border)",
-                  borderRadius: "9999px",
-                  padding: "0.3rem 0.75rem",
-                  fontSize: "0.75rem",
-                  fontWeight: 600,
-                  cursor: "pointer",
-                  whiteSpace: "nowrap",
-                  flexShrink: 0,
-                  transition: "all 0.2s cubic-bezier(0.16, 1, 0.3, 1)",
-                  boxShadow:
-                    activeBrandVal === b.value
-                      ? "0 4px 14px rgba(0, 113, 227, 0.25)"
-                      : "none",
-                }}
-              >
-                {b.label}
-              </button>
-            ))}
+        {/* 💻 DESKTOP PILLS FILTER CONTROLS (> 768px) */}
+        <div className="catalog-desktop-filter">
+          {/* Clean Segmented Category Bar */}
+          <div className="futuristic-tab-container">
+            <button
+              onClick={scrollTabsLeft}
+              className="futuristic-tab-arrow"
+              aria-label="Scroll categories left"
+            >
+              <ChevronLeft size={16} />
+            </button>
+
+            <div ref={tabTrackRef} className="futuristic-tab-track">
+              {categoriesConfig.map((cat) => (
+                <button
+                  key={cat.key}
+                  id={`filter-${cat.value.toLowerCase().replace(/\s+/g, "-").replace(/&/g, "and")}`}
+                  className={`futuristic-tab-item ${activeCategoryVal === cat.value ? "active" : ""}`}
+                  onClick={() => handleCategoryChange(cat.value)}
+                  aria-pressed={activeCategoryVal === cat.value}
+                >
+                  {t(cat.key)}
+                </button>
+              ))}
+            </div>
+
+            <button
+              onClick={scrollTabsRight}
+              className="futuristic-tab-arrow"
+              aria-label="Scroll categories right"
+            >
+              <ChevronRight size={16} />
+            </button>
+          </div>
+
+          {/* Clean Centered Brand Filter Bar */}
+          <div className="brand-filter-container">
+            <div ref={brandTrackRef} className="brand-filter-track">
+              {availableBrands.map((b) => (
+                <button
+                  key={b.value}
+                  id={`brand-filter-${b.value.toLowerCase()}`}
+                  onClick={() => setActiveBrandVal(b.value)}
+                  style={{
+                    background:
+                      activeBrandVal === b.value
+                        ? "var(--color-primary)"
+                        : "var(--color-surface)",
+                    color:
+                      activeBrandVal === b.value
+                        ? "#ffffff"
+                        : "var(--color-text-subtle)",
+                    border:
+                      activeBrandVal === b.value
+                        ? "1px solid var(--color-primary)"
+                        : "1px solid var(--color-border)",
+                    borderRadius: "9999px",
+                    padding: "0.3rem 0.75rem",
+                    fontSize: "0.75rem",
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    whiteSpace: "nowrap",
+                    flexShrink: 0,
+                    transition: "all 0.2s cubic-bezier(0.16, 1, 0.3, 1)",
+                    boxShadow:
+                      activeBrandVal === b.value
+                        ? "0 4px 14px rgba(0, 113, 227, 0.25)"
+                        : "none",
+                  }}
+                >
+                  {b.label}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
