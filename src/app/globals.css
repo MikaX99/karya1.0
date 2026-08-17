@@ -166,11 +166,13 @@ body {
 }
 
 /* ============================================================
-   SILKY SMOOTH UNIVERSAL THEME FADE TRANSITION
+   BUTTER-SMOOTH HIGH-PERFORMANCE THEME TRANSITION SYSTEM
    ============================================================ */
 html,
 body,
 header,
+main,
+footer,
 section,
 .section,
 .glass-card,
@@ -180,20 +182,14 @@ section,
 .futuristic-tab-container,
 .category-stack-card,
 .brand-filter-track button,
+.product-card-wrapper,
 .product-badge,
-footer,
-a,
 button,
-div,
-p,
-span,
-h1, h2, h3, h4, h5, h6,
-input, select, textarea,
-svg {
-  transition: background-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important;
+a {
+  transition: background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+              border-color 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+              color 0.25s ease,
+              box-shadow 0.3s ease;
 }
 
 /* ============================================================
