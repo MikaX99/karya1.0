@@ -15,28 +15,31 @@ export default function AboutValue() {
       if (manualOverride) return;
       if (typeof window !== "undefined" && window.innerWidth >= 768) return;
 
-      const folder0 = document.getElementById("value-easy-integrations");
       const folder1 = document.getElementById("value-smart-deployment");
       const folder2 = document.getElementById("value-realtime-monitoring");
 
-      const windowHeight = window.innerHeight;
-      // Active viewing band (25% to 70% of screen height)
-      const targetZoneTop = windowHeight * 0.25;
-      const targetZoneBottom = windowHeight * 0.70;
+      const threshold = window.innerHeight * 0.50; // Screen midpoint (50% down screen)
 
-      const cards = [folder0, folder1, folder2];
-
-      for (let i = 0; i < cards.length; i++) {
-        const card = cards[i];
-        if (card) {
-          const rect = card.getBoundingClientRect();
-          // If card top position enters the active viewing band, open it
-          if (rect.top >= targetZoneTop && rect.top <= targetZoneBottom) {
-            setActiveFolderIndex(i);
-            return;
-          }
+      // 1. If Card #3 has scrolled up to/past the midpoint -> Open Card #3 (index 2)
+      if (folder2) {
+        const r2 = folder2.getBoundingClientRect();
+        if (r2.top <= threshold && r2.top > 0) {
+          setActiveFolderIndex(2);
+          return;
         }
       }
+
+      // 2. If Card #2 has scrolled up to/past the midpoint -> Open Card #2 (index 1)
+      if (folder1) {
+        const r1 = folder1.getBoundingClientRect();
+        if (r1.top <= threshold && r1.top > 0) {
+          setActiveFolderIndex(1);
+          return;
+        }
+      }
+
+      // 3. Otherwise (when Card #1 is in view or section is reached) -> Open Card #1 (index 0)
+      setActiveFolderIndex(0);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
