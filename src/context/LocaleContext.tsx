@@ -125,6 +125,11 @@ export const dictionaries: Record<string, Record<string, string>> = {
     val_3_desc: "Pengujian hardware, instalasi OS/lisensi, dan konfigurasi jaringan awal dilakukan sebelum dikirimkan ke lokasi perusahaan Anda.",
     val_3_stat_label: "Tested & Configured",
 
+    val_4_title: "Stok Hardware Enterprise",
+    val_4_tagline: "Pengadaan Cepat & Logistik Nasional",
+    val_4_desc: "Ketersediaan stok unit server Dell/HP, networking switch Cisco/MikroTik, firewall Fortinet/Sophos/Sangfor dengan dukungan faktur pajak B2B resmi dan jangkauan pengiriman cepat ke seluruh wilayah Indonesia.",
+    val_4_stat_label: "Nationwide Supply",
+
     // Contact & Footer
     contact_badge: "Hubungi Kami",
     contact_title_prefix: "Konsultasikan",
@@ -263,6 +268,11 @@ export const dictionaries: Record<string, Record<string, string>> = {
     val_3_tagline: "Tested & Ready to Deploy",
     val_3_desc: "Hardware testing, OS/license installation, and initial network pre-configuration are performed before shipping to your site.",
     val_3_stat_label: "Tested & Configured",
+
+    val_4_title: "Enterprise Hardware Availability",
+    val_4_tagline: "Fast Procurement & Nationwide Logistics",
+    val_4_desc: "Ready inventory of Dell/HP servers, Cisco/MikroTik switches, Fortinet/Sophos/Sangfor firewalls with official B2B tax invoicing and express nationwide logistics across Indonesia.",
+    val_4_stat_label: "Nationwide Supply",
 
     // Contact & Footer
     contact_badge: "Contact Us",
