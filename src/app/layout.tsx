@@ -117,7 +117,7 @@ export default function RootLayout({
                   "description": config.company.description,
                   "address": {
                     "@type": "PostalAddress",
-                    "streetAddress": "Rawa Makmur, Cakung Timur, Cakung",
+                    "streetAddress": "Rawa Makmur, Cakung",
                     "addressLocality": "Jakarta Timur",
                     "addressRegion": "DKI Jakarta",
                     "addressCountry": "ID"
