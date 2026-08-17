@@ -18,27 +18,27 @@ export default function AboutValue() {
       const folder1 = document.getElementById("value-smart-deployment");
       const folder2 = document.getElementById("value-realtime-monitoring");
 
-      const threshold = window.innerHeight * 0.50; // Screen midpoint (50% down screen)
+      const focusPoint = window.innerHeight * 0.50; // Focus zone: center of mobile screen (50%)
 
-      // 1. If Card #3 has scrolled up to/past the midpoint -> Open Card #3 (index 2)
+      // 1. If Card #3 top has reached/crossed the focus zone -> Open Card #3
       if (folder2) {
         const r2 = folder2.getBoundingClientRect();
-        if (r2.top <= threshold && r2.top > 0) {
+        if (r2.top <= focusPoint) {
           setActiveFolderIndex(2);
           return;
         }
       }
 
-      // 2. If Card #2 has scrolled up to/past the midpoint -> Open Card #2 (index 1)
+      // 2. If Card #2 top has reached/crossed the focus zone -> Open Card #2
       if (folder1) {
         const r1 = folder1.getBoundingClientRect();
-        if (r1.top <= threshold && r1.top > 0) {
+        if (r1.top <= focusPoint) {
           setActiveFolderIndex(1);
           return;
         }
       }
 
-      // 3. Otherwise (when Card #1 is in view or section is reached) -> Open Card #1 (index 0)
+      // 3. Default to Card #1 open when viewing upper section / Card #1
       setActiveFolderIndex(0);
     };
 
