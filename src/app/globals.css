@@ -166,9 +166,8 @@ body {
 }
 
 /* ============================================================
-   SILKY CINEMATIC THEME TRANSITION SYSTEM (0.5s Ease-InOut)
+   SILKY SMOOTH UNIVERSAL THEME FADE TRANSITION
    ============================================================ */
-:root,
 html,
 body,
 header,
@@ -191,25 +190,10 @@ span,
 h1, h2, h3, h4, h5, h6,
 input, select, textarea,
 svg {
-  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-              border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-              color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-              box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
-}
-
-/* ============================================================
-   CIRCULAR RADIAL RIPPLE THEME TRANSITION (VIEW TRANSITIONS API)
-   ============================================================ */
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation: none;
-  mix-blend-mode: normal;
-}
-::view-transition-old(root) {
-  z-index: 1;
-}
-::view-transition-new(root) {
-  z-index: 9999;
+  transition: background-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 /* ============================================================

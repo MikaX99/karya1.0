@@ -37,72 +37,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     });
   }, []);
 
-  const toggleTheme = useCallback((e?: React.MouseEvent | MouseEvent) => {
-    // Exact requested theme ripple epicenter coordinates: x = window.innerWidth - 80, y = 35
-    let x = typeof window !== "undefined" ? window.innerWidth - 80 : 300;
-    let y = 35;
-
-    if (typeof document !== "undefined") {
-      const rawTarget = (e?.currentTarget || e?.target) as HTMLElement | null;
-      const buttonEl =
-        rawTarget?.closest?.("button") ||
-        document.getElementById("theme-toggle") ||
-        document.getElementById("mobile-theme-toggle");
-
-      if (buttonEl && typeof buttonEl.getBoundingClientRect === "function") {
-        const rect = buttonEl.getBoundingClientRect();
-        if (rect.width > 0 && rect.height > 0) {
-          x = Math.round(rect.left + rect.width / 2);
-          y = 35; // Top position 35px
-        }
-      }
-    }
-
-    const currentTheme =
-      typeof document !== "undefined"
-        ? (document.documentElement.getAttribute("data-theme") as Theme) || theme
-        : theme;
-    const nextTheme: Theme = currentTheme === "dark" ? "light" : "dark";
-
-    // 2. Trigger Circular View Transition originating from exact button center (x, y)
-    if (
-      typeof document !== "undefined" &&
-      "startViewTransition" in document &&
-      !window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
-      const endRadius = Math.hypot(
-        Math.max(x, window.innerWidth - x),
-        Math.max(y, window.innerHeight - y)
-      );
-
-      const transition = (document as any).startViewTransition(() => {
-        document.documentElement.setAttribute("data-theme", nextTheme);
-        localStorage.setItem("karyasistem-theme", nextTheme);
-        setTheme(nextTheme);
-      });
-
-      transition.ready.then(() => {
-        const clipPath = [
-          `circle(0px at ${x}px ${y}px)`,
-          `circle(${endRadius}px at ${x}px ${y}px)`,
-        ];
-        document.documentElement.animate(
-          {
-            clipPath: clipPath,
-          },
-          {
-            duration: 520,
-            easing: "cubic-bezier(0.4, 0, 0.2, 1)",
-            pseudoElement: "::view-transition-new(root)",
-          }
-        );
-      });
-    } else {
-      document.documentElement.setAttribute("data-theme", nextTheme);
-      localStorage.setItem("karyasistem-theme", nextTheme);
-      setTheme(nextTheme);
-    }
-  }, [theme]);
+  const toggleTheme = useCallback(() => {
+    setTheme((prev) => {
+      const next: Theme = prev === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      localStorage.setItem("karyasistem-theme", next);
+      return next;
+    });
+  }, []);
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
