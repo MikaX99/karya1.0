@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useLocale } from "@/context/LocaleContext";
-import { ChevronDown, ShieldCheck, Clock, Cpu, PackageCheck } from "lucide-react";
+import { ChevronDown, Layers, Rocket, Activity } from "lucide-react";
 
 export default function AboutValue() {
   const { t } = useLocale();
@@ -10,72 +10,40 @@ export default function AboutValue() {
 
   const folders = [
     {
-      id: "official-warranty",
-      themeColor: "#1D4ED8", // Royal Blue
-      headerBg: "#1E40AF",
-      tabBg: "#2563EB",
-      textColor: "#FFFFFF",
+      id: "easy-integrations",
       index: "01",
-      tabs: ["Garansi Resmi 100%", "Distributor Principal"],
-      categoryLabel: "Jaminan Original & Garansi Principal",
+      titleKey: "val_1_title",
+      taglineKey: "val_1_tagline",
       descKey: "val_1_desc",
-      icon: <ShieldCheck size={18} />,
-      metrics: [
-        { label: "STATUS", val: "100% ORIGINAL" },
-        { label: "WARRANTY", val: "OFFICIAL SLA" },
-        { label: "CERTIFICATE", val: "DISTRIBUTOR DIRECT" },
-      ],
+      statKey: "val_1_stat",
+      statLabelKey: "val_1_stat_label",
+      icon: <Layers size={18} />,
+      tabs: ["Easy Integrations", "Seamless Systems"],
+      categoryLabel: "Integrasi & Support 24/7",
     },
     {
-      id: "fast-response",
-      themeColor: "#047857", // Emerald Green
-      headerBg: "#065F46",
-      tabBg: "#059669",
-      textColor: "#FFFFFF",
+      id: "smart-deployment",
       index: "02",
-      tabs: ["Respon SLA < 15 Menit", "Technical Engineer"],
-      categoryLabel: "Layanan Fast Response & Consulting",
+      titleKey: "val_2_title",
+      taglineKey: "val_2_tagline",
       descKey: "val_2_desc",
-      icon: <Clock size={18} />,
-      metrics: [
-        { label: "RESPONSE", val: "< 15 MINUTES" },
-        { label: "CONSULTING", val: "FREE ARCHITECTURE" },
-        { label: "ENGINEER", val: "CERTIFIED SALES" },
-      ],
+      statKey: "val_2_stat",
+      statLabelKey: "val_2_stat_label",
+      icon: <Rocket size={18} />,
+      tabs: ["Smart Deployment", "Zero-Friction Growth"],
+      categoryLabel: "Implementasi & Skalabilitas",
     },
     {
-      id: "pre-staging",
-      themeColor: "#6D28D9", // Deep Violet / Purple
-      headerBg: "#5B21B6",
-      tabBg: "#7C3AED",
-      textColor: "#FFFFFF",
+      id: "realtime-monitoring",
       index: "03",
-      tabs: ["Pre-Deployment Staging", "Plug & Play Ready"],
-      categoryLabel: "Pengujian & Konfigurasi Siap Pakai",
+      titleKey: "val_3_title",
+      taglineKey: "val_3_tagline",
       descKey: "val_3_desc",
-      icon: <Cpu size={18} />,
-      metrics: [
-        { label: "TESTING", val: "PRE-DISPATCH" },
-        { label: "CONFIG", val: "IP / VLAN / OS" },
-        { label: "QUALITY", val: "ZERO DOA GUARANTEE" },
-      ],
-    },
-    {
-      id: "stock-availability",
-      themeColor: "#B91C1C", // Crimson Red
-      headerBg: "#991B1B",
-      tabBg: "#DC2626",
-      textColor: "#FFFFFF",
-      index: "04",
-      tabs: ["Stok Enterprise Ready", "Pengiriman Nasional"],
-      categoryLabel: "Pengadaan Cepat & Logistik Nasional",
-      descKey: "val_4_desc",
-      icon: <PackageCheck size={18} />,
-      metrics: [
-        { label: "HARDWARE", val: "DELL / HP / CISCO / FORTINET" },
-        { label: "LOGISTICS", val: "EXPRESS NATIONWIDE" },
-        { label: "INVOICING", val: "OFFICIAL B2B TAX" },
-      ],
+      statKey: "val_3_stat",
+      statLabelKey: "val_3_stat_label",
+      icon: <Activity size={18} />,
+      tabs: ["Realtime Monitoring", "Continuous Optimization"],
+      categoryLabel: "Visibilitas & Analitik Performa",
     },
   ];
 
@@ -101,14 +69,14 @@ export default function AboutValue() {
           </p>
         </div>
 
-        {/* Swiss Architectural Stacked Folder Tabs Container */}
+        {/* Stacked Folder Tabs Container matching Site Primary Theme */}
         <div
           style={{
             maxWidth: "960px",
             margin: "0 auto",
             display: "flex",
             flexDirection: "column",
-            gap: "0.4rem",
+            gap: "0.5rem",
           }}
         >
           {folders.map((folder, idx) => {
@@ -120,18 +88,17 @@ export default function AboutValue() {
                 style={{
                   borderRadius: "14px",
                   overflow: "hidden",
-                  boxShadow: isActive ? "0 12px 32px rgba(0,0,0,0.18)" : "0 2px 8px rgba(0,0,0,0.05)",
-                  transition: "all 0.35s cubic-bezier(0.16, 1, 0.3, 1)",
-                  border: "1px solid rgba(255,255,255,0.1)",
+                  background: isActive ? "var(--color-surface-2)" : "var(--color-surface)",
+                  border: isActive ? "1px solid var(--color-primary)" : "1px solid var(--color-border)",
+                  boxShadow: isActive ? "0 8px 30px rgba(0, 113, 227, 0.12)" : "0 2px 8px rgba(0,0,0,0.03)",
+                  transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
                 }}
               >
-                {/* Folder Top Tab Bar */}
+                {/* Folder Header Bar */}
                 <div
                   onClick={() => setActiveFolderIndex(idx)}
                   style={{
-                    background: folder.headerBg,
-                    color: folder.textColor,
-                    padding: "0.75rem 1.25rem",
+                    padding: "0.875rem 1.25rem",
                     cursor: "pointer",
                     display: "flex",
                     alignItems: "center",
@@ -139,40 +106,59 @@ export default function AboutValue() {
                     userSelect: "none",
                     flexWrap: "wrap",
                     gap: "0.5rem",
+                    background: isActive ? "var(--color-primary)" : "var(--color-surface-2)",
+                    color: isActive ? "#ffffff" : "var(--color-text)",
+                    transition: "all 0.25s ease",
                   }}
                 >
                   {/* Left Tabs Pills */}
                   <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
+                    <span
+                      style={{
+                        fontFamily: "monospace",
+                        fontSize: "0.75rem",
+                        fontWeight: 800,
+                        opacity: isActive ? 0.9 : 0.6,
+                        marginRight: "0.2rem",
+                      }}
+                    >
+                      {folder.index}
+                    </span>
                     {folder.tabs.map((tabLabel, tIdx) => (
                       <div
                         key={tIdx}
                         style={{
-                          background: tIdx === 0 ? folder.tabBg : "rgba(255,255,255,0.15)",
-                          color: "#FFFFFF",
-                          padding: "0.35rem 0.85rem",
+                          background:
+                            tIdx === 0
+                              ? isActive
+                                ? "rgba(255, 255, 255, 0.22)"
+                                : "var(--color-surface)"
+                              : "transparent",
+                          color: isActive ? "#ffffff" : "var(--color-text)",
+                          padding: "0.32rem 0.75rem",
                           borderRadius: "20px 20px 6px 6px",
                           fontSize: "0.78rem",
                           fontWeight: 700,
-                          letterSpacing: "0.02em",
+                          letterSpacing: "0.01em",
                           display: "flex",
                           alignItems: "center",
                           gap: "0.4rem",
-                          boxShadow: tIdx === 0 ? "0 2px 8px rgba(0,0,0,0.2)" : "none",
+                          border: tIdx === 0 && !isActive ? "1px solid var(--color-border)" : "none",
                         }}
                       >
                         {tIdx === 0 && folder.icon}
-                        <span>{tabLabel}</span>
+                        <span>{tIdx === 0 ? t(folder.titleKey) : tabLabel}</span>
                       </div>
                     ))}
                   </div>
 
-                  {/* Right Folder Category & Toggle Arrow */}
+                  {/* Right Folder Category & Chevron */}
                   <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
                     <span
                       style={{
                         fontSize: "0.75rem",
                         fontWeight: 600,
-                        opacity: 0.9,
+                        opacity: isActive ? 0.9 : 0.7,
                         fontFamily: "monospace, sans-serif",
                         letterSpacing: "0.04em",
                       }}
@@ -184,7 +170,8 @@ export default function AboutValue() {
                         width: "24px",
                         height: "24px",
                         borderRadius: "50%",
-                        background: "rgba(255,255,255,0.2)",
+                        background: isActive ? "rgba(255, 255, 255, 0.25)" : "var(--color-surface)",
+                        border: isActive ? "none" : "1px solid var(--color-border)",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
@@ -192,7 +179,7 @@ export default function AboutValue() {
                         transform: isActive ? "rotate(180deg)" : "rotate(0deg)",
                       }}
                     >
-                      <ChevronDown size={15} />
+                      <ChevronDown size={15} color={isActive ? "#ffffff" : "var(--color-text)"} />
                     </div>
                   </div>
                 </div>
@@ -201,67 +188,80 @@ export default function AboutValue() {
                 {isActive && (
                   <div
                     style={{
-                      background: folder.themeColor,
-                      color: "#FFFFFF",
-                      padding: "1.75rem 1.75rem 2rem 1.75rem",
+                      padding: "1.75rem",
                       display: "flex",
                       flexDirection: "column",
                       gap: "1.25rem",
-                      borderTop: "1px solid rgba(255,255,255,0.12)",
+                      background: "var(--color-surface)",
+                      color: "var(--color-text)",
                       animation: "fadeIn 0.3s ease-in-out",
                     }}
                   >
-                    {/* Description Text */}
+                    {/* Tagline & Stat */}
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        flexWrap: "wrap",
+                        gap: "1rem",
+                      }}
+                    >
+                      <div
+                        style={{
+                          fontSize: "0.8rem",
+                          fontWeight: 700,
+                          textTransform: "uppercase",
+                          letterSpacing: "0.06em",
+                          color: "var(--color-primary)",
+                        }}
+                      >
+                        {t(folder.taglineKey)}
+                      </div>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "0.5rem",
+                          padding: "0.3rem 0.75rem",
+                          borderRadius: "9999px",
+                          background: "var(--color-surface-2)",
+                          border: "1px solid var(--color-border)",
+                        }}
+                      >
+                        <span style={{ fontSize: "0.95rem", fontWeight: 800, color: "var(--color-primary)" }}>
+                          {t(folder.statKey)}
+                        </span>
+                        <span style={{ fontSize: "0.72rem", color: "var(--color-text-subtle)", fontWeight: 600 }}>
+                          {t(folder.statLabelKey)}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Title */}
+                    <h3
+                      style={{
+                        fontSize: "1.3rem",
+                        fontWeight: 700,
+                        color: "var(--color-text)",
+                        margin: 0,
+                      }}
+                    >
+                      {t(folder.titleKey)}
+                    </h3>
+
+                    {/* Original Description */}
                     <p
                       style={{
-                        fontSize: "clamp(0.95rem, 1.5vw, 1.1rem)",
-                        lineHeight: 1.65,
+                        color: "var(--color-text-muted)",
+                        fontSize: "0.925rem",
+                        lineHeight: 1.7,
                         margin: 0,
-                        fontWeight: 400,
-                        opacity: 0.95,
-                        maxWidth: "820px",
-                        fontFamily: "var(--font-sans, system-ui, sans-serif)",
+                        maxWidth: "840px",
                       }}
                     >
                       {t(folder.descKey)}
                     </p>
-
-                    {/* Architectural Spec Metrics Row */}
-                    <div
-                      style={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        gap: "1.5rem",
-                        marginTop: "0.5rem",
-                        paddingTop: "1rem",
-                        borderTop: "1px solid rgba(255,255,255,0.2)",
-                      }}
-                    >
-                      {folder.metrics.map((m, mIdx) => (
-                        <div key={mIdx} style={{ display: "flex", flexDirection: "column", gap: "0.2rem" }}>
-                          <span
-                            style={{
-                              fontSize: "0.65rem",
-                              fontWeight: 700,
-                              opacity: 0.7,
-                              fontFamily: "monospace",
-                              letterSpacing: "0.08em",
-                            }}
-                          >
-                            {m.label}
-                          </span>
-                          <span
-                            style={{
-                              fontSize: "0.85rem",
-                              fontWeight: 800,
-                              letterSpacing: "0.03em",
-                            }}
-                          >
-                            {m.val}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
                   </div>
                 )}
               </div>
