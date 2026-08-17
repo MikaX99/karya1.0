@@ -38,20 +38,21 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const toggleTheme = useCallback((e?: React.MouseEvent | MouseEvent) => {
-    // 1. Extract EXACT center pixel coordinates of the theme toggle button
+    // 1. Calculate EXACT button center coordinates synchronously BEFORE any state update
     let x = window.innerWidth / 2;
     let y = 40;
 
-    // Check if event target has bounding rect
-    if (e && e.currentTarget && (e.currentTarget as HTMLElement).getBoundingClientRect) {
-      const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
-      x = rect.left + rect.width / 2;
-      y = rect.top + rect.height / 2;
-    } else if (e && e.clientX && e.clientX !== 0) {
-      x = e.clientX;
-      y = e.clientY;
+    if (e) {
+      const target = (e.currentTarget || e.target) as HTMLElement | null;
+      if (target && typeof target.getBoundingClientRect === "function") {
+        const rect = target.getBoundingClientRect();
+        x = rect.left + rect.width / 2;
+        y = rect.top + rect.height / 2;
+      } else if (e.clientX && e.clientX !== 0) {
+        x = e.clientX;
+        y = e.clientY;
+      }
     } else if (typeof document !== "undefined") {
-      // Fallback to DOM button element position
       const btn =
         document.getElementById("theme-toggle") ||
         document.getElementById("mobile-theme-toggle");
@@ -62,49 +63,51 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       }
     }
 
-    setTheme((prevTheme) => {
-      const nextTheme: Theme = prevTheme === "dark" ? "light" : "dark";
+    const currentTheme =
+      typeof document !== "undefined"
+        ? (document.documentElement.getAttribute("data-theme") as Theme) || theme
+        : theme;
+    const nextTheme: Theme = currentTheme === "dark" ? "light" : "dark";
 
-      // 2. Circular Radial Ripple View Transition originating from exact button center (x, y)
-      if (
-        typeof document !== "undefined" &&
-        "startViewTransition" in document &&
-        !window.matchMedia("(prefers-reduced-motion: reduce)").matches
-      ) {
-        const endRadius = Math.hypot(
-          Math.max(x, window.innerWidth - x),
-          Math.max(y, window.innerHeight - y)
-        );
+    // 2. Trigger Circular View Transition originating from exact button center (x, y)
+    if (
+      typeof document !== "undefined" &&
+      "startViewTransition" in document &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      const endRadius = Math.hypot(
+        Math.max(x, window.innerWidth - x),
+        Math.max(y, window.innerHeight - y)
+      );
 
-        const transition = (document as any).startViewTransition(() => {
-          document.documentElement.setAttribute("data-theme", nextTheme);
-          localStorage.setItem("karyasistem-theme", nextTheme);
-        });
-
-        transition.ready.then(() => {
-          const clipPath = [
-            `circle(0px at ${x}px ${y}px)`,
-            `circle(${endRadius}px at ${x}px ${y}px)`,
-          ];
-          document.documentElement.animate(
-            {
-              clipPath: clipPath,
-            },
-            {
-              duration: 520,
-              easing: "cubic-bezier(0.4, 0, 0.2, 1)",
-              pseudoElement: "::view-transition-new(root)",
-            }
-          );
-        });
-      } else {
+      const transition = (document as any).startViewTransition(() => {
         document.documentElement.setAttribute("data-theme", nextTheme);
         localStorage.setItem("karyasistem-theme", nextTheme);
-      }
+        setTheme(nextTheme);
+      });
 
-      return nextTheme;
-    });
-  }, []);
+      transition.ready.then(() => {
+        const clipPath = [
+          `circle(0px at ${x}px ${y}px)`,
+          `circle(${endRadius}px at ${x}px ${y}px)`,
+        ];
+        document.documentElement.animate(
+          {
+            clipPath: clipPath,
+          },
+          {
+            duration: 520,
+            easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+            pseudoElement: "::view-transition-new(root)",
+          }
+        );
+      });
+    } else {
+      document.documentElement.setAttribute("data-theme", nextTheme);
+      localStorage.setItem("karyasistem-theme", nextTheme);
+      setTheme(nextTheme);
+    }
+  }, [theme]);
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
