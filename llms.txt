@@ -1,0 +1,19 @@
+# PT. Karya Sistem Teknologi (KaryaSistem) — IT Enterprise Integrator & Solutions
+
+> Distributor and system integrator for Enterprise Server, Networking, Storage, Cyber Security, and Software Licensing in Indonesia.
+
+## Organization
+- Name: PT. Karya Sistem Teknologi (KaryaSistem)
+- Type: B2B IT System Integrator & Hardware Distributor
+- Website: https://mikax99.github.io/karya1.0/
+- Address: Rawa Makmur, Cakung, Jakarta Timur, DKI Jakarta
+- Phone: +62 878-8120-0477
+- Email: sales@karyasistem.com
+
+## Products & Solutions
+- Servers: Dell PowerEdge, HPE ProLiant, Lenovo ThinkSystem
+- Networking: Cisco Catalyst, Ubiquiti UniFi, MikroTik RouterOS
+- Storage & NAS: Synology NAS, NetApp, Veeam Backup
+- Cyber Security: Fortinet FortiGate, Sophos, Kaspersky Enterprise
+- Cloud & Virtualization: VMware vSphere, Microsoft Hyper-V, Proxmox VE
+- Software Licensing: Microsoft 365, Windows Server, Red Hat Enterprise Linux

@@ -1,0 +1,21 @@
+# Robots.txt for KaryaSistem
+User-agent: *
+Allow: /
+
+# AI Crawlers & Agents
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+Sitemap: https://mikax99.github.io/karya1.0/sitemap.xml
