@@ -8,7 +8,7 @@
     "priceDisplay": "Hubungi Sales",
     "image": "/images/products/server-2u.webp",
     "badge": "Garansi Resmi 3 Thn",
-    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk unit Rackmount Server Enterprise 2U Dual Xeon (ID: srv-01)."
+    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk unit Rackmount Server Enterprise 2U Dual Xeon (ID: srv-01)."
   },
   {
     "id": "srv-02",
@@ -19,7 +19,7 @@
     "priceDisplay": "Hubungi Sales",
     "image": "/images/products/server-tower.webp",
     "badge": "Garansi Resmi 3 Thn",
-    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk unit Tower Server Workstation Intel Xeon E (ID: srv-02)."
+    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk unit Tower Server Workstation Intel Xeon E (ID: srv-02)."
   },
   {
     "id": "srv-03",
@@ -30,7 +30,7 @@
     "priceDisplay": "Hubungi Sales",
     "image": "/images/products/nas-storage.webp",
     "badge": "Stok Tersedia",
-    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk unit NAS Storage Enterprise 12-Bay (ID: srv-03)."
+    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk unit NAS Storage Enterprise 12-Bay (ID: srv-03)."
   },
   {
     "id": "srv-04",
@@ -41,7 +41,7 @@
     "priceDisplay": "Hubungi Sales",
     "image": "/images/products/sangfor-hci.webp",
     "badge": "Reseller Resmi",
-    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk unit Sangfor HCI Enterprise Server Node (ID: srv-04)."
+    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk unit Sangfor HCI Enterprise Server Node (ID: srv-04)."
   },
   {
     "id": "net-01",
@@ -52,7 +52,7 @@
     "priceDisplay": "Hubungi Sales",
     "image": "/images/products/switch-cisco.webp",
     "badge": "Garansi Resmi",
-    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk unit Managed Switch 48-Port Gigabit PoE+ (ID: net-01)."
+    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk unit Managed Switch 48-Port Gigabit PoE+ (ID: net-01)."
   },
   {
     "id": "net-02",
@@ -63,7 +63,7 @@
     "priceDisplay": "Hubungi Sales",
     "image": "/images/products/ap-wifi6.webp",
     "badge": "Best Seller",
-    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk unit Wireless Access Point Wi-Fi 6 Indoor (ID: net-02)."
+    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk unit Wireless Access Point Wi-Fi 6 Indoor (ID: net-02)."
   },
   {
     "id": "net-03",
@@ -74,7 +74,7 @@
     "priceDisplay": "Hubungi Sales",
     "image": "/images/products/router-mikrotik.webp",
     "badge": "Garansi Resmi",
-    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk unit Router Enterprise RouterBoard CCR2004 (ID: net-03)."
+    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk unit Router Enterprise RouterBoard CCR2004 (ID: net-03)."
   },
   {
     "id": "net-04",
@@ -85,7 +85,7 @@
     "priceDisplay": "Hubungi Sales",
     "image": "/images/products/firewall-fortigate.webp",
     "badge": "Recommended",
-    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk unit Firewall Next-Gen Enterprise Security (ID: net-04)."
+    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk unit Firewall Next-Gen Enterprise Security (ID: net-04)."
   },
   {
     "id": "net-05",
@@ -96,7 +96,7 @@
     "priceDisplay": "Hubungi Sales",
     "image": "/images/products/firewall-sophos.webp",
     "badge": "Reseller Resmi",
-    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk unit Sophos XGS 2100 Next-Gen Firewall (ID: net-05)."
+    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk unit Sophos XGS 2100 Next-Gen Firewall (ID: net-05)."
   },
   {
     "id": "net-06",
@@ -107,7 +107,7 @@
     "priceDisplay": "Hubungi Sales",
     "image": "/images/products/sangfor-ngaf.webp",
     "badge": "Reseller Resmi",
-    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk unit Sangfor NGAF Next-Gen Application Firewall (ID: net-06)."
+    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk unit Sangfor NGAF Next-Gen Application Firewall (ID: net-06)."
   },
   {
     "id": "lpt-01",
@@ -118,7 +118,7 @@
     "priceDisplay": "Hubungi Sales",
     "image": "/images/products/laptop-thinkpad.webp",
     "badge": "Garansi Resmi 3 Thn",
-    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk unit Laptop Business ThinkPad X1 Carbon Gen 12 (ID: lpt-01)."
+    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk unit Laptop Business ThinkPad X1 Carbon Gen 12 (ID: lpt-01)."
   },
   {
     "id": "lpt-02",
@@ -129,7 +129,7 @@
     "priceDisplay": "Hubungi Sales",
     "image": "/images/products/pc-aio.webp",
     "badge": "Stok Tersedia",
-    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk unit Desktop Workstation PC All-in-One (ID: lpt-02)."
+    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk unit Desktop Workstation PC All-in-One (ID: lpt-02)."
   },
   {
     "id": "lpt-03",
@@ -140,7 +140,7 @@
     "priceDisplay": "Hubungi Sales",
     "image": "/images/products/laptop-dell.webp",
     "badge": "Garansi Resmi",
-    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk unit Laptop Enterprise Dell Latitude 5540 (ID: lpt-03)."
+    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk unit Laptop Enterprise Dell Latitude 5540 (ID: lpt-03)."
   },
   {
     "id": "sw-01",
@@ -151,7 +151,7 @@
     "priceDisplay": "Hubungi Sales",
     "image": "/images/products/ms365.webp",
     "badge": "Lisensi Resmi",
-    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk lisensi Microsoft 365 Business Premium (ID: sw-01)."
+    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk lisensi Microsoft 365 Business Premium (ID: sw-01)."
   },
   {
     "id": "sw-02",
@@ -162,7 +162,7 @@
     "priceDisplay": "Hubungi Sales",
     "image": "/images/products/windows-server.webp",
     "badge": "Lisensi Resmi",
-    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk lisensi Windows Server 2025 Standard (ID: sw-02)."
+    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk lisensi Windows Server 2025 Standard (ID: sw-02)."
   },
   {
     "id": "sw-03",
@@ -173,7 +173,7 @@
     "priceDisplay": "Hubungi Sales",
     "image": "/images/products/antivirus.webp",
     "badge": "Lisensi Resmi",
-    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk lisensi Antivirus Endpoint Protection Enterprise (ID: sw-03)."
+    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk lisensi Antivirus Endpoint Protection Enterprise (ID: sw-03)."
   },
   {
     "id": "sw-04",
@@ -184,7 +184,7 @@
     "priceDisplay": "Hubungi Sales",
     "image": "/images/products/sophos-interceptx.webp",
     "badge": "Lisensi Resmi",
-    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk lisensi Sophos Intercept X Advanced with XDR (ID: sw-04)."
+    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk lisensi Sophos Intercept X Advanced with XDR (ID: sw-04)."
   },
   {
     "id": "sw-05",
@@ -195,6 +195,6 @@
     "priceDisplay": "Hubungi Sales",
     "image": "/images/products/sangfor-vdi.webp",
     "badge": "Lisensi Resmi",
-    "waTemplate": "Halo KaryaSistem, saya ingin minta penawaran untuk lisensi Sangfor VDI Desktop Virtualization License (ID: sw-05)."
+    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk lisensi Sangfor VDI Desktop Virtualization License (ID: sw-05)."
   }
 ]

@@ -1,0 +1,8 @@
+{
+  "python.locator": "none",
+  "python.experiments.optOutFrom": [
+    "All"
+  ],
+  "python.terminal.activateEnvironment": false,
+  "python.analysis.diagnosticMode": "openFilesOnly"
+}

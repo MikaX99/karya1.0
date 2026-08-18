@@ -3,65 +3,17 @@
 import { useState, useEffect, useRef } from "react";
 import clientsData from "@/data/clients.json";
 import {
-  CheckCircle2,
-  ShieldCheck,
-  Building2,
-  RefreshCw,
   Quote,
   ChevronLeft,
   ChevronRight,
-  Crown,
-  Award,
-  Star,
   Layers,
-  Calendar,
+  Building2,
 } from "lucide-react";
 import { useLocale } from "@/context/LocaleContext";
 
-const industryColors: Record<string, string> = {
-  "Holding & Investment": "#1E87DA",
-  "Pendidikan & Pelatihan": "#0284C7",
-  "Food & Beverage (F&B)": "#D97706",
-  "Pemerintahan & Hukum": "#6366F1",
-  "Perdagangan Internasional": "#059669",
-  "Distribusi & Logistik": "#1E87DA",
-  "Industri Herbal & Farmasi": "#10B981",
-  "Teknologi & Rekayasa": "#0284C7",
-  "Maritim & Logistik Laut": "#0D9488",
-  "Konstruksi & Properti": "#DC2626",
-  "Teknologi & Digital": "#8B5CF6",
-  "Energi & Pertambangan": "#D97706",
-  "Ekspor Impor & Manufaktur": "#DB2777",
-  "Energi & Kelistrikan": "#10B981",
-};
-
-const featuredMeta: Record<
-  string,
-  { badge: string; badgeColor: string; badgeBg: string; icon: any }
-> = {
-  "client-07": {
-    badge: "Strategic Partner",
-    badgeColor: "#10B981",
-    badgeBg: "rgba(16, 185, 129, 0.12)",
-    icon: <Crown size={15} color="#10B981" />,
-  },
-  "client-04": {
-    badge: "Government & Legal",
-    badgeColor: "#818cf8",
-    badgeBg: "rgba(99, 102, 241, 0.12)",
-    icon: <Award size={15} color="#818cf8" />,
-  },
-  "client-01": {
-    badge: "Enterprise Holding",
-    badgeColor: "#38bdf8",
-    badgeBg: "rgba(30, 135, 218, 0.12)",
-    icon: <Star size={15} color="#38bdf8" />,
-  },
-};
-
 const testimonials = clientsData.filter((c) => c.testimonial);
 
-// Rolling Bento marquee order (starts with PLN, Dilmil, ALVA GROUP)
+// Order starts with major strategic clients
 const bentoOrderIds = [
   "client-07", // PLN
   "client-04", // Dilmil
@@ -83,30 +35,8 @@ const orderedAllClients = bentoOrderIds
   .map((id) => clientsData.find((c) => c.id === id))
   .filter(Boolean) as typeof clientsData;
 
-// Duplicated array for seamless infinite marquee loop
+// Duplicated array for smooth infinite scrolling
 const rollingClients = [...orderedAllClients, ...orderedAllClients];
-
-// Directory Grid order (5-column layout with PLN, Militer/Dilmil, ALVA placed in center slots 2, 3, 4)
-const directoryOrderIds = [
-  "client-02", // 1. IRA (Col 1)
-  "client-07", // 2. PLN (Col 2 - Center Left)
-  "client-04", // 3. Dilmil / Militer (Col 3 - EXACT CENTER)
-  "client-01", // 4. ALVA GROUP (Col 4 - Center Right)
-  "client-05", // 5. DIG (Col 5)
-  "client-06", // 6. GAS
-  "client-08", // 7. KAI
-  "client-09", // 8. LKI
-  "client-10", // 9. MWR
-  "client-11", // 10. NXG
-  "client-03", // 11. NKG
-  "client-14", // 12. GIHC (PT Glow Industri Herbal Care)
-  "client-12", // 13. PSG
-  "client-13", // 14. SGI
-];
-
-const directoryClients = directoryOrderIds
-  .map((id) => clientsData.find((c) => c.id === id))
-  .filter(Boolean) as typeof clientsData;
 
 export default function Clients() {
   const { t } = useLocale();
@@ -147,7 +77,7 @@ export default function Clients() {
     sliderRef.current.scrollLeft = scrollLeftRef.current - walk;
   };
 
-  // Touch Swipe Handlers (Mobile)
+  // Touch Swipe Handlers
   const handleTouchStart = () => {
     isUserInteractingRef.current = true;
   };
@@ -162,7 +92,7 @@ export default function Clients() {
   const slideLeft = () => {
     if (sliderRef.current) {
       isUserInteractingRef.current = true;
-      sliderRef.current.scrollBy({ left: -380, behavior: "smooth" });
+      sliderRef.current.scrollBy({ left: -340, behavior: "smooth" });
       setTimeout(() => {
         isUserInteractingRef.current = false;
       }, 2500);
@@ -172,7 +102,7 @@ export default function Clients() {
   const slideRight = () => {
     if (sliderRef.current) {
       isUserInteractingRef.current = true;
-      sliderRef.current.scrollBy({ left: 380, behavior: "smooth" });
+      sliderRef.current.scrollBy({ left: 340, behavior: "smooth" });
       setTimeout(() => {
         isUserInteractingRef.current = false;
       }, 2500);
@@ -239,7 +169,7 @@ export default function Clients() {
     >
       <div className="container">
         {/* Section Header */}
-        <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+        <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
           <span className="section-badge">{t("clients_badge")}</span>
           <h2
             className="text-section-title"
@@ -263,37 +193,33 @@ export default function Clients() {
           </p>
         </div>
 
-        {/* Corporate Stats Grid with Subtle Dividers */}
+        {/* Clean Corporate Stats Grid (Consistent with Main Design) */}
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
             gap: "1rem",
             marginBottom: "2.5rem",
-            padding: "1.5rem",
-            background: "var(--card-alt-bg)",
+            padding: "1.25rem 1.5rem",
+            background: "var(--color-surface)",
             border: "1px solid var(--color-border)",
-            borderRadius: "8px",
+            borderRadius: "12px",
           }}
         >
           {[
             {
-              icon: <CheckCircle2 size={18} color="var(--color-primary)" />,
               number: "150+",
               label: t("client_stat_1"),
             },
             {
-              icon: <ShieldCheck size={18} color="var(--color-primary)" />,
               number: "99.8%",
               label: t("client_stat_2"),
             },
             {
-              icon: <Building2 size={18} color="var(--color-primary)" />,
               number: "12+",
               label: t("client_stat_3"),
             },
             {
-              icon: <RefreshCw size={18} color="var(--color-primary)" />,
               number: "87%",
               label: t("client_stat_4"),
             },
@@ -311,20 +237,21 @@ export default function Clients() {
             >
               <div
                 style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  marginBottom: "0.4rem",
+                  fontSize: "clamp(1.5rem, 2.5vw, 1.85rem)",
+                  fontWeight: 800,
+                  color: "var(--color-primary)",
+                  letterSpacing: "-0.02em",
+                  lineHeight: 1.2,
                 }}
               >
-                {stat.icon}
+                {stat.number}
               </div>
-              <div className="stat-number">{stat.number}</div>
               <div
                 style={{
-                  fontSize: "0.78rem",
-                  color: "var(--color-text-subtle)",
+                  fontSize: "0.8rem",
+                  color: "var(--color-text-muted)",
                   fontWeight: 500,
-                  marginTop: "0.2rem",
+                  marginTop: "0.3rem",
                 }}
               >
                 {stat.label}
@@ -333,18 +260,32 @@ export default function Clients() {
           ))}
         </div>
 
-        {/* BENTO GRID - SLIDABLE & DRAGGABLE FEATURED CLIENTS */}
+        {/* Clean Slider Section */}
         <div style={{ marginBottom: "2.5rem" }}>
-          {/* Controls & Indicator Header */}
+          {/* Controls */}
           <div
             style={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "flex-end",
-              marginBottom: "0.875rem",
+              justifyContent: "space-between",
+              marginBottom: "1rem",
               padding: "0 0.25rem",
             }}
           >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                fontSize: "0.85rem",
+                fontWeight: 600,
+                color: "var(--color-text-muted)",
+              }}
+            >
+              <Building2 size={16} color="var(--color-primary)" />
+              <span>Portofolio Klien Korporasi & Instansi</span>
+            </div>
+
             <div style={{ display: "flex", gap: "0.5rem" }}>
               <button
                 onClick={slideLeft}
@@ -387,7 +328,7 @@ export default function Clients() {
             </div>
           </div>
 
-          {/* Draggable & Touch-swipeable Slider Wrapper */}
+          {/* Draggable Slider Track */}
           <div
             ref={sliderRef}
             className={`bento-marquee-wrapper ${isMouseDown ? "dragging" : ""}`}
@@ -398,92 +339,40 @@ export default function Clients() {
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
           >
-            <div className="bento-marquee-track">
+            <div className="bento-marquee-track" style={{ gap: "1rem" }}>
               {rollingClients.map((client: any, idx: number) => {
-                const meta = featuredMeta[client.id] || {
-                  badge: client.industry,
-                  badgeColor: "var(--color-primary)",
-                  badgeBg: "rgba(30, 135, 218, 0.12)",
-                  icon: <Building2 size={14} />,
-                };
-                const industryColor =
-                  industryColors[client.industry] || "#1E87DA";
-
                 return (
                   <div
                     key={`${client.id}-${idx}`}
                     style={{
-                      width: "360px",
-                      minWidth: "320px",
+                      width: "320px",
+                      minWidth: "300px",
                       flexShrink: 0,
-                      background: "var(--card-gradient)",
+                      background: "var(--color-surface)",
                       border: "1px solid var(--color-border)",
                       borderRadius: "12px",
-                      padding: "1.5rem",
+                      padding: "1.35rem 1.25rem",
                       display: "flex",
                       flexDirection: "column",
                       justifyContent: "space-between",
-                      position: "relative",
-                      overflow: "hidden",
-                      boxShadow: "0 4px 20px rgba(0,0,0,0.06)",
-                      transition:
-                        "transform 0.25s ease, border-color 0.25s ease",
+                      boxShadow: "0 2px 8px rgba(0, 0, 0, 0.03)",
+                      transition: "all 0.25s ease",
                     }}
-                    className="bento-featured-card"
+                    className="client-clean-card"
                   >
-                    {/* Top Highlight Badge */}
+                    {/* Header: Logo & Company Info */}
                     <div
                       style={{
                         display: "flex",
                         alignItems: "center",
-                        justifyContent: "space-between",
-                        marginBottom: "1rem",
-                      }}
-                    >
-                      <span
-                        style={{
-                          display: "inline-flex",
-                          alignItems: "center",
-                          gap: "0.35rem",
-                          padding: "0.3rem 0.65rem",
-                          background: meta.badgeBg,
-                          border: `1px solid ${meta.badgeColor}40`,
-                          borderRadius: "20px",
-                          fontSize: "0.725rem",
-                          fontWeight: 700,
-                          color: meta.badgeColor,
-                        }}
-                      >
-                        {meta.icon}
-                        {meta.badge}
-                      </span>
-                      <span
-                        style={{
-                          fontSize: "0.7rem",
-                          color: "var(--color-text-subtle)",
-                          display: "inline-flex",
-                          alignItems: "center",
-                          gap: "0.25rem",
-                        }}
-                      >
-                        <Calendar size={12} /> {t("client_since")}{" "}
-                        {client.since}
-                      </span>
-                    </div>
-
-                    {/* Logo + Title Header */}
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "1rem",
+                        gap: "0.875rem",
                         marginBottom: "1rem",
                       }}
                     >
                       <div
                         style={{
-                          width: "76px",
-                          height: "76px",
+                          width: "56px",
+                          height: "56px",
                           borderRadius: "10px",
                           background: "#ffffff",
                           border: "1px solid var(--color-border)",
@@ -493,15 +382,14 @@ export default function Clients() {
                           flexShrink: 0,
                           overflow: "hidden",
                           padding: "6px",
-                          boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
                         }}
                       >
                         {client.logo ? (
                           <img
                             src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${client.logo}`}
                             alt={client.name}
-                            width="56"
-                            height="56"
+                            width="44"
+                            height="44"
                             loading="lazy"
                             decoding="async"
                             style={{
@@ -513,9 +401,9 @@ export default function Clients() {
                         ) : (
                           <span
                             style={{
-                              fontSize: "1.4rem",
+                              fontSize: "1.15rem",
                               fontWeight: 800,
-                              color: industryColor,
+                              color: "var(--color-primary)",
                             }}
                           >
                             {client.abbr}
@@ -523,28 +411,31 @@ export default function Clients() {
                         )}
                       </div>
 
-                      <div>
+                      <div style={{ flex: 1, minWidth: 0 }}>
                         <h3
                           style={{
-                            fontSize: "1.025rem",
-                            fontWeight: 800,
+                            fontSize: "0.95rem",
+                            fontWeight: 700,
                             color: "var(--color-text)",
-                            margin: "0 0 0.35rem 0",
-                            lineHeight: 1.3,
+                            margin: "0 0 0.25rem 0",
+                            lineHeight: 1.35,
+                            whiteSpace: "normal",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                            display: "-webkit-box",
+                            WebkitLineClamp: 2,
+                            WebkitBoxOrient: "vertical",
                           }}
+                          title={client.name}
                         >
                           {client.name}
                         </h3>
                         <span
                           style={{
-                            display: "inline-block",
-                            padding: "0.15rem 0.5rem",
-                            background: "var(--color-surface-2)",
-                            border: "1px solid var(--color-border)",
-                            borderRadius: "4px",
-                            fontSize: "0.68rem",
-                            fontWeight: 600,
+                            fontSize: "0.75rem",
                             color: "var(--color-text-muted)",
+                            fontWeight: 500,
+                            display: "block",
                           }}
                         >
                           {client.industry}
@@ -552,11 +443,11 @@ export default function Clients() {
                       </div>
                     </div>
 
-                    {/* Products Delivered */}
+                    {/* Solutions Implemented */}
                     {client.products && client.products.length > 0 && (
                       <div
                         style={{
-                          paddingTop: "0.875rem",
+                          paddingTop: "0.85rem",
                           borderTop: "1px solid var(--color-border-subtle)",
                         }}
                       >
@@ -565,14 +456,14 @@ export default function Clients() {
                             fontSize: "0.68rem",
                             fontWeight: 600,
                             color: "var(--color-text-subtle)",
-                            marginBottom: "0.35rem",
+                            marginBottom: "0.4rem",
                             display: "flex",
                             alignItems: "center",
                             gap: "0.3rem",
                           }}
                         >
-                          <Layers size={12} color="var(--color-primary)" />{" "}
-                          Solusi Terimplementasi:
+                          <Layers size={11} color="var(--color-primary)" />
+                          <span>Solusi Terpasang:</span>
                         </div>
                         <div
                           style={{
@@ -586,8 +477,8 @@ export default function Clients() {
                               key={prod}
                               style={{
                                 fontSize: "0.7rem",
-                                fontWeight: 600,
-                                background: "var(--color-surface-1)",
+                                fontWeight: 500,
+                                background: "var(--color-surface-2)",
                                 border: "1px solid var(--color-border)",
                                 borderRadius: "4px",
                                 padding: "0.15rem 0.45rem",
@@ -607,132 +498,6 @@ export default function Clients() {
           </div>
         </div>
 
-        {/* 5-COLUMN DIRECTORY GRID WITH PLN, DILMIL, ALVA IN CENTER SLOTS 2, 3, 4 */}
-        <div style={{ marginBottom: "2.5rem" }}>
-          <div
-            style={{
-              fontSize: "0.8rem",
-              fontWeight: 700,
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              color: "var(--color-text-muted)",
-              marginBottom: "1rem",
-              display: "flex",
-              alignItems: "center",
-              gap: "0.5rem",
-            }}
-          >
-            <Building2 size={16} /> All Corporate Clients Directory
-          </div>
-
-          <div className="clients-directory-grid">
-            {directoryClients.map((client) => {
-              const color = industryColors[client.industry] || "#1E87DA";
-              const isCenterTop = [
-                "client-07",
-                "client-04",
-                "client-01",
-              ].includes(client.id);
-
-              return (
-                <div
-                  key={client.id}
-                  className={`client-logo-card ${
-                    isCenterTop ? "client-card-highlight" : ""
-                  }`}
-                >
-                  {/* Logo Image or Abbreviation Badge */}
-                  <div
-                    style={{
-                      width: "72px",
-                      height: "72px",
-                      borderRadius: "8px",
-                      background: "#ffffff",
-                      border: isCenterTop
-                        ? "2px solid var(--color-primary)"
-                        : "1px solid var(--color-border)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      flexShrink: 0,
-                      overflow: "hidden",
-                      padding: "6px",
-                      boxShadow: isCenterTop
-                        ? "0 4px 12px rgba(30, 135, 218, 0.18)"
-                        : "0 2px 8px rgba(0,0,0,0.04)",
-                    }}
-                  >
-                    {(client as any).logo ? (
-                      <img
-                        src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${(client as any).logo}`}
-                        alt={client.name}
-                        width="56"
-                        height="56"
-                        loading="lazy"
-                        decoding="async"
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "contain",
-                        }}
-                      />
-                    ) : (
-                      <span
-                        style={{
-                          fontSize: "1.25rem",
-                          fontWeight: 800,
-                          color: color,
-                        }}
-                      >
-                        {client.abbr}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Info */}
-                  <div style={{ textAlign: "center" }}>
-                    <div
-                      style={{
-                        fontSize: "0.85rem",
-                        fontWeight: 700,
-                        color: "var(--color-text)",
-                        marginBottom: "0.25rem",
-                        lineHeight: 1.3,
-                      }}
-                    >
-                      {client.name}
-                    </div>
-                    <span
-                      style={{
-                        display: "inline-block",
-                        padding: "0.15rem 0.5rem",
-                        background: "var(--color-surface-2)",
-                        border: "1px solid var(--color-border)",
-                        borderRadius: "4px",
-                        fontSize: "0.65rem",
-                        fontWeight: 600,
-                        color: "var(--color-text-muted)",
-                      }}
-                    >
-                      {client.industry}
-                    </span>
-                  </div>
-
-                  {/* Since */}
-                  <div
-                    style={{
-                      fontSize: "0.7rem",
-                      color: "var(--color-text-faint)",
-                    }}
-                  >
-                    {t("client_since")} {client.since}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
         {/* Corporate Testimonial Showcase */}
         {testimonials.length > 0 && (
           <div
@@ -740,7 +505,7 @@ export default function Clients() {
               padding: "2rem 2.25rem",
               background: "var(--card-gradient)",
               border: "1px solid var(--color-border)",
-              borderRadius: "8px",
+              borderRadius: "12px",
               position: "relative",
             }}
           >

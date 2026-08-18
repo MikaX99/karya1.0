@@ -5,6 +5,7 @@ import React, { createContext, useContext, useEffect, useState, useCallback } fr
 export const dictionaries: Record<string, Record<string, string>> = {
   id: {
     // Navbar
+    nav_Tentang: "Tentang",
     nav_Layanan: "Layanan",
     nav_Produk: "Produk",
     nav_Mitra: "Mitra",
@@ -30,42 +31,67 @@ export const dictionaries: Record<string, Record<string, string>> = {
     stat_2: "Mitra Brand Resmi",
     stat_3: "Tingkat Kepuasan Klien",
 
+    // About
+    about_title_prefix: "About",
+    about_title_highlight: "Karya Sistem",
+    about_tagline: "Technology Solutions Built Around Your Business",
+    about_pillar_1_title: "System Integrator & IT Provider",
+    about_pillar_1_desc: "Solusi teknologi terpadu untuk meningkatkan efisiensi operasional, keamanan, dan keberlanjutan bisnis.",
+    about_pillar_2_title: "Layanan Terintegrasi End-to-End",
+    about_pillar_2_desc: "Konsultasi, pengadaan teknologi, implementasi, integrasi sistem, hingga managed support berkelanjutan.",
+    about_pillar_3_title: "Vendor-Agnostic & Custom-Fit",
+    about_pillar_3_desc: "Tidak terikat satu brand; solusi dipilih murni berbasis kebutuhan spesifik dan ROI jangka panjang Anda.",
+
     // Services
     services_badge: "Layanan Kami",
     services_title_prefix: "Solusi & Layanan",
-    services_title_highlight: "IT Integrasi",
-    services_subtitle: "Layanan teknologi terintegrasi mencakup perencanaan infrastruktur, aplikasi web bisnis, pemulihan bencana IT, hingga pengadaan perangkat.",
-    service_net_title: "Jaringan & Infrastruktur",
-    service_net_desc: "Desain strategis, implementasi, manajemen jaringan, solusi virtualisasi dan cloud untuk kontinuitas bisnis enterprise Anda.",
-    service_net_h1: "Desain Strategis, Perencanaan & Implementasi",
-    service_net_h2: "Manajemen Jaringan & Infrastruktur",
-    service_net_h3: "Solusi Virtualisasi & Cloud",
-    service_net_h4: "Keamanan Jaringan & Kepatuhan Standar",
-    service_net_h5: "Kontinuitas Bisnis & Ketahanan Sistem",
-    service_net_h6: "Optimalisasi Performa Operasional",
+    services_title_highlight: "IT Terintegrasi",
+    services_subtitle: "Layanan teknologi komprehensif mulai dari infrastruktur IT, aplikasi bisnis, keamanan siber, hingga managed IT terpadu.",
+    
+    // Card 1: IT Infrastructure & Procurement
+    service_infra_title: "IT Infrastructure & Procurement",
+    service_infra_desc: "Perencanaan, pengadaan, implementasi, dan pengelolaan kebutuhan IT untuk mendukung operasional bisnis yang andal dan scalable.",
+    service_infra_h1: "IT Infrastructure Design & Deployment",
+    service_infra_h2: "Network & Infrastructure",
+    service_infra_h3: "Server, Storage & Backup",
+    service_infra_h4: "IT Hardware & Devices",
+    service_infra_h5: "Software & License Procurement",
+    service_infra_h6: "CCTV, UPS & Deployment",
+    service_infra_h7: "Backup & Disaster Recovery",
 
-    service_web_title: "Aplikasi Web Bisnis",
-    service_web_desc: "Pengembangan aplikasi web kustom dan sistem manajemen terintegrasi untuk mempercepat dan mengoptimalkan performa bisnis.",
-    service_web_h1: "Website Company Profile Korporat",
-    service_web_h2: "Pengembangan Aplikasi Web Kustom",
-    service_web_h3: "Sistem Manajemen Dokumen (DMS)",
-    service_web_h4: "Sistem Pergudangan & Inventaris (WMS)",
-    service_web_h5: "Sistem Survei & Manajemen Formulir",
+    // Card 2: Business Application & Digital Solution
+    service_app_title: "Business Application & Digital Solution",
+    service_app_desc: "Solusi aplikasi dan digital untuk membantu perusahaan mengelola proses bisnis, meningkatkan efisiensi, dan mempercepat transformasi digital.",
+    service_app_h1: "ERP Implementation & Integration",
+    service_app_h2: "AI Solution & Automation",
+    service_app_h3: "E-Commerce Development",
+    service_app_h4: "Custom Web Application",
+    service_app_h5: "Business Process Automation",
 
-    service_dr_title: "Pemulihan Bencana IT",
-    service_dr_desc: "Analisis risiko, strategi pemulihan bencana, backup data otomatis, dan recovery sistem untuk keamanan operasional tanpa cela.",
-    service_dr_h1: "Identifikasi Risiko & Analisis Dampak",
-    service_dr_h2: "Rencana Pemulihan Bencana Menyeluruh",
-    service_dr_h3: "Backup Data Otomatis & Terenkripsi",
-    service_dr_h4: "Pemulihan Sistem Cepat (RTO/RPO)",
-    service_dr_h5: "Evaluasi & Audit Berkala",
+    // Card 3: Cybersecurity
+    service_sec_title: "Cybersecurity",
+    service_sec_desc: "Solusi keamanan untuk melindungi perangkat, jaringan, sistem, dan data perusahaan dari berbagai ancaman siber.",
+    service_sec_h1: "Endpoint Security & Protection",
+    service_sec_h2: "Firewall & Network Security",
+    service_sec_h3: "Security Assessment",
+    service_sec_h4: "Security Platform & Solution",
+    service_sec_h5: "Vulnerability & Pentest",
+    service_sec_h6: "Microsoft 365 Security",
 
-    service_proc_title: "Pengadaan Perangkat IT",
-    service_proc_desc: "Layanan pengadaan perangkat lunak dan keras IT, akuisisi perangkat jaringan, lisensi resmi, dan vendor management.",
-    service_proc_h1: "Pengadaan Perangkat Keras IT Enterprise",
-    service_proc_h2: "Akuisisi & Pemasangan Perangkat Jaringan",
-    service_proc_h3: "Lisensi Resmi & Pengadaan Perangkat Lunak",
-    service_proc_h4: "Layanan Cloud & Manajemen Vendor",
+    // Card 4: Managed IT & Support
+    service_mgmt_title: "Managed IT & Support",
+    service_mgmt_desc: "Layanan support, maintenance, dan monitoring untuk menjaga sistem IT tetap optimal, aman, dan berjalan secara berkelanjutan.",
+    service_mgmt_h1: "IT Support & Helpdesk",
+    service_mgmt_h2: "IT Infrastructure Maintenance",
+    service_mgmt_h3: "Server & Network Monitoring",
+    service_mgmt_h4: "Cloud & Productivity Platform Support",
+    service_mgmt_h5: "ERP Support & Maintenance",
+    service_mgmt_h6: "Preventive Maintenance",
+
+    // Hotline format
+    hotline_office: "Hotline / WA",
+    hotline_support: "Support",
+    hotline_info: "Info",
 
     // Product Catalog
     catalog_badge: "Katalog Perangkat",
@@ -98,7 +124,7 @@ export const dictionaries: Record<string, Record<string, string>> = {
     clients_badge: "Client Area",
     clients_title_prefix: "Dipercaya oleh",
     clients_title_highlight: "Perusahaan Enterprise",
-    clients_subtitle: "KaryaSistem menjadi mitra integrasi teknologi bagi berbagai sektor industri di seluruh Indonesia.",
+    clients_subtitle: "Karya Sistem menjadi mitra integrasi teknologi bagi berbagai sektor industri di seluruh Indonesia.",
     client_stat_1: "Proyek IT Terintegrasi",
     client_stat_2: "SLA Ketersediaan Sistem",
     client_stat_3: "Sektor Industri",
@@ -108,7 +134,7 @@ export const dictionaries: Record<string, Record<string, string>> = {
     // Values / Keunggulan
     value_badge: "Keunggulan",
     value_title_prefix: "Mengapa Memilih",
-    value_title_highlight: "KaryaSistem",
+    value_title_highlight: "Karya Sistem",
     value_subtitle: "Mitra integrasi teknologi terpercaya berorientasi pada keberlanjutan, efisiensi, dan keandalan sistem bisnis Anda.",
     val_1_title: "Easy Integrations",
     val_1_tagline: "Integrasi Mulus & Sistem Terpadu",
@@ -129,17 +155,37 @@ export const dictionaries: Record<string, Record<string, string>> = {
     val_3_stat_label: "Visibilitas & Analitik",
 
     // Contact & Footer
-    contact_badge: "Hubungi Kami",
-    contact_title_prefix: "Konsultasikan",
-    contact_title_highlight: "Kebutuhan IT Anda",
-    contact_subtitle: "Tim teknis dan sales profesional kami siap membantu memberikan analisis dan penawaran terbaik untuk operasional perusahaan Anda.",
+    about_badge: "Profil & Kontak Resmi",
+    contact_badge: "Profil & Kontak Resmi",
+    contact_title_prefix: "Mitra Solusi IT Terpercaya untuk",
+    contact_title_highlight: "Skalabilitas Bisnis Anda",
+    contact_subtitle: "Mengenal PT Karya Sistem Teknologi dan akses komunikasi langsung untuk perencanaan infrastruktur teknologi perusahaan Anda.",
+    hotline_header: "Hotline Layanan & Kantor Resmi",
+    about_card_badge: "Profil Perusahaan",
+    about_card_title: "About Karya Sistem",
+    about_card_tagline: "Technology Solutions Built Around Your Business",
+    about_card_p1_lead: "PT Karya Sistem Teknologi",
+    about_card_p1_text: "adalah System Integrator dan IT Solution Provider yang menyediakan solusi teknologi terintegrasi untuk membantu perusahaan meningkatkan efisiensi operasional, keamanan, dan keberlanjutan bisnis.",
+    about_card_p2: "Kami menggabungkan konsultasi, pengadaan teknologi, implementasi, integrasi, dan dukungan IT dalam satu layanan terintegrasi. Solusi kami mencakup infrastruktur IT, business applications, cybersecurity, IT procurement, serta managed IT services.",
+    about_card_p3: "Kami memahami bahwa setiap perusahaan memiliki kebutuhan dan proses bisnis yang berbeda. Karena itu, kami tidak terbatas pada satu platform tertentu. Kami membantu customer menentukan teknologi yang paling sesuai berdasarkan kondisi infrastruktur serta tujuan jangka panjang perusahaan.",
+    about_badge_si: "✓ System Integrator",
+    about_badge_it: "✓ IT Solution Provider",
+    about_badge_agnostic: "✓ Vendor-Agnostic",
+    hotline_card_badge: "Direct Hotline & Kantor",
+    hotline_card_title: "Hotline Layanan & Kantor Resmi",
+    hotline_label_wa: "Hotline / WA:",
+    hotline_label_support: "Support:",
+    hotline_label_info: "Info:",
+    hotline_label_hours: "Jam Operasional:",
+    footer_tagline: "Solusi & Integrasi IT Enterprise Indonesia",
+    contact_cta_wa: "Konsultasi Solusi via WhatsApp",
     contact_addr_label: "Alamat Kantor",
     contact_phone_label: "Telepon / WhatsApp",
     contact_email_label: "Email Resmi",
     contact_hours_label: "Jam Operasional",
     contact_sales_wa: "Hubungi Tim Sales via WhatsApp",
     contact_open_maps: "Buka Google Maps",
-    footer_rights: "All rights reserved. System Integrator & Solusi IT Enterprise.",
+    footer_rights: "All rights reserved.",
 
     // Floating WA
     floating_wa_title: "Konsultasi IT via WA",
@@ -147,20 +193,21 @@ export const dictionaries: Record<string, Record<string, string>> = {
   },
   en: {
     // Navbar
+    nav_Tentang: "About",
     nav_Layanan: "Services",
     nav_Produk: "Products",
     nav_Mitra: "Partners",
     nav_Klien: "Clients",
-    nav_Keunggulan: "Advantages",
+    nav_Keunggulan: "Why Us",
     nav_Kontak: "Contact",
     navbar_wa: "WhatsApp Chat",
     navbar_wa_mobile: "Consult via WhatsApp",
     lang_toggle: "Indonesia",
 
     // Hero
-    hero_badge: "IT System Integrator & Solutions Provider",
-    hero_title_prefix: "IT Solutions & Integration for",
-    hero_title_highlight: "Your Business Operations",
+    hero_badge: "Enterprise IT Solutions & Integration",
+    hero_title_prefix: "IT Solutions & System Integration for",
+    hero_title_highlight: "Modern Enterprises",
     hero_title_suffix: "",
     hero_desc: "empowers enterprises to build, manage, and seamlessly integrate network infrastructure, enterprise hardware, IT security, and unified business applications.",
     cta_primary: "Free Consultation",
@@ -172,42 +219,67 @@ export const dictionaries: Record<string, Record<string, string>> = {
     stat_2: "Official Brand Partners",
     stat_3: "Client Satisfaction Rate",
 
+    // About
+    about_title_prefix: "About",
+    about_title_highlight: "Karya Sistem",
+    about_tagline: "Technology Solutions Built Around Your Business",
+    about_pillar_1_title: "System Integrator & IT Provider",
+    about_pillar_1_desc: "Integrated technology solutions empowering operational efficiency, security, and long-term business sustainability.",
+    about_pillar_2_title: "End-to-End Integrated Services",
+    about_pillar_2_desc: "Consultancy, procurement, deployment, seamless integration, through ongoing managed IT support.",
+    about_pillar_3_title: "Vendor-Agnostic & Custom-Fit",
+    about_pillar_3_desc: "Not tied to any single vendor; solutions are engineered around your specific infrastructure & ROI goals.",
+
     // Services
     services_badge: "Our Services",
     services_title_prefix: "Integrated IT",
     services_title_highlight: "Solutions & Services",
-    services_subtitle: "End-to-end technology services spanning infrastructure planning, custom web business applications, IT disaster recovery, and enterprise procurement.",
-    service_net_title: "Network & Infrastructure",
-    service_net_desc: "Strategic design, deployment, network management, virtualization, and cloud solutions for enterprise business continuity.",
-    service_net_h1: "Strategic Design, Planning & Deployment",
-    service_net_h2: "Network & Infrastructure Management",
-    service_net_h3: "Virtualization & Cloud Solutions",
-    service_net_h4: "Security & Compliance Assurance",
-    service_net_h5: "Business Continuity & Resilience",
-    service_net_h6: "Operational Excellence & Optimization",
+    services_subtitle: "Comprehensive technology services spanning IT infrastructure, business applications, cybersecurity, and integrated managed services.",
+    
+    // Card 1: IT Infrastructure & Procurement
+    service_infra_title: "IT Infrastructure & Procurement",
+    service_infra_desc: "Planning, procurement, implementation, and management of IT requirements to support reliable and scalable business operations.",
+    service_infra_h1: "IT Infrastructure Design & Deployment",
+    service_infra_h2: "Network & Infrastructure",
+    service_infra_h3: "Server, Storage & Backup",
+    service_infra_h4: "IT Hardware & Devices",
+    service_infra_h5: "Software & License Procurement",
+    service_infra_h6: "CCTV, UPS & Deployment",
+    service_infra_h7: "Backup & Disaster Recovery",
 
-    service_web_title: "Web Application",
-    service_web_desc: "Custom web applications and integrated management systems to accelerate and optimize enterprise workflow efficiency.",
-    service_web_h1: "Corporate Company Profile Website",
-    service_web_h2: "Custom Web Application Development",
-    service_web_h3: "Document Management System (DMS)",
-    service_web_h4: "Warehouse Management System (WMS)",
-    service_web_h5: "Survey & Form Management System",
+    // Card 2: Business Application & Digital Solution
+    service_app_title: "Business Application & Digital Solution",
+    service_app_desc: "Application and digital solutions to help enterprises manage business processes, boost efficiency, and accelerate digital transformation.",
+    service_app_h1: "ERP Implementation & Integration",
+    service_app_h2: "AI Solution & Automation",
+    service_app_h3: "E-Commerce Development",
+    service_app_h4: "Custom Web Application",
+    service_app_h5: "Business Process Automation",
 
-    service_dr_title: "IT Disaster Recovery",
-    service_dr_desc: "Risk identification, disaster recovery planning, automated backups, and rapid system restoration for uninterrupted business operations.",
-    service_dr_h1: "Risk Identification & Impact Analysis",
-    service_dr_h2: "Comprehensive Recovery Plan",
-    service_dr_h3: "Automated Data Backup",
-    service_dr_h4: "Rapid System Recovery",
-    service_dr_h5: "Continuous Improvement & Audit",
+    // Card 3: Cybersecurity
+    service_sec_title: "Cybersecurity",
+    service_sec_desc: "Security solutions to protect enterprise devices, networks, systems, and sensitive data from modern cyber threats.",
+    service_sec_h1: "Endpoint Security & Protection",
+    service_sec_h2: "Firewall & Network Security",
+    service_sec_h3: "Security Assessment",
+    service_sec_h4: "Security Platform & Solution",
+    service_sec_h5: "Vulnerability & Pentest",
+    service_sec_h6: "Microsoft 365 Security",
 
-    service_proc_title: "Procurement",
-    service_proc_desc: "Enterprise IT hardware & software procurement, network device acquisition, official licensing, and vendor management.",
-    service_proc_h1: "IT Hardware Procurement Solutions",
-    service_proc_h2: "Network Device Acquisition & Deployment",
-    service_proc_h3: "Software Licensing & Procurement",
-    service_proc_h4: "Cloud Services & Vendor Management",
+    // Card 4: Managed IT & Support
+    service_mgmt_title: "Managed IT & Support",
+    service_mgmt_desc: "Support, maintenance, and monitoring services to ensure IT systems remain optimal, secure, and running continuously.",
+    service_mgmt_h1: "IT Support & Helpdesk",
+    service_mgmt_h2: "IT Infrastructure Maintenance",
+    service_mgmt_h3: "Server & Network Monitoring",
+    service_mgmt_h4: "Cloud & Productivity Platform Support",
+    service_mgmt_h5: "ERP Support & Maintenance",
+    service_mgmt_h6: "Preventive Maintenance",
+
+    // Hotline format
+    hotline_office: "Hotline / WA",
+    hotline_support: "Support",
+    hotline_info: "Info",
 
     // Product Catalog
     catalog_badge: "Hardware Catalog",
@@ -240,7 +312,7 @@ export const dictionaries: Record<string, Record<string, string>> = {
     clients_badge: "Client Area",
     clients_title_prefix: "Trusted by",
     clients_title_highlight: "Enterprise Companies",
-    clients_subtitle: "KaryaSistem is the trusted technology integration partner across diverse industry sectors throughout Indonesia.",
+    clients_subtitle: "Karya Sistem is the trusted technology integration partner across diverse industry sectors throughout Indonesia.",
     client_stat_1: "Completed IT Projects",
     client_stat_2: "System SLA Uptime",
     client_stat_3: "Industry Sectors",
@@ -250,7 +322,7 @@ export const dictionaries: Record<string, Record<string, string>> = {
     // Values / Keunggulan
     value_badge: "Why Choose Us",
     value_title_prefix: "Why Choose",
-    value_title_highlight: "KaryaSistem",
+    value_title_highlight: "Karya Sistem",
     value_subtitle: "Your trusted technology integration partner committed to the scalability, efficiency, and reliability of your business systems.",
     val_1_title: "Easy Integrations",
     val_1_tagline: "Seamless Integration & Synchronized Systems",
@@ -271,17 +343,37 @@ export const dictionaries: Record<string, Record<string, string>> = {
     val_3_stat_label: "Analytics & Visibility",
 
     // Contact & Footer
-    contact_badge: "Contact Us",
-    contact_title_prefix: "Consult Your",
-    contact_title_highlight: "Enterprise IT Needs",
-    contact_subtitle: "Our technical and sales specialists are ready to provide tailored IT consultations and proposals for your company.",
+    about_badge: "Profile & Official Channels",
+    contact_badge: "Profile & Official Channels",
+    contact_title_prefix: "Trusted IT Solutions Partner for",
+    contact_title_highlight: "Your Business Scalability",
+    contact_subtitle: "Learn more about PT Karya Sistem Teknologi and get direct communication access for your enterprise IT infrastructure planning.",
+    hotline_header: "Direct Hotline & Official Office",
+    about_card_badge: "Company Profile",
+    about_card_title: "About Karya Sistem",
+    about_card_tagline: "Technology Solutions Built Around Your Business",
+    about_card_p1_lead: "PT Karya Sistem Teknologi",
+    about_card_p1_text: "is a trusted System Integrator and IT Solution Provider providing integrated technology solutions to empower enterprises with enhanced operational efficiency, robust cybersecurity, and sustainable growth.",
+    about_card_p2: "We combine strategic consulting, hardware procurement, implementation, systems integration, and ongoing IT support into one seamless service. Our solutions encompass enterprise IT infrastructure, business applications, cybersecurity, procurement, and managed IT services.",
+    about_card_p3: "We recognize that every enterprise has distinct operational workflows and technological requirements. As a vendor-agnostic partner, we recommend and implement the optimal technology tailored to your infrastructure realities and long-term business goals.",
+    about_badge_si: "✓ System Integrator",
+    about_badge_it: "✓ IT Solution Provider",
+    about_badge_agnostic: "✓ Vendor-Agnostic",
+    hotline_card_badge: "Direct Hotline & Office",
+    hotline_card_title: "Direct Service Hotline & Official Office",
+    hotline_label_wa: "Hotline / WA:",
+    hotline_label_support: "Support:",
+    hotline_label_info: "Info:",
+    hotline_label_hours: "Business Hours:",
+    footer_tagline: "Enterprise IT Solutions & Integration Indonesia",
+    contact_cta_wa: "Consult Solutions via WhatsApp",
     contact_addr_label: "Office Address",
     contact_phone_label: "Phone / WhatsApp",
     contact_email_label: "Official Email",
     contact_hours_label: "Business Hours",
     contact_sales_wa: "Contact Sales via WhatsApp",
     contact_open_maps: "Open Google Maps",
-    footer_rights: "All rights reserved. System Integrator & Enterprise IT Solutions.",
+    footer_rights: "All rights reserved.",
 
     // Floating WA
     floating_wa_title: "IT Consultation via WA",
@@ -333,7 +425,13 @@ export const LocaleProvider: React.FC<{ children: React.ReactNode }> = ({ childr
 
   const t = useCallback((key: string): string => {
     const dict = dictionaries[locale] || dictionaries.id;
-    return dict[key] || dictionaries.id[key] || key;
+    if (dict && typeof dict[key] === 'string') {
+      return dict[key];
+    }
+    if (dictionaries.id && typeof dictionaries.id[key] === 'string') {
+      return dictionaries.id[key];
+    }
+    return key;
   }, [locale]);
 
   return (
@@ -350,6 +448,3 @@ export const useLocale = () => {
   }
   return ctx;
 };
-
-
-

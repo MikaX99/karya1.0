@@ -31,13 +31,13 @@ export default function Home() {
         {/* [4] Brand Partners Marquee */}
         <Partners />
 
-        {/* [5] Client Area — klien yang pernah menggunakan jasa KaryaSistem */}
+        {/* [5] Client Area — klien yang pernah menggunakan jasa Karya Sistem */}
         <Clients />
 
         {/* [6] Value Propositions */}
         <AboutValue />
 
-        {/* [7] Contact + Footer */}
+        {/* [7] About & Contact + Footer */}
         <ContactFooter />
       </main>
 

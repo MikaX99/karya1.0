@@ -2,10 +2,10 @@
   "company": {
     "name": "PT. Karya Sistem Teknologi",
     "legalName": "PT. Karya Sistem Teknologi",
-    "brandName": "KaryaSistem",
+    "brandName": "Karya Sistem",
     "tagline": "Solusi IT Enterprise Terpercaya",
     "description": "Distributor resmi perangkat IT enterprise: server, networking, laptop, dan lisensi software bergaransi resmi untuk bisnis dan instansi di seluruh Indonesia.",
-    "address": "Rawa Makmur, Cakung, Jakarta Timur, DKI Jakarta",
+    "address": "Rawa Makmur, Kel. Cakung Timur, Kec. Cakung, Kota Administrasi Jakarta Timur, DKI Jakarta 13910",
     "phone": "+62 878-8120-0477",
     "email": "sales@karyasistem.com",
     "hours": "Senin – Jumat: 08.00 – 17.00 WIB"
@@ -13,7 +13,7 @@
   "whatsapp": {
     "number": "6287881200477",
     "displayNumber": "+62 878-8120-0477",
-    "defaultMessage": "Halo KaryaSistem, saya ingin berkonsultasi mengenai kebutuhan IT perusahaan kami."
+    "defaultMessage": "Halo Karya Sistem, saya ingin berkonsultasi mengenai kebutuhan IT perusahaan kami."
   },
   "maps": {
     "embedUrl": "https://maps.google.com/maps?q=-6.157864333267043,106.95494887976591&z=16&output=embed",
@@ -26,9 +26,14 @@
     "linkedin": "https://linkedin.com/company/karyasistem"
   },
   "seo": {
-    "title": "KaryaSistem — Solusi & Integrasi IT untuk Operasional Bisnis Anda",
+    "title": "Karya Sistem — Solusi & Integrasi IT untuk Operasional Bisnis Anda",
     "description": "Distributor resmi server Dell/HP, switch Cisco, laptop Lenovo, dan lisensi Microsoft untuk bisnis dan instansi. Garansi resmi, pengiriman cepat, purnajual terpercaya.",
-    "keywords": "pengadaan IT, server enterprise, switch cisco, laptop bisnis, lisensi microsoft, IT solusi, hardware komputer, jaringan enterprise, karyasistem",
+    "keywords": "pengadaan IT, server enterprise, switch cisco, laptop bisnis, lisensi microsoft, IT solusi, hardware komputer, jaringan enterprise, karya sistem",
     "ogImage": "/og-image.png"
+  },
+  "analytics": {
+    "googleAnalyticsId": "G-XXXXXXXXXX",
+    "cloudflareToken": "",
+    "enabled": true
   }
 }

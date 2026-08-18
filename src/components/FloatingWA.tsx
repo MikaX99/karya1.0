@@ -4,6 +4,7 @@ import { useState } from "react";
 import { MessageCircle } from "lucide-react";
 import config from "@/data/config.json";
 import { useLocale } from "@/context/LocaleContext";
+import { trackWhatsAppClick } from "@/lib/analytics";
 
 export default function FloatingWA() {
   const { t } = useLocale();
@@ -55,7 +56,8 @@ export default function FloatingWA() {
         className="floating-wa"
         onMouseEnter={() => setTooltip(true)}
         onMouseLeave={() => setTooltip(false)}
-        aria-label="Chat WhatsApp KaryaSistem"
+        aria-label="Chat WhatsApp Karya Sistem"
+        onClick={() => trackWhatsAppClick("Floating Button")}
       >
         <MessageCircle size={24} strokeWidth={2} />
       </a>

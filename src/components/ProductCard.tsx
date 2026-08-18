@@ -4,6 +4,7 @@ import React from "react";
 import { MessageCircle, Tag, Cpu } from "lucide-react";
 import config from "@/data/config.json";
 import { useLocale } from "@/context/LocaleContext";
+import { trackWhatsAppClick } from "@/lib/analytics";
 
 interface Product {
   id: string;
@@ -333,6 +334,7 @@ export default function ProductCard({ product }: { product: Product }) {
             rel="noopener noreferrer"
             className="btn-wa"
             aria-label={`Konsultasi WhatsApp untuk ${product.title}`}
+            onClick={() => trackWhatsAppClick("Product Card", product.title)}
             style={{
               padding: "0.38rem 0.75rem",
               fontSize: "0.75rem",

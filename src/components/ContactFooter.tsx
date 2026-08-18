@@ -1,8 +1,9 @@
 "use client";
 
-import { MapPin, Phone, Mail, Clock, MessageCircle, ExternalLink } from "lucide-react";
+import { Smartphone, Mail, MessageCircle, MapPin } from "lucide-react";
 import config from "@/data/config.json";
 import { useLocale } from "@/context/LocaleContext";
+import { trackWhatsAppClick } from "@/lib/analytics";
 import { navLinks } from "@/data/navLinks";
 
 const socialLinks = [
@@ -51,311 +52,452 @@ const socialLinks = [
 export default function ContactFooter() {
   const { t } = useLocale();
 
-  const waUrl = `https://wa.me/${config.whatsapp.number}?text=${encodeURIComponent(
-    config.whatsapp.defaultMessage
+  const defaultWaUrl = `https://wa.me/${config.whatsapp.number}?text=${encodeURIComponent(
+    "Halo Karya Sistem, saya ingin berkonsultasi mengenai kebutuhan IT perusahaan kami."
   )}`;
 
   return (
     <>
-      {/* Contact Section */}
-      <section id="kontak" className="section" style={{ background: "var(--section-bg-2)" }}>
-        <div className="container">
-          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <span className="section-badge">{t("contact_badge")}</span>
-            <h2 className="text-section-title" style={{ margin: "0 0 0.875rem 0", color: "var(--color-text)" }}>
-              {t("contact_title_prefix")} <span style={{ color: "var(--color-primary)" }}>{t("contact_title_highlight")}</span>
+      {/* Contact & About Section (TasteSkill Golden Ratio Balanced) */}
+      <section
+        id="kontak"
+        className="section"
+        style={{
+          background: "var(--section-bg-2)",
+          paddingTop: "clamp(3.5rem, 5vw, 5rem)",
+          paddingBottom: "clamp(3.5rem, 5vw, 5rem)",
+        }}
+      >
+        <span id="about" style={{ display: "block" }} />
+        <div className="container" style={{ maxWidth: "1140px" }}>
+          {/* Section Header */}
+          <div style={{ textAlign: "center", marginBottom: "2.75rem" }}>
+            <span
+              className="section-badge"
+              style={{
+                fontSize: "0.775rem",
+                padding: "0.35rem 0.95rem",
+                marginBottom: "0.6rem",
+              }}
+            >
+              {t("about_badge") || "Profil & Kontak Resmi"}
+            </span>
+            <h2
+              className="text-section-title"
+              style={{
+                fontSize: "clamp(1.5rem, 2.6vw, 2.15rem)",
+                margin: "0 0 0.6rem 0",
+                color: "var(--color-text)",
+                letterSpacing: "-0.02em",
+              }}
+            >
+              {t("contact_title_prefix")}{" "}
+              <span style={{ color: "var(--color-primary)" }}>{t("contact_title_highlight")}</span>
             </h2>
             <p
               style={{
                 color: "var(--color-text-muted)",
-                maxWidth: "540px",
+                maxWidth: "600px",
                 margin: "0 auto",
-                lineHeight: 1.7,
-                fontSize: "clamp(0.9rem, 1.4vw, 1.025rem)",
+                lineHeight: 1.65,
+                fontSize: "0.95rem",
               }}
             >
               {t("contact_subtitle")}
             </p>
           </div>
 
+          {/* 2-Column Grid */}
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "2rem",
+              gridTemplateColumns: "1.15fr 1fr",
+              gap: "1.75rem",
               alignItems: "stretch",
-              marginBottom: "2rem",
+              marginBottom: "2.5rem",
             }}
             className="contact-grid"
           >
-            {/* Left Column: Ultra-Minimalist Contact Details */}
+            {/* Left Column: ABOUT KARYA SISTEM */}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                padding: "2rem 2.25rem",
+                background: "var(--color-surface)",
+                borderRadius: "16px",
+                border: "1px solid var(--color-border)",
+                boxShadow: "0 4px 20px rgba(0, 0, 0, 0.04)",
+                justifyContent: "space-between",
+              }}
+            >
+              <div>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.45rem", marginBottom: "0.4rem" }}>
+                  <span
+                    style={{
+                      display: "inline-block",
+                      width: "7px",
+                      height: "7px",
+                      borderRadius: "50%",
+                      background: "var(--color-primary)",
+                    }}
+                  />
+                  <span
+                    style={{
+                      fontSize: "0.75rem",
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.06em",
+                      color: "var(--color-primary)",
+                    }}
+                  >
+                    {t("about_card_badge")}
+                  </span>
+                </div>
+
+                <h3
+                  style={{
+                    fontSize: "1.25rem",
+                    fontWeight: 800,
+                    color: "var(--color-text)",
+                    margin: "0 0 0.25rem 0",
+                    lineHeight: 1.3,
+                    letterSpacing: "-0.01em",
+                  }}
+                >
+                  {t("about_card_title")}
+                </h3>
+
+                <p
+                  style={{
+                    fontSize: "0.9rem",
+                    fontWeight: 600,
+                    color: "var(--color-primary)",
+                    margin: "0 0 1.15rem 0",
+                    lineHeight: 1.4,
+                  }}
+                >
+                  {t("about_card_tagline")}
+                </p>
+
+                {/* Body Paragraphs */}
+                <div style={{ display: "flex", flexDirection: "column", gap: "0.85rem" }}>
+                  <p
+                    style={{
+                      fontSize: "0.9rem",
+                      color: "var(--color-text)",
+                      lineHeight: 1.65,
+                      margin: 0,
+                    }}
+                  >
+                    <strong>{t("about_card_p1_lead")}</strong> {t("about_card_p1_text")}
+                  </p>
+
+                  <p
+                    style={{
+                      fontSize: "0.875rem",
+                      color: "var(--color-text-muted)",
+                      lineHeight: 1.65,
+                      margin: 0,
+                    }}
+                  >
+                    {t("about_card_p2")}
+                  </p>
+
+                  <p
+                    style={{
+                      fontSize: "0.875rem",
+                      color: "var(--color-text-muted)",
+                      lineHeight: 1.65,
+                      margin: 0,
+                    }}
+                  >
+                    {t("about_card_p3")}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: HOTLINE & DIRECT CONTACT */}
             <div
               style={{
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
+                padding: "2rem 2.25rem",
+                background: "var(--card-gradient)",
+                borderRadius: "16px",
+                border: "1px solid var(--color-border)",
+                boxShadow: "0 4px 20px rgba(0, 0, 0, 0.04)",
               }}
             >
-              <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-                {[
-                  {
-                    icon: <MapPin size={20} color="var(--color-primary)" />,
-                    label: t("contact_addr_label"),
-                    value: config.company.address,
-                    href: config.maps.googleMapsUrl,
-                    id: "contact-address",
-                  },
-                  {
-                    icon: <Phone size={20} color="var(--color-primary)" />,
-                    label: t("contact_phone_label"),
-                    value: config.company.phone,
-                    href: waUrl,
-                    id: "contact-phone",
-                  },
-                  {
-                    icon: <Mail size={20} color="var(--color-primary)" />,
-                    label: t("contact_email_label"),
-                    value: config.company.email,
-                    href: `mailto:${config.company.email}`,
-                    id: "contact-email",
-                  },
-                  {
-                    icon: <Clock size={20} color="var(--color-primary)" />,
-                    label: t("contact_hours_label"),
-                    value: config.company.hours,
-                    href: null,
-                    id: "contact-hours",
-                  },
-                ].map((item, idx, arr) => {
-                  const ContentWrapper = item.href ? "a" : "div";
-                  const wrapperProps = item.href
-                    ? {
-                        href: item.href,
-                        target: "_blank",
-                        rel: "noopener noreferrer",
-                        style: { textDecoration: "none", color: "inherit" },
-                      }
-                    : {};
+              <div>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.45rem", marginBottom: "0.4rem" }}>
+                  <span
+                    style={{
+                      display: "inline-block",
+                      width: "7px",
+                      height: "7px",
+                      borderRadius: "50%",
+                      background: "var(--color-primary)",
+                    }}
+                  />
+                  <span
+                    style={{
+                      fontSize: "0.75rem",
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.06em",
+                      color: "var(--color-primary)",
+                    }}
+                  >
+                    {t("hotline_card_badge")}
+                  </span>
+                </div>
 
-                  return (
-                    <ContentWrapper key={item.id} id={item.id} {...wrapperProps}>
-                      <div
+                <h3
+                  style={{
+                    fontSize: "1.25rem",
+                    fontWeight: 800,
+                    color: "var(--color-text)",
+                    margin: "0 0 1.15rem 0",
+                    lineHeight: 1.3,
+                    letterSpacing: "-0.01em",
+                  }}
+                >
+                  {t("hotline_card_title")}
+                </h3>
+
+                {/* Office Address Box */}
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: "0.85rem",
+                    marginBottom: "1.1rem",
+                    padding: "0.95rem 1rem",
+                    background: "var(--color-surface)",
+                    borderRadius: "10px",
+                    border: "1px solid var(--color-border-subtle)",
+                  }}
+                >
+                  <MapPin size={18} color="var(--color-primary)" style={{ flexShrink: 0, marginTop: "2px" }} />
+                  <div>
+                    <div style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--color-text)", marginBottom: "0.2rem" }}>
+                      PT Karya Sistem Teknologi
+                    </div>
+                    <p
+                      style={{
+                        fontSize: "0.825rem",
+                        color: "var(--color-text-muted)",
+                        lineHeight: 1.5,
+                        margin: 0,
+                      }}
+                    >
+                      {config.company.address}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Contact Rows */}
+                <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+                  {/* Office / Phone */}
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.8rem",
+                      fontSize: "0.885rem",
+                      color: "var(--color-text-muted)",
+                    }}
+                  >
+                    <Smartphone size={17} color="var(--color-primary)" style={{ flexShrink: 0 }} />
+                    <div>
+                      <span style={{ fontWeight: 600, color: "var(--color-text)" }}>{t("hotline_label_wa")}{" "}</span>
+                      <a
+                        href={defaultWaUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         style={{
-                          display: "flex",
-                          alignItems: "flex-start",
-                          gap: "1.25rem",
-                          paddingBottom: idx < arr.length - 1 ? "1.25rem" : "0",
-                          borderBottom: idx < arr.length - 1 ? "1px solid var(--color-border-subtle)" : "none",
-                          transition: "opacity 0.2s ease",
+                          color: "var(--color-primary)",
+                          textDecoration: "none",
+                          fontWeight: 600,
+                          marginLeft: "0.25rem",
                         }}
                       >
-                        <div
-                          style={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            width: "40px",
-                            height: "40px",
-                            borderRadius: "10px",
-                            background: "var(--color-surface)",
-                            border: "1px solid var(--color-border)",
-                            flexShrink: 0,
-                          }}
-                        >
-                          {item.icon}
-                        </div>
-                        <div style={{ flexGrow: 1 }}>
-                          <div
-                            style={{
-                              fontSize: "0.72rem",
-                              fontWeight: 700,
-                              textTransform: "uppercase",
-                              letterSpacing: "0.08em",
-                              color: "var(--color-text-faint)",
-                              marginBottom: "0.25rem",
-                            }}
-                          >
-                            {item.label}
-                          </div>
-                          <div style={{ fontSize: "0.95rem", color: "var(--color-text)", fontWeight: 600, lineHeight: 1.4 }}>
-                            {item.id === "contact-address" ? (
-                              <div style={{ display: "flex", flexDirection: "column", gap: "0.15rem" }}>
-                                <span style={{ fontWeight: 700, color: "var(--color-text)" }}>Rawa Makmur, Cakung</span>
-                                <span style={{ fontSize: "0.85rem", color: "var(--color-text-muted)", fontWeight: 500 }}>Jakarta Timur, DKI Jakarta</span>
-                              </div>
-                            ) : (
-                              item.value
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    </ContentWrapper>
-                  );
-                })}
+                        {config.company.phone}
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Support Email */}
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.8rem",
+                      fontSize: "0.885rem",
+                      color: "var(--color-text-muted)",
+                    }}
+                  >
+                    <Mail size={17} color="var(--color-primary)" style={{ flexShrink: 0 }} />
+                    <div>
+                      <span style={{ fontWeight: 600, color: "var(--color-text)" }}>{t("hotline_label_support")}{" "}</span>
+                      <a
+                        href={`mailto:${config.company.email}`}
+                        style={{
+                          color: "inherit",
+                          textDecoration: "none",
+                          fontWeight: 500,
+                          marginLeft: "0.25rem",
+                        }}
+                      >
+                        {config.company.email}
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Info Email */}
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.8rem",
+                      fontSize: "0.885rem",
+                      color: "var(--color-text-muted)",
+                    }}
+                  >
+                    <Mail size={17} color="var(--color-primary)" style={{ flexShrink: 0 }} />
+                    <div>
+                      <span style={{ fontWeight: 600, color: "var(--color-text)" }}>{t("hotline_label_info")}{" "}</span>
+                      <a
+                        href="mailto:info@karyasistem.com"
+                        style={{
+                          color: "inherit",
+                          textDecoration: "none",
+                          fontWeight: 500,
+                          marginLeft: "0.25rem",
+                        }}
+                      >
+                        info@karyasistem.com
+                      </a>
+                    </div>
+                  </div>
+
+                </div>
               </div>
 
               {/* WhatsApp CTA Button */}
-              <a
-                id="contact-wa-btn"
-                href={waUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="nav-capsule-wa"
-                aria-label="Hubungi Sales KaryaSistem via WhatsApp"
-                style={{
-                  justifyContent: "center",
-                  padding: "0.875rem 1.5rem",
-                  fontSize: "0.925rem",
-                  borderRadius: "9999px",
-                  marginTop: "1.5rem",
-                  width: "100%",
-                }}
-              >
-                <MessageCircle size={18} />
-                <span>{t("contact_sales_wa")}</span>
-              </a>
-            </div>
-
-            {/* Right Column: Clean Pure Map Viewport */}
-            <div
-              style={{
-                borderRadius: "12px",
-                overflow: "hidden",
-                border: "1px solid var(--color-border)",
-                position: "relative",
-                background: "var(--color-surface-2)",
-                minHeight: "380px",
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <iframe
-                id="google-maps-embed"
-                src={config.maps.embedUrl}
-                width="100%"
-                height="100%"
-                style={{ border: 0, display: "block", minHeight: "380px", flexGrow: 1 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Lokasi Kantor KaryaSistem"
-                sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-              />
-
-              {/* Bottom Floating Glass Capsule Button */}
-              <a
-                id="open-maps-link"
-                href={config.maps.googleMapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  position: "absolute",
-                  bottom: "12px",
-                  right: "12px",
-                  zIndex: 5,
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.4rem",
-                  padding: "0.45rem 0.9rem",
-                  background: "var(--navbar-bg)",
-                  backdropFilter: "blur(16px)",
-                  WebkitBackdropFilter: "blur(16px)",
-                  border: "1px solid var(--glass-border)",
-                  borderRadius: "9999px",
-                  color: "var(--color-text)",
-                  fontSize: "0.75rem",
-                  textDecoration: "none",
-                  fontWeight: 700,
-                  boxShadow: "0 4px 16px rgba(0,0,0,0.1)",
-                }}
-              >
-                <ExternalLink size={12} />
-                <span>{t("contact_open_maps")}</span>
-              </a>
+              <div style={{ marginTop: "1.4rem" }}>
+                <a
+                  id="contact-wa-btn"
+                  onClick={() => trackWhatsAppClick("Contact Footer Hotline")}
+                  href={defaultWaUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="nav-capsule-wa"
+                  aria-label="Hubungi Sales Karya Sistem via WhatsApp"
+                  style={{
+                    justifyContent: "center",
+                    padding: "0.8rem 1.5rem",
+                    fontSize: "0.9rem",
+                    borderRadius: "10px",
+                    width: "100%",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.5rem",
+                    fontWeight: 700,
+                  }}
+                >
+                  <MessageCircle size={18} />
+                  <span>{t("contact_cta_wa") || "Konsultasi Solusi via WhatsApp"}</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Corporate Footer */}
+      {/* Minimalist Premium Footer */}
       <footer
         style={{
-          background: "var(--footer-bg)",
-          borderTop: "1px solid var(--footer-border)",
-          padding: "2.5rem 1.5rem 2rem",
-          transition: "background 0.25s ease",
+          borderTop: "1px solid var(--color-border)",
+          background: "var(--color-bg)",
+          padding: "2.75rem 0 2rem",
         }}
       >
-        <div
-          className="container"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "1.75rem",
-          }}
-        >
-          {/* Main Footer Row: Brand Logo, Navigation Links & Social Icons */}
-          <div
-            className="footer-main-row"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              flexWrap: "wrap",
-              gap: "1.5rem",
-            }}
-          >
-            {/* Logo (+25% size increase) */}
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <img
-                src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/kst-dark.png`}
-                alt="KaryaSistem Logo"
-                width="101"
-                height="43"
-                loading="lazy"
-                decoding="async"
-                className="logo-img logo-dark-mode"
-                style={{ width: "101px", height: "43px", objectFit: "contain", aspectRatio: "101 / 43" }}
-              />
-              <img
-                src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/kst-light.png`}
-                alt="KaryaSistem Logo"
-                width="101"
-                height="43"
-                loading="lazy"
-                decoding="async"
-                className="logo-img logo-light-mode"
-                style={{ width: "101px", height: "43px", objectFit: "contain", aspectRatio: "101 / 43" }}
-              />
+        <div className="container" style={{ maxWidth: "1140px", padding: "0 1.5rem" }}>
+          {/* Main Footer Row (Logo | Nav Links | Social Icons) */}
+          <div className="footer-minimal-main">
+            {/* Left: Logo */}
+            <div className="footer-minimal-logo">
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  textDecoration: "none",
+                }}
+                aria-label="Karya Sistem Home"
+              >
+                <img
+                  src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/kst-dark.png`}
+                  alt="Karya Sistem Logo"
+                  width="114"
+                  height="44"
+                  style={{ height: "38px", width: "auto", objectFit: "contain" }}
+                  className="logo-dark-mode"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <img
+                  src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/kst-light.png`}
+                  alt="Karya Sistem Logo"
+                  width="114"
+                  height="44"
+                  style={{ height: "38px", width: "auto", objectFit: "contain" }}
+                  className="logo-light-mode"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
             </div>
 
-            {/* Navigation Links */}
-            <div className="footer-nav-links" style={{ display: "flex", gap: "1.25rem", flexWrap: "wrap" }}>
-              {navLinks
-                .filter((item) => item.key !== "nav_Keunggulan")
-                .map((item) => (
+            {/* Center: Navigation Links */}
+            <nav className="footer-minimal-nav" aria-label="Footer Navigation">
+              {navLinks.map((link) => (
                 <a
-                  key={item.key}
-                  href={item.href}
+                  key={link.key}
+                  href={link.href}
                   className="footer-nav-link"
+                  style={{
+                    fontSize: "0.875rem",
+                    fontWeight: 500,
+                    color: "var(--color-text-muted)",
+                    textDecoration: "none",
+                    transition: "color 0.2s ease",
+                  }}
                 >
-                  {t(item.key)}
+                  {t(link.key)}
                 </a>
               ))}
-            </div>
+            </nav>
 
-            {/* Social Media Links (FB, TikTok, IG, LinkedIn) */}
-            <div className="footer-social-links" style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}>
+            {/* Right: Social Media Icons */}
+            <div className="footer-minimal-social">
               {socialLinks.map((social) => (
                 <a
                   key={social.name}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={social.name}
-                  title={social.name}
-                  className="footer-social-icon"
-                  style={{ "--social-hover-color": social.hoverColor } as React.CSSProperties}
+                  aria-label={`Kunjungi ${social.name} Karya Sistem`}
+                  className="social-icon-btn"
+                  style={{ "--social-hover-color": social.hoverColor, width: "36px", height: "36px" } as React.CSSProperties}
                 >
                   {social.icon}
                 </a>
@@ -363,30 +505,17 @@ export default function ContactFooter() {
             </div>
           </div>
 
-          {/* Bottom Divider & Copyright */}
-          <div
-            className="footer-bottom-row"
-            style={{
-              borderTop: "1px solid var(--color-border-subtle)",
-              paddingTop: "1.25rem",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              flexWrap: "wrap",
-              gap: "0.75rem",
-            }}
-          >
-            <div style={{ fontSize: "0.78rem", color: "var(--color-text-faint)" }}>
-              © {new Date().getFullYear()} PT. Karya Sistem Teknologi. {t("footer_rights")}
+          {/* Bottom Divider & Copyright Row */}
+          <div className="footer-minimal-bottom">
+            <div className="footer-copyright-text">
+              &copy; {new Date().getFullYear()} PT Karya Sistem Teknologi. {t("footer_rights")}
             </div>
-            <div style={{ fontSize: "0.75rem", color: "var(--color-text-faint)" }}>
-              Solusi & Integrasi IT Enterprise Indonesia
+            <div className="footer-tagline-text">
+              {t("footer_tagline")}
             </div>
           </div>
         </div>
       </footer>
-
-
     </>
   );
 }

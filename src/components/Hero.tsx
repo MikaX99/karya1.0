@@ -3,6 +3,7 @@
 import { MessageCircle, ChevronDown } from "lucide-react";
 import config from "@/data/config.json";
 import { useLocale } from "@/context/LocaleContext";
+import { trackWhatsAppClick } from "@/lib/analytics";
 
 export default function Hero() {
   const { t } = useLocale();
@@ -60,7 +61,7 @@ export default function Hero() {
                 alignItems: "center",
               }}
             >
-              <span className="live-pulse"></span> SOLUSI &amp; INTEGRASI IT ENTERPRISE
+              <span className="live-pulse"></span> {t("hero_badge")}
             </div>
 
             {/* Main Bold Headline */}
@@ -90,18 +91,19 @@ export default function Hero() {
                 fontWeight: 400,
               }}
             >
-              <strong style={{ color: "var(--color-text)", fontWeight: 600 }}>KaryaSistem</strong> {t("hero_desc")}
+              <strong style={{ color: "var(--color-text)", fontWeight: 600 }}>Karya Sistem</strong> {t("hero_desc")}
             </p>
 
             {/* Action Pills */}
             <div style={{ display: "flex", gap: "0.875rem", flexWrap: "wrap", marginBottom: "1rem" }}>
               <a
                 id="hero-wa-cta"
+                onClick={() => trackWhatsAppClick("Hero CTA")}
                 href={waUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary"
-                aria-label="Konsultasi Gratis via WhatsApp KaryaSistem"
+                aria-label="Konsultasi Gratis via WhatsApp Karya Sistem"
                 style={{
                   borderRadius: "9999px",
                   padding: "0.85rem 1.75rem",
@@ -143,13 +145,11 @@ export default function Hero() {
               position: "relative",
               background: "transparent",
               border: "none",
-              boxShadow: "none",
-              padding: "0",
-              overflow: "visible",
+              overflow: "hidden",
               transform: "scale(1.25)",
               transformOrigin: "center center",
-              maskImage: "radial-gradient(circle at center, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 98%)",
-              WebkitMaskImage: "radial-gradient(circle at center, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 98%)",
+              maskImage: "radial-gradient(circle at center, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 95%)",
+              WebkitMaskImage: "radial-gradient(circle at center, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 95%)",
               zIndex: 1,
             }}
           >
@@ -190,24 +190,24 @@ export default function Hero() {
                 <path id="c-18" d="M 250, 250 m -248, 0 a 248,248 0 1,1 496,0 a 248,248 0 1,1 -496,0" fill="none" />
 
                 {/* Escalating Text Density - Perfect Circle Paths */}
-                <text className="spiral-track track-1"><textPath href="#c-1" startOffset="0%">KARYASISTEM IT • </textPath></text>
+                <text className="spiral-track track-1"><textPath href="#c-1" startOffset="0%">KARYA SISTEM IT • </textPath></text>
                 <text className="spiral-track track-2"><textPath href="#c-2" startOffset="0%">DELL TECHNOLOGIES • HPE PROLIANT • </textPath></text>
                 <text className="spiral-track track-3"><textPath href="#c-3" startOffset="0%">CISCO SYSTEMS • LENOVO ENTERPRISE • ASUS BIZ • </textPath></text>
                 <text className="spiral-track track-4"><textPath href="#c-4" startOffset="0%">MICROSOFT • FORTINET • SANGFOR • MIKROTIK • APC SCHNEIDER • </textPath></text>
-                <text className="spiral-track track-5"><textPath href="#c-5" startOffset="0%">PT PLN (PERSERO) • ALVA GROUP • INDONESIA RAYA ACADEMY • DILMIL II-08 JAKARTA • </textPath></text>
-                <text className="spiral-track track-6"><textPath href="#c-6" startOffset="0%">HIKVISION • RUJIE REYEE • LOGITECH • EPSON • SERVER &amp; STORAGE SOLUTION • </textPath></text>
-                <text className="spiral-track track-7"><textPath href="#c-7" startOffset="0%">PT DEMODAS INT • PT GLOBAL AGUNG • PT KARYA ABADI INDOTECH • PT LAYANAN KAPAL INDONESIA • </textPath></text>
+                <text className="spiral-track track-5"><textPath href="#c-5" startOffset="0%">VMWARE BY BROADCOM • NUTANIX HCI • UBIQUITI UNIFI • ARUBA NETWORKS • SYNOLOGY NAS • </textPath></text>
+                <text className="spiral-track track-6"><textPath href="#c-6" startOffset="0%">HIKVISION AI • RUIJIE REYEE • LOGITECH RALLY • EPSON WORKFORCE • SERVER &amp; STORAGE SOLUTION • </textPath></text>
+                <text className="spiral-track track-7"><textPath href="#c-7" startOffset="0%">CISCO CATALYST • DELL POWEREDGE • HPE PROLIANT GEN11 • LENOVO THINKSYSTEM • FORTIGATE NGFW • </textPath></text>
                 <text className="spiral-track track-8"><textPath href="#c-8" startOffset="0%">ENTERPRISE IT INTEGRATION • CLOUD &amp; VIRTUALIZATION • CYBERSECURITY &amp; FIREWALL PROTECTION • BACKUP DISASTER RECOVERY • </textPath></text>
-                <text className="spiral-track track-9"><textPath href="#c-9" startOffset="0%">PT MERPATI WAHANA RAKSA • PT NEXTIVE GEMILANG • PT PETROKINDO SAPTA GEMILANG • PT SILICAG GLOBAL INT • NKG • </textPath></text>
-                <text className="spiral-track track-10"><textPath href="#c-10" startOffset="0%">DISTRIBUTOR RESMI PERANGKAT IT • GARANSI RESMI INDONESIA • SERVIS &amp; DUKUNGAN TEKNIS KORPORAT 24/7 • IMPLEMENTASI JARINGAN PERUSAHAAN • </textPath></text>
-                <text className="spiral-track track-11"><textPath href="#c-11" startOffset="0%">PARTNER KLIEN: PT PLN • ALVA GROUP • IRA • DILMIL JAKARTA • DIG • GAS • KAI • LKI • MWR • NXG • PSG • SGI • GIHC • NKG • </textPath></text>
+                <text className="spiral-track track-9"><textPath href="#c-9" startOffset="0%">SANGFOR HCI • MIKROTIK ROUTERBOARD • APC SMART-UPS • ARUBA INSTANT ON • RUIJIE CLOUD OS • SYNOLOGY ALL-FLASH • </textPath></text>
+                <text className="spiral-track track-10"><textPath href="#c-10" startOffset="0%">DISTRIBUTOR RESMI PERANGKAT IT • GARANSI RESMI INDONESIA • SERVIS &amp; DUKUNGAN TEKNIS KORPORAT 24/7 • IMPLEMENTASI JARINGAN ENTERPRISE • </textPath></text>
+                <text className="spiral-track track-11"><textPath href="#c-11" startOffset="0%">PRINCIPAL BRANDS: DELL • HPE • CISCO • LENOVO • ASUS • MICROSOFT • FORTINET • SANGFOR • MIKROTIK • APC • HIKVISION • RUIJIE • LOGITECH • EPSON • SYNOLOGY • VMWARE • </textPath></text>
                 <text className="spiral-track track-12"><textPath href="#c-12" startOffset="0%">HIGH PERFORMANCE COMPUTING • DATA CENTER INFRASTRUCTURE • SWITCHING ROUTING • SAN &amp; NAS STORAGE • ENTERPRISE SOFTWARE LICENSING • </textPath></text>
-                <text className="spiral-track track-13"><textPath href="#c-13" startOffset="0%">MITRA IT ENTERPRISE TERPERCAYA: DELL • HPE • CISCO • LENOVO • ASUS • MICROSOFT • FORTINET • SANGFOR • MIKROTIK • APC • HIKVISION • RUJIE • LOGITECH • EPSON • </textPath></text>
+                <text className="spiral-track track-13"><textPath href="#c-13" startOffset="0%">GLOBAL TECH PARTNERS: DELL TECHNOLOGIES • HPE • CISCO SYSTEMS • LENOVO • ASUS • MICROSOFT AZURE • FORTINET SECURITY • SANGFOR HCI • MIKROTIK • APC SCHNEIDER • </textPath></text>
                 <text className="spiral-track track-14"><textPath href="#c-14" startOffset="0%">SOLUSI INFRASTRUKTUR TEKNOLOGI INFORMASI • PENGADAAN HARDWARE &amp; SOFTWARE • PURNAJUAL RESMI • DUKUNGAN SISTEM KORPORAT TERINTEGRASI DAN TERPERCAYA • </textPath></text>
-                <text className="spiral-track track-15"><textPath href="#c-15" startOffset="0%">PARTNER RESMI &amp; EKOSISTEM IT: PT PLN (PERSERO) • ALVA GROUP • INDONESIA RAYA ACADEMY • DILMIL II-08 JAKARTA • PT DEMODAS • PT GLOBAL AGUNG • PT KARYA ABADI INDOTECH • </textPath></text>
-                <text className="spiral-track track-16"><textPath href="#c-16" startOffset="0%">KARYASISTEM CORPORATE IT INTEGRATOR • DELL POWEREDGE • HPE PROLIANT • CISCO CATALYST • LENOVO THINKSYSTEM • FORTIGATE FIREWALL • SANGFOR HCI • MIKROTIK ROUTERBOARD • </textPath></text>
-                <text className="spiral-track track-17"><textPath href="#c-17" startOffset="0%">TEKNOLOGI INFORMASI TERPADU PERUSAHAAN &amp; INSTANSI PEMERINTAHAN • SERVIS ON-SITE &amp; PURNAJUAL GARANSI RESMI INDONESIA • IMPLEMENTASI CLOUD &amp; DATA CENTER NETWORK • </textPath></text>
-                <text className="spiral-track track-18"><textPath href="#c-18" startOffset="0%">KARYASISTEM ENTERPRISE IT SOLUTIONS PROVIDER • PENGADAAN PERANGKAT SERVER JARINGAN LAPTOP LISENSI SOFTWARE TERLENGKAP DAN TERPERCAYA SEJAK 2020 DI SELURUH INDONESIA • </textPath></text>
+                <text className="spiral-track track-15"><textPath href="#c-15" startOffset="0%">EKOSISTEM TEKNOLOGI ENTERPRISE: SERVER POWEREDGE • PROLIANT RACK • THINKSYSTEM • CATALYST SWITCHES • FORTIGATE NGFW • SANGFOR HYPERCONVERGED • UNIFI CLOUD • </textPath></text>
+                <text className="spiral-track track-16"><textPath href="#c-16" startOffset="0%">KARYA SISTEM CORPORATE IT INTEGRATOR • DELL POWEREDGE • HPE PROLIANT • CISCO CATALYST • LENOVO THINKSYSTEM • FORTIGATE FIREWALL • SANGFOR HCI • MIKROTIK ROUTERBOARD • </textPath></text>
+                <text className="spiral-track track-17"><textPath href="#c-17" startOffset="0%">TEKNOLOGI INFORMASI TERPADU ENTERPRISE &amp; INFRASTRUKTUR DATA CENTER • ZERO TRUST SECURITY • HYPERCONVERGED CLOUD INFRASTRUCTURE • </textPath></text>
+                <text className="spiral-track track-18"><textPath href="#c-18" startOffset="0%">KARYA SISTEM ENTERPRISE IT SOLUTIONS PROVIDER • PENGADAAN PERANGKAT SERVER JARINGAN LAPTOP LISENSI SOFTWARE TERLENGKAP DAN TERPERCAYA SEJAK 2020 DI SELURUH INDONESIA • </textPath></text>
               </svg>
             </div>
           </div>
