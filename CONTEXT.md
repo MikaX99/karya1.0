@@ -2,16 +2,17 @@
 
 **Jarum jam proyek ini.** Papan portofolio lintas-proyek: `~/Projects/CONTEXT.md` §4.
 **Aturan kerja:** `CLAUDE.md` di folder ini dan `~/.claude/CLAUDE.md`.
-**Last Updated:** 2026-09-17
+**Last Updated:** 2026-09-17 (malam: katalog produk diganti)
 
 ---
 
 ## Active Checkpoint
-- **Status:** Compro **selesai 2026-08-19** (HEAD `3ccf454`, 138 commit, semua compro). Deploy GitHub Pages via Actions (`MikaX99/karya1.0`, branch `gh-pages`, basePath `/karya1.0`). Tumpahan KBLI/RAG (insiden sesi salah workspace, Agustus 2026) dipisah ke branch `kbli-spill` 2026-09-17 (disimpan, lokal).
+- **Status:** Compro live (GH Pages = `3ccf454`). **`main` sudah 4 commit di depan live, belum di-push/deploy** — perubahan katalog menunggu perintah deploy Mika. Compro **selesai 2026-08-19** (HEAD `3ccf454`, 138 commit, semua compro). Deploy GitHub Pages via Actions (`MikaX99/karya1.0`, branch `gh-pages`, basePath `/karya1.0`). Tumpahan KBLI/RAG (insiden sesi salah workspace, Agustus 2026) dipisah ke branch `kbli-spill` 2026-09-17 (disimpan, lokal).
 - **Fokus aktif:** tidak ada (proyek tidak aktif).
-- **Menunggu keputusan Mika:** tidak ada.
+- **Menunggu keputusan Mika:** deploy katalog baru ke GH Pages (`git push` + Actions) — belum diperintahkan.
 - **Pending (urut prioritas):** tidak ada.
 - **Riwayat singkat:**
+  - 2026-09-17 [SELESAI] `7de326d` Katalog produk: 18 SKU → 17 kartu brand per lini (list dari Mika). Verifikasi build + preview desktop/mobile/EN OK. Catatan lama (bukan tugas): di mode EN, "Semua Brand"/"Hubungi Sales"/badge masih ID; `public/locales/` tidak dipakai kode (kamus ada di `LocaleContext.tsx`); lint 177 problem warisan di file lain.
   - 2026-09-17 [SELESAI] Cek live: `https://mikax99.github.io/karya1.0/` HTTP 200; `gh-pages` (`77e9b5d`) = build `3ccf454` — konten identik dengan `main` (beda hanya hash/urutan modul). Toggle ID/EN & gelap OK, 0 gambar rusak.
   - 2026-09-17 [SELESAI] Keputusan Mika: branch `kbli-spill` (commit `f20d9d9`, ≈6.7 MB lokal, tidak di-push) **disimpan**; file aturan di-commit ke `main` (`ab3fa91`). `main` 1 commit di depan `origin/main`, belum di-push.
   - 2026-09-17 [SELESAI] Pulihkan compro: `main` kembali bersih ke `3ccf454`; tumpahan KBLI → branch `kbli-spill`; `CLAUDE.md` ditulis ulang sebagai aturan compro; `CONTEXT.md` dibuat. Handoff: `~/Projects/handoff/karyasistem1.0__2026-09-17__pulihkan-compro.md`.
