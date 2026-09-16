@@ -18,8 +18,8 @@ const categoryStacks = [
   {
     value: "Server & Storage",
     title: "Server & Enterprise Storage",
-    desc: "Dell PowerEdge, HPE ProLiant, Synology NAS",
-    count: "3 Perangkat Enterprise",
+    desc: "Synology NAS, HPE ProLiant, Dell PowerEdge, Sangfor",
+    count: "4 Lini Server & Storage",
     icon: <Server size={22} color="#0071E3" />,
     color: "#0071E3",
     bgTint: "rgba(0, 113, 227, 0.08)",
@@ -27,8 +27,8 @@ const categoryStacks = [
   {
     value: "Networking",
     title: "Enterprise Networking & Security",
-    desc: "Cisco Catalyst, Ubiquiti UniFi, MikroTik, Fortinet",
-    count: "4 Perangkat Jaringan",
+    desc: "Cisco, Ubiquiti, MikroTik, Fortinet, Sophos, Sangfor",
+    count: "6 Lini Jaringan & Keamanan",
     icon: <Network size={22} color="#0284C7" />,
     color: "#0284C7",
     bgTint: "rgba(2, 132, 199, 0.08)",
@@ -36,8 +36,8 @@ const categoryStacks = [
   {
     value: "Laptop & PC",
     title: "Laptop & Workstation Bisnis",
-    desc: "Lenovo ThinkPad X1, HP Enterprise, Dell Latitude",
-    count: "3 Laptop & Workstation",
+    desc: "Lenovo Business, HP Enterprise, Dell Enterprise",
+    count: "3 Lini Laptop & Workstation",
     icon: <Laptop size={22} color="#059669" />,
     color: "#059669",
     bgTint: "rgba(5, 150, 105, 0.08)",
@@ -45,8 +45,8 @@ const categoryStacks = [
   {
     value: "Lisensi Software",
     title: "Lisensi Software & Sekuritas",
-    desc: "Microsoft 365, Windows Server 2025, Kaspersky, Sophos",
-    count: "5 Lisensi Resmi Vendor",
+    desc: "Microsoft, Kaspersky, Sophos, Sangfor",
+    count: "4 Lini Lisensi Resmi Vendor",
     icon: <ShieldCheck size={22} color="#D97706" />,
     color: "#D97706",
     bgTint: "rgba(217, 119, 6, 0.08)",

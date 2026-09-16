@@ -11,9 +11,9 @@ interface Product {
   category: string;
   title: string;
   brand: string;
-  specs: string;
+  lines: string[];
+  customSpec: boolean;
   priceDisplay: string;
-  image: string;
   badge: string;
   waTemplate: string;
 }
@@ -149,21 +149,22 @@ function getBrandIcon(brand: string) {
   return <Cpu size={26} color="var(--color-primary)" strokeWidth={1.75} />;
 }
 
+// Key = nilai `brand` di products.json (dipakai juga sebagai label pill)
 const brandDetails: Record<string, { color: string; label: string }> = {
   "Dell PowerEdge": { color: "#007DB8", label: "Dell PowerEdge" },
-  "Dell": { color: "#007DB8", label: "Dell Enterprise" },
-  "HP ProLiant": { color: "#0096D6", label: "HP ProLiant" },
-  "HP EliteOne 870": { color: "#0096D6", label: "HP Enterprise" },
-  "Synology": { color: "#B5161B", label: "Synology NAS" },
+  "Dell Enterprise": { color: "#007DB8", label: "Dell Enterprise" },
+  "HPE ProLiant": { color: "#0096D6", label: "HPE ProLiant" },
+  "HP Enterprise": { color: "#0096D6", label: "HP Enterprise" },
+  "Synology NAS": { color: "#B5161B", label: "Synology NAS" },
   "Cisco Catalyst": { color: "#049FD9", label: "Cisco Catalyst" },
   "Ubiquiti UniFi": { color: "#0559C9", label: "Ubiquiti UniFi" },
-  "Mikrotik": { color: "#FF6600", label: "MikroTik" },
+  "MikroTik": { color: "#FF6600", label: "MikroTik" },
   "Fortinet FortiGate": { color: "#EE3124", label: "Fortinet FortiGate" },
-  "Lenovo": { color: "#E2231A", label: "Lenovo Business" },
-  "Microsoft": { color: "#00A4EF", label: "Microsoft Enterprise" },
-  "Kaspersky": { color: "#006D5B", label: "Kaspersky Security" },
-  "Sophos": { color: "#005A9C", label: "Sophos Security" },
-  "Sangfor": { color: "#E4002B", label: "Sangfor Technologies" },
+  "Lenovo Business": { color: "#E2231A", label: "Lenovo Business" },
+  "Microsoft": { color: "#00A4EF", label: "Microsoft" },
+  "Kaspersky": { color: "#006D5B", label: "Kaspersky" },
+  "Sophos": { color: "#005A9C", label: "Sophos" },
+  "Sangfor": { color: "#E4002B", label: "Sangfor" },
 };
 
 export default function ProductCard({ product }: { product: Product }) {
@@ -283,7 +284,7 @@ export default function ProductCard({ product }: { product: Product }) {
           {product.title}
         </h3>
 
-        {/* Nested Spec Box */}
+        {/* Nested Product-Line Box */}
         <div
           style={{
             background: "var(--color-surface-2)",
@@ -294,16 +295,51 @@ export default function ProductCard({ product }: { product: Product }) {
             flex: 1,
           }}
         >
-          <p
+          <ul
             style={{
-              fontSize: "0.725rem",
-              color: "var(--color-text-subtle)",
+              listStyle: "none",
               margin: 0,
-              lineHeight: 1.4,
+              padding: 0,
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.2rem",
             }}
           >
-            {product.specs}
-          </p>
+            {product.lines.map((line) => (
+              <li
+                key={line}
+                style={{
+                  fontSize: "0.725rem",
+                  color: "var(--color-text-subtle)",
+                  lineHeight: 1.4,
+                  display: "flex",
+                  gap: "0.4rem",
+                }}
+              >
+                <span aria-hidden="true" style={{ color: brandInfo.color, flexShrink: 0 }}>
+                  •
+                </span>
+                <span>{line}</span>
+              </li>
+            ))}
+            {product.customSpec && (
+              <li style={{ fontSize: "0.725rem", lineHeight: 1.4, marginTop: "0.15rem" }}>
+                <a
+                  href={waUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackWhatsAppClick("Product Card (custom spec)", product.title)}
+                  style={{
+                    color: "var(--color-primary)",
+                    fontWeight: 600,
+                    textDecoration: "none",
+                  }}
+                >
+                  {t("product_custom_spec")} →
+                </a>
+              </li>
+            )}
+          </ul>
         </div>
 
         {/* Minimal Footer CTA */}

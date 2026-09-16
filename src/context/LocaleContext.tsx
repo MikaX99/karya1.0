@@ -109,6 +109,7 @@ export const dictionaries: Record<string, Record<string, string>> = {
     catalog_empty: "Tidak ada produk dalam kategori ini.",
     product_price_label: "Harga",
     product_quote_btn: "Minta Penawaran",
+    product_custom_spec: "Butuh Spesifikasi Khusus?",
 
     // Partners
     partners_badge: "Brand Partner",
@@ -297,6 +298,7 @@ export const dictionaries: Record<string, Record<string, string>> = {
     catalog_empty: "No products found in this category.",
     product_price_label: "Price",
     product_quote_btn: "Request Quote",
+    product_custom_spec: "Need a Custom Spec?",
 
     // Partners
     partners_badge: "Brand Partners",

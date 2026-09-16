@@ -2,199 +2,271 @@
   {
     "id": "srv-01",
     "category": "Server & Storage",
-    "title": "Rackmount Server Enterprise 2U Dual Xeon",
-    "brand": "Dell PowerEdge",
-    "specs": "2x Intel Xeon Silver • 64GB DDR4 • 2x 1.92TB SSD • Redundant PSU",
+    "title": "Enterprise Network Storage",
+    "brand": "Synology NAS",
+    "lines": [
+      "DS1823xs+ 8-Bay NAS",
+      "RS2423+ 12-Bay Rack NAS",
+      "RS3621xs+ 12-Bay Enterprise NAS"
+    ],
+    "customSpec": true,
     "priceDisplay": "Hubungi Sales",
-    "image": "/images/products/server-2u.webp",
-    "badge": "Garansi Resmi 3 Thn",
-    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk unit Rackmount Server Enterprise 2U Dual Xeon (ID: srv-01)."
+    "badge": "Garansi Resmi",
+    "waTemplate": "Halo Karya Sistem, saya ingin konsultasi kebutuhan Synology NAS (Enterprise Network Storage)."
   },
   {
     "id": "srv-02",
     "category": "Server & Storage",
-    "title": "Tower Server Workstation Intel Xeon E",
-    "brand": "HP ProLiant",
-    "specs": "Intel Xeon E-2378G • 32GB ECC DDR4 • 4TB SATA HDD • RAID Controller",
+    "title": "Enterprise Rack & Tower Server",
+    "brand": "HPE ProLiant",
+    "lines": [
+      "ProLiant DL380 Gen11 Rack Server 2U",
+      "ProLiant DL360 Gen11 Rack Server 1U",
+      "ProLiant ML350 Gen11 Tower Server"
+    ],
+    "customSpec": true,
     "priceDisplay": "Hubungi Sales",
-    "image": "/images/products/server-tower.webp",
-    "badge": "Garansi Resmi 3 Thn",
-    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk unit Tower Server Workstation Intel Xeon E (ID: srv-02)."
+    "badge": "Garansi Resmi",
+    "waTemplate": "Halo Karya Sistem, saya ingin konsultasi kebutuhan HPE ProLiant (Enterprise Rack & Tower Server)."
   },
   {
     "id": "srv-03",
     "category": "Server & Storage",
-    "title": "NAS Storage Enterprise 12-Bay",
-    "brand": "Synology",
-    "specs": "12-Bay • Redundant PSU • 10GbE • iSCSI Support • Virtualization Ready",
+    "title": "Rack Server Enterprise",
+    "brand": "Dell PowerEdge",
+    "lines": [
+      "PowerEdge R760 Rack Server 2U",
+      "PowerEdge R660 Rack Server 1U",
+      "PowerEdge T560 Tower Server"
+    ],
+    "customSpec": true,
     "priceDisplay": "Hubungi Sales",
-    "image": "/images/products/nas-storage.webp",
-    "badge": "Stok Tersedia",
-    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk unit NAS Storage Enterprise 12-Bay (ID: srv-03)."
+    "badge": "Garansi Resmi",
+    "waTemplate": "Halo Karya Sistem, saya ingin konsultasi kebutuhan Dell PowerEdge (Rack Server Enterprise)."
   },
   {
     "id": "srv-04",
     "category": "Server & Storage",
-    "title": "Sangfor HCI Enterprise Server Node",
+    "title": "Cloud & Infrastructure",
     "brand": "Sangfor",
-    "specs": "Hyper-Converged Infrastructure • Compute + Storage + Network Virtualization • High Availability",
+    "lines": [
+      "HCI (Hyper-Converged Infrastructure)",
+      "VDI (Virtual Desktop Infrastructure)",
+      "Hybrid Cloud",
+      "Managed Cloud Services"
+    ],
+    "customSpec": true,
     "priceDisplay": "Hubungi Sales",
-    "image": "/images/products/sangfor-hci.webp",
-    "badge": "Reseller Resmi",
-    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk unit Sangfor HCI Enterprise Server Node (ID: srv-04)."
+    "badge": "Garansi Resmi",
+    "waTemplate": "Halo Karya Sistem, saya ingin konsultasi kebutuhan Sangfor (Cloud & Infrastructure)."
   },
   {
     "id": "net-01",
     "category": "Networking",
-    "title": "Managed Switch 48-Port Gigabit PoE+",
+    "title": "Enterprise Network Switching",
     "brand": "Cisco Catalyst",
-    "specs": "48x GbE PoE+ • 4x 10G SFP+ Uplink • 740W PoE Budget • Layer 3",
+    "lines": [
+      "Catalyst Managed Switch",
+      "Enterprise Switch",
+      "PoE Switch",
+      "Network Switching"
+    ],
+    "customSpec": true,
     "priceDisplay": "Hubungi Sales",
-    "image": "/images/products/switch-cisco.webp",
     "badge": "Garansi Resmi",
-    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk unit Managed Switch 48-Port Gigabit PoE+ (ID: net-01)."
+    "waTemplate": "Halo Karya Sistem, saya ingin konsultasi kebutuhan Cisco Catalyst (Enterprise Network Switching)."
   },
   {
     "id": "net-02",
     "category": "Networking",
-    "title": "Wireless Access Point Wi-Fi 6 Indoor",
+    "title": "Enterprise Wireless Networking",
     "brand": "Ubiquiti UniFi",
-    "specs": "Wi-Fi 6 AX3000 • 2.4GHz + 5GHz • PoE Powered • 300+ Client Support",
+    "lines": [
+      "UniFi Access Point",
+      "Enterprise Wi-Fi",
+      "Wireless Network",
+      "Wi-Fi 6 / Wi-Fi 7"
+    ],
+    "customSpec": true,
     "priceDisplay": "Hubungi Sales",
-    "image": "/images/products/ap-wifi6.webp",
-    "badge": "Best Seller",
-    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk unit Wireless Access Point Wi-Fi 6 Indoor (ID: net-02)."
+    "badge": "Garansi Resmi",
+    "waTemplate": "Halo Karya Sistem, saya ingin konsultasi kebutuhan Ubiquiti UniFi (Enterprise Wireless Networking)."
   },
   {
     "id": "net-03",
     "category": "Networking",
-    "title": "Router Enterprise RouterBoard CCR2004",
-    "brand": "Mikrotik",
-    "specs": "4x 1G SFP • 16x RJ45 PoE • RouterOS L6 • Hardware Offload",
+    "title": "Enterprise Routing & Networking",
+    "brand": "MikroTik",
+    "lines": [
+      "Enterprise Router",
+      "Core Routing",
+      "Network Management",
+      "Firewall & Routing"
+    ],
+    "customSpec": true,
     "priceDisplay": "Hubungi Sales",
-    "image": "/images/products/router-mikrotik.webp",
     "badge": "Garansi Resmi",
-    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk unit Router Enterprise RouterBoard CCR2004 (ID: net-03)."
+    "waTemplate": "Halo Karya Sistem, saya ingin konsultasi kebutuhan MikroTik (Enterprise Routing & Networking)."
   },
   {
     "id": "net-04",
     "category": "Networking",
-    "title": "Firewall Next-Gen Enterprise Security",
+    "title": "Network Security & Firewall",
     "brand": "Fortinet FortiGate",
-    "specs": "10Gbps Firewall • IPS/IDS • SSL Inspection • SD-WAN Ready",
+    "lines": [
+      "Next-Gen Firewall",
+      "Network Security",
+      "SD-WAN",
+      "Secure Networking"
+    ],
+    "customSpec": true,
     "priceDisplay": "Hubungi Sales",
-    "image": "/images/products/firewall-fortigate.webp",
-    "badge": "Recommended",
-    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk unit Firewall Next-Gen Enterprise Security (ID: net-04)."
+    "badge": "Garansi Resmi",
+    "waTemplate": "Halo Karya Sistem, saya ingin konsultasi kebutuhan Fortinet FortiGate (Network Security & Firewall)."
   },
   {
     "id": "net-05",
     "category": "Networking",
-    "title": "Sophos XGS 2100 Next-Gen Firewall",
+    "title": "Sophos Security",
     "brand": "Sophos",
-    "specs": "Xstream Architecture • 28Gbps Throughput • Dual Power Supply • SD-WAN & Zero-Day Threat Protection",
+    "lines": [
+      "Next-Gen Firewall",
+      "Network Security",
+      "Endpoint Security",
+      "Email Security"
+    ],
+    "customSpec": true,
     "priceDisplay": "Hubungi Sales",
-    "image": "/images/products/firewall-sophos.webp",
-    "badge": "Reseller Resmi",
-    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk unit Sophos XGS 2100 Next-Gen Firewall (ID: net-05)."
+    "badge": "Garansi Resmi",
+    "waTemplate": "Halo Karya Sistem, saya ingin konsultasi kebutuhan Sophos (Sophos Security)."
   },
   {
     "id": "net-06",
     "category": "Networking",
-    "title": "Sangfor NGAF Next-Gen Application Firewall",
+    "title": "Cybersecurity & Network Security",
     "brand": "Sangfor",
-    "specs": "AI-Powered Threat Protection • WAF + Anti-Ransomware • SSL Inspection • 10G SFP+ Uplink",
+    "lines": [
+      "Next-Gen Firewall",
+      "Network Security",
+      "NDR / XDR",
+      "SASE / Zero Trust"
+    ],
+    "customSpec": true,
     "priceDisplay": "Hubungi Sales",
-    "image": "/images/products/sangfor-ngaf.webp",
-    "badge": "Reseller Resmi",
-    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk unit Sangfor NGAF Next-Gen Application Firewall (ID: net-06)."
+    "badge": "Garansi Resmi",
+    "waTemplate": "Halo Karya Sistem, saya ingin konsultasi kebutuhan Sangfor (Cybersecurity & Network Security)."
   },
   {
     "id": "lpt-01",
     "category": "Laptop & PC",
-    "title": "Laptop Business ThinkPad X1 Carbon Gen 12",
-    "brand": "Lenovo",
-    "specs": "Intel Core Ultra 7 • 32GB LPDDR5 • 1TB NVMe SSD • 14\" WUXGA IPS",
+    "title": "Business Laptop & Workstation",
+    "brand": "Lenovo Business",
+    "lines": [
+      "ThinkPad",
+      "ThinkBook",
+      "ThinkPad Workstation",
+      "Business Laptop"
+    ],
+    "customSpec": true,
     "priceDisplay": "Hubungi Sales",
-    "image": "/images/products/laptop-thinkpad.webp",
-    "badge": "Garansi Resmi 3 Thn",
-    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk unit Laptop Business ThinkPad X1 Carbon Gen 12 (ID: lpt-01)."
+    "badge": "Garansi Resmi",
+    "waTemplate": "Halo Karya Sistem, saya ingin konsultasi kebutuhan Lenovo Business (Business Laptop & Workstation)."
   },
   {
     "id": "lpt-02",
     "category": "Laptop & PC",
-    "title": "Desktop Workstation PC All-in-One",
-    "brand": "HP EliteOne 870",
-    "specs": "Intel Core i7-13700 • 16GB DDR5 • 512GB SSD • 27\" IPS QHD Touch",
+    "title": "Business PC & Workstation",
+    "brand": "HP Enterprise",
+    "lines": [
+      "Business Laptop",
+      "Desktop PC",
+      "Workstation",
+      "All-in-One PC"
+    ],
+    "customSpec": true,
     "priceDisplay": "Hubungi Sales",
-    "image": "/images/products/pc-aio.webp",
-    "badge": "Stok Tersedia",
-    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk unit Desktop Workstation PC All-in-One (ID: lpt-02)."
+    "badge": "Garansi Resmi",
+    "waTemplate": "Halo Karya Sistem, saya ingin konsultasi kebutuhan HP Enterprise (Business PC & Workstation)."
   },
   {
     "id": "lpt-03",
     "category": "Laptop & PC",
-    "title": "Laptop Enterprise Dell Latitude 5540",
-    "brand": "Dell",
-    "specs": "Intel Core i5-1345U • 16GB DDR4 • 256GB SSD • 15.6\" FHD • Win 11 Pro",
+    "title": "Business Laptop & PC",
+    "brand": "Dell Enterprise",
+    "lines": [
+      "Latitude",
+      "Precision Workstation",
+      "OptiPlex",
+      "Business Desktop"
+    ],
+    "customSpec": true,
     "priceDisplay": "Hubungi Sales",
-    "image": "/images/products/laptop-dell.webp",
     "badge": "Garansi Resmi",
-    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk unit Laptop Enterprise Dell Latitude 5540 (ID: lpt-03)."
+    "waTemplate": "Halo Karya Sistem, saya ingin konsultasi kebutuhan Dell Enterprise (Business Laptop & PC)."
   },
   {
     "id": "sw-01",
     "category": "Lisensi Software",
-    "title": "Microsoft 365 Business Premium",
+    "title": "Business Productivity & Software",
     "brand": "Microsoft",
-    "specs": "1 User/Tahun • Teams + Office Apps + Exchange + Defender + Intune",
+    "lines": [
+      "Microsoft 365",
+      "Windows Server",
+      "Windows 11 Pro",
+      "Azure & Cloud Services"
+    ],
+    "customSpec": false,
     "priceDisplay": "Hubungi Sales",
-    "image": "/images/products/ms365.webp",
     "badge": "Lisensi Resmi",
-    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk lisensi Microsoft 365 Business Premium (ID: sw-01)."
+    "waTemplate": "Halo Karya Sistem, saya ingin konsultasi kebutuhan Microsoft (Business Productivity & Software)."
   },
   {
     "id": "sw-02",
     "category": "Lisensi Software",
-    "title": "Windows Server 2025 Standard",
-    "brand": "Microsoft",
-    "specs": "16 Core License • Hyper-V • Active Directory • RDS included",
+    "title": "Enterprise Security Software",
+    "brand": "Kaspersky",
+    "lines": [
+      "Endpoint Security",
+      "Antivirus Protection",
+      "EDR / XDR",
+      "Cloud Security"
+    ],
+    "customSpec": false,
     "priceDisplay": "Hubungi Sales",
-    "image": "/images/products/windows-server.webp",
     "badge": "Lisensi Resmi",
-    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk lisensi Windows Server 2025 Standard (ID: sw-02)."
+    "waTemplate": "Halo Karya Sistem, saya ingin konsultasi kebutuhan Kaspersky (Enterprise Security Software)."
   },
   {
     "id": "sw-03",
     "category": "Lisensi Software",
-    "title": "Antivirus Endpoint Protection Enterprise",
-    "brand": "Kaspersky",
-    "specs": "Per Device/Tahun • EDR • Cloud Management Console • Multi-Platform",
+    "title": "Cybersecurity Software & Services",
+    "brand": "Sophos",
+    "lines": [
+      "Endpoint Security",
+      "Intercept X",
+      "XDR / MDR",
+      "Email Security"
+    ],
+    "customSpec": false,
     "priceDisplay": "Hubungi Sales",
-    "image": "/images/products/antivirus.webp",
     "badge": "Lisensi Resmi",
-    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk lisensi Antivirus Endpoint Protection Enterprise (ID: sw-03)."
+    "waTemplate": "Halo Karya Sistem, saya ingin konsultasi kebutuhan Sophos (Cybersecurity Software & Services)."
   },
   {
     "id": "sw-04",
     "category": "Lisensi Software",
-    "title": "Sophos Intercept X Advanced with XDR",
-    "brand": "Sophos",
-    "specs": "Per User/Tahun • Anti-Exploit • AI Malware Threat Protection • Root Cause Analysis",
-    "priceDisplay": "Hubungi Sales",
-    "image": "/images/products/sophos-interceptx.webp",
-    "badge": "Lisensi Resmi",
-    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk lisensi Sophos Intercept X Advanced with XDR (ID: sw-04)."
-  },
-  {
-    "id": "sw-05",
-    "category": "Lisensi Software",
-    "title": "Sangfor VDI Desktop Virtualization License",
+    "title": "Virtualization & Cloud Software",
     "brand": "Sangfor",
-    "specs": "Per User/Tahun • aCloud + aDesk Console • Secure Remote Workspace • GPU Acceleration",
+    "lines": [
+      "VDI",
+      "HCI Software",
+      "Virtualization",
+      "Cloud Platform",
+      "NDR / XDR"
+    ],
+    "customSpec": false,
     "priceDisplay": "Hubungi Sales",
-    "image": "/images/products/sangfor-vdi.webp",
     "badge": "Lisensi Resmi",
-    "waTemplate": "Halo Karya Sistem, saya ingin minta penawaran untuk lisensi Sangfor VDI Desktop Virtualization License (ID: sw-05)."
+    "waTemplate": "Halo Karya Sistem, saya ingin konsultasi kebutuhan Sangfor (Virtualization & Cloud Software)."
   }
 ]
