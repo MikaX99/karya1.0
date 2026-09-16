@@ -12,7 +12,8 @@ Situs company profile **PT Karya Sistem Teknologi** — dwibahasa (ID/EN), tema 
 ## Perintah nyata
 ```bash
 npm run dev        # next dev --webpack
-npm run build      # next build --webpack → out/
+npm run build      # next build --webpack → out/ (TANPA basePath, untuk preview lokal)
+BASE_PATH=/karya1.0 npm run build   # build setara live GH Pages (yang dipakai CI)
 npm run preview    # npx serve out
 npm run lint
 npm run deploy     # dual deploy (lihat package.json) — HANYA atas perintah Mika
