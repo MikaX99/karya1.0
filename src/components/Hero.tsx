@@ -47,21 +47,16 @@ export default function Hero() {
         >
           {/* Left Column: Minimal High-Taste Content */}
           <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", zIndex: 2, position: "relative" }}>
-            {/* Monospace Uppercase Category Tag with Live Pulse */}
+            {/* Label kecil di atas judul */}
             <div
               style={{
-                fontSize: "0.78rem",
-                fontWeight: 700,
-                letterSpacing: "0.14em",
+                fontSize: "0.9rem",
+                fontWeight: 600,
                 color: "var(--color-text-subtle)",
-                textTransform: "uppercase",
                 marginBottom: "1.25rem",
-                fontFamily: "var(--font-mono, monospace)",
-                display: "inline-flex",
-                alignItems: "center",
               }}
             >
-              <span className="live-pulse"></span> {t("hero_badge")}
+              {t("hero_badge")}
             </div>
 
             {/* Main Bold Headline */}
