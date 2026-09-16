@@ -16,7 +16,7 @@ npm run build      # next build --webpack → out/ (TANPA basePath, untuk previe
 BASE_PATH=/karya1.0 npm run build   # build setara live GH Pages (yang dipakai CI)
 npm run preview    # npx serve out
 npm run lint
-npm run deploy     # dual deploy (lihat package.json) — HANYA atas perintah Mika
+# Deploy: push ke `main` → GitHub Actions → `gh-pages` (HANYA atas perintah Mika). Tidak ada script deploy lokal.
 ```
 
 ## Boleh / dilarang
