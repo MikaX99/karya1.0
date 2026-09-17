@@ -15,7 +15,17 @@ export const metadata: Metadata = {
   description: config.seo.description,
   keywords: config.seo.keywords,
   authors: [{ name: config.company.name }],
-  robots: "index, follow",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title: config.seo.title,
     description: config.seo.description,
@@ -94,7 +104,7 @@ export default function RootLayout({
         />
         <link rel="canonical" href="https://mikax99.github.io/karya1.0/" />
 
-        {/* Schema.org Structured Data */}
+        {/* Schema.org Structured Data (Google Rich Results: LocalBusiness, ProfessionalService, BreadcrumbList, WebSite) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -102,26 +112,44 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@graph": [
                 {
-                  "@type": "Organization",
+                  "@type": ["LocalBusiness", "ProfessionalService"],
                   "@id": "https://mikax99.github.io/karya1.0/#organization",
                   "name": config.company.name,
+                  "alternateName": config.company.brandName,
                   "url": "https://mikax99.github.io/karya1.0/",
-                  "logo": "https://mikax99.github.io/karya1.0/kst-dark.png",
+                  "logo": "https://mikax99.github.io/karya1.0/kst-light.png",
+                  "image": "https://mikax99.github.io/karya1.0/og-image.png",
                   "description": config.company.description,
+                  "telephone": config.company.phone,
+                  "email": config.company.email,
+                  "priceRange": "$$",
                   "address": {
                     "@type": "PostalAddress",
-                    "streetAddress": "Rawa Makmur, Cakung",
+                    "streetAddress": "Rawa Makmur, Kel. Cakung Timur, Kec. Cakung",
                     "addressLocality": "Jakarta Timur",
                     "addressRegion": "DKI Jakarta",
+                    "postalCode": "13910",
                     "addressCountry": "ID"
                   },
-                  "contactPoint": {
-                    "@type": "ContactPoint",
-                    "telephone": config.company.phone,
-                    "contactType": "sales",
-                    "areaServed": "ID",
-                    "availableLanguage": ["Indonesian", "English"]
-                  }
+                  "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": -6.1578643,
+                    "longitude": 106.9549488
+                  },
+                  "openingHoursSpecification": [
+                    {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                      "opens": "08:00",
+                      "closes": "17:00"
+                    }
+                  ],
+                  "sameAs": [
+                    config.social.linkedin,
+                    config.social.instagram,
+                    config.social.tiktok,
+                    config.social.facebook
+                  ]
                 },
                 {
                   "@type": "WebSite",
@@ -131,6 +159,17 @@ export default function RootLayout({
                   "publisher": {
                     "@id": "https://mikax99.github.io/karya1.0/#organization"
                   }
+                },
+                {
+                  "@type": "BreadcrumbList",
+                  "itemListElement": [
+                    {
+                      "@type": "ListItem",
+                      "position": 1,
+                      "name": "Beranda",
+                      "item": "https://mikax99.github.io/karya1.0/"
+                    }
+                  ]
                 }
               ]
             }),
